@@ -1,0 +1,76 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <ApplicationIcon />
+    <OutputTypeEx>library</OutputTypeEx>
+    <StartupObject></StartupObject>
+    <DebugType>portable</DebugType>
+    <DebugSymbols>True</DebugSymbols>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
+    <DefineConstants />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="UAVCAN\**" />
+    <EmbeddedResource Remove="UAVCAN\**" />
+    <None Remove="UAVCAN\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Capture.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BitMiracle.LibTiff.NET" Version="2.4.584.1" />
+    <PackageReference Include="csmatio" Version="1.0.20" />
+    <PackageReference Include="DotNetZip" Version="1.13.7" />
+    <PackageReference Include="ExifLibNet" Version="1.2.21" />
+    <PackageReference Include="Flurl" Version="2.8.0" />
+    <PackageReference Include="Flurl.Http" Version="2.3.2" />
+    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="MathParser.org-mXparser" Version="4.3.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.0-beta0007" />
+    <PackageReference Include="SixLabors.ImageSharp.Drawing" Version="1.0.0-beta0007" />
+    <PackageReference Include="SkiaSharp" Version="1.68.1.1" />
+    <PackageReference Include="System.CodeDom" Version="4.7.0" />
+    <PackageReference Include="System.Drawing.Primitives" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\alglibnet\alglibnet.csproj" />
+    <ProjectReference Include="..\Comms\MissionPlanner.Comms.csproj" />
+    <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\GeoUtility\GeoUtility.csproj" />
+    <ProjectReference Include="..\GMap.NET.Core\GMap.NET.Core.csproj" />
+    <ProjectReference Include="..\ICSharpCode.SharpZipLib\ICSharpCode.SharpZipLib.csproj" />
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj" />
+    <ProjectReference Include="..\KMLib\KMLib.csproj" />
+    <ProjectReference Include="..\LibVLC.NET\LibVLC.NET.csproj" />
+    <ProjectReference Include="..\Mavlink\MAVLink.csproj" />
+    <ProjectReference Include="..\MetaDataExtractorCSharp240d\MetaDataExtractor.csproj" />
+    <ProjectReference Include="..\MissionPlanner.Drawing\MissionPlanner.Drawing.csproj" />
+    <ProjectReference Include="..\netDxf\netDxf.csproj" />
+    <ProjectReference Include="..\ProjNet\ProjNET.csproj" />
+    <ProjectReference Include="..\SharpKml\SharpKml.csproj" />
+    <ProjectReference Include="..\Zeroconf\Zeroconf\Zeroconf.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="MissionPlanner.Utilities.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+
+
+</Project>
