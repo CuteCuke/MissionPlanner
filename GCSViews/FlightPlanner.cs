@@ -6103,7 +6103,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
 
             log.InfoFormat("Command item count {0} orig list {1}", Command.Items.Count, cmds.Count);
         }
-
+        //testgit
         private void updateHomeText()
         {
             // set home location
