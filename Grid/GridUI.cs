@@ -1858,5 +1858,9 @@ namespace MissionPlanner.Grid
             domainUpDown1_ValueChanged(sender, e);
         }
 
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

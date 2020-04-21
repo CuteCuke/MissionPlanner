@@ -699,6 +699,7 @@
             // 
             resources.ApplyResources(this.label13, "label13");
             this.label13.Name = "label13";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // label11
             // 

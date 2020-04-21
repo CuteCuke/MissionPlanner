@@ -7090,5 +7090,52 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             if (MainMap.Zoom < 17)
                 MainMap.Zoom = 17;
         }
+
+        private void creat_flight_click(object sender, EventArgs e)
+        {
+            GridPlugin grid = new GridPlugin();
+            grid.Host = new PluginHost();
+            grid.but_Click(sender, e);
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void coords1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void del_flight_Click(object sender, EventArgs e)
+        {
+            quickadd = true;
+
+            // mono fix
+            try
+            {
+                Commands.CurrentCell = null;
+            }
+            catch { }
+
+            Commands.Rows.Clear();
+
+            selectedrow = 0;
+            quickadd = false;
+            writeKML();
+        }
+
+        private void del_area_Click(object sender, EventArgs e)
+        {
+            polygongridmode = false;
+            if (drawnpolygon == null)
+                return;
+            drawnpolygon.Points.Clear();
+            drawnpolygonsoverlay.Markers.Clear();
+            MainMap.Invalidate();
+
+            writeKML();
+        }
     }
 }
