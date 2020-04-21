@@ -221,8 +221,7 @@
     <value>解锁Mav</value>
   </data>
   <data name="BUT_joystick.Text" xml:space="preserve">
-    <value>游戏
-摇杆</value>
+    <value>摇杆</value>
   </data>
   <data name="BUT_joystick.ToolTip" xml:space="preserve">
     <value>设置与启用你的游戏摇杆</value>
@@ -264,21 +263,20 @@
     <value>在地图上清除记录路径</value>
   </data>
   <data name="BUT_Homealt.Text" xml:space="preserve">
-    <value>设置
-家的高度</value>
+    <value>家的高度</value>
   </data>
   <data name="BUT_Homealt.ToolTip" xml:space="preserve">
     <value>设置当前显示高度为0，或者家的高度显示为0</value>
   </data>
   <data name="BUT_RAWSensor.Text" xml:space="preserve">
-    <value>原始传感器查看</value>
+    <value>传感器查看</value>
   </data>
   <data name="BUT_RAWSensor.ToolTip" xml:space="preserve">
     <value>查看陀螺仪和加速度计原始数据，及数传原始收发</value>
   </data>
   <data name="BUTrestartmission.Text" xml:space="preserve">
     <value>重新开始
-任务</value>
+</value>
   </data>
   <data name="BUTrestartmission.ToolTip" xml:space="preserve">
     <value>重新从头开始任务</value>

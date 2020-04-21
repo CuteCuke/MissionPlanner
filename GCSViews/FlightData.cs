@@ -4140,7 +4140,7 @@ namespace MissionPlanner.GCSViews
                 tabControlactions.Visible = false;
                 tabStatus.Visible = false;
                 tabStatus_Resize(sender, e);
-                tabStatus.Visible = true;
+                tabStatus.Visible = false;
                 tabControlactions.Visible = true;
             }
             else if (tabControlactions.SelectedTab == tabPagemessages)
@@ -4989,5 +4989,7 @@ namespace MissionPlanner.GCSViews
                 CustomMessageBox.Show(Strings.InvalidField, Strings.ERROR);
             }
         }
+
+      
     }
 }
