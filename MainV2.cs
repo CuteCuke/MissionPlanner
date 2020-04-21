@@ -699,9 +699,9 @@ namespace MissionPlanner
 
  
 
-            if (Settings.Instance["theme"] == null) Settings.Instance["theme"] = "BurntKermit.mpsystheme";
+          //  if (Settings.Instance["theme"] == null) Settings.Instance["theme"] = "BurntKermit.mpsystheme";
 
-            ThemeManager.LoadTheme(Settings.Instance["theme"]);
+            ThemeManager.LoadTheme(Settings.Instance["theme"]= "HighContrast.mpsystheme");
 
             Utilities.ThemeManager.ApplyThemeTo(this);
 
