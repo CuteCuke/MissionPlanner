@@ -302,7 +302,7 @@ namespace MissionPlanner.GCSViews
             }
             else
             {
-                CMB_altmode.Visible = true;
+                CMB_altmode.Visible = false;
             }
 
             // hide spline wp options if not arducopter
@@ -4801,6 +4801,7 @@ namespace MissionPlanner.GCSViews
                     // not home
                     if (i != 0)
                     {
+                        CMB_altmode.SelectedValue = temp.frame;
                         CMB_altmode.SelectedValue = temp.frame;
                     }
                 }

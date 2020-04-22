@@ -2111,7 +2111,7 @@ namespace MissionPlanner
             log.Info("closing sim");
             try
             {
-                Simulation.Dispose();
+                //Simulation.Dispose();
             }
             catch
             {
@@ -4278,7 +4278,7 @@ namespace MissionPlanner
                 }
                 else
                 {
-                    item.BackColor = Color.Transparent;
+                    //item.BackColor = Color.Transparent;
                     item.BackgroundImage = displayicons.bg; //.BackColor = Color.Black;
                 }
             }
@@ -4479,6 +4479,73 @@ namespace MissionPlanner
             {
                 CustomMessageBox.Show(Strings.ErrorNoResponce, Strings.ERROR);
             }
+        }
+
+        private void wp_no_Click(object sender, EventArgs e)
+        {
+            wp_no.Items.Clear();
+
+            wp_no.Items.Add("0 (Home)");
+
+            if (MainV2.comPort.MAV.param["CMD_TOTAL"] != null)
+            {
+                int wps = int.Parse(MainV2.comPort.MAV.param["CMD_TOTAL"].ToString());
+                for (int z = 1; z <= wps; z++)
+                {
+                    wp_no.Items.Add(z.ToString());
+                }
+
+                return;
+            }
+
+            if (MainV2.comPort.MAV.param["WP_TOTAL"] != null)
+            {
+                int wps = int.Parse(MainV2.comPort.MAV.param["WP_TOTAL"].ToString());
+                for (int z = 1; z <= wps; z++)
+                {
+                    wp_no.Items.Add(z.ToString());
+                }
+
+                return;
+            }
+
+            if (MainV2.comPort.MAV.param["MIS_TOTAL"] != null)
+            {
+                int wps = int.Parse(MainV2.comPort.MAV.param["MIS_TOTAL"].ToString());
+                for (int z = 1; z <= wps; z++)
+                {
+                    wp_no.Items.Add(z.ToString());
+                }
+
+                return;
+            }
+
+            if (MainV2.comPort.MAV.wps.Count > 0)
+            {
+                int wps = MainV2.comPort.MAV.wps.Count;
+                for (int z = 1; z <= wps; z++)
+                {
+                    wp_no.Items.Add(z.ToString());
+                }
+
+                return;
+            }
+        }
+
+        private void jump_to_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ((Control)sender).Enabled = false;
+                MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
+                    (ushort)wp_no.SelectedIndex); // set nav to
+            }
+            catch
+            {
+                CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
+            }
+
+            ((Control)sender).Enabled = true;
         }
     }
 }

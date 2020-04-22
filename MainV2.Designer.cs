@@ -51,6 +51,8 @@ namespace MissionPlanner
             this.lock_unlock = new System.Windows.Forms.ToolStripButton();
             this.auto_flight = new System.Windows.Forms.ToolStripButton();
             this.return_flight = new System.Windows.Forms.ToolStripButton();
+            this.jump_to = new System.Windows.Forms.ToolStripButton();
+            this.wp_no = new System.Windows.Forms.ToolStripComboBox();
             this.menu = new MissionPlanner.Controls.MyButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.status1 = new MissionPlanner.Controls.Status();
@@ -73,7 +75,9 @@ namespace MissionPlanner
             this.preflight_check,
             this.lock_unlock,
             this.auto_flight,
-            this.return_flight});
+            this.return_flight,
+            this.jump_to,
+            this.wp_no});
             this.MainMenu.Name = "MainMenu";
             this.MainMenu.ShowItemToolTips = true;
             this.MainMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MainMenu_ItemClicked);
@@ -194,6 +198,22 @@ namespace MissionPlanner
             this.return_flight.Name = "return_flight";
             this.return_flight.Click += new System.EventHandler(this.return_flight_Click);
             // 
+            // jump_to
+            // 
+            this.jump_to.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.jump_to.ForeColor = System.Drawing.SystemColors.ControlLight;
+            resources.ApplyResources(this.jump_to, "jump_to");
+            this.jump_to.Margin = new System.Windows.Forms.Padding(0);
+            this.jump_to.Name = "jump_to";
+            this.jump_to.Click += new System.EventHandler(this.jump_to_Click);
+            // 
+            // wp_no
+            // 
+            this.wp_no.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.wp_no.Name = "wp_no";
+            resources.ApplyResources(this.wp_no, "wp_no");
+            this.wp_no.Click += new System.EventHandler(this.wp_no_Click);
+            // 
             // menu
             // 
             resources.ApplyResources(this.menu, "menu");
@@ -261,5 +281,7 @@ namespace MissionPlanner
         public System.Windows.Forms.ToolStripButton lock_unlock;
         public System.Windows.Forms.ToolStripButton auto_flight;
         public System.Windows.Forms.ToolStripButton return_flight;
+        public System.Windows.Forms.ToolStripButton jump_to;
+        private System.Windows.Forms.ToolStripComboBox wp_no;
     }
 }
