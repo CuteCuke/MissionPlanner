@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Mission Planner")]
 [assembly: AssemblyDescription("Mission Planner ground control station for ardupilot")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Michael Oborne")]
+[assembly: AssemblyCompany("创念三维")]
 [assembly: AssemblyProduct("Mission Planner")]
 [assembly: AssemblyCopyright("Copyright ©  2010-2019")]
 [assembly: AssemblyTrademark("")]
