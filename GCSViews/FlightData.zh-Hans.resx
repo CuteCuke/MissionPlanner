@@ -194,7 +194,7 @@
     <value>166, 46</value>
   </data>
   <data name="quickView1.ToolTip" xml:space="preserve">
-    <value>双击我修改</value>
+    <value>双击选择其它参数</value>
   </data>
   <data name="tableLayoutPanelQuick.Size" type="System.Drawing.Size, System.Drawing">
     <value>344, 157</value>

@@ -7138,5 +7138,14 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
 
             writeKML();
         }
+
+        private void alt_curve_Click(object sender, EventArgs e)
+        {
+            writeKML();
+            double homealt = MainV2.comPort.MAV.cs.HomeAlt;
+            Form temp = new ElevationProfile(pointlist, homealt);
+            ThemeManager.ApplyThemeTo(temp);
+            temp.ShowDialog();
+        }
     }
 }
