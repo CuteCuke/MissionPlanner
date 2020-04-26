@@ -1196,11 +1196,11 @@ namespace MissionPlanner
 
             MainMenu.BackgroundImage = displayicons.bg;
 
-           // MenuFlightData.Image = displayicons.fd;
-          //  MenuFlightPlanner.Image = displayicons.fp;
+            MenuFlightData.Image = displayicons.fd;
+            MenuFlightPlanner.Image = displayicons.fp;
             //MenuInitConfig.Image = displayicons.initsetup;
             //MenuSimulation.Image = displayicons.sim;
-           // MenuConfigTune.Image = displayicons.config_tuning;
+            // MenuConfigTune.Image = displayicons.config_tuning;
             MenuConnect.Image = displayicons.connect;
            // MenuHelp.Image = displayicons.help;
 
