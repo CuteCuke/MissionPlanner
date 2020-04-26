@@ -186,7 +186,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FaceMap", "Plugins\FaceMap\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ntrip", "ExtLibs\Ntrip\Ntrip.csproj", "{CBB78367-91B7-4D53-AD31-429B71F867D2}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "MissionPlannerv1.3.71", "..\setup\setup.vdproj", "{E31BEE09-AAAA-45C7-BD1B-DA54B83407CB}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "..\Setup\Setup.vdproj", "{C3C71BFD-DBF5-42DE-BE70-251E4B52F07E}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -490,8 +490,8 @@ Global
 		{CBB78367-91B7-4D53-AD31-429B71F867D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBB78367-91B7-4D53-AD31-429B71F867D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBB78367-91B7-4D53-AD31-429B71F867D2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E31BEE09-AAAA-45C7-BD1B-DA54B83407CB}.Debug|Any CPU.ActiveCfg = Debug
-		{E31BEE09-AAAA-45C7-BD1B-DA54B83407CB}.Release|Any CPU.ActiveCfg = Release
+		{C3C71BFD-DBF5-42DE-BE70-251E4B52F07E}.Debug|Any CPU.ActiveCfg = Debug
+		{C3C71BFD-DBF5-42DE-BE70-251E4B52F07E}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
