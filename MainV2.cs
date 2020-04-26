@@ -514,7 +514,11 @@ namespace MissionPlanner
         public GCSViews.FlightData FlightData;
 
         public GCSViews.FlightPlanner FlightPlanner;
+
         GCSViews.SITL Simulation;
+
+        //public GCSViews.SoftwareConfig Configuration;
+        //public GCSViews.InitialSetup Firmware;
 
         private Form connectionStatsForm;
         private ConnectionStats _connectionStats;
@@ -877,15 +881,15 @@ namespace MissionPlanner
                 FlightData = new GCSViews.FlightData();
                 log.Info("Create FP");
                 FlightPlanner = new GCSViews.FlightPlanner();
-                //Configuration = new GCSViews.ConfigurationView.Setup();
+                //Configuration = new GCSViews.SoftwareConfig();
                 log.Info("Create SIM");
-                //Simulation = new GCSViews.SITL();
-                //Firmware = new GCSViews.Firmware();
-                //Terminal = new GCSViews.Terminal();
+                Simulation = new GCSViews.SITL();
+                //Firmware = new GCSViews.InitialSetup();
+                // Terminal = new GCSViews.();
 
                 FlightData.Width = MyView.Width;
                 FlightPlanner.Width = MyView.Width;
-                //Simulation.Width = MyView.Width;
+                Simulation.Width = MyView.Width;
             }
             catch (ArgumentException e)
             {
@@ -2111,7 +2115,7 @@ namespace MissionPlanner
             log.Info("closing sim");
             try
             {
-                //Simulation.Dispose();
+                Simulation.Dispose();
             }
             catch
             {
@@ -2984,10 +2988,10 @@ namespace MissionPlanner
 
             MyView.AddScreen(new MainSwitcher.Screen("FlightData", FlightData, true));
             MyView.AddScreen(new MainSwitcher.Screen("FlightPlanner", FlightPlanner, true));
-           // MyView.AddScreen(new MainSwitcher.Screen("HWConfig", typeof(GCSViews.InitialSetup), false));
-           // MyView.AddScreen(new MainSwitcher.Screen("SWConfig", typeof(GCSViews.SoftwareConfig), false));
-           // MyView.AddScreen(new MainSwitcher.Screen("Simulation", Simulation, true));
-           // MyView.AddScreen(new MainSwitcher.Screen("Help", typeof(GCSViews.Help), false));
+            MyView.AddScreen(new MainSwitcher.Screen("HWConfig", typeof(GCSViews.InitialSetup), false));
+            MyView.AddScreen(new MainSwitcher.Screen("SWConfig", typeof(GCSViews.SoftwareConfig), false));
+            MyView.AddScreen(new MainSwitcher.Screen("Simulation", Simulation, true));
+            // MyView.AddScreen(new MainSwitcher.Screen("Help", typeof(GCSViews.Help), false));
 
             // hide simulation under mono
             if (Program.MONO)
@@ -4546,6 +4550,65 @@ namespace MissionPlanner
             }
 
             ((Control)sender).Enabled = true;
+        }
+
+        private void simulition_Click(object sender, EventArgs e)
+        {
+            MyView.ShowScreen("Simulation");
+        }
+
+        private void config_tune_Click(object sender, EventArgs e)
+        {
+            if (Settings.Instance.GetBoolean("password_protect") == false)
+            {
+                MyView.ShowScreen("SWConfig");
+            }
+            else
+            {
+                var pw = "";
+                if (InputBox.Show("Enter Password", "Please enter your password", ref pw, true) ==
+    System.Windows.Forms.DialogResult.OK)
+                {
+                    bool ans = Password.ValidatePassword(pw);
+
+                    if (ans == false)
+                    {
+                        CustomMessageBox.Show("Bad Password", "Bad Password");
+                    }
+                }
+
+                if (Password.VerifyPassword(pw))
+                {
+                    MyView.ShowScreen("SWConfig");
+                }
+            }
+        }
+
+        private void firmware_install_Click(object sender, EventArgs e)
+        {
+            if (Settings.Instance.GetBoolean("password_protect") == false)
+            {
+                MyView.ShowScreen("HWConfig");
+            }
+            else
+            {
+                var pw = "";
+                if (InputBox.Show("Enter Password", "Please enter your password", ref pw, true) ==
+    System.Windows.Forms.DialogResult.OK)
+                {
+                    bool ans = Password.ValidatePassword(pw);
+
+                    if (ans == false)
+                    {
+                        CustomMessageBox.Show("Bad Password", "Bad Password");
+                    }
+                }
+
+                if (Password.VerifyPassword(pw))
+                {
+                    MyView.ShowScreen("HWConfig");
+                }
+            }
         }
     }
 }

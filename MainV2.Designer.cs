@@ -43,6 +43,9 @@ namespace MissionPlanner
             this.readonlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectionOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectionListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.simulition = new System.Windows.Forms.ToolStripMenuItem();
+            this.config_tune = new System.Windows.Forms.ToolStripMenuItem();
+            this.firmware_install = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuFlightData = new System.Windows.Forms.ToolStripButton();
             this.MenuFlightPlanner = new System.Windows.Forms.ToolStripButton();
             this.MenuConnect = new System.Windows.Forms.ToolStripButton();
@@ -90,7 +93,10 @@ namespace MissionPlanner
             this.fullScreenToolStripMenuItem,
             this.readonlyToolStripMenuItem,
             this.connectionOptionsToolStripMenuItem,
-            this.connectionListToolStripMenuItem});
+            this.connectionListToolStripMenuItem,
+            this.simulition,
+            this.config_tune,
+            this.firmware_install});
             this.CTX_mainmenu.Name = "CTX_mainmenu";
             resources.ApplyResources(this.CTX_mainmenu, "CTX_mainmenu");
             // 
@@ -126,6 +132,24 @@ namespace MissionPlanner
             this.connectionListToolStripMenuItem.Name = "connectionListToolStripMenuItem";
             resources.ApplyResources(this.connectionListToolStripMenuItem, "connectionListToolStripMenuItem");
             this.connectionListToolStripMenuItem.Click += new System.EventHandler(this.connectionListToolStripMenuItem_Click);
+            // 
+            // simulition
+            // 
+            this.simulition.Name = "simulition";
+            resources.ApplyResources(this.simulition, "simulition");
+            this.simulition.Click += new System.EventHandler(this.simulition_Click);
+            // 
+            // config_tune
+            // 
+            this.config_tune.Name = "config_tune";
+            resources.ApplyResources(this.config_tune, "config_tune");
+            this.config_tune.Click += new System.EventHandler(this.config_tune_Click);
+            // 
+            // firmware_install
+            // 
+            this.firmware_install.Name = "firmware_install";
+            resources.ApplyResources(this.firmware_install, "firmware_install");
+            this.firmware_install.Click += new System.EventHandler(this.firmware_install_Click);
             // 
             // MenuFlightData
             // 
@@ -283,5 +307,8 @@ namespace MissionPlanner
         public System.Windows.Forms.ToolStripButton return_flight;
         public System.Windows.Forms.ToolStripButton jump_to;
         private System.Windows.Forms.ToolStripComboBox wp_no;
+        private System.Windows.Forms.ToolStripMenuItem simulition;
+        private System.Windows.Forms.ToolStripMenuItem config_tune;
+        private System.Windows.Forms.ToolStripMenuItem firmware_install;
     }
 }
