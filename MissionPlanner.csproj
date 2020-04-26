@@ -33,7 +33,7 @@
     <SuiteName>MP</SuiteName>
     <DisallowUrlActivation>true</DisallowUrlActivation>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>11</ApplicationRevision>
+    <ApplicationRevision>18</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -61,8 +61,8 @@
     <DebugType>full</DebugType>
     <DefineConstants>DEBUG</DefineConstants>
     <RunCodeAnalysis>false</RunCodeAnalysis>
-    <CodeAnalysisRuleSet>
-    </CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>BasicCorrectnessRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <OutputPath>bin\Release\net461\</OutputPath>
@@ -78,7 +78,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>A6BC1BAE3F4DD6F2AE6B0AAF47E1F08F55DC78DF</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>6A6A6D1DA7D2D858AD0578A3887224783B916D6B</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>
@@ -4376,6 +4376,7 @@
     <Content Include="aircraft.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="MissionPlanner_1_TemporaryKey.pfx" />
     <None Include="MissionPlanner_TemporaryKey.pfx" />
     <None Include="Plugins\example.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
