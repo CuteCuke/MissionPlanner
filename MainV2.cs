@@ -4626,7 +4626,7 @@ namespace MissionPlanner
         {
             try
             {
-                ((Control)sender).Enabled = false;
+                ((ToolStripButton)sender).Enabled = false;
                 MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
                     (ushort)wp_no.SelectedIndex); // set nav to
             }
@@ -4635,7 +4635,7 @@ namespace MissionPlanner
                 CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
             }
 
-            ((Control)sender).Enabled = true;
+            ((ToolStripButton)sender).Enabled = true;
         }
 
         private void simulition_Click(object sender, EventArgs e)
