@@ -44,6 +44,10 @@ namespace MissionPlanner
         {
             public abstract Image fd { get; }
             public abstract Image fp { get; }
+            public abstract Image lck { get; }
+            public abstract Image auto { get; }
+            public abstract Image retn { get; }
+            public abstract Image jump { get; }
             public abstract Image initsetup { get; }
             public abstract Image config_tuning { get; }
             public abstract Image sim { get; }
@@ -80,7 +84,45 @@ namespace MissionPlanner
                         return global::MissionPlanner.Properties.Resources.light_flightplan_icon;
                 }
             }
+            public override Image lck {
+                get
+                {
+                    if (File.Exists(Settings.GetRunningDirectory() + "lock.png"))
+                        return Image.FromFile(Settings.GetRunningDirectory() + "lock.png");
+                    else
+                        return global::MissionPlanner.Properties.Resources.light_lock;
+                }
+            }
 
+            public override Image auto  {
+                get
+                {
+                    if (File.Exists(Settings.GetRunningDirectory() + "auto.png"))
+                        return Image.FromFile(Settings.GetRunningDirectory() + "auto.png");
+                    else
+                        return global::MissionPlanner.Properties.Resources.light_auto;
+                }
+            }
+            public override Image retn 
+            {
+                get
+                {
+                    if (File.Exists(Settings.GetRunningDirectory() + "return.png"))
+                        return Image.FromFile(Settings.GetRunningDirectory() + "return.png");
+                    else
+                        return global::MissionPlanner.Properties.Resources.light_return;
+                }
+            }
+            public override Image jump
+            {
+                get
+                {
+                    if (File.Exists(Settings.GetRunningDirectory() + "jump.png"))
+                        return Image.FromFile(Settings.GetRunningDirectory() + "jump.png");
+                    else
+                        return global::MissionPlanner.Properties.Resources.light_jump;
+                }
+            }
             public override Image initsetup
             {
                 get
@@ -212,6 +254,46 @@ namespace MissionPlanner
                         return Image.FromFile(Settings.GetRunningDirectory() + "dark_flightplan_icon.png");
                     else
                         return global::MissionPlanner.Properties.Resources.dark_flightplan_icon;
+                }
+            }
+            public override Image lck 
+            {
+                get
+                {
+                    if (File.Exists(Settings.GetRunningDirectory() + "dark_lock.png"))
+                        return Image.FromFile(Settings.GetRunningDirectory() + "dark_lock.png");
+                    else
+                        return global::MissionPlanner.Properties.Resources.dark_lock;
+                }
+            }
+            public override Image auto 
+            {
+                get
+                {
+                    if (File.Exists(Settings.GetRunningDirectory() + "dark_auto.png"))
+                        return Image.FromFile(Settings.GetRunningDirectory() + "dark_auto.png");
+                    else
+                        return global::MissionPlanner.Properties.Resources.dark_auto;
+                }
+            }
+            public override Image retn 
+            {
+                get
+                {
+                    if (File.Exists(Settings.GetRunningDirectory() + "dark_return.png"))
+                        return Image.FromFile(Settings.GetRunningDirectory() + "dark_return.png");
+                    else
+                        return global::MissionPlanner.Properties.Resources.dark_return;
+                }
+            }
+            public override Image jump 
+            {
+                get
+                {
+                    if (File.Exists(Settings.GetRunningDirectory() + "dark_jump.png"))
+                        return Image.FromFile(Settings.GetRunningDirectory() + "dark_jump.png");
+                    else
+                        return global::MissionPlanner.Properties.Resources.dark_jump;
                 }
             }
 
@@ -1198,6 +1280,10 @@ namespace MissionPlanner
 
             MenuFlightData.Image = displayicons.fd;
             MenuFlightPlanner.Image = displayicons.fp;
+            lock_unlock.Image = displayicons.lck;
+            auto_flight.Image = displayicons.auto;
+            return_flight.Image = displayicons.retn;
+            jump_to.Image = displayicons.jump;
             //MenuInitConfig.Image = displayicons.initsetup;
             //MenuSimulation.Image = displayicons.sim;
             // MenuConfigTune.Image = displayicons.config_tuning;

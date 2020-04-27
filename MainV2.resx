@@ -282,55 +282,55 @@
     <value>127, 17</value>
   </metadata>
   <data name="autoHideToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>124, 22</value>
   </data>
   <data name="autoHideToolStripMenuItem.Text" xml:space="preserve">
     <value>自动隐藏</value>
   </data>
   <data name="fullScreenToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>124, 22</value>
   </data>
   <data name="fullScreenToolStripMenuItem.Text" xml:space="preserve">
     <value>全屏</value>
   </data>
   <data name="readonlyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>124, 22</value>
   </data>
   <data name="readonlyToolStripMenuItem.Text" xml:space="preserve">
     <value>只读</value>
   </data>
   <data name="connectionOptionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>124, 22</value>
   </data>
   <data name="connectionOptionsToolStripMenuItem.Text" xml:space="preserve">
     <value>连接选项</value>
   </data>
   <data name="connectionListToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>124, 22</value>
   </data>
   <data name="connectionListToolStripMenuItem.Text" xml:space="preserve">
     <value>连接列表</value>
   </data>
   <data name="simulition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>124, 22</value>
   </data>
   <data name="simulition.Text" xml:space="preserve">
     <value>模拟</value>
   </data>
   <data name="config_tune.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>124, 22</value>
   </data>
   <data name="config_tune.Text" xml:space="preserve">
     <value>配置调试</value>
   </data>
   <data name="firmware_install.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>124, 22</value>
   </data>
   <data name="firmware_install.Text" xml:space="preserve">
     <value>固件安装</value>
   </data>
   <data name="CTX_mainmenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 202</value>
+    <value>125, 180</value>
   </data>
   <data name="&gt;&gt;CTX_mainmenu.Name" xml:space="preserve">
     <value>CTX_mainmenu</value>
@@ -4111,7 +4111,7 @@
     <value>status1</value>
   </data>
   <data name="&gt;&gt;status1.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.Status, MissionPlanner, Version=1.3.7421.29497, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.Status, MissionPlanner, Version=1.3.7422.17241, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;status1.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -5375,7 +5375,7 @@
     <value>toolStripConnectionControl</value>
   </data>
   <data name="&gt;&gt;toolStripConnectionControl.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ToolStripConnectionControl, MissionPlanner, Version=1.3.7421.29497, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ToolStripConnectionControl, MissionPlanner, Version=1.3.7422.17241, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;preflight_check.Name" xml:space="preserve">
     <value>preflight_check</value>
