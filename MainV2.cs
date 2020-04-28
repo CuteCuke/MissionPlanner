@@ -784,7 +784,7 @@ namespace MissionPlanner
             ThemeManager.thmColor = new ThemeColorTable(); //Init colortable
             ThemeManager.thmColor.InitColors();     //This fills up the table with BurntKermit defaults. 
             ThemeManager.thmColor.SetTheme();              //Set the colors, this need to handle the case when not all colors are defined in the theme file
-            ThemeManager.LoadTheme(Settings.Instance["theme"]= "HighContrast.mpusertheme");
+            ThemeManager.LoadTheme(Settings.Instance["theme"]= "BurntKermit.mpsystheme");
             //if (Settings.Instance["theme"] == default || Settings.Instance["theme"] == null)
             ////Settings.Instance["theme"] = "HighContrast.mpsystheme";
             //{

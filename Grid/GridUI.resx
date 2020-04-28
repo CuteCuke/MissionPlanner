@@ -520,13 +520,13 @@
     <value>197, 46</value>
   </data>
   <data name="label30.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 12</value>
+    <value>59, 12</value>
   </data>
   <data name="label30.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
   <data name="label30.Text" xml:space="preserve">
-    <value>footprint:</value>
+    <value>相片片幅:</value>
   </data>
   <data name="&gt;&gt;label30.Name" xml:space="preserve">
     <value>label30</value>
@@ -904,10 +904,10 @@
     <value>Bottom</value>
   </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 457</value>
+    <value>0, 463</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>755, 80</value>
+    <value>761, 74</value>
   </data>
   <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -1919,7 +1919,7 @@
     <value>18</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
+    <value>10, 6</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>231, 298</value>
@@ -1949,7 +1949,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabCamera.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 511</value>
+    <value>249, 511</value>
   </data>
   <data name="tabCamera.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2081,7 +2081,7 @@
     <value>3</value>
   </data>
   <data name="groupBox7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 388</value>
+    <value>10, 388</value>
   </data>
   <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
     <value>233, 73</value>
@@ -2339,7 +2339,7 @@
     <value>7</value>
   </data>
   <data name="groupBox_copter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 259</value>
+    <value>10, 259</value>
   </data>
   <data name="groupBox_copter.Size" type="System.Drawing.Size, System.Drawing">
     <value>233, 123</value>
@@ -2516,13 +2516,13 @@
     <value>7, 94</value>
   </data>
   <data name="label32.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 12</value>
+    <value>77, 12</value>
   </data>
   <data name="label32.TabIndex" type="System.Int32, mscorlib">
     <value>61</value>
   </data>
   <data name="label32.Text" xml:space="preserve">
-    <value>点超过 [m]</value>
+    <value>引导延伸 [m]</value>
   </data>
   <data name="&gt;&gt;label32.Name" xml:space="preserve">
     <value>label32</value>
@@ -2573,7 +2573,7 @@
     <value>14</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
-    <value>点超过 [m]</value>
+    <value>延伸点 [m]</value>
   </data>
   <data name="&gt;&gt;label7.Name" xml:space="preserve">
     <value>label7</value>
@@ -2777,7 +2777,7 @@
     <value>9</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>点超过 [m]</value>
+    <value>延伸点 [m]</value>
   </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
     <value>label5</value>
@@ -2864,7 +2864,7 @@
     <value>18</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
+    <value>10, 6</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>233, 247</value>
@@ -2951,7 +2951,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabGrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 511</value>
+    <value>249, 511</value>
   </data>
   <data name="tabGrid.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3009,7 +3009,7 @@ Ctrl-O 加载文件</value>
     <value>NoControl</value>
   </data>
   <data name="label37.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 214</value>
+    <value>9, 221</value>
   </data>
   <data name="label37.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 12</value>
@@ -3018,7 +3018,7 @@ Ctrl-O 加载文件</value>
     <value>67</value>
   </data>
   <data name="label37.Text" xml:space="preserve">
-    <value>分成段数</value>
+    <value>任务分割</value>
   </data>
   <data name="&gt;&gt;label37.Name" xml:space="preserve">
     <value>label37</value>
@@ -3033,7 +3033,7 @@ Ctrl-O 加载文件</value>
     <value>0</value>
   </data>
   <data name="NUM_split.Location" type="System.Drawing.Point, System.Drawing">
-    <value>143, 212</value>
+    <value>105, 216</value>
   </data>
   <data name="NUM_split.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 21</value>
@@ -3441,13 +3441,13 @@ Ctrl-O 加载文件</value>
     <value>8, 112</value>
   </data>
   <data name="CHK_footprints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 16</value>
+    <value>72, 16</value>
   </data>
   <data name="CHK_footprints.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="CHK_footprints.Text" xml:space="preserve">
-    <value>足迹</value>
+    <value>相片片幅</value>
   </data>
   <data name="&gt;&gt;CHK_footprints.Name" xml:space="preserve">
     <value>CHK_footprints</value>
@@ -3612,7 +3612,7 @@ Ctrl-O 加载文件</value>
     <value>NoControl</value>
   </data>
   <data name="BUT_Accept.Location" type="System.Drawing.Point, System.Drawing">
-    <value>84, 479</value>
+    <value>78, 479</value>
   </data>
   <data name="BUT_Accept.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -3642,7 +3642,7 @@ Ctrl-O 加载文件</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabSimple.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 511</value>
+    <value>239, 511</value>
   </data>
   <data name="tabSimple.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -3666,10 +3666,10 @@ Ctrl-O 加载文件</value>
     <value>Right</value>
   </data>
   <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>755, 0</value>
+    <value>761, 0</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 537</value>
+    <value>247, 537</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>

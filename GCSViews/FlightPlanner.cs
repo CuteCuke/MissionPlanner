@@ -1561,7 +1561,7 @@ namespace MissionPlanner.GCSViews
             if (polygongridmode == false)
             {
                 CustomMessageBox.Show(
-                    "You will remain in polygon mode until you clear the polygon or create a grid/upload a fence");
+                    "在清除多边形或创建网格/上载围栏之前，您将一直处于多边形模式");
                 polygongridmode = true;
                 return;
             }
