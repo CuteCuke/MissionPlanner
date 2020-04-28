@@ -776,19 +776,22 @@ namespace MissionPlanner
             Application.DoEvents();
 
             instance = this;
-            InitializeComponent();
+
 
             //Init Theme table and load BurntKermit as a default
+            InitializeComponent();
+
             ThemeManager.thmColor = new ThemeColorTable(); //Init colortable
             ThemeManager.thmColor.InitColors();     //This fills up the table with BurntKermit defaults. 
             ThemeManager.thmColor.SetTheme();              //Set the colors, this need to handle the case when not all colors are defined in the theme file
+            ThemeManager.LoadTheme(Settings.Instance["theme"]= "HighContrast.mpusertheme");
+            //if (Settings.Instance["theme"] == default || Settings.Instance["theme"] == null)
+            ////Settings.Instance["theme"] = "HighContrast.mpsystheme";
+            //{
 
+
+            //} 
  
-
-          //  if (Settings.Instance["theme"] == null) Settings.Instance["theme"] = "BurntKermit.mpsystheme";
-
-            ThemeManager.LoadTheme(Settings.Instance["theme"]= "HighContrast.mpsystheme");
-
             Utilities.ThemeManager.ApplyThemeTo(this);
 
             MyView = new MainSwitcher(this);

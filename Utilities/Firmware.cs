@@ -29,10 +29,13 @@ namespace MissionPlanner.Utilities
         public event ProgressEventHandler Progress;
 
         string firmwareurl = "https://github.com/ArduPilot/binary/raw/master/Firmware/firmware2.xml;https://firmware.ardupilot.org/Tools/MissionPlanner/Firmware/firmware2.xml";
+        //string firmwareurl = "https://firmware.ardupilot.org/Tools/MissionPlanner/Firmware/firmware2.xml";
+
 
         static readonly string gholdurl = ("https://github.com/diydrones/binary/raw/!Hash!/Firmware/firmware2.xml");
         static readonly string gholdfirmwareurl = ("https://github.com/diydrones/binary/raw/!Hash!/Firmware/!Firmware!");
-
+        //static readonly string gholdurl = ("https://github.com/diydrones/binary/dev/firmware2.xml");
+        //static readonly string gholdfirmwareurl = ("https://github.com/diydrones/binary/dev/firmwarelatest.xml");
         static string[] gholdurls = new string[] { };
 
         public static List<KeyValuePair<string, string>> niceNames = new List<KeyValuePair<string, string>>();

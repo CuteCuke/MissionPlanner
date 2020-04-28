@@ -336,8 +336,8 @@ namespace MissionPlanner.GCSViews
             this.hud1.gpshdop = 0F;
             this.hud1.gpshdop2 = 0F;
             this.hud1.groundalt = 0F;
-            this.hud1.groundColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(244)))), ((int)(((byte)(44)))));
-            this.hud1.groundColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(76)))), ((int)(((byte)(10)))));
+            this.hud1.groundColor1 = System.Drawing.Color.LightBlue;
+            this.hud1.groundColor2 = System.Drawing.Color.Blue;
             this.hud1.groundcourse = 0F;
             this.hud1.groundspeed = 0F;
             this.hud1.heading = 0F;
