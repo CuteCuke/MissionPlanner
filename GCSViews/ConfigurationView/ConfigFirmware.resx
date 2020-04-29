@@ -277,7 +277,7 @@
     <value>0, 438</value>
   </data>
   <data name="progress.Size" type="System.Drawing.Size, System.Drawing">
-    <value>980, 23</value>
+    <value>965, 23</value>
   </data>
   <data name="progress.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -301,7 +301,7 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>846, 480</value>
+    <value>830, 480</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>125, 12</value>
@@ -415,7 +415,7 @@
     <value>True</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>397, 330</value>
+    <value>304, 329</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>311, 12</value>
@@ -439,7 +439,7 @@
     <value>12</value>
   </data>
   <data name="CMB_history.Location" type="System.Drawing.Point, System.Drawing">
-    <value>848, 412</value>
+    <value>834, 411</value>
   </data>
   <data name="CMB_history.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 20</value>
@@ -466,7 +466,7 @@
     <value>True</value>
   </data>
   <data name="CMB_history_label.Location" type="System.Drawing.Point, System.Drawing">
-    <value>846, 414</value>
+    <value>832, 391</value>
   </data>
   <data name="CMB_history_label.Size" type="System.Drawing.Size, System.Drawing">
     <value>137, 12</value>
@@ -496,7 +496,7 @@
     <value>NoControl</value>
   </data>
   <data name="lbl_Custom_firmware_label.Location" type="System.Drawing.Point, System.Drawing">
-    <value>846, 382</value>
+    <value>681, 391</value>
   </data>
   <data name="lbl_Custom_firmware_label.Size" type="System.Drawing.Size, System.Drawing">
     <value>125, 12</value>
@@ -556,7 +556,7 @@
     <value>NoControl</value>
   </data>
   <data name="lbl_dlfw.Location" type="System.Drawing.Point, System.Drawing">
-    <value>681, 382</value>
+    <value>550, 391</value>
   </data>
   <data name="lbl_dlfw.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 12</value>
@@ -640,7 +640,7 @@
     <value>NoControl</value>
   </data>
   <data name="lbl_licence.Location" type="System.Drawing.Point, System.Drawing">
-    <value>348, 349</value>
+    <value>255, 360</value>
   </data>
   <data name="lbl_licence.Size" type="System.Drawing.Size, System.Drawing">
     <value>485, 12</value>
@@ -736,7 +736,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1005, 501</value>
+    <value>968, 501</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>ConfigFirmware</value>
