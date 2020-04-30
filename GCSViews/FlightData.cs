@@ -304,8 +304,8 @@ namespace MissionPlanner.GCSViews
             MainV2.comPort.ParamListChanged += FlightData_ParentChanged;
 
             //HUD Theming, color setup
-            myhud.groundColor1 = ThemeManager.HudSkyBot;
-            myhud.groundColor2 = ThemeManager.HudSkyTop;
+            myhud.groundColor1 = ThemeManager.HudGroundTop;
+            myhud.groundColor2 = ThemeManager.HudGroundBot;
             myhud.skyColor1 = ThemeManager.HudSkyTop;
             myhud.skyColor2 = ThemeManager.HudSkyBot;
             myhud.hudcolor = ThemeManager.HudText;
