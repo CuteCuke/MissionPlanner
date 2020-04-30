@@ -4536,10 +4536,10 @@ namespace MissionPlanner
             try
             {
                 var isitarmed = MainV2.comPort.MAV.cs.armed;
-                var action = MainV2.comPort.MAV.cs.armed ? "Disarm" : "Arm";
+                var action = MainV2.comPort.MAV.cs.armed ? "加锁" : "解锁";
 
                 if (isitarmed)
-                    if (CustomMessageBox.Show("Are you sure you want to " + action, action,
+                    if (CustomMessageBox.Show("你确定你想" + action, action,
                             CustomMessageBox.MessageBoxButtons.YesNo) !=
                         CustomMessageBox.DialogResult.Yes)
                         return;
@@ -4554,10 +4554,10 @@ namespace MissionPlanner
                 if (ans == false)
                 {
                     if (CustomMessageBox.Show(
-                            action + " failed.\n" + sb.ToString() + "\nForce " + action +
-                            " can bypass safety checks,\nwhich can lead to the vehicle crashing\nand causing serious injuries.\n\nDo you wish to Force " +
+                            action + " 失败了.\n" + sb.ToString() + "\n强行 " + action +
+                            " 可能绕过安全检查,\n从而导致机器撞机\n并造成严重伤害.\n\n你还希望强制执行 " +
                             action + "?", Strings.ERROR, CustomMessageBox.MessageBoxButtons.YesNo,
-                            CustomMessageBox.MessageBoxIcon.Exclamation, "Force " + action, "Cancel") ==
+                            CustomMessageBox.MessageBoxIcon.Exclamation, "执行" + action, "取消") ==
                         CustomMessageBox.DialogResult.Yes)
                     {
                         ans = MainV2.comPort.doARM(!isitarmed, true);
