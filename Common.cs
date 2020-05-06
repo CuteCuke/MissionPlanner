@@ -32,8 +32,8 @@ namespace MissionPlanner
                 {
                     ToolTipText = "飞行高度："+ MAV.cs.alt.ToString("0") +CurrentState.AltUnit + "\n" + "空  速：" + (int)MAV.cs.airspeed +
                                   CurrentState.SpeedUnit+"\n" +"地  速："+(int)MAV.cs.groundspeed+CurrentState.SpeedUnit+"\n"+ "下个航点：" + (int)MAV.cs.wpno+ "\n" +
-                                  " 航点距离：" + (int)MAV.cs.wp_dist+ CurrentState.DistanceUnit + "\n" +"离家距离："+(int)MAV.cs.DistToHome+CurrentState.DistanceUnit+"\n"+
-                                  " 飞行里程：" + (int)MAV.cs.distTraveled+CurrentState.DistanceUnit + "\n" + " 已耗电量：" + (float)MAV.cs.battery_usedmah+CurrentState.BatteryUnit, 
+                                  "航点距离：" + (int)MAV.cs.wp_dist+ CurrentState.DistanceUnit + "\n" +"离家距离："+(int)MAV.cs.DistToHome+CurrentState.DistanceUnit+"\n"+
+                                  "飞行里程：" + (int)MAV.cs.distTraveled+CurrentState.DistanceUnit + "\n" + "已耗电量：" + (float)MAV.cs.battery_usedmah+CurrentState.BatteryUnit, 
                     ToolTipMode = MarkerTooltipMode.Always 
                 });
             }
@@ -85,8 +85,8 @@ namespace MissionPlanner
                 {
                     ToolTipText = "飞行高度：" + MAV.cs.alt.ToString("0") + CurrentState.AltUnit + "\n" + "空  速：" + (int)MAV.cs.airspeed +
                                   CurrentState.SpeedUnit + "\n" + "地  速：" + (int)MAV.cs.groundspeed + CurrentState.SpeedUnit + "\n" + "下个航点：" + (int)MAV.cs.wpno + "\n" +
-                                  " 航点距离：" + (int)MAV.cs.wp_dist + CurrentState.DistanceUnit + "\n" + "离家距离：" + (int)MAV.cs.DistToHome + CurrentState.DistanceUnit + "\n" +
-                                  " 飞行里程：" + (int)MAV.cs.distTraveled + CurrentState.DistanceUnit + "\n" + " 已耗电量：" + (float)MAV.cs.battery_usedmah + CurrentState.BatteryUnit,
+                                  "航点距离：" + (int)MAV.cs.wp_dist + CurrentState.DistanceUnit + "\n" + "离家距离：" + (int)MAV.cs.DistToHome + CurrentState.DistanceUnit + "\n" +
+                                  "飞行里程：" + (int)MAV.cs.distTraveled + CurrentState.DistanceUnit + "\n" + "已耗电量：" + (float)MAV.cs.battery_usedmah + CurrentState.BatteryUnit,
                     ToolTipMode = MarkerTooltipMode.Always
                 });
             }
