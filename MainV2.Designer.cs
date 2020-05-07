@@ -66,6 +66,7 @@ namespace MissionPlanner
             // 
             // MainMenu
             // 
+            this.MainMenu.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.MainMenu, "MainMenu");
             this.MainMenu.ContextMenuStrip = this.CTX_mainmenu;
             this.MainMenu.GripMargin = new System.Windows.Forms.Padding(0);
@@ -153,6 +154,7 @@ namespace MissionPlanner
             // 
             // MenuFlightData
             // 
+            this.MenuFlightData.BackColor = System.Drawing.Color.Transparent;
             this.MenuFlightData.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.MenuFlightData.ForeColor = System.Drawing.SystemColors.ControlLight;
             resources.ApplyResources(this.MenuFlightData, "MenuFlightData");
@@ -162,6 +164,7 @@ namespace MissionPlanner
             // 
             // MenuFlightPlanner
             // 
+            this.MenuFlightPlanner.BackColor = System.Drawing.Color.Transparent;
             this.MenuFlightPlanner.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.MenuFlightPlanner.ForeColor = System.Drawing.SystemColors.ControlLight;
             resources.ApplyResources(this.MenuFlightPlanner, "MenuFlightPlanner");
@@ -172,6 +175,7 @@ namespace MissionPlanner
             // MenuConnect
             // 
             this.MenuConnect.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.MenuConnect.BackColor = System.Drawing.Color.Transparent;
             this.MenuConnect.ForeColor = System.Drawing.SystemColors.ControlLight;
             resources.ApplyResources(this.MenuConnect, "MenuConnect");
             this.MenuConnect.Margin = new System.Windows.Forms.Padding(0);
@@ -181,6 +185,7 @@ namespace MissionPlanner
             // toolStripConnectionControl
             // 
             this.toolStripConnectionControl.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripConnectionControl.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.toolStripConnectionControl, "toolStripConnectionControl");
             this.toolStripConnectionControl.ForeColor = System.Drawing.Color.Black;
             this.toolStripConnectionControl.Margin = new System.Windows.Forms.Padding(0);
@@ -189,6 +194,7 @@ namespace MissionPlanner
             // 
             // preflight_check
             // 
+            this.preflight_check.BackColor = System.Drawing.Color.Transparent;
             this.preflight_check.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.preflight_check.ForeColor = System.Drawing.SystemColors.ControlLight;
             resources.ApplyResources(this.preflight_check, "preflight_check");
@@ -197,6 +203,7 @@ namespace MissionPlanner
             // 
             // lock_unlock
             // 
+            this.lock_unlock.BackColor = System.Drawing.Color.Transparent;
             this.lock_unlock.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.lock_unlock.ForeColor = System.Drawing.SystemColors.ControlLight;
             resources.ApplyResources(this.lock_unlock, "lock_unlock");
@@ -206,6 +213,7 @@ namespace MissionPlanner
             // 
             // auto_flight
             // 
+            this.auto_flight.BackColor = System.Drawing.Color.Transparent;
             this.auto_flight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.auto_flight.ForeColor = System.Drawing.SystemColors.ControlLight;
             resources.ApplyResources(this.auto_flight, "auto_flight");
@@ -215,6 +223,7 @@ namespace MissionPlanner
             // 
             // return_flight
             // 
+            this.return_flight.BackColor = System.Drawing.Color.Transparent;
             this.return_flight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.return_flight.ForeColor = System.Drawing.SystemColors.ControlLight;
             resources.ApplyResources(this.return_flight, "return_flight");
@@ -224,6 +233,7 @@ namespace MissionPlanner
             // 
             // jump_to
             // 
+            this.jump_to.BackColor = System.Drawing.Color.Transparent;
             this.jump_to.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.jump_to.ForeColor = System.Drawing.SystemColors.ControlLight;
             resources.ApplyResources(this.jump_to, "jump_to");
