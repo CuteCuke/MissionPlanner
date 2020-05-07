@@ -1445,16 +1445,16 @@ namespace MissionPlanner.GCSViews
             // 
             this.Up.DefaultCellStyle = dataGridViewCellStyle5;
             resources.ApplyResources(this.Up, "Up");
-            this.Up.Image = ((System.Drawing.Image)(resources.GetObject("Up.Image")));
-            this.Up.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.Up.Image = global::MissionPlanner.Properties.Resources.up;
+            this.Up.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Up.Name = "Up";
             // 
             // Down
             // 
             this.Down.DefaultCellStyle = dataGridViewCellStyle6;
             resources.ApplyResources(this.Down, "Down");
-            this.Down.Image = ((System.Drawing.Image)(resources.GetObject("Down.Image")));
-            this.Down.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.Down.Image = global::MissionPlanner.Properties.Resources.down;
+            this.Down.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Down.Name = "Down";
             // 
             // Grad
