@@ -4530,6 +4530,7 @@ namespace MissionPlanner
             ((ToolStripButton)sender).Enabled = true;
         }
 
+       
         private void lock_unlock_Click(object sender, EventArgs e)
         {
             if (!MainV2.comPort.BaseStream.IsOpen)
@@ -4557,8 +4558,8 @@ namespace MissionPlanner
                 if (ans == false)
                 {
                     if (CustomMessageBox.Show(
-                            action + " 失败了.\n" + sb.ToString() + "\n强行 " + action +
-                            " 可能绕过安全检查,\n从而导致机器撞机\n并造成严重伤害.\n\n你还希望强制执行 " +
+                            action + "失败了.\n" + sb.ToString() + "\n强行 " + action +
+                            "可能绕过安全检查,\n从而导致机器撞机\n并造成严重伤害.\n\n你还希望强制执行" +
                             action + "?", Strings.ERROR, CustomMessageBox.MessageBoxButtons.YesNo,
                             CustomMessageBox.MessageBoxIcon.Exclamation, "执行" + action, "取消") ==
                         CustomMessageBox.DialogResult.Yes)
