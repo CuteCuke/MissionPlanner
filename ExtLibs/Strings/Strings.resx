@@ -2,7 +2,7 @@
 <root>
   <!-- 
     Microsoft ResX Schema 
-    
+    翻译by LK
     Version 2.0
     
     The primary goals of this format is to allow a simple XML format 
@@ -118,155 +118,155 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BadCoords" xml:space="preserve">
-    <value>Bad Lat/Lng</value>
+    <value>错误的经度/纬度</value>
   </data>
   <data name="CannotGraphField" xml:space="preserve">
-    <value>Cannot graph this field</value>
+    <value>无法绘制此段图形</value>
   </data>
   <data name="CommandFailed" xml:space="preserve">
-    <value>The Command failed to execute
+    <value>命令执行失败
 </value>
   </data>
   <data name="ERROR" xml:space="preserve">
-    <value>Error</value>
+    <value>错误</value>
   </data>
   <data name="ErrorClosingLogFile" xml:space="preserve">
-    <value>Error closing log files</value>
+    <value>关闭日志文件时出错</value>
   </data>
   <data name="ErrorCommunicating" xml:space="preserve">
-    <value>Error communicating with the autopilot</value>
+    <value>与自动驾驶仪通信时出错</value>
   </data>
   <data name="ErrorConnecting" xml:space="preserve">
-    <value>Error Connecting
+    <value>连接错误
 </value>
   </data>
   <data name="ErrorFeatureNotEnabled" xml:space="preserve">
-    <value>This feature is not enabled in your firmware.</value>
+    <value>固件中未启用此功能。</value>
   </data>
   <data name="ErrorFirmwareFile" xml:space="preserve">
-    <value>Error loading firmware file</value>
+    <value>加载固件文件出错</value>
   </data>
   <data name="ErrorLogList" xml:space="preserve">
-    <value>Error receiving log list</value>
+    <value>接收日志列表出错</value>
   </data>
   <data name="ErrorNoResponce" xml:space="preserve">
-    <value>Error: no responce from MAV</value>
+    <value>错误：MAV没有响应</value>
   </data>
   <data name="ErrorNotConnected" xml:space="preserve">
-    <value>You are not connected.</value>
+    <value>你没有连接.</value>
   </data>
   <data name="ErrorReceivingParams" xml:space="preserve">
-    <value>Error receiving list
+    <value>接收列表时出错
 </value>
   </data>
   <data name="ErrorRejectedByMAV" xml:space="preserve">
-    <value>Error: command rejected by MAV</value>
+    <value>错误：命令被MAV拒绝</value>
   </data>
   <data name="ErrorRenameFile" xml:space="preserve">
-    <value>Error renaming file</value>
+    <value>重命名文件时出错</value>
   </data>
   <data name="ErrorSettingParameter" xml:space="preserve">
-    <value>Error setting parameter </value>
+    <value>参数设置错误 </value>
   </data>
   <data name="ErrorSetValueFailed" xml:space="preserve">
-    <value>Set {0} Failed</value>
+    <value>设置 {0} 失败</value>
   </data>
   <data name="InvalidAlt" xml:space="preserve">
-    <value>Invalid Alt</value>
+    <value>无效的高度</value>
   </data>
   <data name="InvalidBaudRate" xml:space="preserve">
-    <value>Invalid BaudRate</value>
+    <value>无效波特率</value>
   </data>
   <data name="InvalidField" xml:space="preserve">
-    <value>Invalid Field</value>
+    <value>无效区域</value>
   </data>
   <data name="InvalidFileName" xml:space="preserve">
-    <value>Invalid FileName</value>
+    <value>无效文件名</value>
   </data>
   <data name="InvalidNumberEntered" xml:space="preserve">
-    <value>Invalid number entered
+    <value>输入的号码无效
 </value>
   </data>
   <data name="InvalidPanRange" xml:space="preserve">
-    <value>Invalid Pan Range</value>
+    <value>无效的平移范围</value>
   </data>
   <data name="InvalidPortName" xml:space="preserve">
-    <value>Invalid PortName</value>
+    <value>无效的端口名</value>
   </data>
   <data name="InvalidTiltRange" xml:space="preserve">
-    <value>Invalid Tilt Range</value>
+    <value>倾斜范围无效</value>
   </data>
   <data name="InvalidUpdateRate" xml:space="preserve">
-    <value>Invalid Update Rate</value>
+    <value>更新率无效</value>
   </data>
   <data name="NoFMTMessage" xml:space="preserve">
-    <value>No FMT message for </value>
+    <value>没有FMT消息从 </value>
   </data>
   <data name="PleaseConnect" xml:space="preserve">
-    <value>Please connect first</value>
+    <value>请先连接</value>
   </data>
   <data name="PleaseLoadValidFile" xml:space="preserve">
-    <value>Please load a valid file</value>
+    <value>请加载有效文件</value>
   </data>
   <data name="PleaseSelectCell" xml:space="preserve">
-    <value>Please select a cell first</value>
+    <value>请先选择单元格</value>
   </data>
   <data name="SelectComport" xml:space="preserve">
-    <value>Please select a comport</value>
+    <value>请选择组件</value>
   </data>
   <data name="WarningLogBrowseFMTMissing" xml:space="preserve">
-    <value>Log Browse will not function correctly without FMT messages in your log.
-These appear to be missing from your log.</value>
+    <value>如果日志中没有FMT消息，日志浏览将无法正常工作。
+您的日志中似乎缺少这些内容。</value>
   </data>
   <data name="WarningUpdateParamList" xml:space="preserve">
-    <value>Update Params
-DON'T DO THIS IF YOU ARE IN THE AIR
+    <value>更新参数
+如果你在空中不要这样做
 </value>
   </data>
   <data name="Checking" xml:space="preserve">
-    <value>Checking </value>
+    <value>正在检查</value>
   </data>
   <data name="DownloadedFromInternet" xml:space="preserve">
-    <value>Downloaded from internet</value>
+    <value>从internet下载</value>
   </data>
   <data name="Getting" xml:space="preserve">
-    <value>Getting </value>
+    <value>正在获取</value>
   </data>
   <data name="GettingUpdatedParams" xml:space="preserve">
-    <value>Getting updated parameters</value>
+    <value>获取更新的参数</value>
   </data>
   <data name="AdvancedParams" xml:space="preserve">
-    <value>Advanced Params</value>
+    <value>高级参数</value>
   </data>
   <data name="BasicTuning" xml:space="preserve">
-    <value>Basic Tuning</value>
+    <value>基础调试</value>
   </data>
   <data name="Desc" xml:space="preserve">
-    <value>Description: </value>
+    <value>描述: </value>
   </data>
   <data name="ExtendedTuning" xml:space="preserve">
-    <value>Extended Tuning</value>
+    <value>扩展调试</value>
   </data>
   <data name="FlightModes" xml:space="preserve">
-    <value>Flight Modes</value>
+    <value>飞行模式</value>
   </data>
   <data name="FullParameterList" xml:space="preserve">
-    <value>Full Parameter List</value>
+    <value>完整参数列表</value>
   </data>
   <data name="FullParameterTree" xml:space="preserve">
-    <value>Full Parameter Tree</value>
+    <value>完整参数树</value>
   </data>
   <data name="GeoFence" xml:space="preserve">
     <value>GeoFence</value>
   </data>
   <data name="StandardParams" xml:space="preserve">
-    <value>Standard Params</value>
+    <value>标准参数</value>
   </data>
   <data name="Units" xml:space="preserve">
     <value>Units: {0}{1}</value>
   </data>
   <data name="ProgrammedOK" xml:space="preserve">
-    <value>Sucessfully programmed</value>
+    <value>成功编程</value>
   </data>
   <data name="CONNECTc" xml:space="preserve">
     <value>CONNECT</value>
@@ -278,65 +278,65 @@ DON'T DO THIS IF YOU ARE IN THE AIR
     <value>DISCONNECT</value>
   </data>
   <data name="Failclog" xml:space="preserve">
-    <value>Failed to create ground station log - wont log this session</value>
+    <value>未能创建地面站日志-不会记录此会话</value>
   </data>
   <data name="NewFirmware" xml:space="preserve">
-    <value>New Firmware</value>
+    <value>新固件</value>
   </data>
   <data name="NewFirmwareA" xml:space="preserve">
-    <value>New firmware available
+    <value>新固件可用
 </value>
   </data>
   <data name="Pleaseup" xml:space="preserve">
     <value>
-Please upgrade</value>
+请升级</value>
   </data>
   <data name="Stillmoving" xml:space="preserve">
-    <value>Your model is still moving are you sure you want to disconnect?</value>
+    <value>您的模型仍在移动确定要断开连接吗？</value>
   </data>
   <data name="Timeout" xml:space="preserve">
-    <value>Timeout waiting for autoscan/no mavlink device connected</value>
+    <value>等待autoscan超时/未连接mavlink设备</value>
   </data>
   <data name="ConnectFailed" xml:space="preserve">
-    <value>Connect Failed</value>
+    <value>连接失败</value>
   </data>
   <data name="ConnectingMavlink" xml:space="preserve">
-    <value>Connecting Mavlink</value>
+    <value>正在连接 Mavlink</value>
   </data>
   <data name="Done" xml:space="preserve">
-    <value>Done</value>
+    <value>完成</value>
   </data>
   <data name="GettingParams" xml:space="preserve">
-    <value>Getting Params</value>
+    <value>获取参数</value>
   </data>
   <data name="GettingParamsD" xml:space="preserve">
-    <value>Getting Params...</value>
+    <value>正在获取参数。。。</value>
   </data>
   <data name="Gotparam" xml:space="preserve">
-    <value>Got param </value>
+    <value>获取参数完成</value>
   </data>
   <data name="MavlinkConnecting" xml:space="preserve">
-    <value>Mavlink Connecting...</value>
+    <value>Mavlink正在连接。。。</value>
   </data>
   <data name="Only1Hb" xml:space="preserve">
-    <value>Only 1 Heatbeat Received</value>
+    <value>只有1个响应收到</value>
   </data>
   <data name="Only1HbD" xml:space="preserve">
-    <value>Only 1 Mavlink Heartbeat Packets was read from this port - Verify your hardware is setup correctly
-Mission Planner waits for 2 valid heartbeat packets before connecting</value>
+    <value>仅从该端口读取了1个Mavlink响应数据包-请验证硬件设置是否正确
+MissionPlanner在连接之前等待2个有效的响应数据包</value>
   </data>
   <data name="Trying" xml:space="preserve">
-    <value>Trying to connect.
-Timeout in {0}</value>
+    <value>尝试连接
+ 在{0}后超时</value>
   </data>
   <data name="CantDetectBoardVersion" xml:space="preserve">
     <value>Cant detect your Board version. Please check your cabling</value>
   </data>
   <data name="CheckPortSettingsOr" xml:space="preserve">
-    <value>Check port settings or Port in use?</value>
+    <value>检查端口设置或正在使用的端口？</value>
   </data>
   <data name="CommunicationErrorNoConnection" xml:space="preserve">
-    <value>Communication Error - no connection</value>
+    <value>通信错误-没有连接</value>
   </data>
   <data name="DetectedA" xml:space="preserve">
     <value>Detected a </value>
@@ -348,35 +348,35 @@ Timeout in {0}</value>
     <value>Downloading from Internet</value>
   </data>
   <data name="EppromChanged" xml:space="preserve">
-    <value>Epprom changed, all your setting will be lost during the update,
-Do you wish to continue?</value>
+    <value>Epprom已更改，更新过程中将丢失所有设置，
+你想继续吗？</value>
   </data>
   <data name="EppromFormatChanged" xml:space="preserve">
-    <value>Epprom format changed ({0) vs {1})</value>
+    <value>Epprom格式已更改({0) vs {1})</value>
   </data>
   <data name="FailedDownload" xml:space="preserve">
-    <value>Failed download</value>
+    <value>下载失败</value>
   </data>
   <data name="FailedReadHEX" xml:space="preserve">
-    <value>Failed read HEX</value>
+    <value>读取HEX文件失败</value>
   </data>
   <data name="FailedToReadHex" xml:space="preserve">
-    <value>Failed to read firmware.hex :</value>
+    <value>读取firmware.hex失败 :</value>
   </data>
   <data name="FailedUpload" xml:space="preserve">
-    <value>Failed upload</value>
+    <value>上传失败</value>
   </data>
   <data name="GettingFWList" xml:space="preserve">
-    <value>Getting FW List</value>
+    <value>获取固件列表</value>
   </data>
   <data name="GettingFWVersion" xml:space="preserve">
-    <value>Getting FW Version</value>
+    <value>获取固件版本</value>
   </data>
   <data name="InvalidBoardType" xml:space="preserve">
     <value>Invalid Board Type</value>
   </data>
   <data name="PleaseConnectAndBackupConfig" xml:space="preserve">
-    <value>Please connect and backup your config in the configuration tab.</value>
+    <value>请在“配置”选项卡中连接并备份配置。</value>
   </data>
   <data name="ReadingHexFile" xml:space="preserve">
     <value>Reading Hex File</value>
@@ -505,13 +505,13 @@ Please use Standard/Advanced Params for the safe settings</value>
     <value>Bad OptFlow Health</value>
   </data>
   <data name="BadorNoTerrainData" xml:space="preserve">
-    <value>Bad or No Terrain Data</value>
+    <value>错误或无地形数据</value>
   </data>
   <data name="GeofenceBreach" xml:space="preserve">
     <value>Geofence Breach</value>
   </data>
   <data name="BadAHRS" xml:space="preserve">
-    <value>Unhealthy AHRS</value>
+    <value>不安全的飞行姿态</value>
   </data>
   <data name="NORCReceiver" xml:space="preserve">
     <value>NO RC Receiver</value>
@@ -662,16 +662,16 @@ old #{0}  new #{1}</value>
     <value>MAVFtp</value>
   </data>
   <data name="Bad_Battery" xml:space="preserve">
-    <value>Bad Battery</value>
+    <value>电池故障</value>
   </data>
   <data name="Bad_Proximity" xml:space="preserve">
     <value>Bad Proximity</value>
   </data>
   <data name="Bad_SatCom" xml:space="preserve">
-    <value>Bad SatCom</value>
+    <value>通信系统出错</value>
   </data>
   <data name="Prearm_check_failed" xml:space="preserve">
-    <value>Prearm check failed</value>
+    <value>Prearm检查失败</value>
   </data>
   <data name="Invalid_Location" xml:space="preserve">
     <value>Invalid Location</value>

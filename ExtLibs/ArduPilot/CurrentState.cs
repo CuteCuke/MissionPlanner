@@ -25,6 +25,7 @@ namespace MissionPlanner
         public static string SpeedUnit = "";
         public static float multiplieralt = 1;
         public static string AltUnit = "";
+        public static string BatteryUnit="mah";
 
         private static PointLatLngAlt _homelocation = new PointLatLngAlt();
 
@@ -3064,7 +3065,9 @@ namespace MissionPlanner
                 desc = desc.Replace("(dist)", "(" + DistanceUnit + ")");
             else if (desc.Contains("(speed)"))
                 desc = desc.Replace("(speed)", "(" + SpeedUnit + ")");
-            else if (desc.Contains("(alt)")) desc = desc.Replace("(alt)", "(" + AltUnit + ")");
+            else if (desc.Contains("(alt)"))
+                desc = desc.Replace("(alt)", "(" + AltUnit + ")");
+   
 
             return desc;
         }

@@ -30,8 +30,10 @@ namespace MissionPlanner
                     MAV.cs.groundcourse, MAV.cs.nav_bearing, MAV.cs.target_bearing,
                     MAV.cs.radius * CurrentState.multiplierdist)
                 {
-                    ToolTipText = MAV.cs.alt.ToString("0") + CurrentState.AltUnit + " | " + (int)MAV.cs.airspeed +
-                                  CurrentState.SpeedUnit + " | id:" + (int)MAV.sysid + " | Sats:" + (int)MAV.cs.satcount + " | HDOP:" + (float)MAV.cs.gpshdop + " | Volts: " + (float)MAV.cs.battery_voltage, 
+                    ToolTipText = "飞行高度："+ MAV.cs.alt.ToString("0") +CurrentState.AltUnit + "\n" + "空  速：" + (int)MAV.cs.airspeed +
+                                  CurrentState.SpeedUnit+"\n" +"地  速："+(int)MAV.cs.groundspeed+CurrentState.SpeedUnit+"\n"+ "下个航点：" + (int)MAV.cs.wpno+ "\n" +
+                                  "航点距离：" + (int)MAV.cs.wp_dist+ CurrentState.DistanceUnit + "\n" +"离家距离："+(int)MAV.cs.DistToHome+CurrentState.DistanceUnit+"\n"+
+                                  "飞行里程：" + (int)MAV.cs.distTraveled+CurrentState.DistanceUnit + "\n" + "已耗电量：" + (float)MAV.cs.battery_usedmah+CurrentState.BatteryUnit, 
                     ToolTipMode = MarkerTooltipMode.Always 
                 });
             }
@@ -81,8 +83,10 @@ namespace MissionPlanner
                 return (new GMapMarkerQuad(portlocation, MAV.cs.yaw,
                         MAV.cs.groundcourse, MAV.cs.nav_bearing, MAV.sysid)
                 {
-                    ToolTipText = MAV.cs.alt.ToString("0") + CurrentState.AltUnit + " | " + (int)MAV.cs.airspeed +
-                                 CurrentState.SpeedUnit + " | id:" + (int)MAV.sysid + " | Sats:" + (int)MAV.cs.satcount + " | HDOP:" + (float)MAV.cs.gpshdop + " | Volts: " + (float)MAV.cs.battery_voltage,
+                    ToolTipText = "飞行高度：" + MAV.cs.alt.ToString("0") + CurrentState.AltUnit + "\n" + "空  速：" + (int)MAV.cs.airspeed +
+                                  CurrentState.SpeedUnit + "\n" + "地  速：" + (int)MAV.cs.groundspeed + CurrentState.SpeedUnit + "\n" + "下个航点：" + (int)MAV.cs.wpno + "\n" +
+                                  "航点距离：" + (int)MAV.cs.wp_dist + CurrentState.DistanceUnit + "\n" + "离家距离：" + (int)MAV.cs.DistToHome + CurrentState.DistanceUnit + "\n" +
+                                  "飞行里程：" + (int)MAV.cs.distTraveled + CurrentState.DistanceUnit + "\n" + "已耗电量：" + (float)MAV.cs.battery_usedmah + CurrentState.BatteryUnit,
                     ToolTipMode = MarkerTooltipMode.Always
                 });
             }

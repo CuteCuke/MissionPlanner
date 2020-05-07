@@ -439,7 +439,7 @@
     <value>12</value>
   </data>
   <data name="CMB_history.Location" type="System.Drawing.Point, System.Drawing">
-    <value>834, 411</value>
+    <value>832, 411</value>
   </data>
   <data name="CMB_history.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 20</value>
@@ -677,6 +677,9 @@
   </data>
   <data name="linkLabel1.Text" xml:space="preserve">
     <value>Copter motor setup</value>
+  </data>
+  <data name="linkLabel1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;linkLabel1.Name" xml:space="preserve">
     <value>linkLabel1</value>
