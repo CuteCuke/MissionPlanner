@@ -4991,6 +4991,9 @@ namespace MissionPlanner.GCSViews
             }
         }
 
-      
+        private void Galt_ValueInRangeChanged(object sender, AGaugeApp.AGauge.ValueInRangeChangedEventArgs e)
+        {
+
+        }
     }
 }
