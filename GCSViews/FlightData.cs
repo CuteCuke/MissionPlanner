@@ -4904,7 +4904,7 @@ namespace MissionPlanner.GCSViews
         private void flyToCoordsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var location = "";
-            InputBox.Show("Enter Fly To Coords", "Please enter the coords 'lat;long;alt' or 'lat;long'", ref location);
+            InputBox.Show("输入飞行的经纬度", "请按照如下格式输入\n '纬度;经度;高度' 或者 '纬度;经度'", ref location);
 
             var split = location.Split(';');
 
