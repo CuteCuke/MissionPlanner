@@ -4035,9 +4035,9 @@ namespace MissionPlanner.GCSViews
                 cols = Settings.Instance["quickViewCols"];
             }
 
-            if (InputBox.Show("Columns", "Enter number of columns to have.", ref cols) == DialogResult.OK)
+            if (InputBox.Show("列", "输入列的数量", ref cols) == DialogResult.OK)
             {
-                if (InputBox.Show("Rows", "Enter number of rows to have.", ref rows) == DialogResult.OK)
+                if (InputBox.Show("行", "输入行的数量", ref rows) == DialogResult.OK)
                 {
                     setQuickViewRowsCols(cols, rows);
 
