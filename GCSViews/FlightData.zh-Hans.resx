@@ -524,7 +524,7 @@
     <value>53, 12</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>目标指向</value>
+    <value>预飞轨迹</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>142, 393</value>

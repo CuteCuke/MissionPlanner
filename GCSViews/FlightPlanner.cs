@@ -1561,7 +1561,7 @@ namespace MissionPlanner.GCSViews
             if (polygongridmode == false)
             {
                 CustomMessageBox.Show(
-                    "在清除多边形或创建网格/上载围栏之前，您将一直处于多边形模式");
+                    "在清除多边形或上传航线之前，您将一直处于绘制多边形状态");
                 polygongridmode = true;
                 return;
             }
