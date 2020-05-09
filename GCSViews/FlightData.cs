@@ -4141,7 +4141,7 @@ namespace MissionPlanner.GCSViews
                 tabControlactions.Visible = false;
                 tabStatus.Visible = false;
                 tabStatus_Resize(sender, e);
-                tabStatus.Visible = false;
+                tabStatus.Visible = true;
                 tabControlactions.Visible = true;
             }
             else if (tabControlactions.SelectedTab == tabPagemessages)

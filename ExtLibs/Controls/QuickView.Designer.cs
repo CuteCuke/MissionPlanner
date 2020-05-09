@@ -36,7 +36,7 @@ namespace MissionPlanner.Controls
             this.SuspendLayout();
 
      
-            this.toolTip1.SetToolTip(this, "Double click to change");
+            this.toolTip1.SetToolTip(this, "双击查看其它参数");
             // 
             // QuickView
             // 
