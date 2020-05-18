@@ -7229,6 +7229,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             var commandno = Commands.Rows.Count;
             double lng = double.Parse(TXT_homelat.Text);//经纬度参数反了
             double lat= double.Parse(TXT_homelng.Text);
+            
             // InsertCommand(1,MAVLink.MAV_CMD.VTOL_TAKEOFF,0,0,0,0,0,0,(double)vtol_takeoff_alt.Value);
             if (tag_updownwp == false)
             {

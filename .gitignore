@@ -50,3 +50,5 @@ packages/
 /Drivers/DriverCleanup.exe
 
 /objcore
+*.dll
+*.resources

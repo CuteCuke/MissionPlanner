@@ -1340,8 +1340,8 @@ namespace MissionPlanner.GCSViews
         private void BUT_resumemis_Click(object sender, EventArgs e)
         {
             if (
-                Common.MessageShowAgain("Resume Mission",
-                    "Warning this will reprogram your mission, arm and issue a takeoff command (copter)") !=
+                Common.MessageShowAgain("恢复任务",
+                    "警告：这将重新编程你的任务，解锁并发出起飞命令（多旋翼）") !=
                 DialogResult.OK)
                 return;
 
@@ -1353,7 +1353,7 @@ namespace MissionPlanner.GCSViews
                     if (lastwp == "-1")
                         lastwp = "1";
 
-                    if (InputBox.Show("Resume at", "Resume mission at waypoint#", ref lastwp) == DialogResult.OK)
+                    if (InputBox.Show("恢复点", "重新开始任务从航点", ref lastwp) == DialogResult.OK)
                     {
                         int timeout = 0;
                         int lastwpno = int.Parse(lastwp);
@@ -1395,7 +1395,7 @@ namespace MissionPlanner.GCSViews
                                 (MAVLink.MAV_FRAME) (loc.frame));
                             if (ans != MAVLink.MAV_MISSION_RESULT.MAV_MISSION_ACCEPTED)
                             {
-                                CustomMessageBox.Show("Upload wps failed " +
+                                CustomMessageBox.Show("上传航点失败：" +
                                                       Enum.Parse(typeof(MAVLink.MAV_CMD), loc.id.ToString()) + " " +
                                                       Enum.Parse(typeof(MAVLink.MAV_MISSION_RESULT), ans.ToString()));
                                 return;
