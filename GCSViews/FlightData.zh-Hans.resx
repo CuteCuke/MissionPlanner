@@ -297,7 +297,7 @@
     <value>留待</value>
   </data>
   <data name="myButton2.Text" xml:space="preserve">
-    <value>返航</value>
+    <value>RTL返航</value>
   </data>
   <data name="myButton3.Text" xml:space="preserve">
     <value>自动</value>

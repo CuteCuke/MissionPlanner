@@ -1132,7 +1132,7 @@ namespace MissionPlanner
             if (CurrentState.rateattitudebackup == 0) // initilised to 10, configured above from save
             {
                 CustomMessageBox.Show(
-                    "NOTE: your attitude rate is 0, the hud will not work\nChange in Configuration > Planner > Telemetry Rates");
+                    "注意：您的姿态率为0，抬头显示器将无法工作。在“配置调试>planner>Telemetry Rates”中更改");
             }
 
             // create log dir if it doesnt exist
@@ -4517,10 +4517,14 @@ namespace MissionPlanner
 
         private void return_flight_Click(object sender, EventArgs e)
         {
+            var wpno = MainV2.comPort.getWPCount();
             try
             {
                 ((ToolStripButton)sender).Enabled = false;
-                MainV2.comPort.setMode("RTL");
+                if(wpno>=2)
+                MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
+                    (ushort)(wpno-2));
+                //MainV2.comPort.setMode("RTL");
             }
             catch
             {
