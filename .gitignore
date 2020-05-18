@@ -50,5 +50,7 @@ packages/
 /Drivers/DriverCleanup.exe
 
 /objcore
-*.dll
-*.resources
+/objcore2/Debug/test
+/objcore2/Debug/NuGet/8b7d12d7c6a9fd8c8cc2734b2074f525f150720a/GDAL/2.3.2
+/objcore2/Debug
+/UpgradeLog.htm
