@@ -64,7 +64,7 @@ namespace MissionPlanner
 
             this.homealt = homealt;
 
-            Form frm = Common.LoadingBox("Loading", "using alt data");
+            Form frm = Common.LoadingBox("Loading", "正在绘制高度数据");
 
             gelocs = getGEAltPath(planlocs);
 
@@ -268,7 +268,7 @@ namespace MissionPlanner
             }
             catch
             {
-                CustomMessageBox.Show("Error getting GE data", Strings.ERROR);
+                CustomMessageBox.Show("连接谷歌地形图出错，使用本地地图", Strings.ERROR);
             }
 
             return answer;
@@ -279,15 +279,15 @@ namespace MissionPlanner
             GraphPane myPane = zgc.GraphPane;
 
             // Set the titles and axis labels
-            myPane.Title.Text = "Elevation above ground";
-            myPane.XAxis.Title.Text = "Distance (" + CurrentState.DistanceUnit + ")";
-            myPane.YAxis.Title.Text = "Elevation (" + CurrentState.AltUnit + ")";
+            myPane.Title.Text = "距离高度曲线";
+            myPane.XAxis.Title.Text = "距离(" + CurrentState.DistanceUnit + ")";
+            myPane.YAxis.Title.Text = "实际高度 (" + CurrentState.AltUnit + ")";
 
             LineItem myCurve;
 
-            myCurve = myPane.AddCurve("Planned Path", list1, Color.Red, SymbolType.None);
+            myCurve = myPane.AddCurve("飞行任务", list1, Color.Red, SymbolType.None);
             //myCurve = myPane.AddCurve("Google", list2, Color.Green, SymbolType.None);
-            myCurve = myPane.AddCurve("DEM", list3, Color.Blue, SymbolType.None);
+            myCurve = myPane.AddCurve("地图高度", list3, Color.Blue, SymbolType.None);
 
             foreach (PointPair pp in list1)
             {

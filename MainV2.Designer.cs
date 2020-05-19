@@ -59,6 +59,7 @@ namespace MissionPlanner
             this.menu = new MissionPlanner.Controls.MyButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.status1 = new MissionPlanner.Controls.Status();
+            this.resume_flight = new System.Windows.Forms.ToolStripButton();
             this.MainMenu.SuspendLayout();
             this.CTX_mainmenu.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -81,7 +82,8 @@ namespace MissionPlanner
             this.auto_flight,
             this.return_flight,
             this.jump_to,
-            this.wp_no});
+            this.wp_no,
+            this.resume_flight});
             this.MainMenu.Name = "MainMenu";
             this.MainMenu.ShowItemToolTips = true;
             this.MainMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MainMenu_ItemClicked);
@@ -269,6 +271,17 @@ namespace MissionPlanner
             this.status1.Name = "status1";
             this.status1.Percent = 0D;
             // 
+            // resume_flight
+            // 
+            this.resume_flight.BackColor = System.Drawing.Color.Transparent;
+            this.resume_flight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.resume_flight.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.resume_flight.Image = global::MissionPlanner.Properties.Resources.dark_resume;
+            resources.ApplyResources(this.resume_flight, "resume_flight");
+            this.resume_flight.Margin = new System.Windows.Forms.Padding(0);
+            this.resume_flight.Name = "resume_flight";
+            this.resume_flight.Click += new System.EventHandler(this.resume_flight_Click);
+            // 
             // MainV2
             // 
             resources.ApplyResources(this, "$this");
@@ -320,5 +333,6 @@ namespace MissionPlanner
         private System.Windows.Forms.ToolStripMenuItem simulition;
         private System.Windows.Forms.ToolStripMenuItem config_tune;
         private System.Windows.Forms.ToolStripMenuItem firmware_install;
+        public System.Windows.Forms.ToolStripButton resume_flight;
     }
 }

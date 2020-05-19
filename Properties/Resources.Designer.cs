@@ -553,6 +553,16 @@ namespace MissionPlanner.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        public static System.Drawing.Bitmap dark_resume {
+            get {
+                object obj = ResourceManager.GetObject("dark_resume", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         public static System.Drawing.Bitmap dark_return {
             get {
                 object obj = ResourceManager.GetObject("dark_return", resourceCulture);
@@ -1080,6 +1090,16 @@ namespace MissionPlanner.Properties {
         public static System.Drawing.Bitmap light_lock {
             get {
                 object obj = ResourceManager.GetObject("light_lock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap light_resume {
+            get {
+                object obj = ResourceManager.GetObject("light_resume", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

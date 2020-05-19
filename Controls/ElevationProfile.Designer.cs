@@ -28,16 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.zg1 = new ZedGraph.ZedGraphControl();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // zg1
             // 
-            this.zg1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.zg1.Location = new System.Drawing.Point(12, 23);
+            this.zg1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.zg1.Location = new System.Drawing.Point(12, 22);
             this.zg1.Name = "zg1";
             this.zg1.ScrollGrace = 0D;
             this.zg1.ScrollMaxX = 0D;
@@ -46,7 +47,7 @@
             this.zg1.ScrollMinX = 0D;
             this.zg1.ScrollMinY = 0D;
             this.zg1.ScrollMinY2 = 0D;
-            this.zg1.Size = new System.Drawing.Size(810, 427);
+            this.zg1.Size = new System.Drawing.Size(810, 428);
             this.zg1.TabIndex = 30;
             // 
             // label1
@@ -54,15 +55,12 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(162, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(507, 13);
+            this.label1.Size = new System.Drawing.Size(425, 12);
             this.label1.TabIndex = 31;
-            this.label1.Text = "NOTE: The ground height data is pulled from Google Earth at 100m intervals. You u" +
-                "se this at your own risk";
+            this.label1.Text = "注：地面高度数据以100米的间隔从谷歌地球中提取/如果失败则用本地地图数据";
             // 
             // ElevationProfile
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
             this.ClientSize = new System.Drawing.Size(834, 462);
             this.Controls.Add(this.label1);

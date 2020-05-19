@@ -464,8 +464,6 @@
             // chk_stopstart
             // 
             resources.ApplyResources(this.chk_stopstart, "chk_stopstart");
-            this.chk_stopstart.Checked = true;
-            this.chk_stopstart.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_stopstart.Name = "chk_stopstart";
             this.chk_stopstart.UseVisualStyleBackColor = true;
             // 
@@ -1180,8 +1178,6 @@
             // CHK_camdirection
             // 
             resources.ApplyResources(this.CHK_camdirection, "CHK_camdirection");
-            this.CHK_camdirection.Checked = true;
-            this.CHK_camdirection.CheckState = System.Windows.Forms.CheckState.Checked;
             this.CHK_camdirection.Name = "CHK_camdirection";
             this.CHK_camdirection.UseVisualStyleBackColor = true;
             this.CHK_camdirection.CheckedChanged += new System.EventHandler(this.CHK_camdirection_CheckedChanged);

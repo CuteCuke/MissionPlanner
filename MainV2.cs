@@ -58,6 +58,7 @@ namespace MissionPlanner
             public abstract Image disconnect { get; }
             public abstract Image bg { get; }
             public abstract Image wizard { get; }
+            public abstract Image resume { get; }
         }
 
 
@@ -229,6 +230,16 @@ namespace MissionPlanner
                         return Image.FromFile(Settings.GetRunningDirectory() + "light_wizard_icon.png");
                     else
                         return global::MissionPlanner.Properties.Resources.wizardicon;
+                }
+            }
+            public override Image resume 
+            {
+                get
+                {
+                    if (File.Exists(Settings.GetRunningDirectory() + "light_resume.png"))
+                        return Image.FromFile(Settings.GetRunningDirectory() + "light_resume.png");
+                    else
+                        return global::MissionPlanner.Properties.Resources.light_resume;
                 }
             }
         }
@@ -405,6 +416,17 @@ namespace MissionPlanner
                         return global::MissionPlanner.Properties.Resources.wizardicon;
                 }
             }
+            public override Image resume
+            {
+                get
+                {
+                    if (File.Exists(Settings.GetRunningDirectory() + "dark_resume.png"))
+                        return Image.FromFile(Settings.GetRunningDirectory() + "dark_resume.png");
+                    else
+                        return global::MissionPlanner.Properties.Resources.dark_resume;
+                }
+            }
+
         }
 
         Controls.MainSwitcher MyView;
@@ -1283,7 +1305,7 @@ namespace MissionPlanner
             MainMenu.BackColor = SystemColors.MenuBar;
 
             MainMenu.BackgroundImage = displayicons.bg;
-
+            resume_flight.Image = displayicons.resume;
             MenuFlightData.Image = displayicons.fd;
             MenuFlightPlanner.Image = displayicons.fp;
             lock_unlock.Image = displayicons.lck;
@@ -4705,6 +4727,152 @@ namespace MissionPlanner
                 {
                     MyView.ShowScreen("HWConfig");
                 }
+            }
+        }
+
+        private void resume_flight_Click(object sender, EventArgs e)
+        {
+            if (
+               Common.MessageShowAgain("恢复任务",
+                   "警告：这将重新编程你的任务，解锁并发出起飞命令（多旋翼）") !=
+               DialogResult.OK)
+                return;
+
+            try
+            {
+                if (MainV2.comPort.BaseStream.IsOpen)
+                {
+                    string lastwp = MainV2.comPort.MAV.cs.lastautowp.ToString();
+                    if (lastwp == "-1")
+                        lastwp = "1";
+
+                    if (InputBox.Show("恢复点", "重新开始任务从航点", ref lastwp) == DialogResult.OK)
+                    {
+                        int timeout = 0;
+                        int lastwpno = int.Parse(lastwp);
+
+                        // scan and check wp's we are skipping
+                        // get our target wp
+                        var lastwpdata = MainV2.comPort.getWP((ushort)lastwpno);
+
+                        // get all
+                        List<Locationwp> cmds = new List<Locationwp>();
+
+                        var wpcount = MainV2.comPort.getWPCount();
+
+                        for (ushort a = 0; a < wpcount; a++)
+                        {
+                            var wpdata = MainV2.comPort.getWP(a);
+
+                            if (a < lastwpno && a != 0) // allow home
+                            {
+                                if (wpdata.id != (ushort)MAVLink.MAV_CMD.TAKEOFF)
+                                    if (wpdata.id < (ushort)MAVLink.MAV_CMD.LAST)
+                                        continue;
+
+                                if (wpdata.id > (ushort)MAVLink.MAV_CMD.DO_LAST)
+                                    continue;
+                            }
+
+                            cmds.Add(wpdata);
+                        }
+
+                        ushort wpno = 0;
+                        // upload from wp 0 to end
+                        MainV2.comPort.setWPTotal((ushort)(cmds.Count));
+
+                        // add our do commands
+                        foreach (var loc in cmds)
+                        {
+                            MAVLink.MAV_MISSION_RESULT ans = MainV2.comPort.setWP(loc, wpno,
+                                (MAVLink.MAV_FRAME)(loc.frame));
+                            if (ans != MAVLink.MAV_MISSION_RESULT.MAV_MISSION_ACCEPTED)
+                            {
+                                CustomMessageBox.Show("上传航点失败：" +
+                                                      Enum.Parse(typeof(MAVLink.MAV_CMD), loc.id.ToString()) + " " +
+                                                      Enum.Parse(typeof(MAVLink.MAV_MISSION_RESULT), ans.ToString()));
+                                return;
+                            }
+
+                            wpno++;
+                        }
+
+                        MainV2.comPort.setWPACK();
+                        
+                        GCSViews.FlightPlanner.instance.BUT_read_Click(this, null);
+
+                        // set index back to 1
+                        MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid, 1);
+
+                        if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
+                        {
+                            while (MainV2.comPort.MAV.cs.mode.ToLower() != "Guided".ToLower())
+                            {
+                                MainV2.comPort.setMode("GUIDED");
+                                Thread.Sleep(1000);
+                                Application.DoEvents();
+                                timeout++;
+
+                                if (timeout > 30)
+                                {
+                                    CustomMessageBox.Show(Strings.ErrorNoResponce, Strings.ERROR);
+                                    return;
+                                }
+                            }
+
+                            timeout = 0;
+                            while (!MainV2.comPort.MAV.cs.armed)
+                            {
+                                MainV2.comPort.doARM(true);
+                                Thread.Sleep(1000);
+                                Application.DoEvents();
+                                timeout++;
+
+                                if (timeout > 30)
+                                {
+                                    CustomMessageBox.Show(Strings.ErrorNoResponce, Strings.ERROR);
+                                    return;
+                                }
+                            }
+
+                            timeout = 0;
+                            while (MainV2.comPort.MAV.cs.alt < (lastwpdata.alt - 2))
+                            {
+                                MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent,
+                                    (byte)MainV2.comPort.compidcurrent, MAVLink.MAV_CMD.TAKEOFF, 0, 0, 0, 0, 0, 0,
+                                    lastwpdata.alt);
+                                Thread.Sleep(1000);
+                                Application.DoEvents();
+                                timeout++;
+
+                                if (timeout > 40)
+                                {
+                                    CustomMessageBox.Show(Strings.ErrorNoResponce, Strings.ERROR);
+                                    return;
+                                }
+                            }
+                        }
+
+                        timeout = 0;
+                        while (MainV2.comPort.MAV.cs.mode.ToLower() != "AUTO".ToLower())
+                        {
+                            MainV2.comPort.setMode("AUTO");
+                            Thread.Sleep(1000);
+                            Application.DoEvents();
+                            timeout++;
+
+                            if (timeout > 30)
+                            {
+                                CustomMessageBox.Show(Strings.ErrorNoResponce, Strings.ERROR);
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.Show(Strings.CommandFailed + "\n" + ex.ToString(), Strings.ERROR);
             }
         }
     }

@@ -581,7 +581,7 @@ namespace MissionPlanner.GCSViews
                 else
                 {
                     if (
-                        CustomMessageBox.Show("This will clear your existing points, Continue?", "Confirm",
+                        CustomMessageBox.Show("此操作将清除你已经执行过的航点, 要继续吗?", "提醒",
                             MessageBoxButtons.OKCancel) != (int)DialogResult.OK)
                     {
                         return;
@@ -1801,7 +1801,7 @@ namespace MissionPlanner.GCSViews
 
             if (polygon.Count == 0)
             {
-                CustomMessageBox.Show("Please define a polygon!");
+                CustomMessageBox.Show("请绘制一个多边形区域!");
                 return 0;
             }
 
@@ -7231,7 +7231,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             double lat= double.Parse(TXT_homelng.Text);
             
             // InsertCommand(1,MAVLink.MAV_CMD.VTOL_TAKEOFF,0,0,0,0,0,0,(double)vtol_takeoff_alt.Value);
-            if (tag_updownwp == false)
+            if (tag_updownwp == false&&missionwp.id==(ushort)MAVLink.MAV_CMD.WAYPOINT)
             {
                 InsertCommand(rowindex, MAVLink.MAV_CMD.VTOL_TAKEOFF, 0, 0, 0, 0, lat,lng, (double)vtol_takeoff_alt.Value);//VTOL_TAKEOFF 起飞点
                 //nextwp.newpos(0,(double)pilotwp_updist.Value);
@@ -7255,8 +7255,8 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                    lat -= Math.Sin((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000),
                    lng -= Math.Cos((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000), (double)pilotwp_downalt.Value);//引导4
                 InsertCommand(numno += 1, MAVLink.MAV_CMD.VTOL_LAND, 0, 0, 0, 0,
-                   lat -= Math.Sin((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000),
-                   lng -= Math.Cos((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000), 0);//VTOL_LAND 
+                   double.Parse(TXT_homelng.Text),
+                    double.Parse(TXT_homelat.Text), 0);//VTOL_LAND 
                 tag_updownwp = true;
             }
             
