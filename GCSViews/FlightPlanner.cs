@@ -4849,7 +4849,7 @@ namespace MissionPlanner.GCSViews
                     {
                         if (cellhome.Value.ToString() != TXT_homelat.Text && cellhome.Value.ToString() != "0")
                         {
-                            var dr = CustomMessageBox.Show("Reset Home to loaded coords", "Reset Home Coords",
+                            var dr = CustomMessageBox.Show("重新设置home点的坐标", "重置home",
                                 MessageBoxButtons.YesNo);
 
                             if (dr == (int)DialogResult.Yes)
@@ -7311,9 +7311,9 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
 
         private void del_updownwp_Click(object sender, EventArgs e)
         {
-            if (tag_updownwp&&Commands.Rows.Count!=0)
+            if (tag_updownwp&&Commands.Rows.Count>=8)
             {
-            
+                
                 for (int i = 0; i < 4; i++)
                 {
                     Commands.Rows.RemoveAt(0); 

@@ -4388,6 +4388,7 @@ namespace MissionPlanner
 
         private void MainMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
+
             foreach (ToolStripItem item in MainMenu.Items)
             {
                 if (e.ClickedItem == item)
@@ -4540,6 +4541,7 @@ namespace MissionPlanner
         private void return_flight_Click(object sender, EventArgs e)
         {
             var wpno = MainV2.comPort.getWPCount();
+            lastwpstr = MainV2.comPort.MAV.cs.lastautowp.ToString();
             try
             {
                 ((ToolStripButton)sender).Enabled = false;
@@ -4729,12 +4731,12 @@ namespace MissionPlanner
                 }
             }
         }
-
+        private string lastwpstr="1";
         private void resume_flight_Click(object sender, EventArgs e)
         {
             if (
                Common.MessageShowAgain("恢复任务",
-                   "警告：这将重新编程你的任务，解锁并发出起飞命令（多旋翼）") !=
+                   "警告：这将重新编程你的任务，请解锁并发出起飞命令（多旋翼）") !=
                DialogResult.OK)
                 return;
 
@@ -4742,7 +4744,7 @@ namespace MissionPlanner
             {
                 if (MainV2.comPort.BaseStream.IsOpen)
                 {
-                    string lastwp = MainV2.comPort.MAV.cs.lastautowp.ToString();
+                    string lastwp = lastwpstr;
                     if (lastwp == "-1")
                         lastwp = "1";
 
