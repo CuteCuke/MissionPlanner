@@ -56,10 +56,10 @@ namespace MissionPlanner
             this.return_flight = new System.Windows.Forms.ToolStripButton();
             this.jump_to = new System.Windows.Forms.ToolStripButton();
             this.wp_no = new System.Windows.Forms.ToolStripComboBox();
+            this.resume_flight = new System.Windows.Forms.ToolStripButton();
             this.menu = new MissionPlanner.Controls.MyButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.status1 = new MissionPlanner.Controls.Status();
-            this.resume_flight = new System.Windows.Forms.ToolStripButton();
             this.MainMenu.SuspendLayout();
             this.CTX_mainmenu.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -250,6 +250,17 @@ namespace MissionPlanner
             resources.ApplyResources(this.wp_no, "wp_no");
             this.wp_no.Click += new System.EventHandler(this.wp_no_Click);
             // 
+            // resume_flight
+            // 
+            this.resume_flight.BackColor = System.Drawing.Color.Transparent;
+            this.resume_flight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.resume_flight.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.resume_flight.Image = global::MissionPlanner.Properties.Resources.dark_resume;
+            resources.ApplyResources(this.resume_flight, "resume_flight");
+            this.resume_flight.Margin = new System.Windows.Forms.Padding(0);
+            this.resume_flight.Name = "resume_flight";
+            this.resume_flight.Click += new System.EventHandler(this.resume_flight_Click);
+            // 
             // menu
             // 
             resources.ApplyResources(this.menu, "menu");
@@ -270,17 +281,6 @@ namespace MissionPlanner
             resources.ApplyResources(this.status1, "status1");
             this.status1.Name = "status1";
             this.status1.Percent = 0D;
-            // 
-            // resume_flight
-            // 
-            this.resume_flight.BackColor = System.Drawing.Color.Transparent;
-            this.resume_flight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.resume_flight.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.resume_flight.Image = global::MissionPlanner.Properties.Resources.dark_resume;
-            resources.ApplyResources(this.resume_flight, "resume_flight");
-            this.resume_flight.Margin = new System.Windows.Forms.Padding(0);
-            this.resume_flight.Name = "resume_flight";
-            this.resume_flight.Click += new System.EventHandler(this.resume_flight_Click);
             // 
             // MainV2
             // 

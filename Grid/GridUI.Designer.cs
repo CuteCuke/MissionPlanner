@@ -198,32 +198,20 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.NUM_split);
+            this.groupBox5.Controls.Add(this.CHK_advanced);
+            this.groupBox5.Controls.Add(this.label37);
+            this.groupBox5.Controls.Add(this.CHK_toandland_RTL);
+            this.groupBox5.Controls.Add(this.CHK_camdirection);
             this.groupBox5.Controls.Add(this.lbl_minshutter);
+            this.groupBox5.Controls.Add(this.CHK_footprints);
             this.groupBox5.Controls.Add(this.label44);
-            this.groupBox5.Controls.Add(this.lbl_gndelev);
-            this.groupBox5.Controls.Add(this.label40);
+            this.groupBox5.Controls.Add(this.CHK_internals);
+            this.groupBox5.Controls.Add(this.CHK_grid);
+            this.groupBox5.Controls.Add(this.CHK_markers);
             this.groupBox5.Controls.Add(this.lbl_turnrad);
+            this.groupBox5.Controls.Add(this.CHK_boundary);
             this.groupBox5.Controls.Add(this.label36);
-            this.groupBox5.Controls.Add(this.lbl_photoevery);
-            this.groupBox5.Controls.Add(this.label35);
-            this.groupBox5.Controls.Add(this.lbl_flighttime);
-            this.groupBox5.Controls.Add(this.label31);
-            this.groupBox5.Controls.Add(this.lbl_distbetweenlines);
-            this.groupBox5.Controls.Add(this.label25);
-            this.groupBox5.Controls.Add(this.lbl_footprint);
-            this.groupBox5.Controls.Add(this.label30);
-            this.groupBox5.Controls.Add(this.lbl_strips);
-            this.groupBox5.Controls.Add(this.lbl_pictures);
-            this.groupBox5.Controls.Add(this.label33);
-            this.groupBox5.Controls.Add(this.label34);
-            this.groupBox5.Controls.Add(this.lbl_grndres);
-            this.groupBox5.Controls.Add(this.label29);
-            this.groupBox5.Controls.Add(this.lbl_spacing);
-            this.groupBox5.Controls.Add(this.label27);
-            this.groupBox5.Controls.Add(this.lbl_distance);
-            this.groupBox5.Controls.Add(this.lbl_area);
-            this.groupBox5.Controls.Add(this.label23);
-            this.groupBox5.Controls.Add(this.label22);
             resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
@@ -920,6 +908,11 @@
             0,
             0});
             this.NUM_leadin.Name = "NUM_leadin";
+            this.NUM_leadin.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.NUM_leadin.ValueChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
             // 
             // label7
@@ -936,6 +929,11 @@
             0,
             0});
             this.NUM_overshoot2.Name = "NUM_overshoot2";
+            this.NUM_overshoot2.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.NUM_overshoot2.ValueChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
             // 
             // label8
@@ -998,6 +996,11 @@
             0,
             0});
             this.NUM_overshoot.Name = "NUM_overshoot";
+            this.NUM_overshoot.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.NUM_overshoot.ValueChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
             // 
             // label2
@@ -1060,10 +1063,7 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.label37);
-            this.groupBox6.Controls.Add(this.NUM_split);
             this.groupBox6.Controls.Add(this.CHK_usespeed);
-            this.groupBox6.Controls.Add(this.CHK_toandland_RTL);
             this.groupBox6.Controls.Add(this.CHK_toandland);
             this.groupBox6.Controls.Add(this.label24);
             this.groupBox6.Controls.Add(this.NUM_UpDownFlySpeed);
@@ -1071,7 +1071,6 @@
             this.groupBox6.Controls.Add(this.label4);
             this.groupBox6.Controls.Add(this.NUM_angle);
             this.groupBox6.Controls.Add(this.CMB_camera);
-            this.groupBox6.Controls.Add(this.CHK_camdirection);
             this.groupBox6.Controls.Add(this.NUM_altitude);
             this.groupBox6.Controls.Add(this.label1);
             resources.ApplyResources(this.groupBox6, "groupBox6");
@@ -1113,8 +1112,6 @@
             // CHK_toandland_RTL
             // 
             resources.ApplyResources(this.CHK_toandland_RTL, "CHK_toandland_RTL");
-            this.CHK_toandland_RTL.Checked = true;
-            this.CHK_toandland_RTL.CheckState = System.Windows.Forms.CheckState.Checked;
             this.CHK_toandland_RTL.Name = "CHK_toandland_RTL";
             this.CHK_toandland_RTL.UseVisualStyleBackColor = true;
             // 
@@ -1215,12 +1212,28 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.CHK_advanced);
-            this.groupBox4.Controls.Add(this.CHK_footprints);
-            this.groupBox4.Controls.Add(this.CHK_internals);
-            this.groupBox4.Controls.Add(this.CHK_grid);
-            this.groupBox4.Controls.Add(this.CHK_markers);
-            this.groupBox4.Controls.Add(this.CHK_boundary);
+            this.groupBox4.Controls.Add(this.label22);
+            this.groupBox4.Controls.Add(this.lbl_area);
+            this.groupBox4.Controls.Add(this.label23);
+            this.groupBox4.Controls.Add(this.lbl_distance);
+            this.groupBox4.Controls.Add(this.label27);
+            this.groupBox4.Controls.Add(this.lbl_spacing);
+            this.groupBox4.Controls.Add(this.label29);
+            this.groupBox4.Controls.Add(this.lbl_grndres);
+            this.groupBox4.Controls.Add(this.label34);
+            this.groupBox4.Controls.Add(this.lbl_gndelev);
+            this.groupBox4.Controls.Add(this.lbl_pictures);
+            this.groupBox4.Controls.Add(this.label33);
+            this.groupBox4.Controls.Add(this.label40);
+            this.groupBox4.Controls.Add(this.lbl_strips);
+            this.groupBox4.Controls.Add(this.lbl_photoevery);
+            this.groupBox4.Controls.Add(this.label30);
+            this.groupBox4.Controls.Add(this.label35);
+            this.groupBox4.Controls.Add(this.lbl_footprint);
+            this.groupBox4.Controls.Add(this.lbl_flighttime);
+            this.groupBox4.Controls.Add(this.label25);
+            this.groupBox4.Controls.Add(this.label31);
+            this.groupBox4.Controls.Add(this.lbl_distbetweenlines);
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
@@ -1228,6 +1241,8 @@
             // CHK_advanced
             // 
             resources.ApplyResources(this.CHK_advanced, "CHK_advanced");
+            this.CHK_advanced.Checked = true;
+            this.CHK_advanced.CheckState = System.Windows.Forms.CheckState.Checked;
             this.CHK_advanced.Name = "CHK_advanced";
             this.CHK_advanced.UseVisualStyleBackColor = true;
             this.CHK_advanced.CheckedChanged += new System.EventHandler(this.CHK_advanced_CheckedChanged);

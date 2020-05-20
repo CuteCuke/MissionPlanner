@@ -1579,16 +1579,18 @@ namespace MissionPlanner.Grid
                     {
                         if (plugin.Host.cs.firmware == Firmwares.ArduCopter2)
                         {
+                            //var wpno = plugin.Host.AddWPtoList(MAVLink.MAV_CMD.TAKEOFF, 20, 0, 0, 0, 0, 0,
+                            //    (int)(30 * CurrentState.multiplierdist), gridobject);
                             var wpno = plugin.Host.AddWPtoList(MAVLink.MAV_CMD.TAKEOFF, 20, 0, 0, 0, 0, 0,
-                                (int)(30 * CurrentState.multiplierdist), gridobject);
-
+                               (int)(NUM_altitude.Value), gridobject);
                             wpsplitstart.Add(wpno);
                         }
                         else
                         {
+                            //var wpno = plugin.Host.AddWPtoList(MAVLink.MAV_CMD.TAKEOFF, 20, 0, 0, 0, 0, 0,
+                            //    (int)(30 * CurrentState.multiplierdist), gridobject);
                             var wpno = plugin.Host.AddWPtoList(MAVLink.MAV_CMD.TAKEOFF, 20, 0, 0, 0, 0, 0,
-                                (int)(30 * CurrentState.multiplierdist), gridobject);
-
+                               (int)(NUM_altitude.Value), gridobject);
                             wpsplitstart.Add(wpno);
                         }
                     }

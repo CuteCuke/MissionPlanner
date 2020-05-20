@@ -4536,7 +4536,7 @@ namespace MissionPlanner
 
             ((ToolStripButton)sender).Enabled = true;
         }
-
+        
         private void return_flight_Click(object sender, EventArgs e)
         {
             var wpno = MainV2.comPort.getWPCount();
