@@ -121,6 +121,8 @@
             this.LBL_copter_delay = new System.Windows.Forms.Label();
             this.NUM_copter_delay = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.polygon_inc = new System.Windows.Forms.NumericUpDown();
+            this.label45 = new System.Windows.Forms.Label();
             this.chk_spiral = new System.Windows.Forms.CheckBox();
             this.chk_Corridor = new System.Windows.Forms.CheckBox();
             this.label43 = new System.Windows.Forms.Label();
@@ -160,8 +162,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TRK_zoom = new MissionPlanner.Controls.MyTrackBar();
             this.map = new MissionPlanner.Controls.myGMAP();
-            this.label45 = new System.Windows.Forms.Label();
-            this.polygon_inc = new System.Windows.Forms.NumericUpDown();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_split)).BeginInit();
             this.tabCamera.SuspendLayout();
@@ -180,6 +180,7 @@
             this.groupBox_copter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_copter_delay)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.polygon_inc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_corridorwidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_leadin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_overshoot2)).BeginInit();
@@ -196,7 +197,6 @@
             this.groupBox4.SuspendLayout();
             this.tabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TRK_zoom)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.polygon_inc)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox5
@@ -940,6 +940,36 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
+            // polygon_inc
+            // 
+            this.polygon_inc.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            resources.ApplyResources(this.polygon_inc, "polygon_inc");
+            this.polygon_inc.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.polygon_inc.Minimum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.polygon_inc.Name = "polygon_inc";
+            this.polygon_inc.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // label45
+            // 
+            resources.ApplyResources(this.label45, "label45");
+            this.label45.Name = "label45";
+            // 
             // chk_spiral
             // 
             resources.ApplyResources(this.chk_spiral, "chk_spiral");
@@ -1348,36 +1378,6 @@
             this.map.MouseDown += new System.Windows.Forms.MouseEventHandler(this.map_MouseDown);
             this.map.MouseMove += new System.Windows.Forms.MouseEventHandler(this.map_MouseMove);
             // 
-            // label45
-            // 
-            resources.ApplyResources(this.label45, "label45");
-            this.label45.Name = "label45";
-            // 
-            // polygon_inc
-            // 
-            this.polygon_inc.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            resources.ApplyResources(this.polygon_inc, "polygon_inc");
-            this.polygon_inc.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.polygon_inc.Minimum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.polygon_inc.Name = "polygon_inc";
-            this.polygon_inc.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            // 
             // GridUI
             // 
             resources.ApplyResources(this, "$this");
@@ -1413,6 +1413,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.NUM_copter_delay)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.polygon_inc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_corridorwidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_leadin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_overshoot2)).EndInit();
@@ -1432,7 +1433,6 @@
             this.groupBox4.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TRK_zoom)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.polygon_inc)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

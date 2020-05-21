@@ -581,7 +581,7 @@ namespace MissionPlanner.GCSViews
                 else
                 {
                     if (
-                        CustomMessageBox.Show("此操作将清除你已经执行过的航点, 要继续吗?", "提醒",
+                        CustomMessageBox.Show("此操作将清除你已经写入的航点, 要继续吗?", "提醒",
                             MessageBoxButtons.OKCancel) != (int)DialogResult.OK)
                     {
                         return;
@@ -1566,28 +1566,26 @@ namespace MissionPlanner.GCSViews
                 polygongridmode = true;
                 return;
             }
-
-            polygongridmode = true;
-
+           // polygongridmode = true;
             List<PointLatLng> polygonPoints = new List<PointLatLng>();
             if (drawnpolygonsoverlay.Polygons.Count == 0)
-            {
-                drawnpolygon.Points.Clear();
-                drawnpolygonsoverlay.Polygons.Add(drawnpolygon);
-            }
+                {
+                    drawnpolygon.Points.Clear();
+                    drawnpolygonsoverlay.Polygons.Add(drawnpolygon);
+                }
 
             drawnpolygon.Fill = Brushes.Transparent;
 
-            // remove full loop is exists
+                // remove full loop is exists
             if (drawnpolygon.Points.Count > 1 &&
-                drawnpolygon.Points[0] == drawnpolygon.Points[drawnpolygon.Points.Count - 1])
-                drawnpolygon.Points.RemoveAt(drawnpolygon.Points.Count - 1); // unmake a full loop
+                    drawnpolygon.Points[0] == drawnpolygon.Points[drawnpolygon.Points.Count - 1])
+                    drawnpolygon.Points.RemoveAt(drawnpolygon.Points.Count - 1); // unmake a full loop
             
-            drawnpolygon.Points.Add(new PointLatLng(MouseDownStart.Lat, MouseDownStart.Lng));
+                drawnpolygon.Points.Add(new PointLatLng(MouseDownStart.Lat, MouseDownStart.Lng));
 
-            redrawPolygonSurvey(drawnpolygon.Points.Select(a => new PointLatLngAlt(a)).ToList());
+                redrawPolygonSurvey(drawnpolygon.Points.Select(a => new PointLatLngAlt(a)).ToList());
 
-            MainMap.Invalidate();
+                MainMap.Invalidate();
         }
 
         public void areaToolStripMenuItem_Click(object sender, EventArgs e)

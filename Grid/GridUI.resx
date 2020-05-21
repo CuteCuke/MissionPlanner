@@ -2684,6 +2684,9 @@
   <data name="polygon_inc.TabIndex" type="System.Int32, mscorlib">
     <value>68</value>
   </data>
+  <data name="polygon_inc.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;polygon_inc.Name" xml:space="preserve">
     <value>polygon_inc</value>
   </data>
@@ -2710,6 +2713,9 @@
   </data>
   <data name="label45.Text" xml:space="preserve">
     <value>多边形外扩宽度[m]</value>
+  </data>
+  <data name="label45.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;label45.Name" xml:space="preserve">
     <value>label45</value>
@@ -3633,7 +3639,7 @@
     <value>61</value>
   </data>
   <data name="groupBox6.Text" xml:space="preserve">
-    <value>Simple Options</value>
+    <value>初级选项</value>
   </data>
   <data name="&gt;&gt;groupBox6.Name" xml:space="preserve">
     <value>groupBox6</value>

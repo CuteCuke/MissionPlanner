@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MissionPlanner.GCSViews;
+using System;
 using System.Windows.Forms;
 
 namespace MissionPlanner.Grid
@@ -79,6 +80,7 @@ namespace MissionPlanner.Grid
                     else
                     {
                         CustomMessageBox.Show("请绘制一个多边形.", "Error");
+                        MainV2.instance.FlightPlanner.addPolygonPointToolStripMenuItem_Click(null, null);
                     }
                 }
             }
