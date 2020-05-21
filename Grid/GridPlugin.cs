@@ -21,7 +21,7 @@ namespace MissionPlanner.Grid
 
         public override string Author
         {
-            get { return "Michael Oborne"; }
+            get { return "by lk"; }
         }
 
         public override bool Init()
@@ -70,7 +70,7 @@ namespace MissionPlanner.Grid
                 else
                 {
                     if (
-                        CustomMessageBox.Show("No polygon defined. Load a file?", "Load File", MessageBoxButtons.YesNo) ==
+                        CustomMessageBox.Show("多边形没有绘制，是否加载多边形文件?", "Load File", MessageBoxButtons.YesNo) ==
                         (int)DialogResult.Yes)
                     {
                         gridui.LoadGrid();
@@ -78,7 +78,7 @@ namespace MissionPlanner.Grid
                     }
                     else
                     {
-                        CustomMessageBox.Show("Please define a polygon.", "Error");
+                        CustomMessageBox.Show("请绘制一个多边形.", "Error");
                     }
                 }
             }

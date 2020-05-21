@@ -922,7 +922,7 @@ namespace MissionPlanner.Grid
 
             if (polygon.Count == 0)
             {
-                CustomMessageBox.Show("Please define a polygon!");
+                CustomMessageBox.Show("请绘制一个多边形!");
                 return 0;
             }
 

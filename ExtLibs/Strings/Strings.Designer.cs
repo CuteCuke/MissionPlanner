@@ -467,7 +467,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 Do you want to load this into the flight data screen? 的本地化字符串。
+        ///   查找类似 你是否想加载kml到飞行数据页面? 的本地化字符串。
         /// </summary>
         public static string Do_you_want_to_load_this_into_the_flight_data_screen {
             get {

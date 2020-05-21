@@ -613,7 +613,7 @@ Please contact your hardware vendor about signing your hardware.</value>
     <value>Zoom To</value>
   </data>
   <data name="Do_you_want_to_load_this_into_the_flight_data_screen" xml:space="preserve">
-    <value>Do you want to load this into the flight data screen?</value>
+    <value>你是否想加载kml到飞行数据页面?</value>
   </data>
   <data name="Load_data" xml:space="preserve">
     <value>Load data</value>

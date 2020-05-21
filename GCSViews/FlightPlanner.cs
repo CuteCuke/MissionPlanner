@@ -7153,60 +7153,159 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
         {
             using (OpenFileDialog fd = new OpenFileDialog())
             {
-                fd.Filter = "Google Earth KML |*.kml;*.kmz";
+                fd.Filter = "All Supported|*.kml;*.kmz;*.dxf;*.gpkg|Google Earth KML|*.kml;*.kmz|AutoCad DXF|*.dxf|GeoPackage|*.gpkg";
                 DialogResult result = fd.ShowDialog();
                 string file = fd.FileName;
                 if (file != "")
                 {
-                    try
+                    kmlpolygonsoverlay.Polygons.Clear();
+                    kmlpolygonsoverlay.Routes.Clear();
+                    drawnpolygonsoverlay.Markers.Clear();
+                    drawnpolygonsoverlay.Polygons.Clear();
+                    drawnpolygon.Points.Clear();
+                    
+                    FlightData.kmlpolygons.Routes.Clear();
+                    FlightData.kmlpolygons.Polygons.Clear();
+                    if (file.ToLower().EndsWith("gpkg"))
                     {
-                        string kml = "";
-                        string tempdir = "";
-                        if (file.ToLower().EndsWith("kmz"))
+                        using (var ogr = OGR.Open(file))
                         {
-                            ZipFile input = new ZipFile(file);
-
-                            tempdir = Path.GetTempPath() + Path.DirectorySeparatorChar + Path.GetRandomFileName();
-                            input.ExtractAll(tempdir, ExtractExistingFileAction.OverwriteSilently);
-
-                            string[] kmls = Directory.GetFiles(tempdir, "*.kml");
-
-                            if (kmls.Length > 0)
+                            ogr.NewPoint += pnt =>
                             {
-                                file = kmls[0];
+                                var mark = new GMarkerGoogle(new PointLatLngAlt(pnt), GMarkerGoogleType.brown_small);                             
+                              //  drawnpolygonsoverlay.Markers.Add(mark);
+                                FlightData.kmlpolygons.Markers.Add(mark);
+                                kmlpolygonsoverlay.Markers.Add(mark);
+                                //加载kml形状的多边形  
+                           //     drawnpolygon.Points.Add(new PointLatLng(pnt.y,pnt.x));
+                           //     addpolygonmarkergrid(drawnpolygon.Points.Count.ToString(),pnt.y,pnt.x,0);
+                           //     if (drawnpolygon.Points.Count > 1 &&
+                           //drawnpolygon.Points[0] == drawnpolygon.Points[drawnpolygon.Points.Count - 1])
+                           //     {
+                           //         drawnpolygon.Points.RemoveAt(drawnpolygon.Points.Count - 1);
+                           //     }
 
-                                input.Dispose();
+                           //     drawnpolygonsoverlay.Polygons.Add(drawnpolygon);
+                           //     MainMap.UpdatePolygonLocalPosition(drawnpolygon);
+                           //     MainMap.Invalidate();
+                            };
+                            ogr.NewLineString += ls =>
+                            {
+                                var route =
+                                    new GMapRoute(ls.Select(a => new PointLatLngAlt(a.y, a.x, a.z).Point()), "")
+                                    {
+                                        IsHitTestVisible = false,
+                                        Stroke = new Pen(Color.Red)
+                                    };
+                                FlightData.kmlpolygons.Routes.Add(route);
+                                kmlpolygonsoverlay.Routes.Add(route);
+                         
+                            };
+                            ogr.NewPolygon += ls =>
+                            {
+                                var polygon =
+                                    new GMapPolygon(ls.Select(a => new PointLatLngAlt(a.y, a.x, a.z).Point()).ToList(), "")
+                                    {
+                                        Fill = Brushes.Transparent,
+                                        IsHitTestVisible = false,
+                                        Stroke = new Pen(Color.Red)
+                                    };
+                                //drawnpolygonsoverlay.Polygons.Add(polygon);
+                                FlightData.kmlpolygons.Polygons.Add(polygon);
+                                kmlpolygonsoverlay.Polygons.Add(polygon);
+                               
+                            };
+                           
+                            ogr.Process();
+                        }
+                    }
+                    else if (file.ToLower().EndsWith("dxf"))
+                    {
+                        string zone = "-99";
+                        InputBox.Show("Zone", "Please enter the UTM zone, or cancel to not change", ref zone);
+
+                        dxf dxf = new dxf();
+                        if (zone != "-99")
+                            dxf.Tag = zone;
+
+                        dxf.newLine += Dxf_newLine;
+                        dxf.newPolyLine += Dxf_newPolyLine;
+                        dxf.newLwPolyline += Dxf_newLwPolyline;
+                        dxf.newMLine += Dxf_newMLine;
+                        dxf.Read(file);
+                    }
+                    else
+                    {
+                        try
+                        {
+                            string kml = "";
+                            string tempdir = "";
+                            if (file.ToLower().EndsWith("kmz"))
+                            {
+                                ZipFile input = new ZipFile(file);
+
+                                tempdir = Path.GetTempPath() + Path.DirectorySeparatorChar + Path.GetRandomFileName();
+                                input.ExtractAll(tempdir, ExtractExistingFileAction.OverwriteSilently);
+
+                                string[] kmls = Directory.GetFiles(tempdir, "*.kml");
+
+                                if (kmls.Length > 0)
+                                {
+                                    file = kmls[0];
+
+                                    input.Dispose();
+                                }
+                                else
+                                {
+                                    input.Dispose();
+                                    return;
+                                }
                             }
-                            else
+
+                            var sr = new StreamReader(File.OpenRead(file));
+                            kml = sr.ReadToEnd();
+                            sr.Close();
+
+                            // cleanup after out
+                            if (tempdir != "")
+                                Directory.Delete(tempdir, true);
+
+                            kml = kml.Replace("<Snippet/>", "");
+
+                            var parser = new Parser();
+
+                            parser.ElementAdded += parser_ElementAdded;
+                            parser.ParseString(kml, false);
+
+                            if ((int)DialogResult.Yes ==
+                                CustomMessageBox.Show(Strings.Do_you_want_to_load_this_into_the_flight_data_screen, Strings.Load_data,
+                                    MessageBoxButtons.YesNo))
                             {
-                                input.Dispose();
-                                return;
+                                foreach (var temp in kmlpolygonsoverlay.Polygons)
+                                {
+                                    FlightData.kmlpolygons.Polygons.Add(temp);
+                                }
+                                foreach (var temp in kmlpolygonsoverlay.Routes)
+                                {
+                                    FlightData.kmlpolygons.Routes.Add(temp);
+                                }
+                            }
+
+                            if (
+                                CustomMessageBox.Show(Strings.Zoom_To, Strings.Zoom_to_the_center_or_the_loaded_file, MessageBoxButtons.YesNo) ==
+                                (int)DialogResult.Yes)
+                            {
+                                MainMap.SetZoomToFitRect(GetBoundingLayer(kmlpolygonsoverlay));
                             }
                         }
-
-                        var sr = new StreamReader(File.OpenRead(file));
-                        kml = sr.ReadToEnd();
-                        sr.Close();
-
-                        // cleanup after out
-                        if (tempdir != "")
-                            Directory.Delete(tempdir, true);
-
-                        kml = kml.Replace("<Snippet/>", "");
-
-                        var parser = new Parser();
-
-                        parser.ElementAdded += processKMLMission;
-                        parser.ParseString(kml, false);
-                    }
-                    catch (Exception ex)
-                    {
-                        CustomMessageBox.Show(Strings.Bad_KML_File + ex);
+                        catch (Exception ex)
+                        {
+                            CustomMessageBox.Show(Strings.Bad_KML_File + ex);
+                        }
                     }
                 }
             }
         }
-
         private void label11_Click(object sender, EventArgs e)
         {
 
