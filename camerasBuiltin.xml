@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Cameras>
-  <Camera>
+  <!--<Camera>
     <name>Nikon aw100</name>
     <flen>5</flen>
     <imgh>3456</imgh>
@@ -119,7 +119,7 @@
     <imgw>4000</imgw>
     <senh>4.7058</senh>
     <senw>6.2372</senw>
-  </Camera>
+  </Camera>-->
   <Camera>
     <name>Sony A6000</name>
     <flen>20</flen>
@@ -136,7 +136,7 @@
     <senh>24.0</senh>
     <senw>35.9</senw>
   </Camera>
-  <Camera>
+  <!--<Camera>
     <name>Parrot Sequoia Monochrome</name>
     <flen>3.98</flen>
     <imgh>960</imgh>
@@ -231,7 +231,7 @@
     <imgw>4000</imgw>
     <senh>4.56</senh>
     <senw>6.17</senw>
-  </Camera>
+  </Camera>-->
   <Camera>
     <name>Sony a7R2</name>
     <flen>5</flen>
@@ -240,12 +240,12 @@
     <senh>4.62</senh>
     <senw>6.16</senw>
   </Camera>
- <Camera>
+ <!--<Camera>
     <name>AeroHawk_8MP</name>
     <flen>3.039</flen>
     <imgh>2464</imgh>
     <imgw>3280</imgw>
     <senh>2.76</senh>
     <senw>3.674</senw>
-  </Camera>
+  </Camera>-->
 </Cameras>

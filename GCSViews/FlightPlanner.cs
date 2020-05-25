@@ -269,6 +269,9 @@ namespace MissionPlanner.GCSViews
             drawnpolygon.Stroke = new Pen(Color.Red, 2);
             drawnpolygon.Fill = Brushes.Transparent;
 
+
+
+            
             /*
             var timer = new System.Timers.Timer();
 
@@ -581,7 +584,7 @@ namespace MissionPlanner.GCSViews
                 else
                 {
                     if (
-                        CustomMessageBox.Show("此操作将清除你已经写入的航点, 要继续吗?", "提醒",
+                        CustomMessageBox.Show("此操作将清除你已有的航点, 要继续吗?", "提醒",
                             MessageBoxButtons.OKCancel) != (int)DialogResult.OK)
                     {
                         return;
@@ -1562,7 +1565,7 @@ namespace MissionPlanner.GCSViews
             if (polygongridmode == false)
             {
                 CustomMessageBox.Show(
-                    "在清除多边形或上传航线之前，您将一直处于绘制多边形状态");
+                    "在清除多边形之前，您将一直处于绘制多边形状态");
                 polygongridmode = true;
                 return;
             }
@@ -7322,6 +7325,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             double lat= double.Parse(TXT_homelng.Text);
             //{ double.Parse(TXT_homelat.Text),double.Parse(TXT_homelng.Text),double.Parse(TXT_homelat.Text),"H"}
             //var _list = GetCommandList();
+           // updown_angle.Value=MainV2.comPort.
             int numno;
             if (Commands.Rows.Count!= 0)
             {
@@ -7424,6 +7428,24 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
         private void label21_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void refresh_updown_Click(object sender, EventArgs e)
+        {
+            //reset angle  
+            updown_angle.Value = (int)GCSViews.FlightData.myhud.heading;
+            //updown_angle.Value=(int)GCSViews.FlightData.myhud.current;
+            //reset home
+            if (MainV2.comPort.MAV.cs.HomeLocation.Lat != 0 && MainV2.comPort.MAV.cs.HomeLocation.Lng != 0)
+            {
+                TXT_homelat.Text = MainV2.comPort.MAV.cs.lat.ToString();
+
+                TXT_homelng.Text = MainV2.comPort.MAV.cs.lng.ToString();
+
+                TXT_homealt.Text = MainV2.comPort.MAV.cs.alt.ToString();
+
+                writeKML();
+            }
         }
     }
 }

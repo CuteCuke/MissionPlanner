@@ -4527,8 +4527,11 @@ namespace MissionPlanner
         {
             try
             {
-                ((ToolStripButton)sender).Enabled = false;
-                MainV2.comPort.setMode("Auto");
+                if (CustomMessageBox.Show("点击yes就要起飞了哟！" ,"AUTO模式", CustomMessageBox.MessageBoxButtons.YesNo) ==CustomMessageBox.DialogResult.Yes)
+                { 
+                    ((ToolStripButton)sender).Enabled = false;
+                     MainV2.comPort.setMode("Auto");
+                }
             }
             catch
             {
@@ -4545,9 +4548,9 @@ namespace MissionPlanner
             try
             {
                 ((ToolStripButton)sender).Enabled = false;
-                if(wpno>=2)
+                if(wpno>=3)
                 MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
-                    (ushort)(wpno-2));
+                    (ushort)(wpno-3));
                 //MainV2.comPort.setMode("RTL");
             }
             catch
@@ -4751,7 +4754,7 @@ namespace MissionPlanner
                     if (InputBox.Show("恢复点", "重新开始任务从航点", ref lastwp) == DialogResult.OK)
                     {
                         int timeout = 0;
-                        int lastwpno = int.Parse(lastwp);
+                        int lastwpno = int.Parse(lastwp)-1;
 
                         // scan and check wp's we are skipping
                         // get our target wp

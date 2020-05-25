@@ -243,8 +243,6 @@
             // CHK_advanced
             // 
             resources.ApplyResources(this.CHK_advanced, "CHK_advanced");
-            this.CHK_advanced.Checked = true;
-            this.CHK_advanced.CheckState = System.Windows.Forms.CheckState.Checked;
             this.CHK_advanced.Name = "CHK_advanced";
             this.CHK_advanced.UseVisualStyleBackColor = true;
             this.CHK_advanced.CheckedChanged += new System.EventHandler(this.CHK_advanced_CheckedChanged);
@@ -927,12 +925,8 @@
             this.groupBox1.Controls.Add(this.NUM_leadin);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.NUM_overshoot2);
-            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.CMB_startfrom);
-            this.groupBox1.Controls.Add(this.num_overlap);
-            this.groupBox1.Controls.Add(this.num_sidelap);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.NUM_overshoot);
             this.groupBox1.Controls.Add(this.label2);
@@ -1191,6 +1185,10 @@
             this.groupBox6.Controls.Add(this.CHK_toandland);
             this.groupBox6.Controls.Add(this.label24);
             this.groupBox6.Controls.Add(this.NUM_UpDownFlySpeed);
+            this.groupBox6.Controls.Add(this.num_sidelap);
+            this.groupBox6.Controls.Add(this.label15);
+            this.groupBox6.Controls.Add(this.num_overlap);
+            this.groupBox6.Controls.Add(this.label8);
             this.groupBox6.Controls.Add(this.label26);
             this.groupBox6.Controls.Add(this.label4);
             this.groupBox6.Controls.Add(this.NUM_angle);

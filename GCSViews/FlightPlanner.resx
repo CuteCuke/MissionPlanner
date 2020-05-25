@@ -463,7 +463,7 @@
     <value>9, 3</value>
   </data>
   <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 70</value>
+    <value>211, 66</value>
   </data>
   <data name="panel3.TabIndex" type="System.Int32, mscorlib">
     <value>49</value>
@@ -484,7 +484,7 @@
     <value>3, 3</value>
   </data>
   <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 81</value>
+    <value>227, 72</value>
   </data>
   <data name="panel5.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
@@ -712,10 +712,10 @@
     <value>NoControl</value>
   </data>
   <data name="but_writewpfast.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 535</value>
+    <value>123, 122</value>
   </data>
   <data name="but_writewpfast.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 24</value>
+    <value>96, 24</value>
   </data>
   <data name="but_writewpfast.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -753,6 +753,9 @@
   <data name="BUT_write.Text" xml:space="preserve">
     <value>Write</value>
   </data>
+  <data name="BUT_write.ToolTip" xml:space="preserve">
+    <value>航点数据写入飞机</value>
+  </data>
   <data name="&gt;&gt;BUT_write.Name" xml:space="preserve">
     <value>BUT_write</value>
   </data>
@@ -779,6 +782,9 @@
   </data>
   <data name="BUT_read.Text" xml:space="preserve">
     <value>Read</value>
+  </data>
+  <data name="BUT_read.ToolTip" xml:space="preserve">
+    <value>从飞机读取航点信息</value>
   </data>
   <data name="&gt;&gt;BUT_read.Name" xml:space="preserve">
     <value>BUT_read</value>
@@ -977,7 +983,7 @@
     <value>框架</value>
   </data>
   <data name="Frame.Width" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>30</value>
   </data>
   <metadata name="coordZone.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1160,7 +1166,7 @@
     <value>Commands</value>
   </data>
   <data name="&gt;&gt;Commands.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.MyDataGridView, MissionPlanner, Version=1.3.7444.27975, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.MyDataGridView, MissionPlanner, Version=1.3.7450.27794, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Commands.Parent" xml:space="preserve">
     <value>panelWaypoints</value>
@@ -1429,6 +1435,9 @@
   <data name="load_kml.Text" xml:space="preserve">
     <value>加载kml</value>
   </data>
+  <data name="load_kml.ToolTip" xml:space="preserve">
+    <value>kml范围线加载并生成相应的多边形</value>
+  </data>
   <data name="&gt;&gt;load_kml.Name" xml:space="preserve">
     <value>load_kml</value>
   </data>
@@ -1455,6 +1464,9 @@
   </data>
   <data name="alt_curve.Text" xml:space="preserve">
     <value>高度曲线</value>
+  </data>
+  <data name="alt_curve.ToolTip" xml:space="preserve">
+    <value>航线与实际地理高度曲线</value>
   </data>
   <data name="&gt;&gt;alt_curve.Name" xml:space="preserve">
     <value>alt_curve</value>
@@ -1483,6 +1495,9 @@
   <data name="del_area.Text" xml:space="preserve">
     <value>删除航区</value>
   </data>
+  <data name="del_area.ToolTip" xml:space="preserve">
+    <value>删除多边形</value>
+  </data>
   <data name="&gt;&gt;del_area.Name" xml:space="preserve">
     <value>del_area</value>
   </data>
@@ -1510,6 +1525,9 @@
   <data name="del_flight.Text" xml:space="preserve">
     <value>删除航线</value>
   </data>
+  <data name="del_flight.ToolTip" xml:space="preserve">
+    <value>删除所有的航线命令</value>
+  </data>
   <data name="&gt;&gt;del_flight.Name" xml:space="preserve">
     <value>del_flight</value>
   </data>
@@ -1536,6 +1554,9 @@
   </data>
   <data name="creat_flight.Text" xml:space="preserve">
     <value>生成航线</value>
+  </data>
+  <data name="creat_flight.ToolTip" xml:space="preserve">
+    <value>根据多边形绘制航线</value>
   </data>
   <data name="&gt;&gt;creat_flight.Name" xml:space="preserve">
     <value>creat_flight</value>
@@ -1594,6 +1615,9 @@
   <data name="BUT_loadwpfile.Text" xml:space="preserve">
     <value>Load File</value>
   </data>
+  <data name="BUT_loadwpfile.ToolTip" xml:space="preserve">
+    <value>从本地加载航点文件</value>
+  </data>
   <data name="&gt;&gt;BUT_loadwpfile.Name" xml:space="preserve">
     <value>BUT_loadwpfile</value>
   </data>
@@ -1621,6 +1645,9 @@
   <data name="BUT_saveWPFile.Text" xml:space="preserve">
     <value>Save File</value>
   </data>
+  <data name="BUT_saveWPFile.ToolTip" xml:space="preserve">
+    <value>保存当前航点文件到本地</value>
+  </data>
   <data name="&gt;&gt;BUT_saveWPFile.Name" xml:space="preserve">
     <value>BUT_saveWPFile</value>
   </data>
@@ -1634,10 +1661,10 @@
     <value>10</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 90</value>
+    <value>3, 81</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 162</value>
+    <value>227, 146</value>
   </data>
   <data name="panel2.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>
@@ -1654,56 +1681,8 @@
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="updown_angle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 64</value>
-  </data>
-  <data name="updown_angle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 21</value>
-  </data>
-  <data name="updown_angle.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;updown_angle.Name" xml:space="preserve">
-    <value>updown_angle</value>
-  </data>
-  <data name="&gt;&gt;updown_angle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;updown_angle.Parent" xml:space="preserve">
-    <value>panel6</value>
-  </data>
-  <data name="&gt;&gt;updown_angle.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label21.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label21.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 66</value>
-  </data>
-  <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
-  </data>
-  <data name="label21.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>起降角度</value>
-  </data>
-  <data name="&gt;&gt;label21.Name" xml:space="preserve">
-    <value>label21</value>
-  </data>
-  <data name="&gt;&gt;label21.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
-    <value>panel6</value>
-  </data>
-  <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="pilotwp_downdist.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 66</value>
+    <value>128, 314</value>
   </data>
   <data name="pilotwp_downdist.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 21</value>
@@ -1718,13 +1697,64 @@
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;pilotwp_downdist.Parent" xml:space="preserve">
-    <value>panel9</value>
+    <value>panel6</value>
   </data>
   <data name="&gt;&gt;pilotwp_downdist.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="loiter_downalt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 246</value>
+  </data>
+  <data name="loiter_downalt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 21</value>
+  </data>
+  <data name="loiter_downalt.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;loiter_downalt.Name" xml:space="preserve">
+    <value>loiter_downalt</value>
+  </data>
+  <data name="&gt;&gt;loiter_downalt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;loiter_downalt.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;loiter_downalt.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label20.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>36, 317</value>
+  </data>
+  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="label20.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>引导距离</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>降落航点间距</value>
+  </data>
+  <data name="&gt;&gt;label20.Name" xml:space="preserve">
+    <value>label20</value>
+  </data>
+  <data name="&gt;&gt;label20.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label20.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="pilotwp_downalt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 37</value>
+    <value>128, 287</value>
   </data>
   <data name="pilotwp_downalt.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 21</value>
@@ -1739,43 +1769,70 @@
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;pilotwp_downalt.Parent" xml:space="preserve">
-    <value>panel9</value>
+    <value>panel6</value>
   </data>
   <data name="&gt;&gt;pilotwp_downalt.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
-  <data name="label20.AutoSize" type="System.Boolean, mscorlib">
+  <data name="pilotwp_updist.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 158</value>
+  </data>
+  <data name="pilotwp_updist.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 21</value>
+  </data>
+  <data name="pilotwp_updist.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;pilotwp_updist.Name" xml:space="preserve">
+    <value>pilotwp_updist</value>
+  </data>
+  <data name="&gt;&gt;pilotwp_updist.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pilotwp_updist.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;pilotwp_updist.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label16.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 68</value>
+  <data name="label16.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
+  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 246</value>
   </data>
-  <data name="label20.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 12</value>
   </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>引导距离</value>
+  <data name="label16.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
-  <data name="&gt;&gt;label20.Name" xml:space="preserve">
-    <value>label20</value>
+  <data name="label16.Text" xml:space="preserve">
+    <value>盘旋下降高度</value>
   </data>
-  <data name="&gt;&gt;label20.Type" xml:space="preserve">
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>盘旋下降到指定高度</value>
+  </data>
+  <data name="&gt;&gt;label16.Name" xml:space="preserve">
+    <value>label16</value>
+  </data>
+  <data name="&gt;&gt;label16.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label20.Parent" xml:space="preserve">
-    <value>panel9</value>
+  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
+    <value>panel6</value>
   </data>
-  <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="label19.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 39</value>
+    <value>36, 291</value>
   </data>
   <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 12</value>
@@ -1786,6 +1843,9 @@
   <data name="label19.Text" xml:space="preserve">
     <value>引导高度</value>
   </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>降落前一个航点高度</value>
+  </data>
   <data name="&gt;&gt;label19.Name" xml:space="preserve">
     <value>label19</value>
   </data>
@@ -1793,10 +1853,40 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label19.Parent" xml:space="preserve">
-    <value>panel9</value>
+    <value>panel6</value>
   </data>
   <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
+  </data>
+  <data name="refresh_updown.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="refresh_updown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 62</value>
+  </data>
+  <data name="refresh_updown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="refresh_updown.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="refresh_updown.Text" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="refresh_updown.ToolTip" xml:space="preserve">
+    <value>刷新home、起降角度</value>
+  </data>
+  <data name="&gt;&gt;refresh_updown.Name" xml:space="preserve">
+    <value>refresh_updown</value>
+  </data>
+  <data name="&gt;&gt;refresh_updown.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;refresh_updown.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;refresh_updown.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="label18.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1805,7 +1895,7 @@
     <value>黑体, 10.5pt</value>
   </data>
   <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 15</value>
+    <value>6, 268</value>
   </data>
   <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 14</value>
@@ -1826,133 +1916,13 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label18.Parent" xml:space="preserve">
-    <value>panel9</value>
+    <value>panel6</value>
   </data>
   <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="panel9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 378</value>
-  </data>
-  <data name="panel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 106</value>
-  </data>
-  <data name="panel9.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;panel9.Name" xml:space="preserve">
-    <value>panel9</value>
-  </data>
-  <data name="&gt;&gt;panel9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel9.Parent" xml:space="preserve">
-    <value>panel6</value>
-  </data>
-  <data name="&gt;&gt;panel9.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="del_updownwp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 30</value>
-  </data>
-  <data name="del_updownwp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="del_updownwp.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="del_updownwp.Text" xml:space="preserve">
-    <value>删除</value>
-  </data>
-  <data name="&gt;&gt;del_updownwp.Name" xml:space="preserve">
-    <value>del_updownwp</value>
-  </data>
-  <data name="&gt;&gt;del_updownwp.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;del_updownwp.Parent" xml:space="preserve">
-    <value>panel6</value>
-  </data>
-  <data name="&gt;&gt;del_updownwp.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="add_updownwp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 30</value>
-  </data>
-  <data name="add_updownwp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="add_updownwp.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="add_updownwp.Text" xml:space="preserve">
-    <value>添加</value>
-  </data>
-  <data name="&gt;&gt;add_updownwp.Name" xml:space="preserve">
-    <value>add_updownwp</value>
-  </data>
-  <data name="&gt;&gt;add_updownwp.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;add_updownwp.Parent" xml:space="preserve">
-    <value>panel6</value>
-  </data>
-  <data name="&gt;&gt;add_updownwp.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="loiter_downalt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 95</value>
-  </data>
-  <data name="loiter_downalt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 21</value>
-  </data>
-  <data name="loiter_downalt.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;loiter_downalt.Name" xml:space="preserve">
-    <value>loiter_downalt</value>
-  </data>
-  <data name="&gt;&gt;loiter_downalt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;loiter_downalt.Parent" xml:space="preserve">
-    <value>panel8</value>
-  </data>
-  <data name="&gt;&gt;loiter_downalt.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label16.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label16.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 97</value>
-  </data>
-  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 12</value>
-  </data>
-  <data name="label16.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>盘旋下降高度</value>
-  </data>
-  <data name="&gt;&gt;label16.Name" xml:space="preserve">
-    <value>label16</value>
-  </data>
-  <data name="&gt;&gt;label16.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
-    <value>panel8</value>
-  </data>
-  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="loiter_radius.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 66</value>
+    <value>128, 219</value>
   </data>
   <data name="loiter_radius.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 21</value>
@@ -1967,31 +1937,43 @@
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;loiter_radius.Parent" xml:space="preserve">
-    <value>panel8</value>
+    <value>panel6</value>
   </data>
   <data name="&gt;&gt;loiter_radius.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>36, 158</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="label10.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="loiter_upalt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 39</value>
+  <data name="label10.Text" xml:space="preserve">
+    <value>引导距离</value>
   </data>
-  <data name="loiter_upalt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 21</value>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>起飞航点间距</value>
   </data>
-  <data name="loiter_upalt.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
   </data>
-  <data name="&gt;&gt;loiter_upalt.Name" xml:space="preserve">
-    <value>loiter_upalt</value>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;loiter_upalt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>panel6</value>
   </data>
-  <data name="&gt;&gt;loiter_upalt.Parent" xml:space="preserve">
-    <value>panel8</value>
-  </data>
-  <data name="&gt;&gt;loiter_upalt.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>10</value>
   </data>
   <data name="label15.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2000,7 +1982,7 @@
     <value>NoControl</value>
   </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 68</value>
+    <value>36, 224</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 12</value>
@@ -2018,16 +2000,79 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label15.Parent" xml:space="preserve">
-    <value>panel8</value>
+    <value>panel6</value>
   </data>
   <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>11</value>
+  </data>
+  <data name="loiter_upalt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 193</value>
+  </data>
+  <data name="loiter_upalt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 21</value>
+  </data>
+  <data name="loiter_upalt.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;loiter_upalt.Name" xml:space="preserve">
+    <value>loiter_upalt</value>
+  </data>
+  <data name="&gt;&gt;loiter_upalt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;loiter_upalt.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;loiter_upalt.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="pilotwp_upalt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 135</value>
+  </data>
+  <data name="pilotwp_upalt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 21</value>
+  </data>
+  <data name="pilotwp_upalt.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;pilotwp_upalt.Name" xml:space="preserve">
+    <value>pilotwp_upalt</value>
+  </data>
+  <data name="&gt;&gt;pilotwp_upalt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pilotwp_upalt.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;pilotwp_upalt.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="updown_angle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>72, 64</value>
+  </data>
+  <data name="updown_angle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 21</value>
+  </data>
+  <data name="updown_angle.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;updown_angle.Name" xml:space="preserve">
+    <value>updown_angle</value>
+  </data>
+  <data name="&gt;&gt;updown_angle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;updown_angle.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;updown_angle.ZOrder" xml:space="preserve">
+    <value>14</value>
   </data>
   <data name="label14.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 41</value>
+    <value>32, 202</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 12</value>
@@ -2038,6 +2083,9 @@
   <data name="label14.Text" xml:space="preserve">
     <value>盘旋上升高度</value>
   </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>盘旋上升到指定高度</value>
+  </data>
   <data name="&gt;&gt;label14.Name" xml:space="preserve">
     <value>label14</value>
   </data>
@@ -2045,10 +2093,43 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label14.Parent" xml:space="preserve">
-    <value>panel8</value>
+    <value>panel6</value>
   </data>
   <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>15</value>
+  </data>
+  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>36, 137</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="label12.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>引导高度</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>起飞后第一个引导航点的高度</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>16</value>
   </data>
   <data name="label13.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2057,7 +2138,7 @@
     <value>黑体, 10.5pt</value>
   </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 9</value>
+    <value>6, 179</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 14</value>
@@ -2075,31 +2156,172 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label13.Parent" xml:space="preserve">
-    <value>panel8</value>
-  </data>
-  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="panel8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 239</value>
-  </data>
-  <data name="panel8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 133</value>
-  </data>
-  <data name="panel8.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;panel8.Name" xml:space="preserve">
-    <value>panel8</value>
-  </data>
-  <data name="&gt;&gt;panel8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel8.Parent" xml:space="preserve">
     <value>panel6</value>
   </data>
-  <data name="&gt;&gt;panel8.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="vtol_takeoff_alt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 111</value>
+  </data>
+  <data name="vtol_takeoff_alt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 21</value>
+  </data>
+  <data name="vtol_takeoff_alt.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;vtol_takeoff_alt.Name" xml:space="preserve">
+    <value>vtol_takeoff_alt</value>
+  </data>
+  <data name="&gt;&gt;vtol_takeoff_alt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vtol_takeoff_alt.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;vtol_takeoff_alt.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="label21.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label21.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 68</value>
+  </data>
+  <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="label21.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>起降角度</value>
+  </data>
+  <data name="&gt;&gt;label21.Name" xml:space="preserve">
+    <value>label21</value>
+  </data>
+  <data name="&gt;&gt;label21.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="del_updownwp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 30</value>
+  </data>
+  <data name="del_updownwp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="del_updownwp.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="del_updownwp.Text" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="del_updownwp.ToolTip" xml:space="preserve">
+    <value>删除起降航点</value>
+  </data>
+  <data name="&gt;&gt;del_updownwp.Name" xml:space="preserve">
+    <value>del_updownwp</value>
+  </data>
+  <data name="&gt;&gt;del_updownwp.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;del_updownwp.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;del_updownwp.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>36, 113</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="label9.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>垂起高度</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>起飞命令垂直上升高度</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="add_updownwp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 30</value>
+  </data>
+  <data name="add_updownwp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="add_updownwp.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="add_updownwp.Text" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="add_updownwp.ToolTip" xml:space="preserve">
+    <value>固定翼起降航点添加</value>
+  </data>
+  <data name="&gt;&gt;add_updownwp.Name" xml:space="preserve">
+    <value>add_updownwp</value>
+  </data>
+  <data name="&gt;&gt;add_updownwp.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;add_updownwp.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;add_updownwp.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>黑体, 10.5pt</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 89</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 14</value>
+  </data>
+  <data name="label8.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>起飞设置</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>23</value>
   </data>
   <data name="label7.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
@@ -2111,7 +2333,7 @@
     <value>楷体, 12pt, style=Bold</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 0</value>
+    <value>32, 1</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>161, 16</value>
@@ -2132,214 +2354,13 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="pilotwp_updist.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 106</value>
-  </data>
-  <data name="pilotwp_updist.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 21</value>
-  </data>
-  <data name="pilotwp_updist.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;pilotwp_updist.Name" xml:space="preserve">
-    <value>pilotwp_updist</value>
-  </data>
-  <data name="&gt;&gt;pilotwp_updist.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pilotwp_updist.Parent" xml:space="preserve">
-    <value>panel7</value>
-  </data>
-  <data name="&gt;&gt;pilotwp_updist.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="pilotwp_upalt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 74</value>
-  </data>
-  <data name="pilotwp_upalt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 21</value>
-  </data>
-  <data name="pilotwp_upalt.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;pilotwp_upalt.Name" xml:space="preserve">
-    <value>pilotwp_upalt</value>
-  </data>
-  <data name="&gt;&gt;pilotwp_upalt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pilotwp_upalt.Parent" xml:space="preserve">
-    <value>panel7</value>
-  </data>
-  <data name="&gt;&gt;pilotwp_upalt.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="vtol_takeoff_alt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 42</value>
-  </data>
-  <data name="vtol_takeoff_alt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 21</value>
-  </data>
-  <data name="vtol_takeoff_alt.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;vtol_takeoff_alt.Name" xml:space="preserve">
-    <value>vtol_takeoff_alt</value>
-  </data>
-  <data name="&gt;&gt;vtol_takeoff_alt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vtol_takeoff_alt.Parent" xml:space="preserve">
-    <value>panel7</value>
-  </data>
-  <data name="&gt;&gt;vtol_takeoff_alt.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 76</value>
-  </data>
-  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
-  </data>
-  <data name="label12.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>引导高度</value>
-  </data>
-  <data name="&gt;&gt;label12.Name" xml:space="preserve">
-    <value>label12</value>
-  </data>
-  <data name="&gt;&gt;label12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
-    <value>panel7</value>
-  </data>
-  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 108</value>
-  </data>
-  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
-  </data>
-  <data name="label10.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>引导距离</value>
-  </data>
-  <data name="&gt;&gt;label10.Name" xml:space="preserve">
-    <value>label10</value>
-  </data>
-  <data name="&gt;&gt;label10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
-    <value>panel7</value>
-  </data>
-  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 44</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
-  </data>
-  <data name="label9.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>垂起高度</value>
-  </data>
-  <data name="&gt;&gt;label9.Name" xml:space="preserve">
-    <value>label9</value>
-  </data>
-  <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
-    <value>panel7</value>
-  </data>
-  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>黑体, 10.5pt</value>
-  </data>
-  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 10</value>
-  </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 14</value>
-  </data>
-  <data name="label8.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>起飞设置</value>
-  </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
-  </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>panel7</value>
-  </data>
-  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="panel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 98</value>
-  </data>
-  <data name="panel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 135</value>
-  </data>
-  <data name="panel7.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;panel7.Name" xml:space="preserve">
-    <value>panel7</value>
-  </data>
-  <data name="&gt;&gt;panel7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel7.Parent" xml:space="preserve">
-    <value>panel6</value>
-  </data>
-  <data name="&gt;&gt;panel7.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>24</value>
   </data>
   <data name="panel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 258</value>
+    <value>3, 233</value>
   </data>
   <data name="panel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 487</value>
+    <value>227, 488</value>
   </data>
   <data name="panel6.TabIndex" type="System.Int32, mscorlib">
     <value>49</value>

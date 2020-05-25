@@ -102,9 +102,9 @@ namespace MissionPlanner.GCSViews
             this.BUT_loadwpfile = new MissionPlanner.Controls.MyButton();
             this.BUT_saveWPFile = new MissionPlanner.Controls.MyButton();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.refresh_updown = new MissionPlanner.Controls.MyButton();
             this.updown_angle = new System.Windows.Forms.NumericUpDown();
             this.label21 = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
             this.pilotwp_downdist = new System.Windows.Forms.NumericUpDown();
             this.pilotwp_downalt = new System.Windows.Forms.NumericUpDown();
             this.label20 = new System.Windows.Forms.Label();
@@ -112,7 +112,6 @@ namespace MissionPlanner.GCSViews
             this.label18 = new System.Windows.Forms.Label();
             this.del_updownwp = new MissionPlanner.Controls.MyButton();
             this.add_updownwp = new MissionPlanner.Controls.MyButton();
-            this.panel8 = new System.Windows.Forms.Panel();
             this.loiter_downalt = new System.Windows.Forms.NumericUpDown();
             this.label16 = new System.Windows.Forms.Label();
             this.loiter_radius = new System.Windows.Forms.NumericUpDown();
@@ -121,7 +120,6 @@ namespace MissionPlanner.GCSViews
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
             this.pilotwp_updist = new System.Windows.Forms.NumericUpDown();
             this.pilotwp_upalt = new System.Windows.Forms.NumericUpDown();
             this.vtol_takeoff_alt = new System.Windows.Forms.NumericUpDown();
@@ -259,14 +257,11 @@ namespace MissionPlanner.GCSViews
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.updown_angle)).BeginInit();
-            this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pilotwp_downdist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pilotwp_downalt)).BeginInit();
-            this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loiter_downalt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loiter_radius)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loiter_upalt)).BeginInit();
-            this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pilotwp_updist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pilotwp_upalt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vtol_takeoff_alt)).BeginInit();
@@ -441,6 +436,7 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.BUT_write, "BUT_write");
             this.BUT_write.Name = "BUT_write";
+            this.toolTip1.SetToolTip(this.BUT_write, resources.GetString("BUT_write.ToolTip"));
             this.BUT_write.UseVisualStyleBackColor = true;
             this.BUT_write.Click += new System.EventHandler(this.BUT_write_Click);
             // 
@@ -448,6 +444,7 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.BUT_read, "BUT_read");
             this.BUT_read.Name = "BUT_read";
+            this.toolTip1.SetToolTip(this.BUT_read, resources.GetString("BUT_read.ToolTip"));
             this.BUT_read.UseVisualStyleBackColor = true;
             this.BUT_read.Click += new System.EventHandler(this.BUT_read_Click);
             // 
@@ -646,6 +643,7 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.load_kml, "load_kml");
             this.load_kml.Name = "load_kml";
+            this.toolTip1.SetToolTip(this.load_kml, resources.GetString("load_kml.ToolTip"));
             this.load_kml.UseVisualStyleBackColor = true;
             this.load_kml.Click += new System.EventHandler(this.load_kml_Click);
             // 
@@ -653,6 +651,7 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.alt_curve, "alt_curve");
             this.alt_curve.Name = "alt_curve";
+            this.toolTip1.SetToolTip(this.alt_curve, resources.GetString("alt_curve.ToolTip"));
             this.alt_curve.UseVisualStyleBackColor = true;
             this.alt_curve.Click += new System.EventHandler(this.alt_curve_Click);
             // 
@@ -660,6 +659,7 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.del_area, "del_area");
             this.del_area.Name = "del_area";
+            this.toolTip1.SetToolTip(this.del_area, resources.GetString("del_area.ToolTip"));
             this.del_area.UseVisualStyleBackColor = true;
             this.del_area.Click += new System.EventHandler(this.del_area_Click);
             // 
@@ -667,6 +667,7 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.del_flight, "del_flight");
             this.del_flight.Name = "del_flight";
+            this.toolTip1.SetToolTip(this.del_flight, resources.GetString("del_flight.ToolTip"));
             this.del_flight.UseVisualStyleBackColor = true;
             this.del_flight.Click += new System.EventHandler(this.del_flight_Click);
             // 
@@ -674,6 +675,7 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.creat_flight, "creat_flight");
             this.creat_flight.Name = "creat_flight";
+            this.toolTip1.SetToolTip(this.creat_flight, resources.GetString("creat_flight.ToolTip"));
             this.creat_flight.UseVisualStyleBackColor = true;
             this.creat_flight.Click += new System.EventHandler(this.creat_flight_click);
             // 
@@ -686,6 +688,7 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.BUT_loadwpfile, "BUT_loadwpfile");
             this.BUT_loadwpfile.Name = "BUT_loadwpfile";
+            this.toolTip1.SetToolTip(this.BUT_loadwpfile, resources.GetString("BUT_loadwpfile.ToolTip"));
             this.BUT_loadwpfile.UseVisualStyleBackColor = true;
             this.BUT_loadwpfile.Click += new System.EventHandler(this.BUT_loadwpfile_Click);
             // 
@@ -693,21 +696,47 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.BUT_saveWPFile, "BUT_saveWPFile");
             this.BUT_saveWPFile.Name = "BUT_saveWPFile";
+            this.toolTip1.SetToolTip(this.BUT_saveWPFile, resources.GetString("BUT_saveWPFile.ToolTip"));
             this.BUT_saveWPFile.UseVisualStyleBackColor = true;
             this.BUT_saveWPFile.Click += new System.EventHandler(this.BUT_saveWPFile_Click);
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.pilotwp_downdist);
+            this.panel6.Controls.Add(this.loiter_downalt);
+            this.panel6.Controls.Add(this.label20);
+            this.panel6.Controls.Add(this.pilotwp_downalt);
+            this.panel6.Controls.Add(this.pilotwp_updist);
+            this.panel6.Controls.Add(this.label16);
+            this.panel6.Controls.Add(this.label19);
+            this.panel6.Controls.Add(this.refresh_updown);
+            this.panel6.Controls.Add(this.label18);
+            this.panel6.Controls.Add(this.loiter_radius);
+            this.panel6.Controls.Add(this.label10);
+            this.panel6.Controls.Add(this.label15);
+            this.panel6.Controls.Add(this.loiter_upalt);
+            this.panel6.Controls.Add(this.pilotwp_upalt);
             this.panel6.Controls.Add(this.updown_angle);
+            this.panel6.Controls.Add(this.label14);
+            this.panel6.Controls.Add(this.label12);
+            this.panel6.Controls.Add(this.label13);
+            this.panel6.Controls.Add(this.vtol_takeoff_alt);
             this.panel6.Controls.Add(this.label21);
-            this.panel6.Controls.Add(this.panel9);
             this.panel6.Controls.Add(this.del_updownwp);
+            this.panel6.Controls.Add(this.label9);
             this.panel6.Controls.Add(this.add_updownwp);
-            this.panel6.Controls.Add(this.panel8);
+            this.panel6.Controls.Add(this.label8);
             this.panel6.Controls.Add(this.label7);
-            this.panel6.Controls.Add(this.panel7);
             resources.ApplyResources(this.panel6, "panel6");
             this.panel6.Name = "panel6";
+            // 
+            // refresh_updown
+            // 
+            resources.ApplyResources(this.refresh_updown, "refresh_updown");
+            this.refresh_updown.Name = "refresh_updown";
+            this.toolTip1.SetToolTip(this.refresh_updown, resources.GetString("refresh_updown.ToolTip"));
+            this.refresh_updown.UseVisualStyleBackColor = true;
+            this.refresh_updown.Click += new System.EventHandler(this.refresh_updown_Click);
             // 
             // updown_angle
             // 
@@ -729,16 +758,6 @@ namespace MissionPlanner.GCSViews
             resources.ApplyResources(this.label21, "label21");
             this.label21.Name = "label21";
             this.label21.Click += new System.EventHandler(this.label21_Click);
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.pilotwp_downdist);
-            this.panel9.Controls.Add(this.pilotwp_downalt);
-            this.panel9.Controls.Add(this.label20);
-            this.panel9.Controls.Add(this.label19);
-            this.panel9.Controls.Add(this.label18);
-            resources.ApplyResources(this.panel9, "panel9");
-            this.panel9.Name = "panel9";
             // 
             // pilotwp_downdist
             // 
@@ -784,11 +803,13 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.label20, "label20");
             this.label20.Name = "label20";
+            this.toolTip1.SetToolTip(this.label20, resources.GetString("label20.ToolTip"));
             // 
             // label19
             // 
             resources.ApplyResources(this.label19, "label19");
             this.label19.Name = "label19";
+            this.toolTip1.SetToolTip(this.label19, resources.GetString("label19.ToolTip"));
             // 
             // label18
             // 
@@ -799,6 +820,7 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.del_updownwp, "del_updownwp");
             this.del_updownwp.Name = "del_updownwp";
+            this.toolTip1.SetToolTip(this.del_updownwp, resources.GetString("del_updownwp.ToolTip"));
             this.del_updownwp.UseVisualStyleBackColor = true;
             this.del_updownwp.Click += new System.EventHandler(this.del_updownwp_Click);
             // 
@@ -806,20 +828,9 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.add_updownwp, "add_updownwp");
             this.add_updownwp.Name = "add_updownwp";
+            this.toolTip1.SetToolTip(this.add_updownwp, resources.GetString("add_updownwp.ToolTip"));
             this.add_updownwp.UseVisualStyleBackColor = true;
             this.add_updownwp.Click += new System.EventHandler(this.add_updownwp_Click);
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.loiter_downalt);
-            this.panel8.Controls.Add(this.label16);
-            this.panel8.Controls.Add(this.loiter_radius);
-            this.panel8.Controls.Add(this.loiter_upalt);
-            this.panel8.Controls.Add(this.label15);
-            this.panel8.Controls.Add(this.label14);
-            this.panel8.Controls.Add(this.label13);
-            resources.ApplyResources(this.panel8, "panel8");
-            this.panel8.Name = "panel8";
             // 
             // loiter_downalt
             // 
@@ -845,6 +856,7 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.label16, "label16");
             this.label16.Name = "label16";
+            this.toolTip1.SetToolTip(this.label16, resources.GetString("label16.ToolTip"));
             // 
             // loiter_radius
             // 
@@ -895,6 +907,7 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.label14, "label14");
             this.label14.Name = "label14";
+            this.toolTip1.SetToolTip(this.label14, resources.GetString("label14.ToolTip"));
             // 
             // label13
             // 
@@ -905,18 +918,6 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.pilotwp_updist);
-            this.panel7.Controls.Add(this.pilotwp_upalt);
-            this.panel7.Controls.Add(this.vtol_takeoff_alt);
-            this.panel7.Controls.Add(this.label12);
-            this.panel7.Controls.Add(this.label10);
-            this.panel7.Controls.Add(this.label9);
-            this.panel7.Controls.Add(this.label8);
-            resources.ApplyResources(this.panel7, "panel7");
-            this.panel7.Name = "panel7";
             // 
             // pilotwp_updist
             // 
@@ -982,16 +983,19 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.label12, "label12");
             this.label12.Name = "label12";
+            this.toolTip1.SetToolTip(this.label12, resources.GetString("label12.ToolTip"));
             // 
             // label10
             // 
             resources.ApplyResources(this.label10, "label10");
             this.label10.Name = "label10";
+            this.toolTip1.SetToolTip(this.label10, resources.GetString("label10.ToolTip"));
             // 
             // label9
             // 
             resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
+            this.toolTip1.SetToolTip(this.label9, resources.GetString("label9.ToolTip"));
             // 
             // label8
             // 
@@ -1871,17 +1875,11 @@ namespace MissionPlanner.GCSViews
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.updown_angle)).EndInit();
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pilotwp_downdist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pilotwp_downalt)).EndInit();
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loiter_downalt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loiter_radius)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loiter_upalt)).EndInit();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pilotwp_updist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pilotwp_upalt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vtol_takeoff_alt)).EndInit();
@@ -2048,12 +2046,10 @@ namespace MissionPlanner.GCSViews
         public MyButton load_kml;
         public Splitter splitter2;
         private Panel panel6;
-        private Panel panel8;
         private Label label15;
         private Label label14;
         private Label label13;
         private Label label7;
-        private Panel panel7;
         private Label label12;
         private Label label10;
         private Label label9;
@@ -2067,7 +2063,6 @@ namespace MissionPlanner.GCSViews
         private NumericUpDown vtol_takeoff_alt;
         private NumericUpDown loiter_downalt;
         private Label label16;
-        private Panel panel9;
         private Label label20;
         private Label label19;
         private Label label18;
@@ -2075,6 +2070,7 @@ namespace MissionPlanner.GCSViews
         private NumericUpDown pilotwp_downalt;
         private NumericUpDown updown_angle;
         private Label label21;
+        private MyButton refresh_updown;
         private DataGridViewComboBoxColumn Command;
         private DataGridViewTextBoxColumn Param1;
         private DataGridViewTextBoxColumn Param2;
