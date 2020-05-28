@@ -306,7 +306,7 @@ namespace MissionPlanner.GCSViews
             }
             else
             {
-                CMB_altmode.Visible = false;
+                CMB_altmode.Visible = true;
             }
 
             // hide spline wp options if not arducopter
@@ -618,7 +618,7 @@ namespace MissionPlanner.GCSViews
             if ((altmode)CMB_altmode.SelectedValue == altmode.Absolute)
             {
                 if ((int)DialogResult.No ==
-                    CustomMessageBox.Show("Absolute Alt is selected are you sure?", "Alt Mode", MessageBoxButtons.YesNo))
+                    CustomMessageBox.Show("当前为绝对高度模式哟?", "Alt Mode", MessageBoxButtons.YesNo))
                 {
                     CMB_altmode.SelectedValue = (int)altmode.Relative;
                 }
@@ -636,7 +636,7 @@ namespace MissionPlanner.GCSViews
             }
             catch
             {
-                CustomMessageBox.Show("Your home location is invalid", Strings.ERROR);
+                CustomMessageBox.Show("你的home点位置不合适", Strings.ERROR);
                 return;
             }
 
@@ -650,7 +650,7 @@ namespace MissionPlanner.GCSViews
                     {
                         if (!double.TryParse(Commands[b, a].Value.ToString(), out answer))
                         {
-                            CustomMessageBox.Show("There are errors in your mission");
+                            CustomMessageBox.Show("添加任务命令出错！请检查！");
                             return;
                         }
                     }
@@ -672,7 +672,7 @@ namespace MissionPlanner.GCSViews
                             cmd != (ushort)MAVLink.MAV_CMD.RETURN_TO_LAUNCH)
                         {
                             CustomMessageBox.Show("Low alt on WP#" + (a + 1) +
-                                                  "\nPlease reduce the alt warning, or increase the altitude");
+                                                  "\n请减少高度警告，或增加航高");
                             return;
                         }
                     }
@@ -1706,92 +1706,42 @@ namespace MissionPlanner.GCSViews
 
         public void but_writewpfast_Click(object sender, EventArgs e)
         {
-            if ((altmode)CMB_altmode.SelectedValue == altmode.Absolute)
+            drawnpolygonsoverlay.Markers.Clear();
+            drawnpolygonsoverlay.Polygons.Clear();
+            drawnpolygon.Points.Clear();
+            foreach (DataGridViewRow line in Commands.Rows)
             {
-                if ((int)DialogResult.No ==
-                    CustomMessageBox.Show("Absolute Alt is selected are you sure?", "Alt Mode", MessageBoxButtons.YesNo))
-                {
-                    CMB_altmode.SelectedValue = (int)altmode.Relative;
-                }
+                drawnpolygon.Points.Add(new PointLatLng((double)line.Cells[Lat.Index].Value, (double)line.Cells[Lon.Index].Value));
+                addpolygonmarkergrid(drawnpolygon.Points.Count.ToString(),
+                    (double)line.Cells[Lat.Index].Value, 
+                    (double)line.Cells[Lon.Index].Value,0);
             }
+            if (drawnpolygon.Points.Count > 1 &&
+                   drawnpolygon.Points[0] == drawnpolygon.Points[drawnpolygon.Points.Count - 1])
+                drawnpolygon.Points.RemoveAt(drawnpolygon.Points.Count - 1); // unmake a full loop
 
-            if ((MAVLink.MAV_MISSION_TYPE)cmb_missiontype.SelectedValue != MAVLink.MAV_MISSION_TYPE.MISSION)
-            {
-                CustomMessageBox.Show("Only available for missions");
-                return;
-            }
+            drawnpolygonsoverlay.Polygons.Add(drawnpolygon);
 
-            // check home
-            Locationwp home = new Locationwp();
+            MainMap.UpdatePolygonLocalPosition(drawnpolygon);
+
+            MainMap.Invalidate();
+
+            MainMap.ZoomAndCenterMarkers(drawnpolygonsoverlay.Id);
+
+            quickadd = true;
+
+            // mono fix
             try
             {
-                home.id = (ushort)MAVLink.MAV_CMD.WAYPOINT;
-                home.lat = (double.Parse(TXT_homelat.Text));
-                home.lng = (double.Parse(TXT_homelng.Text));
-                home.alt = (float.Parse(TXT_homealt.Text) / CurrentState.multiplierdist); // use saved home
+                Commands.CurrentCell = null;
             }
-            catch
-            {
-                CustomMessageBox.Show("Your home location is invalid", Strings.ERROR);
-                return;
-            }
+            catch { }
 
-            // check for invalid grid data
-            for (int a = 0; a < Commands.Rows.Count - 0; a++)
-            {
-                for (int b = 0; b < Commands.ColumnCount - 0; b++)
-                {
-                    double answer;
-                    if (b >= 1 && b <= 7)
-                    {
-                        if (!double.TryParse(Commands[b, a].Value.ToString(), out answer))
-                        {
-                            CustomMessageBox.Show("There are errors in your mission");
-                            return;
-                        }
-                    }
+            Commands.Rows.Clear();
 
-                    if (TXT_altwarn.Text == "") TXT_altwarn.Text = (0).ToString();
-
-                    if (Commands.Rows[a].Cells[Command.Index].Value.ToString().Contains("UNKNOWN"))
-                        continue;
-
-                    ushort cmd =
-                        (ushort)
-                        Enum.Parse(typeof(MAVLink.MAV_CMD), Commands.Rows[a].Cells[Command.Index].Value.ToString(), false);
-
-                    if (cmd < (ushort)MAVLink.MAV_CMD.LAST &&
-                        double.Parse(Commands[Alt.Index, a].Value.ToString()) < double.Parse(TXT_altwarn.Text))
-                    {
-                        if (cmd != (ushort)MAVLink.MAV_CMD.TAKEOFF &&
-                            cmd != (ushort)MAVLink.MAV_CMD.LAND &&
-                            cmd != (ushort)MAVLink.MAV_CMD.RETURN_TO_LAUNCH)
-                        {
-                            CustomMessageBox.Show("Low alt on WP#" + (a + 1) +
-                                                  "\nPlease reduce the alt warning, or increase the altitude");
-                            return;
-                        }
-                    }
-                }
-            }
-
-            IProgressReporterDialogue frmProgressReporter = new ProgressReporterDialogue
-            {
-                StartPosition = FormStartPosition.CenterScreen,
-                Text = "Sending WP's"
-            };
-
-            frmProgressReporter.DoWork += saveWPsFast;
-
-            frmProgressReporter.UpdateProgressAndStatus(-1, "Sending WP's");
-
-            ThemeManager.ApplyThemeTo(frmProgressReporter);
-
-            frmProgressReporter.RunBackgroundOperationAsync();
-
-            frmProgressReporter.Dispose();
-
-            MainMap.Focus();
+            selectedrow = 0;
+            quickadd = false;
+            writeKML();
         }
 
         private double calcpolygonarea(List<PointLatLng> polygon)
@@ -4087,6 +4037,7 @@ namespace MissionPlanner.GCSViews
                     }
                 }
             }
+         
         }
 
         public void loadPolygonToolStripMenuItem_Click(object sender, EventArgs e)
@@ -4667,6 +4618,10 @@ namespace MissionPlanner.GCSViews
                 foreach (var loc in ls.Coordinates)
                 {
                     kmlroute.Points.Add(new PointLatLng(loc.Latitude, loc.Longitude));
+                    drawnpolygon.Points.Add(new PointLatLng(loc.Latitude,loc.Longitude));
+                    addpolygonmarkergrid(drawnpolygon.Points.Count.ToString(),
+                        loc.Latitude,
+                        loc.Longitude, 0);
                 }
 
                 kmlpolygonsoverlay.Routes.Add(kmlroute);
@@ -7164,7 +7119,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                     drawnpolygonsoverlay.Markers.Clear();
                     drawnpolygonsoverlay.Polygons.Clear();
                     drawnpolygon.Points.Clear();
-                    
+
                     FlightData.kmlpolygons.Routes.Clear();
                     FlightData.kmlpolygons.Polygons.Clear();
                     if (file.ToLower().EndsWith("gpkg"))
@@ -7178,17 +7133,17 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                                 FlightData.kmlpolygons.Markers.Add(mark);
                                 kmlpolygonsoverlay.Markers.Add(mark);
                                 //加载kml形状的多边形  
-                           //     drawnpolygon.Points.Add(new PointLatLng(pnt.y,pnt.x));
-                           //     addpolygonmarkergrid(drawnpolygon.Points.Count.ToString(),pnt.y,pnt.x,0);
-                           //     if (drawnpolygon.Points.Count > 1 &&
-                           //drawnpolygon.Points[0] == drawnpolygon.Points[drawnpolygon.Points.Count - 1])
-                           //     {
-                           //         drawnpolygon.Points.RemoveAt(drawnpolygon.Points.Count - 1);
-                           //     }
+                                drawnpolygon.Points.Add(new PointLatLng(pnt.y, pnt.x));
+                                addpolygonmarkergrid(drawnpolygon.Points.Count.ToString(), pnt.y, pnt.x, 0);
+                                //     if (drawnpolygon.Points.Count > 1 &&
+                                //drawnpolygon.Points[0] == drawnpolygon.Points[drawnpolygon.Points.Count - 1])
+                                //     {
+                                //         drawnpolygon.Points.RemoveAt(drawnpolygon.Points.Count - 1);
+                                //     }
 
-                           //     drawnpolygonsoverlay.Polygons.Add(drawnpolygon);
-                           //     MainMap.UpdatePolygonLocalPosition(drawnpolygon);
-                           //     MainMap.Invalidate();
+                                //     drawnpolygonsoverlay.Polygons.Add(drawnpolygon);
+                                //     MainMap.UpdatePolygonLocalPosition(drawnpolygon);
+                                //     MainMap.Invalidate();
                             };
                             ogr.NewLineString += ls =>
                             {
@@ -7216,8 +7171,13 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                                 kmlpolygonsoverlay.Polygons.Add(polygon);
                                
                             };
-                           
+                            if (drawnpolygon.Points.Count > 1 &&
+                                 drawnpolygon.Points[0] == drawnpolygon.Points[drawnpolygon.Points.Count - 1])
+                                drawnpolygon.Points.RemoveAt(drawnpolygon.Points.Count - 1); // unmake a full loop
+
+                            drawnpolygonsoverlay.Polygons.Add(drawnpolygon);
                             ogr.Process();
+                           
                         }
                     }
                     else if (file.ToLower().EndsWith("dxf"))
@@ -7277,7 +7237,15 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
 
                             parser.ElementAdded += parser_ElementAdded;
                             parser.ParseString(kml, false);
+                            if (drawnpolygon.Points.Count > 1 &&
+                             drawnpolygon.Points[0] == drawnpolygon.Points[drawnpolygon.Points.Count - 1])
+                                drawnpolygon.Points.RemoveAt(drawnpolygon.Points.Count - 1); // unmake a full loop
 
+                            drawnpolygonsoverlay.Polygons.Add(drawnpolygon);
+
+                            MainMap.UpdatePolygonLocalPosition(drawnpolygon);
+
+                            MainMap.Invalidate();
                             if ((int)DialogResult.Yes ==
                                 CustomMessageBox.Show(Strings.Do_you_want_to_load_this_into_the_flight_data_screen, Strings.Load_data,
                                     MessageBoxButtons.YesNo))
@@ -7293,7 +7261,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                             }
 
                             if (
-                                CustomMessageBox.Show(Strings.Zoom_To, Strings.Zoom_to_the_center_or_the_loaded_file, MessageBoxButtons.YesNo) ==
+                                CustomMessageBox.Show("缩放到kml范围位置", Strings.Zoom_to_the_center_or_the_loaded_file, MessageBoxButtons.YesNo) ==
                                 (int)DialogResult.Yes)
                             {
                                 MainMap.SetZoomToFitRect(GetBoundingLayer(kmlpolygonsoverlay));

@@ -132,18 +132,18 @@
             this.NUM_leadin = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.NUM_overshoot2 = new System.Windows.Forms.NumericUpDown();
-            this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.CMB_startfrom = new System.Windows.Forms.ComboBox();
-            this.num_overlap = new System.Windows.Forms.NumericUpDown();
-            this.num_sidelap = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.NUM_overshoot = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.NUM_Distance = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.NUM_spacing = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.num_overlap = new System.Windows.Forms.NumericUpDown();
+            this.num_sidelap = new System.Windows.Forms.NumericUpDown();
             this.tabSimple = new System.Windows.Forms.TabPage();
             this.label38 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -184,11 +184,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.num_corridorwidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_leadin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_overshoot2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num_overlap)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num_sidelap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_overshoot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_Distance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_spacing)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_overlap)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_sidelap)).BeginInit();
             this.tabSimple.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_UpDownFlySpeed)).BeginInit();
@@ -914,8 +914,6 @@
             // groupBox1
             // 
             resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Controls.Add(this.polygon_inc);
-            this.groupBox1.Controls.Add(this.label45);
             this.groupBox1.Controls.Add(this.chk_spiral);
             this.groupBox1.Controls.Add(this.chk_Corridor);
             this.groupBox1.Controls.Add(this.label43);
@@ -947,17 +945,8 @@
             0,
             0,
             0});
-            this.polygon_inc.Minimum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
             this.polygon_inc.Name = "polygon_inc";
-            this.polygon_inc.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
+            this.polygon_inc.ValueChanged += new System.EventHandler(this.polygon_inc_ValueChanged);
             // 
             // label45
             // 
@@ -1026,11 +1015,6 @@
             0,
             0});
             this.NUM_leadin.Name = "NUM_leadin";
-            this.NUM_leadin.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
             this.NUM_leadin.ValueChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
             // 
             // label7
@@ -1047,27 +1031,12 @@
             0,
             0});
             this.NUM_overshoot2.Name = "NUM_overshoot2";
-            this.NUM_overshoot2.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
             this.NUM_overshoot2.ValueChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
-            // 
-            // label8
-            // 
-            resources.ApplyResources(this.label8, "label8");
-            this.label8.Name = "label8";
             // 
             // label6
             // 
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            // 
-            // label15
-            // 
-            resources.ApplyResources(this.label15, "label15");
-            this.label15.Name = "label15";
             // 
             // CMB_startfrom
             // 
@@ -1075,30 +1044,6 @@
             resources.ApplyResources(this.CMB_startfrom, "CMB_startfrom");
             this.CMB_startfrom.Name = "CMB_startfrom";
             this.CMB_startfrom.SelectedIndexChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
-            // 
-            // num_overlap
-            // 
-            this.num_overlap.DecimalPlaces = 1;
-            resources.ApplyResources(this.num_overlap, "num_overlap");
-            this.num_overlap.Name = "num_overlap";
-            this.num_overlap.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.num_overlap.ValueChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
-            // 
-            // num_sidelap
-            // 
-            this.num_sidelap.DecimalPlaces = 1;
-            resources.ApplyResources(this.num_sidelap, "num_sidelap");
-            this.num_sidelap.Name = "num_sidelap";
-            this.num_sidelap.Value = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
-            this.num_sidelap.ValueChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
             // 
             // label5
             // 
@@ -1114,11 +1059,6 @@
             0,
             0});
             this.NUM_overshoot.Name = "NUM_overshoot";
-            this.NUM_overshoot.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
             this.NUM_overshoot.ValueChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
             // 
             // label2
@@ -1164,6 +1104,40 @@
             this.NUM_spacing.Name = "NUM_spacing";
             this.NUM_spacing.ValueChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
             // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
+            // 
+            // label15
+            // 
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.Name = "label15";
+            // 
+            // num_overlap
+            // 
+            this.num_overlap.DecimalPlaces = 1;
+            resources.ApplyResources(this.num_overlap, "num_overlap");
+            this.num_overlap.Name = "num_overlap";
+            this.num_overlap.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.num_overlap.ValueChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
+            // 
+            // num_sidelap
+            // 
+            this.num_sidelap.DecimalPlaces = 1;
+            resources.ApplyResources(this.num_sidelap, "num_sidelap");
+            this.num_sidelap.Name = "num_sidelap";
+            this.num_sidelap.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.num_sidelap.ValueChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
+            // 
             // tabSimple
             // 
             this.tabSimple.Controls.Add(this.label38);
@@ -1181,8 +1155,10 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.polygon_inc);
             this.groupBox6.Controls.Add(this.CHK_usespeed);
             this.groupBox6.Controls.Add(this.CHK_toandland);
+            this.groupBox6.Controls.Add(this.label45);
             this.groupBox6.Controls.Add(this.label24);
             this.groupBox6.Controls.Add(this.NUM_UpDownFlySpeed);
             this.groupBox6.Controls.Add(this.num_sidelap);
@@ -1415,11 +1391,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.num_corridorwidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_leadin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_overshoot2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num_overlap)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num_sidelap)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_overshoot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_Distance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_spacing)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_overlap)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_sidelap)).EndInit();
             this.tabSimple.ResumeLayout(false);
             this.tabSimple.PerformLayout();
             this.groupBox6.ResumeLayout(false);

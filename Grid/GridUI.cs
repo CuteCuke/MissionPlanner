@@ -22,6 +22,8 @@ using System.Windows.Forms;
 using System.Xml;
 using GeoAPI.CoordinateSystems;
 using GeoAPI.CoordinateSystems.Transformations;
+using SixLabors.Shapes;
+using DotSpatial.Topology.Simplify;
 
 namespace MissionPlanner.Grid
 {
@@ -39,6 +41,7 @@ namespace MissionPlanner.Grid
         GMapOverlay routesOverlay;
         GMapOverlay kmlpolygonsoverlay;
         List<PointLatLngAlt> list = new List<PointLatLngAlt>();
+        List<PointLatLngAlt> list_clone = new List<PointLatLngAlt>();
         List<PointLatLngAlt> grid;
         bool loadedfromfile = false;
         bool loading = false;
@@ -49,7 +52,12 @@ namespace MissionPlanner.Grid
         public string inchpixel = "";
         public string feet_fovH = "";
         public string feet_fovV = "";
-
+        public double maxlat = 0.0;
+        public double minlat = 0.0;
+        public double maxlng = 0.0;
+        public double minlng = 0.0;
+        public double centerlat = 0.0;
+        public double centerlng = 0.0;
         internal PointLatLng MouseDownStart = new PointLatLng();
         internal PointLatLng MouseDownEnd;
         internal PointLatLngAlt CurrentGMapMarkerStartPos;
@@ -90,8 +98,13 @@ namespace MissionPlanner.Grid
             map.OnRouteLeave += new RouteLeave(map_OnRouteLeave);
 
             var points = plugin.Host.FPDrawnPolygon;
-            points.Points.ForEach(x => { list.Add(x); });
+            points.Points.ForEach(x => { list.Add(x);
+                                         list_clone.Add(x); });    //list_clone = list;//clone polgon         
             points.Dispose();
+         
+            polygoncenterlatlng();
+           // polygoninc();//外扩多边形 默认外扩为0 
+        
             if (plugin.Host.config["distunits"] != null)
                 DistUnits = plugin.Host.config["distunits"].ToString();
 
@@ -554,7 +567,8 @@ namespace MissionPlanner.Grid
             {
                 doCalc();
             }
-
+            //list = list_clone;
+            //polygoninc(list, (double)polygon_inc.Value);
             // new grid system test
 
             if (chk_Corridor.Checked)
@@ -1179,6 +1193,12 @@ namespace MissionPlanner.Grid
                     }
                 }
             }
+            //复制当前list
+            for (int i = 0; i < list.Count; i++)
+            {
+                list_clone[i].Lat = list[i].Lat;
+                list_clone[i].Lng = list[i].Lng;
+            }
             isMouseDraging = false;
             CurrentGMapMarker = null;
             CurrentGMapMarkerIndex = 0;
@@ -1196,6 +1216,8 @@ namespace MissionPlanner.Grid
 
                 if (CurrentGMapMarkerStartPos != null)
                     CurrentGMapMarkerIndex = list.FindIndex(c => c.ToString() == CurrentGMapMarkerStartPos.ToString());
+                
+                
             }
         }
 
@@ -1579,18 +1601,18 @@ namespace MissionPlanner.Grid
                     {
                         if (plugin.Host.cs.firmware == Firmwares.ArduCopter2)
                         {
-                            //var wpno = plugin.Host.AddWPtoList(MAVLink.MAV_CMD.TAKEOFF, 20, 0, 0, 0, 0, 0,
-                            //    (int)(30 * CurrentState.multiplierdist), gridobject);
                             var wpno = plugin.Host.AddWPtoList(MAVLink.MAV_CMD.TAKEOFF, 20, 0, 0, 0, 0, 0,
-                               (int)(NUM_altitude.Value), gridobject);
+                                (int)(30 * CurrentState.multiplierdist), gridobject);
+                            //var wpno = plugin.Host.AddWPtoList(MAVLink.MAV_CMD.TAKEOFF, 20, 0, 0, 0, 0, 0,
+                            //   (int)(NUM_altitude.Value), gridobject);
                             wpsplitstart.Add(wpno);
                         }
                         else
                         {
-                            //var wpno = plugin.Host.AddWPtoList(MAVLink.MAV_CMD.TAKEOFF, 20, 0, 0, 0, 0, 0,
-                            //    (int)(30 * CurrentState.multiplierdist), gridobject);
                             var wpno = plugin.Host.AddWPtoList(MAVLink.MAV_CMD.TAKEOFF, 20, 0, 0, 0, 0, 0,
-                               (int)(NUM_altitude.Value), gridobject);
+                                (int)(30 * CurrentState.multiplierdist), gridobject);
+                            //var wpno = plugin.Host.AddWPtoList(MAVLink.MAV_CMD.TAKEOFF, 20, 0, 0, 0, 0, 0,
+                            //   (int)(NUM_altitude.Value), gridobject);
                             wpsplitstart.Add(wpno);
                         }
                     }
@@ -1867,6 +1889,136 @@ namespace MissionPlanner.Grid
         private void label13_Click(object sender, EventArgs e)
         {
 
+        }
+        //计算多边形中心点
+        private void polygoncenterlatlng() 
+        {
+            if(list.Count>1)
+            {
+                maxlat = list[0].Lat;
+                minlat = list[0].Lat;
+                maxlng = list[0].Lng;
+                minlng = list[0].Lng;
+
+                foreach (PointLatLngAlt p in list)
+                {
+                    maxlat = Math.Max(p.Lat, maxlat);
+                    minlat = Math.Min(p.Lat, minlng);
+                    maxlng = Math.Max(p.Lng, maxlng);
+                    minlng = Math.Min(p.Lng, minlng);
+                    centerlat += p.Lat;
+                    centerlng += p.Lng;
+                }
+                //centerlat = (minlat + maxlat) / 2;
+                //centerlng = (maxlng + minlng) / 2;
+                centerlat = centerlat / list.Count;
+                centerlng = centerlng / list.Count;
+            }
+        }
+        private void polygoninc()
+        {
+            var a = (double)polygon_inc.Value / 100000;
+            //foreach (var p in list)
+            //{
+            //    if (p.Lat >= centerlat)
+            //    {
+            //        if (p.Lat > centerlat)
+            //            p.Lat += a;
+            //    }
+            //    else
+            //        p.Lat -= a;
+            //    if (p.Lng >= centerlng)
+            //    {
+            //        if (p.Lng > centerlat)
+            //            p.Lng += a;
+            //    }
+            //    else
+            //        p.Lng -= a;
+            //    //p.Lat -= centerlat;
+            //    //p.Lat -= centerlng;
+            //}
+            for (int i = 0; i < list.Count; i++)
+            {
+                PointLatLngAlt p =new PointLatLngAlt(list[i].Lat,list[i].Lng);
+                PointLatLngAlt p1 = new PointLatLngAlt( list[i == 0 ? list.Count - 1 : i - 1].Lat, list[i == 0 ? list.Count - 1 : i - 1].Lng);
+                PointLatLngAlt p2 = new PointLatLngAlt( list[i == list.Count -1? 0 : i + 1].Lat, list[i == list.Count - 1 ? 0 : i + 1].Lng);
+
+                double v1x = p1.Lat - p.Lat;
+                double v1y = p1.Lng - p.Lng;
+                double n1 = norm(v1x, v1y);
+                v1x /= n1;
+                v1y /= n1;
+
+                double v2x = p2.Lat - p.Lat;
+                double v2y = p2.Lng - p.Lng;
+                double n2 = norm(v2x, v2y);
+                v2x /= n2;
+                v2y /= n2;
+
+                double l = -a / Math.Sqrt((1 - (v1x * v2x + v1y * v2y)) / 2);
+                double vx = v1x + v2x;
+                double vy = v1y + v2y;
+                double n = l / norm(vx, vy);
+                vx *= n;
+                vy *= n;
+                if (isinpolygon(vx + list[i].Lat, vy + list[i].Lng, list_clone))
+                {
+                    list[i].Lat -= vx;
+                    list[i].Lng -= vy;
+                }
+                else
+                {  
+                    list[i].Lat += vx;
+                    list[i].Lng += vy;
+                }
+
+            }
+        }
+        public static bool isinpolygon(double lat,double lng,List<PointLatLngAlt> list)
+        {
+            int count = 0;
+            double xinter;
+            PointLatLngAlt p1 = new PointLatLngAlt(list[list.Count-1].Lat, list[list.Count-1].Lng);
+            for (int i=0;i<list.Count;i++) 
+            {
+                PointLatLngAlt p2 = new PointLatLngAlt(list[i].Lat, list[i].Lng);
+                if(lng>Math.Min(p1.Lng,p2.Lng)&&lng<=Math.Max(p1.Lng,p2.Lng))
+                {
+                    if(lat<=Math.Max(p1.Lat,p2.Lat))
+                    {
+                        if (p1.Lng != p2.Lng)
+                        {
+                            xinter = (lng - p1.Lng) * (p2.Lat - lat) / (p2.Lng - p1.Lng) + p1.Lat;
+                            if (p1.Lat==p2.Lat||lat<=xinter) 
+                            {
+                                count++;
+                            }
+                        }
+                    }
+                }
+                p1.Lat = p2.Lat;
+                p1.Lng = p2.Lng;
+            }
+            if (count % 2 == 0)
+                return false;
+            else
+                return true;
+
+        }
+        private static double norm(double x,double y)
+        {
+            return Math.Sqrt(x * x + y * y);
+        }
+        private void polygon_inc_ValueChanged(object sender, EventArgs e)
+        {
+            //list = list_clone;
+            for (int i=0; i < list.Count; i++)
+            {
+                list[i].Lat = list_clone[i].Lat;
+                list[i].Lng = list_clone[i].Lng;
+            }
+            polygoninc();
+            domainUpDown1_ValueChanged(null, null);
         }
     }
 }

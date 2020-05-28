@@ -230,7 +230,7 @@ namespace MissionPlanner
 
             if (list.Count < 2 || coords.Length > (2048 - 256))
             {
-                CustomMessageBox.Show("Too many/few WP's or to Big a Distance " + (distance / 1000) + "km", Strings.ERROR);
+                CustomMessageBox.Show("航点过多或者航线距离太长，将以" + (distance / 1000) + "km单位显示", Strings.ERROR);
                 return answer;
             }
 
@@ -268,7 +268,7 @@ namespace MissionPlanner
             }
             catch
             {
-                CustomMessageBox.Show("连接谷歌地形图出错，使用本地地图", Strings.ERROR);
+                CustomMessageBox.Show("连接谷歌地形图出错，使用本地缓存地图", Strings.ERROR);
             }
 
             return answer;

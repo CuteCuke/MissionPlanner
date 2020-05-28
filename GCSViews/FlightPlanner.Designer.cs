@@ -105,11 +105,11 @@ namespace MissionPlanner.GCSViews
             this.AZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TagData = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.but_mincommands = new MissionPlanner.Controls.MyButton();
-            this.CMB_altmode = new System.Windows.Forms.ComboBox();
             this.CHK_splinedefault = new System.Windows.Forms.CheckBox();
             this.label17 = new System.Windows.Forms.Label();
             this.TXT_altwarn = new System.Windows.Forms.TextBox();
             this.BUT_Add = new MissionPlanner.Controls.MyButton();
+            this.CMB_altmode = new System.Windows.Forms.ComboBox();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.panelAction = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -488,17 +488,9 @@ namespace MissionPlanner.GCSViews
             // 
             this.panelWaypoints.Controls.Add(this.Commands);
             this.panelWaypoints.Controls.Add(this.but_mincommands);
-            this.panelWaypoints.Controls.Add(this.CMB_altmode);
             this.panelWaypoints.Controls.Add(this.CHK_splinedefault);
             this.panelWaypoints.Controls.Add(this.label17);
             this.panelWaypoints.Controls.Add(this.TXT_altwarn);
-            this.panelWaypoints.Controls.Add(this.LBL_WPRad);
-            this.panelWaypoints.Controls.Add(this.label5);
-            this.panelWaypoints.Controls.Add(this.TXT_loiterrad);
-            this.panelWaypoints.Controls.Add(this.LBL_defalutalt);
-            this.panelWaypoints.Controls.Add(this.TXT_DefaultAlt);
-            this.panelWaypoints.Controls.Add(this.CHK_verifyheight);
-            this.panelWaypoints.Controls.Add(this.TXT_WPRad);
             this.panelWaypoints.Controls.Add(this.BUT_Add);
             resources.ApplyResources(this.panelWaypoints, "panelWaypoints");
             this.panelWaypoints.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -699,14 +691,6 @@ namespace MissionPlanner.GCSViews
             this.but_mincommands.UseVisualStyleBackColor = true;
             this.but_mincommands.Click += new System.EventHandler(this.but_mincommands_Click);
             // 
-            // CMB_altmode
-            // 
-            this.CMB_altmode.BackColor = System.Drawing.SystemColors.MenuBar;
-            resources.ApplyResources(this.CMB_altmode, "CMB_altmode");
-            this.CMB_altmode.FormattingEnabled = true;
-            this.CMB_altmode.Name = "CMB_altmode";
-            this.CMB_altmode.SelectedIndexChanged += new System.EventHandler(this.CMB_altmode_SelectedIndexChanged);
-            // 
             // CHK_splinedefault
             // 
             resources.ApplyResources(this.CHK_splinedefault, "CHK_splinedefault");
@@ -733,6 +717,14 @@ namespace MissionPlanner.GCSViews
             this.toolTip1.SetToolTip(this.BUT_Add, resources.GetString("BUT_Add.ToolTip"));
             this.BUT_Add.UseVisualStyleBackColor = true;
             this.BUT_Add.Click += new System.EventHandler(this.BUT_Add_Click);
+            // 
+            // CMB_altmode
+            // 
+            this.CMB_altmode.BackColor = System.Drawing.SystemColors.MenuBar;
+            resources.ApplyResources(this.CMB_altmode, "CMB_altmode");
+            this.CMB_altmode.FormattingEnabled = true;
+            this.CMB_altmode.Name = "CMB_altmode";
+            this.CMB_altmode.SelectedIndexChanged += new System.EventHandler(this.CMB_altmode_SelectedIndexChanged);
             // 
             // splitter1
             // 
@@ -836,12 +828,20 @@ namespace MissionPlanner.GCSViews
             // 
             this.panel6.Controls.Add(this.pilotwp_downdist);
             this.panel6.Controls.Add(this.loiter_downalt);
+            this.panel6.Controls.Add(this.CMB_altmode);
             this.panel6.Controls.Add(this.label20);
             this.panel6.Controls.Add(this.pilotwp_downalt);
             this.panel6.Controls.Add(this.pilotwp_updist);
             this.panel6.Controls.Add(this.label16);
+            this.panel6.Controls.Add(this.TXT_DefaultAlt);
+            this.panel6.Controls.Add(this.LBL_defalutalt);
+            this.panel6.Controls.Add(this.TXT_loiterrad);
+            this.panel6.Controls.Add(this.label5);
+            this.panel6.Controls.Add(this.LBL_WPRad);
+            this.panel6.Controls.Add(this.CHK_verifyheight);
             this.panel6.Controls.Add(this.label19);
             this.panel6.Controls.Add(this.refresh_updown);
+            this.panel6.Controls.Add(this.TXT_WPRad);
             this.panel6.Controls.Add(this.label18);
             this.panel6.Controls.Add(this.loiter_radius);
             this.panel6.Controls.Add(this.label10);
