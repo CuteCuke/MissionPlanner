@@ -121,8 +121,6 @@
             this.LBL_copter_delay = new System.Windows.Forms.Label();
             this.NUM_copter_delay = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.polygon_inc = new System.Windows.Forms.NumericUpDown();
-            this.label45 = new System.Windows.Forms.Label();
             this.chk_spiral = new System.Windows.Forms.CheckBox();
             this.chk_Corridor = new System.Windows.Forms.CheckBox();
             this.label43 = new System.Windows.Forms.Label();
@@ -140,6 +138,8 @@
             this.NUM_Distance = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.NUM_spacing = new System.Windows.Forms.NumericUpDown();
+            this.polygon_inc = new System.Windows.Forms.NumericUpDown();
+            this.label45 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.num_overlap = new System.Windows.Forms.NumericUpDown();
@@ -180,13 +180,13 @@
             this.groupBox_copter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_copter_delay)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.polygon_inc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_corridorwidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_leadin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_overshoot2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_overshoot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_Distance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_spacing)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.polygon_inc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_overlap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_sidelap)).BeginInit();
             this.tabSimple.SuspendLayout();
@@ -932,27 +932,6 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // polygon_inc
-            // 
-            this.polygon_inc.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            resources.ApplyResources(this.polygon_inc, "polygon_inc");
-            this.polygon_inc.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.polygon_inc.Name = "polygon_inc";
-            this.polygon_inc.ValueChanged += new System.EventHandler(this.polygon_inc_ValueChanged);
-            // 
-            // label45
-            // 
-            resources.ApplyResources(this.label45, "label45");
-            this.label45.Name = "label45";
-            // 
             // chk_spiral
             // 
             resources.ApplyResources(this.chk_spiral, "chk_spiral");
@@ -1104,6 +1083,27 @@
             this.NUM_spacing.Name = "NUM_spacing";
             this.NUM_spacing.ValueChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
             // 
+            // polygon_inc
+            // 
+            this.polygon_inc.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            resources.ApplyResources(this.polygon_inc, "polygon_inc");
+            this.polygon_inc.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.polygon_inc.Name = "polygon_inc";
+            this.polygon_inc.ValueChanged += new System.EventHandler(this.polygon_inc_ValueChanged);
+            // 
+            // label45
+            // 
+            resources.ApplyResources(this.label45, "label45");
+            this.label45.Name = "label45";
+            // 
             // label8
             // 
             resources.ApplyResources(this.label8, "label8");
@@ -1204,7 +1204,7 @@
             0});
             this.NUM_UpDownFlySpeed.Name = "NUM_UpDownFlySpeed";
             this.NUM_UpDownFlySpeed.Value = new decimal(new int[] {
-            5,
+            10,
             0,
             0,
             0});
@@ -1387,13 +1387,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.NUM_copter_delay)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.polygon_inc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_corridorwidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_leadin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_overshoot2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_overshoot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_Distance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_spacing)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.polygon_inc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_overlap)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_sidelap)).EndInit();
             this.tabSimple.ResumeLayout(false);

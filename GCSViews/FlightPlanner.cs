@@ -3988,6 +3988,9 @@ namespace MissionPlanner.GCSViews
                 fd.Filter = "Google Earth KML |*.kml;*.kmz";
                 DialogResult result = fd.ShowDialog();
                 string file = fd.FileName;
+                //drawnpolygonsoverlay.Markers.Clear();
+                //drawnpolygonsoverlay.Polygons.Clear();
+                //drawnpolygon.Points.Clear();
                 if (file != "")
                 {
                     try
@@ -4030,6 +4033,17 @@ namespace MissionPlanner.GCSViews
 
                         parser.ElementAdded += processKMLMission;
                         parser.ParseString(kml, false);
+                       //if (drawnpolygon.Points.Count > 1 &&
+                       //    drawnpolygon.Points[0] == drawnpolygon.Points[drawnpolygon.Points.Count - 1])
+                       //     drawnpolygon.Points.RemoveAt(drawnpolygon.Points.Count - 1); // unmake a full loop
+
+                       // drawnpolygonsoverlay.Polygons.Add(drawnpolygon);
+
+                       // MainMap.UpdatePolygonLocalPosition(drawnpolygon);
+
+                       // MainMap.Invalidate();
+
+                       // MainMap.ZoomAndCenterMarkers(drawnpolygonsoverlay.Id);
                     }
                     catch (Exception ex)
                     {
@@ -4605,6 +4619,10 @@ namespace MissionPlanner.GCSViews
                 foreach (var loc in polygon.OuterBoundary.LinearRing.Coordinates)
                 {
                     kmlpolygon.Points.Add(new PointLatLng(loc.Latitude, loc.Longitude));
+                    drawnpolygon.Points.Add(new PointLatLng(loc.Latitude, loc.Longitude));
+                    addpolygonmarkergrid(drawnpolygon.Points.Count.ToString(),
+                        loc.Latitude,
+                        loc.Longitude, 0);
                 }
 
                 kmlpolygonsoverlay.Polygons.Add(kmlpolygon);
@@ -4675,10 +4693,22 @@ namespace MissionPlanner.GCSViews
                 {
                     var point = ((SharpKml.Dom.Point)pm.Geometry).Coordinate;
                     POI.POIAdd(new PointLatLngAlt(point.Latitude, point.Longitude), pm.Name);
+                    //drawnpolygon.Points.Add(new PointLatLng( point.Longitude,point.Latitude));
+                    //addpolygonmarkergrid(drawnpolygon.Points.Count.ToString(),
+                    // point.Longitude,point.Latitude, 0);
                 }
             }
             else if (polygon != null)
             {
+                GMapPolygon kmlpolygon = new GMapPolygon(new List<PointLatLng>(), "kmlpolygon");
+                foreach (var loc in polygon.OuterBoundary.LinearRing.Coordinates)
+                {
+                    kmlpolygon.Points.Add(new PointLatLng(loc.Latitude, loc.Longitude));
+                    //drawnpolygon.Points.Add(new PointLatLng(loc.Longitude,loc.Latitude));
+                    //addpolygonmarkergrid(drawnpolygon.Points.Count.ToString(),
+                        
+                    //    loc.Longitude,loc.Latitude, 0);
+                }
             }
             else if (ls != null)
             {
@@ -4686,6 +4716,9 @@ namespace MissionPlanner.GCSViews
                 {
                     selectedrow = Commands.Rows.Add();
                     setfromMap(loc.Latitude, loc.Longitude, (int)loc.Altitude);
+                    //drawnpolygon.Points.Add(new PointLatLng(loc.Longitude,loc.Latitude));
+                    //addpolygonmarkergrid(drawnpolygon.Points.Count.ToString(),
+                    //  loc.Longitude,  loc.Latitude,0);
                 }
             }
         }

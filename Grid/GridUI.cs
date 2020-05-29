@@ -52,12 +52,12 @@ namespace MissionPlanner.Grid
         public string inchpixel = "";
         public string feet_fovH = "";
         public string feet_fovV = "";
-        public double maxlat = 0.0;
-        public double minlat = 0.0;
-        public double maxlng = 0.0;
-        public double minlng = 0.0;
-        public double centerlat = 0.0;
-        public double centerlng = 0.0;
+        //public double maxlat = 0.0;
+        //public double minlat = 0.0;
+        //public double maxlng = 0.0;
+        //public double minlng = 0.0;
+        //public double centerlat = 0.0;
+        //public double centerlng = 0.0;
         internal PointLatLng MouseDownStart = new PointLatLng();
         internal PointLatLng MouseDownEnd;
         internal PointLatLngAlt CurrentGMapMarkerStartPos;
@@ -102,7 +102,7 @@ namespace MissionPlanner.Grid
                                          list_clone.Add(x); });    //list_clone = list;//clone polgon         
             points.Dispose();
          
-            polygoncenterlatlng();
+           // polygoncenterlatlng();
            // polygoninc();//外扩多边形 默认外扩为0 
         
             if (plugin.Host.config["distunits"] != null)
@@ -795,6 +795,7 @@ namespace MissionPlanner.Grid
 
                 // Distance
                 double distance = routetotal * 3280.8399; // Calculate the distance in feet
+                //double distance = routetotal;
                 if (distance < 5280f)
                 {
                     lbl_distance.Text = distance.ToString("#") + " ft";
@@ -849,10 +850,10 @@ namespace MissionPlanner.Grid
 
             lbl_pictures.Text = images.ToString();
             lbl_strips.Text = ((int)(strips / 2)).ToString();
-            double seconds = ((routetotal * 1000.0) / ((flyspeedms) * 0.8));
+            double seconds = ((routetotal * 1000.0) / (flyspeedms*0.8));
             // reduce flying speed by 20 %
             lbl_flighttime.Text = secondsToNice(seconds);
-            seconds = ((routetotal * 1000.0) / (flyspeedms));
+            //seconds = ((routetotal * 1000.0) / (flyspeedms));
             lbl_photoevery.Text = secondsToNice(((double)NUM_spacing.Value / flyspeedms));
             map.HoldInvalidation = false;
             if (!isMouseDown && sender != NUM_angle)
@@ -1891,52 +1892,44 @@ namespace MissionPlanner.Grid
 
         }
         //计算多边形中心点
-        private void polygoncenterlatlng() 
-        {
-            if(list.Count>1)
-            {
-                maxlat = list[0].Lat;
-                minlat = list[0].Lat;
-                maxlng = list[0].Lng;
-                minlng = list[0].Lng;
+        //private void polygoncenterlatlng() 
+        //{
+        //    if(list.Count>1)
+        //    {
+        //        maxlat = list[0].Lat;
+        //        minlat = list[0].Lat;
+        //        maxlng = list[0].Lng;
+        //        minlng = list[0].Lng;
 
-                foreach (PointLatLngAlt p in list)
-                {
-                    maxlat = Math.Max(p.Lat, maxlat);
-                    minlat = Math.Min(p.Lat, minlng);
-                    maxlng = Math.Max(p.Lng, maxlng);
-                    minlng = Math.Min(p.Lng, minlng);
-                    centerlat += p.Lat;
-                    centerlng += p.Lng;
-                }
-                //centerlat = (minlat + maxlat) / 2;
-                //centerlng = (maxlng + minlng) / 2;
-                centerlat = centerlat / list.Count;
-                centerlng = centerlng / list.Count;
-            }
-        }
-        private void polygoninc()
+        //        foreach (PointLatLngAlt p in list)
+        //        {
+        //            maxlat = Math.Max(p.Lat, maxlat);
+        //            minlat = Math.Min(p.Lat, minlng);
+        //            maxlng = Math.Max(p.Lng, maxlng);
+        //            minlng = Math.Min(p.Lng, minlng);
+        //            centerlat += p.Lat;
+        //            centerlng += p.Lng;
+        //        }
+        //        //centerlat = (minlat + maxlat) / 2;
+        //        //centerlng = (maxlng + minlng) / 2;
+        //        centerlat = centerlat / list.Count;
+        //        centerlng = centerlng / list.Count;
+        //    }
+        //}
+      
+        private void polygoninc()  //凸多边形外扩
         {
             var a = (double)polygon_inc.Value / 100000;
-            //foreach (var p in list)
-            //{
-            //    if (p.Lat >= centerlat)
-            //    {
-            //        if (p.Lat > centerlat)
-            //            p.Lat += a;
-            //    }
-            //    else
-            //        p.Lat -= a;
-            //    if (p.Lng >= centerlng)
-            //    {
-            //        if (p.Lng > centerlat)
-            //            p.Lng += a;
-            //    }
-            //    else
-            //        p.Lng -= a;
-            //    //p.Lat -= centerlat;
-            //    //p.Lat -= centerlng;
+            //List<bool> is_to=new List<bool>();
+            //for(int i=0;i<list_clone.Count;i++)
+            //{                
+            //    PointLatLngAlt p1 = new PointLatLngAlt(list_clone[i == 0 ? list_clone.Count - 1 : i - 1].Lat, list_clone[i == 0 ? list.Count - 1 : i - 1].Lng);
+            //    PointLatLngAlt p2 = new PointLatLngAlt(list_clone[i == list_clone.Count - 1 ? 0 : i + 1].Lat, list_clone[i == list_clone.Count - 1 ? 0 : i + 1].Lng);
+            //    double centerx = (p1.Lat + p2.Lat) / 2;
+            //    double centery = (p1.Lng + p2.Lng) / 2;
+            //    is_to.Add(isinpolygon(centerx, centery, list_clone));//判断该点是否凸点
             //}
+
             for (int i = 0; i < list.Count; i++)
             {
                 PointLatLngAlt p =new PointLatLngAlt(list[i].Lat,list[i].Lng);
@@ -1959,22 +1952,28 @@ namespace MissionPlanner.Grid
                 double vx = v1x + v2x;
                 double vy = v1y + v2y;
                 double n = l / norm(vx, vy);
-                vx *= n;
-                vy *= n;
-                if (isinpolygon(vx + list[i].Lat, vy + list[i].Lng, list_clone))
+                vx *= (n*0.91);
+                vy *= (n*1.04);
+
+                //PointLatLngAlt p3 = new PointLatLngAlt(list_clone[i == 0 ? list.Count - 1 : i - 1].Lat, list_clone[i == 0 ? list.Count - 1 : i - 1].Lng);
+                //PointLatLngAlt p4 = new PointLatLngAlt(list_clone[i == list.Count - 1 ? 0 : i + 1].Lat, list_clone[i == list.Count - 1 ? 0 : i + 1].Lng);
+                //double centerx = (p3.Lat + p4.Lat) / 2;
+                //double centery = (p3.Lng + p4.Lng) / 2;
+
+                if (!isinpolygon(vx+list[i].Lat,vy+list[i].Lng,list_clone))   //凸+，凹-
                 {
-                    list[i].Lat -= vx;
-                    list[i].Lng -= vy;
+                    list[i].Lat += vx;
+                    list[i].Lng += vy;
                 }
                 else
                 {  
-                    list[i].Lat += vx;
-                    list[i].Lng += vy;
+                    list[i].Lat -= vx;
+                    list[i].Lng -= vy;
                 }
 
             }
         }
-        public static bool isinpolygon(double lat,double lng,List<PointLatLngAlt> list)
+        public static bool isinpolygon(double lat,double lng,List<PointLatLngAlt> list)//计算 点是否在原来多边形内部
         {
             int count = 0;
             double xinter;
