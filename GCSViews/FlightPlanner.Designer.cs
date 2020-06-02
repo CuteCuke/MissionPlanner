@@ -897,7 +897,7 @@ namespace MissionPlanner.GCSViews
             0});
             this.loiter_downalt.Name = "loiter_downalt";
             this.loiter_downalt.Value = new decimal(new int[] {
-            200,
+            100,
             0,
             0,
             0});
@@ -988,7 +988,7 @@ namespace MissionPlanner.GCSViews
             0});
             this.loiter_radius.Name = "loiter_radius";
             this.loiter_radius.Value = new decimal(new int[] {
-            40,
+            100,
             0,
             0,
             0});

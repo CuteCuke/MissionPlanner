@@ -58,6 +58,7 @@ namespace MissionPlanner.Grid
         //public double minlng = 0.0;
         //public double centerlat = 0.0;
         //public double centerlng = 0.0;
+      //  List<bool> is_to = new List<bool>();
         internal PointLatLng MouseDownStart = new PointLatLng();
         internal PointLatLng MouseDownEnd;
         internal PointLatLngAlt CurrentGMapMarkerStartPos;
@@ -101,7 +102,7 @@ namespace MissionPlanner.Grid
             points.Points.ForEach(x => { list.Add(x);
                                          list_clone.Add(x); });    //list_clone = list;//clone polgon         
             points.Dispose();
-         
+          //  istoorao();
            // polygoncenterlatlng();
            // polygoninc();//外扩多边形 默认外扩为0 
         
@@ -1916,25 +1917,15 @@ namespace MissionPlanner.Grid
         //        centerlng = centerlng / list.Count;
         //    }
         //}
-      
+       
         private void polygoninc()  //凸多边形外扩
         {
             var a = (double)polygon_inc.Value / 100000;
-            //List<bool> is_to=new List<bool>();
-            //for(int i=0;i<list_clone.Count;i++)
-            //{                
-            //    PointLatLngAlt p1 = new PointLatLngAlt(list_clone[i == 0 ? list_clone.Count - 1 : i - 1].Lat, list_clone[i == 0 ? list.Count - 1 : i - 1].Lng);
-            //    PointLatLngAlt p2 = new PointLatLngAlt(list_clone[i == list_clone.Count - 1 ? 0 : i + 1].Lat, list_clone[i == list_clone.Count - 1 ? 0 : i + 1].Lng);
-            //    double centerx = (p1.Lat + p2.Lat) / 2;
-            //    double centery = (p1.Lng + p2.Lng) / 2;
-            //    is_to.Add(isinpolygon(centerx, centery, list_clone));//判断该点是否凸点
-            //}
-
             for (int i = 0; i < list.Count; i++)
             {
-                PointLatLngAlt p =new PointLatLngAlt(list[i].Lat,list[i].Lng);
-                PointLatLngAlt p1 = new PointLatLngAlt( list[i == 0 ? list.Count - 1 : i - 1].Lat, list[i == 0 ? list.Count - 1 : i - 1].Lng);
-                PointLatLngAlt p2 = new PointLatLngAlt( list[i == list.Count -1? 0 : i + 1].Lat, list[i == list.Count - 1 ? 0 : i + 1].Lng);
+                PointLatLngAlt p =new PointLatLngAlt(list_clone[i].Lat,list_clone[i].Lng);
+                PointLatLngAlt p1 = new PointLatLngAlt( list_clone[i == 0 ? list.Count - 1 : i - 1].Lat, list_clone[i == 0 ? list.Count - 1 : i - 1].Lng);
+                PointLatLngAlt p2 = new PointLatLngAlt( list_clone[i == list.Count -1? 0 : i + 1].Lat, list_clone[i == list.Count - 1 ? 0 : i + 1].Lng);
 
                 double v1x = p1.Lat - p.Lat;
                 double v1y = p1.Lng - p.Lng;
@@ -1959,8 +1950,9 @@ namespace MissionPlanner.Grid
                 //PointLatLngAlt p4 = new PointLatLngAlt(list_clone[i == list.Count - 1 ? 0 : i + 1].Lat, list_clone[i == list.Count - 1 ? 0 : i + 1].Lng);
                 //double centerx = (p3.Lat + p4.Lat) / 2;
                 //double centery = (p3.Lng + p4.Lng) / 2;
-
-                if (!isinpolygon(vx+list[i].Lat,vy+list[i].Lng,list_clone))   //凸+，凹-
+                //if (!is_to[i])
+                // if(true)
+                if (!isinpolygon2(vx/(double)polygon_inc.Value + list_clone[i].Lat, vy / (double)polygon_inc.Value + list_clone[i].Lng, list_clone))   //凸+，凹-
                 {
                     list[i].Lat += vx;
                     list[i].Lng += vy;
@@ -1973,36 +1965,67 @@ namespace MissionPlanner.Grid
 
             }
         }
-        public static bool isinpolygon(double lat,double lng,List<PointLatLngAlt> list)//计算 点是否在原来多边形内部
+        //public static bool isinpolygon(double lat,double lng,List<PointLatLngAlt> list)//计算 点是否在原来多边形内部
+        //{
+        //    int count = 0;
+        //    double xinter;
+        //    PointLatLngAlt p1 = new PointLatLngAlt(list[list.Count-1].Lat, list[list.Count-1].Lng);
+        //    for (int i=0;i<list.Count;i++) 
+        //    {
+        //        PointLatLngAlt p2 = new PointLatLngAlt(list[i].Lat, list[i].Lng);
+        //        if(lng>Math.Min(p1.Lng,p2.Lng)&&lng<=Math.Max(p1.Lng,p2.Lng))
+        //        {
+        //            if(lat<=Math.Max(p1.Lat,p2.Lat))
+        //            {
+        //                if (p1.Lng != p2.Lng)
+        //                {
+        //                    xinter = (lng - p1.Lng) * (p2.Lat - lat) / (p2.Lng - p1.Lng) + p1.Lat;
+        //                    if (p1.Lat==p2.Lat||lat<=xinter) 
+        //                    {
+        //                        count++;
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        p1.Lat = p2.Lat;
+        //        p1.Lng = p2.Lng;
+        //    }
+        //    if (count % 2 == 0)
+        //        return false;
+        //    else
+        //        return true;
+
+        //}
+        public static bool isinpolygon2(double lat, double lng, List<PointLatLngAlt> list)
         {
-            int count = 0;
-            double xinter;
-            PointLatLngAlt p1 = new PointLatLngAlt(list[list.Count-1].Lat, list[list.Count-1].Lng);
-            for (int i=0;i<list.Count;i++) 
+            bool inside = false;
+            for (int i = 0, j = list.Count - 1; i < list.Count; j = i, i++)//第一个点和最后一个点作为第一条线，之后是第一个点和第二个点作为第二条线，之后是第二个点与第三个点，第三个点与第四个点... 
             {
-                PointLatLngAlt p2 = new PointLatLngAlt(list[i].Lat, list[i].Lng);
-                if(lng>Math.Min(p1.Lng,p2.Lng)&&lng<=Math.Max(p1.Lng,p2.Lng))
-                {
-                    if(lat<=Math.Max(p1.Lat,p2.Lat))
-                    {
-                        if (p1.Lng != p2.Lng)
+                PointLatLngAlt p1 = new PointLatLngAlt(list[i].Lat, list[i].Lng);
+                PointLatLngAlt p2 = new PointLatLngAlt(list[j].Lat, list[j].Lng);
+                if (lng < p2.Lng)
+                {//p2在射线之上 
+                    if (p1.Lng <= lng)
+                    {//p1正好在射线中或者射线下方 
+                        if ((lng - p1.Lng) * (p2.Lat - p1.Lat) > (lat - p1.Lat) * (p2.Lng - p1.Lng))//斜率判断,在P1和P2之间且在P1P2右侧 
                         {
-                            xinter = (lng - p1.Lng) * (p2.Lat - lat) / (p2.Lng - p1.Lng) + p1.Lat;
-                            if (p1.Lat==p2.Lat||lat<=xinter) 
-                            {
-                                count++;
-                            }
+                            //射线与多边形交点为奇数时则在多边形之内，若为偶数个交点时则在多边形之外。 
+                            //由于inside初始值为false，即交点数为零。所以当有第一个交点时，则必为奇数，则在内部，此时为inside=(!inside) 
+                            //所以当有第二个交点时，则必为偶数，则在外部，此时为inside=(!inside) 
+                            inside = (!inside);
                         }
                     }
                 }
-                p1.Lat = p2.Lat;
-                p1.Lng = p2.Lng;
+                else if (lng < p1.Lng)
+                {
+                    //p2正好在射线中或者在射线下方，p1在射线上 
+                    if ((lng - p1.Lng) * (p2.Lat - p1.Lat) < (lat - p1.Lat) * (p2.Lng - p1.Lng))//斜率判断,在P1和P2之间且在P1P2右侧 
+                    {
+                        inside = (!inside);
+                    }
+                }
             }
-            if (count % 2 == 0)
-                return false;
-            else
-                return true;
-
+            return inside;
         }
         private static double norm(double x,double y)
         {

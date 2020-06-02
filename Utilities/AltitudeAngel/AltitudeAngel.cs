@@ -29,12 +29,12 @@ namespace MissionPlanner.Utilities.AltitudeAngel
                 await service.SignInIfAuthenticated();
                 return;
             }
-            if (CustomMessageBox.Show(
-                    "Do you wish to enable Altitude Angel airspace management data?\nFor more information visit [link;http://www.altitudeangel.com;www.altitudeangel.com]",
-                    "Altitude Angel - Enable", CustomMessageBox.MessageBoxButtons.YesNo) == CustomMessageBox.DialogResult.Yes)
-            {
-                await service.SignInAsync();
-            }
+            //if (CustomMessageBox.Show(
+            //        "Do you wish to enable Altitude Angel airspace management data?\nFor more information visit [link;http://www.altitudeangel.com;www.altitudeangel.com]",
+            //        "Altitude Angel - Enable", CustomMessageBox.MessageBoxButtons.YesNo) == CustomMessageBox.DialogResult.Yes)
+            //{
+            //    await service.SignInAsync();
+            //}
             settings.CheckEnableAltitudeAngel = true;
         }
 

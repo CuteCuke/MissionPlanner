@@ -677,6 +677,7 @@ namespace MissionPlanner.GCSViews
                         }
                     }
                 }
+                
             }
 
             IProgressReporterDialogue frmProgressReporter = new ProgressReporterDialogue
@@ -696,6 +697,8 @@ namespace MissionPlanner.GCSViews
             frmProgressReporter.Dispose();
 
             MainMap.Focus();
+            del_flight_Click(sender, e);
+            BUT_read_Click(sender, e);
         }
 
         /// <summary>
@@ -7434,7 +7437,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
         private void refresh_updown_Click(object sender, EventArgs e)
         {
             //reset angle  
-            updown_angle.Value = (int)GCSViews.FlightData.myhud.heading;
+            updown_angle.Value = (int)GCSViews.FlightData.myhud.heading;          
             //updown_angle.Value=(int)GCSViews.FlightData.myhud.current;
             //reset home
             if (MainV2.comPort.MAV.cs.HomeLocation.Lat != 0 && MainV2.comPort.MAV.cs.HomeLocation.Lng != 0)
