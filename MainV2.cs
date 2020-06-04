@@ -4540,25 +4540,33 @@ namespace MissionPlanner
 
             ((ToolStripButton)sender).Enabled = true;
         }
-        
+
         private void return_flight_Click(object sender, EventArgs e)
         {
             var wpno = MainV2.comPort.getWPCount();
             lastwpstr = MainV2.comPort.MAV.cs.lastautowp.ToString();
-            try
-            {
+           
+                try
+                {
                 ((ToolStripButton)sender).Enabled = false;
-                if(wpno>=3)
-                MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
-                    (ushort)(wpno-3));
-                //MainV2.comPort.setMode("RTL");
-            }
-            catch
-            {
-                CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
-            }
+                if (wpno >= 3)
+                     {                 
+                   if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
+                        MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
+                            (ushort)(wpno - 3));
+                    //MainV2.comPort.setMode("RTL");
+                    else
+                        MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
+                            (ushort)(wpno - 4));
+                } 
+                 }
+                catch
+                {
+                    CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
+                }
 
             ((ToolStripButton)sender).Enabled = true;
+           
         }
 
        

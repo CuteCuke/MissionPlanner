@@ -230,46 +230,46 @@ namespace MissionPlanner
 
             if (list.Count < 2 || coords.Length > (2048 - 256))
             {
-                CustomMessageBox.Show("航点过多或者航线距离太长，将以" + (distance / 1000) + "km单位显示", Strings.ERROR);
+                CustomMessageBox.Show("航点过多或者航线距离太长，将以" + (distance / 1000) + "km显示", Strings.ERROR);
                 return answer;
             }
-
-            try
-            {
-                using (
-                    XmlTextReader xmlreader =
-                        new XmlTextReader("https://maps.google.com/maps/api/elevation/xml?path=" + coords + "&samples=" +
-                                          (distance / 100).ToString(new System.Globalization.CultureInfo("en-US")) +
-                                          "&sensor=false&key=" + GoogleMapProvider.APIKey))
-                {
-                    while (xmlreader.Read())
-                    {
-                        xmlreader.MoveToElement();
-                        switch (xmlreader.Name)
-                        {
-                            case "elevation":
-                                alt = double.Parse(xmlreader.ReadString(), new System.Globalization.CultureInfo("en-US"));
-                                Console.WriteLine("DO it " + lat + " " + lng + " " + alt);
-                                PointLatLngAlt loc = new PointLatLngAlt(lat, lng, alt, "");
-                                answer.Add(loc);
-                                pos++;
-                                break;
-                            case "lat":
-                                lat = double.Parse(xmlreader.ReadString(), new System.Globalization.CultureInfo("en-US"));
-                                break;
-                            case "lng":
-                                lng = double.Parse(xmlreader.ReadString(), new System.Globalization.CultureInfo("en-US"));
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                }
-            }
-            catch
-            {
-                CustomMessageBox.Show("连接谷歌地形图出错，使用本地缓存地图", Strings.ERROR);
-            }
+            //暂时不用Google
+            //try
+            //{
+            //    using (
+            //        XmlTextReader xmlreader =
+            //            new XmlTextReader("https://maps.google.com/maps/api/elevation/xml?path=" + coords + "&samples=" +
+            //                              (distance / 100).ToString(new System.Globalization.CultureInfo("en-US")) +
+            //                              "&sensor=false&key=" + GoogleMapProvider.APIKey))
+            //    {
+            //        while (xmlreader.Read())
+            //        {
+            //            xmlreader.MoveToElement();
+            //            switch (xmlreader.Name)
+            //            {
+            //                case "elevation":
+            //                    alt = double.Parse(xmlreader.ReadString(), new System.Globalization.CultureInfo("en-US"));
+            //                    Console.WriteLine("DO it " + lat + " " + lng + " " + alt);
+            //                    PointLatLngAlt loc = new PointLatLngAlt(lat, lng, alt, "");
+            //                    answer.Add(loc);
+            //                    pos++;
+            //                    break;
+            //                case "lat":
+            //                    lat = double.Parse(xmlreader.ReadString(), new System.Globalization.CultureInfo("en-US"));
+            //                    break;
+            //                case "lng":
+            //                    lng = double.Parse(xmlreader.ReadString(), new System.Globalization.CultureInfo("en-US"));
+            //                    break;
+            //                default:
+            //                    break;
+            //            }
+            //        }
+            //    }
+            //}
+            //catch
+            //{
+            //    CustomMessageBox.Show("连接谷歌地形图出错，使用本地缓存地图", Strings.ERROR);
+            //}
 
             return answer;
         }

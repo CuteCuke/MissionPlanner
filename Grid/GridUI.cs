@@ -826,6 +826,19 @@ namespace MissionPlanner.Grid
                 lbl_turnrad.Text = (turnrad * 2).ToString("0") + " m";
                 lbl_gndelev.Text = mingroundelevation.ToString("0") + "-" + maxgroundelevation.ToString("0") + " m";
 
+                if (chk_minmaxalt.Checked)
+                {
+                    getlowandhighres((double)NUM_altitude.Value + (plugin.Host.cs.HomeLocation.Alt - (double)min_alt.Value),
+                    (double)NUM_altitude.Value - ((double)max_alt.Value - plugin.Host.cs.HomeLocation.Alt));
+                }
+                else
+                {
+                    getlowandhighres((double)NUM_altitude.Value + (plugin.Host.cs.HomeLocation.Alt - mingroundelevation),
+                      (double)NUM_altitude.Value - (maxgroundelevation - plugin.Host.cs.HomeLocation.Alt));
+                    min_alt.Value = (decimal)mingroundelevation;
+                    max_alt.Value = (decimal)maxgroundelevation;
+                }
+
             }
 
             try
@@ -998,7 +1011,25 @@ namespace MissionPlanner.Grid
 
             return (angle + 360) % 360;
         }
+        void getlowandhighres(double lowalt,double highalt)
+        {
+            double focallen = (double)NUM_focallength.Value;
+          //  double sensorwidth = double.Parse(TXT_senswidth.Text);
+            double sensorheight = double.Parse(TXT_sensheight.Text);
 
+            // scale      mm / mm
+            double flscalelow = (1000 * lowalt) / focallen;
+            double flscalehigh = (1000 * highalt) / focallen;
+            //   mm * mm / 1000
+           // double lowviewwidth = (sensorwidth * flscalelow / 1000);
+            double lowviewheight = (sensorheight * flscalelow / 1000);
+
+           // double highviewwidth = (sensorwidth * flscalehigh / 1000);
+            double highviewheight = (sensorheight * flscalehigh / 1000);
+
+            lbl_lowres.Text = (((lowviewheight / int.Parse(TXT_imgheight.Text)) * 100)).ToString("0.00 cm");
+            lbl_highres.Text = (((highviewheight / int.Parse(TXT_imgheight.Text)) * 100)).ToString("0.00 cm");
+        }
         void getFOV(double flyalt, ref double fovh, ref double fovv)
         {
             double focallen = (double)NUM_focallength.Value;
@@ -1045,6 +1076,7 @@ namespace MissionPlanner.Grid
                 double viewheight = 0;
 
                 getFOV(flyalt, ref viewwidth, ref viewheight);
+                
 
                 TXT_fovH.Text = viewwidth.ToString("#.#");
                 TXT_fovV.Text = viewheight.ToString("#.#");
@@ -1603,18 +1635,18 @@ namespace MissionPlanner.Grid
                     {
                         if (plugin.Host.cs.firmware == Firmwares.ArduCopter2)
                         {
-                            var wpno = plugin.Host.AddWPtoList(MAVLink.MAV_CMD.TAKEOFF, 20, 0, 0, 0, 0, 0,
-                                (int)(30 * CurrentState.multiplierdist), gridobject);
                             //var wpno = plugin.Host.AddWPtoList(MAVLink.MAV_CMD.TAKEOFF, 20, 0, 0, 0, 0, 0,
-                            //   (int)(NUM_altitude.Value), gridobject);
+                            //    (int)(30 * CurrentState.multiplierdist), gridobject);
+                            var wpno = plugin.Host.AddWPtoList(MAVLink.MAV_CMD.TAKEOFF, 20, 0, 0, 0, 0, 0,
+                               (int)(NUM_altitude.Value), gridobject);
                             wpsplitstart.Add(wpno);
                         }
                         else
                         {
-                            var wpno = plugin.Host.AddWPtoList(MAVLink.MAV_CMD.TAKEOFF, 20, 0, 0, 0, 0, 0,
-                                (int)(30 * CurrentState.multiplierdist), gridobject);
                             //var wpno = plugin.Host.AddWPtoList(MAVLink.MAV_CMD.TAKEOFF, 20, 0, 0, 0, 0, 0,
-                            //   (int)(NUM_altitude.Value), gridobject);
+                            //    (int)(30 * CurrentState.multiplierdist), gridobject);
+                            var wpno = plugin.Host.AddWPtoList(MAVLink.MAV_CMD.TAKEOFF, 20, 0, 0, 0, 0, 0,
+                               (int)(NUM_altitude.Value), gridobject);
                             wpsplitstart.Add(wpno);
                         }
                     }
@@ -2042,5 +2074,28 @@ namespace MissionPlanner.Grid
             polygoninc();
             domainUpDown1_ValueChanged(null, null);
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+            domainUpDown1_ValueChanged(null, null);
+        }
+
+        private void min_alt_ValueChanged(object sender, EventArgs e)
+        {
+            if (chk_minmaxalt.Checked) 
+            { 
+                domainUpDown1_ValueChanged(null, null);
+            }
+        }
+
+        private void max_alt_ValueChanged(object sender, EventArgs e)
+        {
+            if (chk_minmaxalt.Checked)
+            {
+                domainUpDown1_ValueChanged(null, null);
+            }
+        }
     }
+    
 }
