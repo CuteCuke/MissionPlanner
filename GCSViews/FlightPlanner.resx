@@ -127,7 +127,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="CHK_verifyheight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 353</value>
+    <value>669, 452</value>
   </data>
   <data name="CHK_verifyheight.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 16</value>
@@ -138,6 +138,9 @@
   <data name="CHK_verifyheight.Text" xml:space="preserve">
     <value>验证高度</value>
   </data>
+  <data name="CHK_verifyheight.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;CHK_verifyheight.Name" xml:space="preserve">
     <value>CHK_verifyheight</value>
   </data>
@@ -145,13 +148,13 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;CHK_verifyheight.Parent" xml:space="preserve">
-    <value>panel6</value>
+    <value>panelMap</value>
   </data>
   <data name="&gt;&gt;CHK_verifyheight.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>6</value>
   </data>
   <data name="TXT_WPRad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 391</value>
+    <value>157, 425</value>
   </data>
   <data name="TXT_WPRad.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 21</value>
@@ -181,7 +184,7 @@
     <value>15</value>
   </data>
   <data name="TXT_DefaultAlt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>119, 450</value>
+    <value>155, 467</value>
   </data>
   <data name="TXT_DefaultAlt.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 21</value>
@@ -208,7 +211,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;TXT_DefaultAlt.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="LBL_WPRad.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -217,7 +220,7 @@
     <value>NoControl</value>
   </data>
   <data name="LBL_WPRad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 391</value>
+    <value>24, 430</value>
   </data>
   <data name="LBL_WPRad.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 12</value>
@@ -241,7 +244,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;LBL_WPRad.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="LBL_defalutalt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -250,7 +253,7 @@
     <value>NoControl</value>
   </data>
   <data name="LBL_defalutalt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 454</value>
+    <value>12, 472</value>
   </data>
   <data name="LBL_defalutalt.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 12</value>
@@ -274,10 +277,10 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;LBL_defalutalt.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="TXT_loiterrad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 423</value>
+    <value>155, 449</value>
   </data>
   <data name="TXT_loiterrad.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 21</value>
@@ -304,7 +307,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;TXT_loiterrad.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -313,7 +316,7 @@
     <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-2, 425</value>
+    <value>7, 451</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 12</value>
@@ -337,7 +340,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="chk_grid.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1154,7 +1157,7 @@
     <value>50</value>
   </data>
   <data name="Commands.Size" type="System.Drawing.Size, System.Drawing">
-    <value>962, 127</value>
+    <value>962, 105</value>
   </data>
   <data name="Commands.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1163,7 +1166,7 @@
     <value>Commands</value>
   </data>
   <data name="&gt;&gt;Commands.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.MyDataGridView, MissionPlanner, Version=1.3.7457.25280, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.MyDataGridView, MissionPlanner, Version=1.3.7461.30560, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Commands.Parent" xml:space="preserve">
     <value>panelWaypoints</value>
@@ -1334,13 +1337,13 @@
     <value>Bottom</value>
   </data>
   <data name="panelWaypoints.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 593</value>
+    <value>0, 621</value>
   </data>
   <data name="panelWaypoints.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>21, 21</value>
   </data>
   <data name="panelWaypoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>962, 152</value>
+    <value>962, 127</value>
   </data>
   <data name="panelWaypoints.TabIndex" type="System.Int32, mscorlib">
     <value>49</value>
@@ -1358,13 +1361,13 @@
     <value>panelBASE</value>
   </data>
   <data name="&gt;&gt;panelWaypoints.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="CMB_altmode.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Popup</value>
   </data>
   <data name="CMB_altmode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 349</value>
+    <value>56, 400</value>
   </data>
   <data name="CMB_altmode.Size" type="System.Drawing.Size, System.Drawing">
     <value>79, 20</value>
@@ -1374,6 +1377,9 @@
   </data>
   <data name="CMB_altmode.Text" xml:space="preserve">
     <value>Relative</value>
+  </data>
+  <data name="CMB_altmode.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;CMB_altmode.Name" xml:space="preserve">
     <value>CMB_altmode</value>
@@ -1385,7 +1391,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;CMB_altmode.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="splitter1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
@@ -1394,10 +1400,10 @@
     <value>NoControl</value>
   </data>
   <data name="splitter1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 745</value>
+    <value>0, 611</value>
   </data>
   <data name="splitter1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>972, 3</value>
+    <value>962, 10</value>
   </data>
   <data name="splitter1.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
@@ -1412,7 +1418,7 @@
     <value>panelBASE</value>
   </data>
   <data name="&gt;&gt;splitter1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="load_kml.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1675,6 +1681,39 @@
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="chk_imitation.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chk_imitation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chk_imitation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>77, 360</value>
+  </data>
+  <data name="chk_imitation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 16</value>
+  </data>
+  <data name="chk_imitation.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="chk_imitation.Text" xml:space="preserve">
+    <value>仿地飞行</value>
+  </data>
+  <data name="chk_imitation.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomRight</value>
+  </data>
+  <data name="&gt;&gt;chk_imitation.Name" xml:space="preserve">
+    <value>chk_imitation</value>
+  </data>
+  <data name="&gt;&gt;chk_imitation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chk_imitation.Parent" xml:space="preserve">
+    <value>panel6</value>
+  </data>
+  <data name="&gt;&gt;chk_imitation.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="pilotwp_downdist.Location" type="System.Drawing.Point, System.Drawing">
     <value>128, 314</value>
   </data>
@@ -1694,7 +1733,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;pilotwp_downdist.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="loiter_downalt.Location" type="System.Drawing.Point, System.Drawing">
     <value>128, 246</value>
@@ -1715,7 +1754,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;loiter_downalt.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="label20.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1748,7 +1787,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="pilotwp_downalt.Location" type="System.Drawing.Point, System.Drawing">
     <value>128, 287</value>
@@ -1769,7 +1808,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;pilotwp_downalt.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="pilotwp_updist.Location" type="System.Drawing.Point, System.Drawing">
     <value>128, 158</value>
@@ -1790,7 +1829,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;pilotwp_updist.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="label16.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1823,7 +1862,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="label19.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2662,9 +2701,6 @@
   <data name="&gt;&gt;cmb_missiontype.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="MainMap.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
   <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -3092,7 +3128,7 @@
     <value>0, 0</value>
   </data>
   <data name="MainMap.Size" type="System.Drawing.Size, System.Drawing">
-    <value>921, 602</value>
+    <value>915, 609</value>
   </data>
   <data name="MainMap.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
@@ -3197,7 +3233,7 @@
     <value>962, 0</value>
   </data>
   <data name="splitter2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>10, 745</value>
+    <value>10, 748</value>
   </data>
   <data name="splitter2.TabIndex" type="System.Int32, mscorlib">
     <value>52</value>
@@ -3212,7 +3248,7 @@
     <value>panelBASE</value>
   </data>
   <data name="&gt;&gt;splitter2.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="panelBASE.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>

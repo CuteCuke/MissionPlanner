@@ -306,7 +306,8 @@ namespace MissionPlanner.GCSViews
             }
             else
             {
-                CMB_altmode.Visible = true;
+                // CMB_altmode.Visible = true;
+                CMB_altmode.Visible = false;
             }
 
             // hide spline wp options if not arducopter
@@ -7106,6 +7107,11 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
         {
             quickadd = true;
             tag_updownwp = false;
+            ischk_imitation = false;
+            chk_imitation.Checked = false;
+            imitationwpno.Clear();
+            imitationwpdist.Clear();
+            imitationwpno2.Clear();
             // mono fix
             try
             {
@@ -7491,15 +7497,98 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             updown_angle.Value = (int)GCSViews.FlightData.myhud.heading;          
             //updown_angle.Value=(int)GCSViews.FlightData.myhud.current;
             //reset home
-            if (MainV2.comPort.MAV.cs.HomeLocation.Lat != 0 && MainV2.comPort.MAV.cs.HomeLocation.Lng != 0)
-            {
-                TXT_homelat.Text = MainV2.comPort.MAV.cs.lat.ToString();
+    
+            TXT_homelat.Text = MainV2.comPort.MAV.cs.lat.ToString();
 
-                TXT_homelng.Text = MainV2.comPort.MAV.cs.lng.ToString();
+            TXT_homelng.Text = MainV2.comPort.MAV.cs.lng.ToString();
 
-                //TXT_homealt.Text = MainV2.comPort.MAV.cs.altasl2.ToString();
-                TXT_homealt.Text = (srtm.getAltitude(MainV2.comPort.MAV.cs.lat, MainV2.comPort.MAV.cs.lng).alt * CurrentState.multiplieralt).ToString();
-                writeKML();
+            //TXT_homealt.Text = MainV2.comPort.MAV.cs.altasl2.ToString();
+            TXT_homealt.Text = (srtm.getAltitude(MainV2.comPort.MAV.cs.lat, MainV2.comPort.MAV.cs.lng).alt * CurrentState.multiplieralt).ToString();
+            writeKML();
+            
+        }
+        private List<int> imitationwpno =new List<int>();
+        private List<double> imitationwpdist = new List<double>();
+        private List<int> imitationwpno2 = new List<int>();
+        private bool ischk_imitation = false;
+        private void chk_imitation_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_imitation.Checked&&!ischk_imitation) {
+                ischk_imitation = true;
+                var list = GetCommandList();
+                currentaltmode = altmode.Terrain;
+                for (int i=0;i<Commands.Rows.Count-1;i++)
+                {
+                    //Commands.Rows[i].Cells[Frame.Index].Value = altmode.Terrain;
+                    if (Commands.Rows[i].Cells[Dist.Index].Value!=null)
+                    { 
+                        if(double.Parse(Commands.Rows[i].Cells[Dist.Index].Value.ToString()) >=200)
+                        {
+                            imitationwpno.Add(i);
+                            imitationwpdist.Add(double.Parse(Commands.Rows[i].Cells[Dist.Index].Value.ToString()));//统计与前点距离超过300m的点    并在之中添加wp
+                        }
+                    }
+                }
+                int count = 0;
+                for(int i=0;i<imitationwpno.Count-1;i++)
+                {
+                    int n = (int)Math.Floor(imitationwpdist[i] / 100);//按距离150分段
+                    double lat = list[imitationwpno[i]].lat;
+                    double lng = list[imitationwpno[i]].lng;
+                    double lastlat = 0;
+                    double lastlng = 0;
+
+                    if (imitationwpno[i]==1)
+                    {
+                         lastlat = double.Parse(TXT_homelat.Text);
+                         lastlng = double.Parse(TXT_homelng.Text);
+                    }
+                    else if((double)list[imitationwpno[i] - 1].lat==0)
+                    {
+                         lastlat = (double)list[imitationwpno[i] - 2].lat;
+                         lastlng = (double)list[imitationwpno[i] - 2].lng;
+                         //count++;
+                    }
+                    else
+                    {
+                         lastlat = (double)list[imitationwpno[i] - 1].lat;
+                         lastlng = (double)list[imitationwpno[i] - 1].lng;
+                    }
+                    
+                    for(int j=1;j<n;j++)
+                    {
+                        imitationwpno2.Add(imitationwpno[i] + count);
+                        InsertCommand(imitationwpno[i]+count, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,                                
+                                   lastlng+=(lng-lastlng)/n,
+                                   lastlat+=(lat-lastlat)/n, list[imitationwpno[i]].alt);//经纬度参数是反的
+                       // if (j > 1)
+                            count++;
+                        
+                    }
+                    //count++;
+                }
+                for (int i = 0; i < Commands.Rows.Count - 1; i++)
+                {
+                    Commands.Rows[i].Cells[Frame.Index].Value = altmode.Terrain;
+                }
+            }
+            else if(ischk_imitation){
+                currentaltmode = altmode.Relative;
+                ischk_imitation = false;
+                imitationwpno.Clear();
+                imitationwpdist.Clear();
+                if (Commands.Rows.Count > 0)
+                {
+                    for (int i = 0; i < imitationwpno2.Count; i++)
+                    {
+                        Commands.Rows.RemoveAt(imitationwpno2[imitationwpno2.Count - 1 - i]);
+                    }
+                    for (int i = 0; i < Commands.Rows.Count - 1; i++)
+                    {
+                        Commands.Rows[i].Cells[Frame.Index].Value = altmode.Relative;
+                    }
+                }
+                imitationwpno2.Clear();
             }
         }
     }

@@ -38,7 +38,7 @@
             this.zg1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.zg1.Location = new System.Drawing.Point(12, 22);
+            this.zg1.Location = new System.Drawing.Point(12, 33);
             this.zg1.Name = "zg1";
             this.zg1.ScrollGrace = 0D;
             this.zg1.ScrollMaxX = 0D;
@@ -47,17 +47,17 @@
             this.zg1.ScrollMinX = 0D;
             this.zg1.ScrollMinY = 0D;
             this.zg1.ScrollMinY2 = 0D;
-            this.zg1.Size = new System.Drawing.Size(810, 428);
+            this.zg1.Size = new System.Drawing.Size(810, 417);
             this.zg1.TabIndex = 30;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(162, 7);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(425, 12);
+            this.label1.Size = new System.Drawing.Size(263, 12);
             this.label1.TabIndex = 31;
-            this.label1.Text = "注：地面高度数据以100米的间隔从谷歌地球中提取/如果失败则用本地地图数据";
+            this.label1.Text = "注：地面高度数据以100米的间隔用本地地图数据";
             // 
             // ElevationProfile
             // 

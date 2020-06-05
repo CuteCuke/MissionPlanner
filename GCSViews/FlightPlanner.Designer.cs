@@ -123,6 +123,7 @@ namespace MissionPlanner.GCSViews
             this.BUT_loadwpfile = new MissionPlanner.Controls.MyButton();
             this.BUT_saveWPFile = new MissionPlanner.Controls.MyButton();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.chk_imitation = new System.Windows.Forms.CheckBox();
             this.pilotwp_downdist = new System.Windows.Forms.NumericUpDown();
             this.loiter_downalt = new System.Windows.Forms.NumericUpDown();
             this.label20 = new System.Windows.Forms.Label();
@@ -826,6 +827,7 @@ namespace MissionPlanner.GCSViews
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.chk_imitation);
             this.panel6.Controls.Add(this.pilotwp_downdist);
             this.panel6.Controls.Add(this.loiter_downalt);
             this.panel6.Controls.Add(this.CMB_altmode);
@@ -838,7 +840,6 @@ namespace MissionPlanner.GCSViews
             this.panel6.Controls.Add(this.TXT_loiterrad);
             this.panel6.Controls.Add(this.label5);
             this.panel6.Controls.Add(this.LBL_WPRad);
-            this.panel6.Controls.Add(this.CHK_verifyheight);
             this.panel6.Controls.Add(this.label19);
             this.panel6.Controls.Add(this.refresh_updown);
             this.panel6.Controls.Add(this.TXT_WPRad);
@@ -861,6 +862,13 @@ namespace MissionPlanner.GCSViews
             this.panel6.Controls.Add(this.label7);
             resources.ApplyResources(this.panel6, "panel6");
             this.panel6.Name = "panel6";
+            // 
+            // chk_imitation
+            // 
+            resources.ApplyResources(this.chk_imitation, "chk_imitation");
+            this.chk_imitation.Name = "chk_imitation";
+            this.chk_imitation.UseVisualStyleBackColor = true;
+            this.chk_imitation.CheckedChanged += new System.EventHandler(this.chk_imitation_CheckedChanged);
             // 
             // pilotwp_downdist
             // 
@@ -1167,6 +1175,7 @@ namespace MissionPlanner.GCSViews
             this.panelMap.Controls.Add(this.label11);
             this.panelMap.Controls.Add(this.cmb_missiontype);
             this.panelMap.Controls.Add(this.MainMap);
+            this.panelMap.Controls.Add(this.CHK_verifyheight);
             resources.ApplyResources(this.panelMap, "panelMap");
             this.panelMap.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panelMap.Name = "panelMap";
@@ -1204,7 +1213,6 @@ namespace MissionPlanner.GCSViews
             // 
             // MainMap
             // 
-            resources.ApplyResources(this.MainMap, "MainMap");
             this.MainMap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
             this.MainMap.Bearing = 0F;
             this.MainMap.CanDragMap = true;
@@ -1215,6 +1223,7 @@ namespace MissionPlanner.GCSViews
             this.MainMap.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.MainMap.HoldInvalidation = false;
             this.MainMap.LevelsKeepInMemmory = 5;
+            resources.ApplyResources(this.MainMap, "MainMap");
             this.MainMap.MarkersEnabled = true;
             this.MainMap.MaxZoom = 19;
             this.MainMap.MinZoom = 0;
@@ -1773,9 +1782,9 @@ namespace MissionPlanner.GCSViews
             // 
             // panelBASE
             // 
+            this.panelBASE.Controls.Add(this.splitter1);
             this.panelBASE.Controls.Add(this.panelWaypoints);
             this.panelBASE.Controls.Add(this.splitter2);
-            this.panelBASE.Controls.Add(this.splitter1);
             this.panelBASE.Controls.Add(this.panelMap);
             this.panelBASE.Controls.Add(this.panelAction);
             this.panelBASE.Controls.Add(this.label6);
@@ -2092,5 +2101,6 @@ namespace MissionPlanner.GCSViews
         private DataGridViewTextBoxColumn Dist;
         private DataGridViewTextBoxColumn AZ;
         private DataGridViewTextBoxColumn TagData;
+        private CheckBox chk_imitation;
     }
 }
