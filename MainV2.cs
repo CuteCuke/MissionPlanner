@@ -59,6 +59,8 @@ namespace MissionPlanner
             public abstract Image bg { get; }
             public abstract Image wizard { get; }
             public abstract Image resume { get; }
+
+            public abstract Image logotaobao { get; }
         }
 
 
@@ -240,6 +242,17 @@ namespace MissionPlanner
                         return Image.FromFile(Settings.GetRunningDirectory() + "light_resume.png");
                     else
                         return global::MissionPlanner.Properties.Resources.light_resume;
+                }
+            }
+
+            public override Image logotaobao
+            {
+                get
+                {
+                    if (File.Exists(Settings.GetRunningDirectory() + "light_logo.png"))
+                        return Image.FromFile(Settings.GetRunningDirectory() + "light_logo.png");
+                    else
+                        return global::MissionPlanner.Properties.Resources.light_logo;
                 }
             }
         }
@@ -424,6 +437,17 @@ namespace MissionPlanner
                         return Image.FromFile(Settings.GetRunningDirectory() + "dark_resume.png");
                     else
                         return global::MissionPlanner.Properties.Resources.dark_resume;
+                }
+            }
+
+            public override Image logotaobao
+            {
+                get
+                {
+                    if (File.Exists(Settings.GetRunningDirectory() + "dark_logo.png"))
+                        return Image.FromFile(Settings.GetRunningDirectory() + "dark_logo.png");
+                    else
+                        return global::MissionPlanner.Properties.Resources.dark_logo;
                 }
             }
 
@@ -1196,7 +1220,7 @@ namespace MissionPlanner
 
             //MenuArduPilot.Image = new Bitmap(Properties.Resources._0d92fed790a3a70170e61a86db103f399a595c70, (int)(200), 31);
             //MenuArduPilot.Width = MenuArduPilot.Image.Width;
-
+           // lj_taobao.Width = lj_taobao.Image.Width;
             //if (Program.Logo2 != null)
             //    MenuArduPilot.Image = Program.Logo2;
 
@@ -1312,6 +1336,8 @@ namespace MissionPlanner
             auto_flight.Image = displayicons.auto;
             return_flight.Image = displayicons.retn;
             jump_to.Image = displayicons.jump;
+            lj_taobao.Image = displayicons.logotaobao;
+            
             //MenuInitConfig.Image = displayicons.initsetup;
             //MenuSimulation.Image = displayicons.sim;
             // MenuConfigTune.Image = displayicons.config_tuning;
@@ -1796,9 +1822,10 @@ namespace MissionPlanner
 
                                 if (ver2 > ver1)
                                 {
-                                    Common.MessageShowAgain(Strings.NewFirmware + "-" + item.name,
-                                        Strings.NewFirmwareA + item.name + Strings.Pleaseup +
-                                        "[link;https://discuss.ardupilot.org/tags/stable-release;Release Notes]");
+                                    //关闭更新
+                                    //Common.MessageShowAgain(Strings.NewFirmware + "-" + item.name,
+                                    //    Strings.NewFirmwareA + item.name + Strings.Pleaseup +
+                                    //    "[link;https://discuss.ardupilot.org/tags/stable-release;Release Notes]");
                                     break;
                                 }
 
@@ -4549,7 +4576,7 @@ namespace MissionPlanner
                 try
                 {
                 ((ToolStripButton)sender).Enabled = false;
-                if (wpno >= 3)
+                if (wpno >= 3&&!FlightPlanner.mv_return_chk_is_imitation)
                      {                 
                    if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
                         MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
@@ -4886,6 +4913,18 @@ namespace MissionPlanner
             catch (Exception ex)
             {
                 CustomMessageBox.Show(Strings.CommandFailed + "\n" + ex.ToString(), Strings.ERROR);
+            }
+        }
+
+        private void lj_taobao_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("https://shop61170276.taobao.com/shop/view_shop.htm?spm=a211vu.server-home.category.d707.43075e16dO0yXg&user_number_id=75458476");
+            }
+            catch
+            {
+                CustomMessageBox.Show("打开淘宝商城失败");
             }
         }
     }

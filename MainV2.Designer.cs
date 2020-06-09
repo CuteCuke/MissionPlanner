@@ -57,6 +57,7 @@ namespace MissionPlanner
             this.jump_to = new System.Windows.Forms.ToolStripButton();
             this.wp_no = new System.Windows.Forms.ToolStripComboBox();
             this.resume_flight = new System.Windows.Forms.ToolStripButton();
+            this.lj_taobao = new System.Windows.Forms.ToolStripButton();
             this.menu = new MissionPlanner.Controls.MyButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.status1 = new MissionPlanner.Controls.Status();
@@ -67,8 +68,8 @@ namespace MissionPlanner
             // 
             // MainMenu
             // 
-            this.MainMenu.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.MainMenu, "MainMenu");
+            this.MainMenu.BackColor = System.Drawing.Color.Transparent;
             this.MainMenu.ContextMenuStrip = this.CTX_mainmenu;
             this.MainMenu.GripMargin = new System.Windows.Forms.Padding(0);
             this.MainMenu.ImageScalingSize = new System.Drawing.Size(45, 39);
@@ -83,7 +84,8 @@ namespace MissionPlanner
             this.return_flight,
             this.jump_to,
             this.wp_no,
-            this.resume_flight});
+            this.resume_flight,
+            this.lj_taobao});
             this.MainMenu.Name = "MainMenu";
             this.MainMenu.ShowItemToolTips = true;
             this.MainMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MainMenu_ItemClicked);
@@ -160,7 +162,7 @@ namespace MissionPlanner
             this.MenuFlightData.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.MenuFlightData.ForeColor = System.Drawing.SystemColors.ControlLight;
             resources.ApplyResources(this.MenuFlightData, "MenuFlightData");
-            this.MenuFlightData.Margin = new System.Windows.Forms.Padding(0);
+            this.MenuFlightData.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.MenuFlightData.Name = "MenuFlightData";
             this.MenuFlightData.Click += new System.EventHandler(this.MenuFlightData_Click);
             // 
@@ -170,7 +172,7 @@ namespace MissionPlanner
             this.MenuFlightPlanner.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.MenuFlightPlanner.ForeColor = System.Drawing.SystemColors.ControlLight;
             resources.ApplyResources(this.MenuFlightPlanner, "MenuFlightPlanner");
-            this.MenuFlightPlanner.Margin = new System.Windows.Forms.Padding(0);
+            this.MenuFlightPlanner.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.MenuFlightPlanner.Name = "MenuFlightPlanner";
             this.MenuFlightPlanner.Click += new System.EventHandler(this.MenuFlightPlanner_Click);
             // 
@@ -187,8 +189,8 @@ namespace MissionPlanner
             // toolStripConnectionControl
             // 
             this.toolStripConnectionControl.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripConnectionControl.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.toolStripConnectionControl, "toolStripConnectionControl");
+            this.toolStripConnectionControl.BackColor = System.Drawing.Color.Transparent;
             this.toolStripConnectionControl.ForeColor = System.Drawing.Color.Black;
             this.toolStripConnectionControl.Margin = new System.Windows.Forms.Padding(0);
             this.toolStripConnectionControl.Name = "toolStripConnectionControl";
@@ -200,7 +202,7 @@ namespace MissionPlanner
             this.preflight_check.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.preflight_check.ForeColor = System.Drawing.SystemColors.ControlLight;
             resources.ApplyResources(this.preflight_check, "preflight_check");
-            this.preflight_check.Margin = new System.Windows.Forms.Padding(0);
+            this.preflight_check.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.preflight_check.Name = "preflight_check";
             // 
             // lock_unlock
@@ -209,7 +211,7 @@ namespace MissionPlanner
             this.lock_unlock.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.lock_unlock.ForeColor = System.Drawing.SystemColors.ControlLight;
             resources.ApplyResources(this.lock_unlock, "lock_unlock");
-            this.lock_unlock.Margin = new System.Windows.Forms.Padding(0);
+            this.lock_unlock.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.lock_unlock.Name = "lock_unlock";
             this.lock_unlock.Click += new System.EventHandler(this.lock_unlock_Click);
             // 
@@ -219,7 +221,7 @@ namespace MissionPlanner
             this.auto_flight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.auto_flight.ForeColor = System.Drawing.SystemColors.ControlLight;
             resources.ApplyResources(this.auto_flight, "auto_flight");
-            this.auto_flight.Margin = new System.Windows.Forms.Padding(0);
+            this.auto_flight.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.auto_flight.Name = "auto_flight";
             this.auto_flight.Click += new System.EventHandler(this.auto_flight_Click);
             // 
@@ -229,7 +231,7 @@ namespace MissionPlanner
             this.return_flight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.return_flight.ForeColor = System.Drawing.SystemColors.ControlLight;
             resources.ApplyResources(this.return_flight, "return_flight");
-            this.return_flight.Margin = new System.Windows.Forms.Padding(0);
+            this.return_flight.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.return_flight.Name = "return_flight";
             this.return_flight.Click += new System.EventHandler(this.return_flight_Click);
             // 
@@ -255,11 +257,23 @@ namespace MissionPlanner
             this.resume_flight.BackColor = System.Drawing.Color.Transparent;
             this.resume_flight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.resume_flight.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.resume_flight.Image = global::MissionPlanner.Properties.Resources.dark_resume;
+            this.resume_flight.Image = global::MissionPlanner.Properties.Resources.light_resume;
             resources.ApplyResources(this.resume_flight, "resume_flight");
-            this.resume_flight.Margin = new System.Windows.Forms.Padding(0);
+            this.resume_flight.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.resume_flight.Name = "resume_flight";
             this.resume_flight.Click += new System.EventHandler(this.resume_flight_Click);
+            // 
+            // lj_taobao
+            // 
+            this.lj_taobao.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            resources.ApplyResources(this.lj_taobao, "lj_taobao");
+            this.lj_taobao.BackColor = System.Drawing.Color.Transparent;
+            this.lj_taobao.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.lj_taobao.ForeColor = System.Drawing.Color.White;
+            this.lj_taobao.Image = global::MissionPlanner.Properties.Resources.light_logo;
+            this.lj_taobao.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.lj_taobao.Name = "lj_taobao";
+            this.lj_taobao.Click += new System.EventHandler(this.lj_taobao_Click);
             // 
             // menu
             // 
@@ -298,7 +312,6 @@ namespace MissionPlanner
             this.MainMenu.PerformLayout();
             this.CTX_mainmenu.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -334,5 +347,6 @@ namespace MissionPlanner
         private System.Windows.Forms.ToolStripMenuItem config_tune;
         private System.Windows.Forms.ToolStripMenuItem firmware_install;
         public System.Windows.Forms.ToolStripButton resume_flight;
+        public System.Windows.Forms.ToolStripButton lj_taobao;
     }
 }

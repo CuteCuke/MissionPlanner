@@ -106,6 +106,8 @@ namespace MissionPlanner.GCSViews
         private bool isMouseClickOffMenu;
         private bool isMouseDown;
         private bool isMouseDraging;
+        private bool ischk_imitation = false; //是否仿地飞行
+        public bool mv_return_chk_is_imitation=false;
         public GMapOverlay kmlpolygonsoverlay;
         public bool tag_updownwp = false;    //起降航点添加标记
         /// <summary>
@@ -698,6 +700,7 @@ namespace MissionPlanner.GCSViews
             frmProgressReporter.Dispose();
 
             MainMap.Focus();
+            mv_return_chk_is_imitation = ischk_imitation;
             del_flight_Click(sender, e);
             BUT_read_Click(sender, e);
         }
@@ -7510,7 +7513,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
         private List<int> imitationwpno =new List<int>();
         private List<double> imitationwpdist = new List<double>();
         private List<int> imitationwpno2 = new List<int>();
-        private bool ischk_imitation = false;
+        
         private void chk_imitation_CheckedChanged(object sender, EventArgs e)
         {
             if (chk_imitation.Checked&&!ischk_imitation) {
@@ -7530,7 +7533,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                     }
                 }
                 int count = 0;
-                for(int i=0;i<imitationwpno.Count-1;i++)
+                for(int i=0;i<imitationwpno.Count;i++)
                 {
                     int n = (int)Math.Floor(imitationwpdist[i] / 100);//按距离150分段
                     double lat = list[imitationwpno[i]].lat;
@@ -7543,7 +7546,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                          lastlat = double.Parse(TXT_homelat.Text);
                          lastlng = double.Parse(TXT_homelng.Text);
                     }
-                    else if((double)list[imitationwpno[i] - 1].lat==0)
+                    else if((double)list[imitationwpno[i] - 1].alt==0)
                     {
                          lastlat = (double)list[imitationwpno[i] - 2].lat;
                          lastlng = (double)list[imitationwpno[i] - 2].lng;
