@@ -7353,8 +7353,8 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                         InsertCommand(rowindex, MAVLink.MAV_CMD.VTOL_TAKEOFF, 0, 0, 0, 0, lat,lng, (double)vtol_takeoff_alt.Value);//VTOL_TAKEOFF 起飞点
                         //nextwp.newpos(0,(double)pilotwp_updist.Value);
                         InsertCommand(rowindex += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,  
-                            lat += Math.Sin((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000),
-                            lng += Math.Cos((double)updown_angle.Value*Math.PI/180) * ((double)pilotwp_updist.Value / 100000), (double)pilotwp_upalt.Value);//引导wp1   
+                            lat += Math.Sin((double)updown_angle.Value * Math.PI / 180) * ((double)100 / 100000),
+                            lng += Math.Cos((double)updown_angle.Value*Math.PI/180) * ((double)100 / 100000), (double)pilotwp_upalt.Value);//引导wp1   
                         //nextwp.newpos(0, (double)pilotwp_updist.Value);
                         InsertCommand(rowindex += 1, MAVLink.MAV_CMD.LOITER_TO_ALT,0,(double)loiter_radius.Value,0,0,  
                             lat += Math.Sin((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000),
@@ -7520,14 +7520,19 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                 ischk_imitation = true;
                 var list = GetCommandList();
                 currentaltmode = altmode.Terrain;
+                int insertwpdist = 100;
+                if(MainV2.comPort.MAV.cs.firmware==Firmwares.ArduPlane)
+                {
+                    insertwpdist = 200;
+                }
                 for (int i=0;i<Commands.Rows.Count-1;i++)
                 {
                     //Commands.Rows[i].Cells[Frame.Index].Value = altmode.Terrain;
                     if (Commands.Rows[i].Cells[Dist.Index].Value!=null)
                     { 
-                        if(double.Parse(Commands.Rows[i].Cells[Dist.Index].Value.ToString()) >=200)
+                        if(double.Parse(Commands.Rows[i].Cells[Dist.Index].Value.ToString()) >=insertwpdist*2&&Commands.Rows[i].Cells[Command.Index].Value.ToString()==MAVLink.MAV_CMD.WAYPOINT.ToString())
                         {
-                            imitationwpno.Add(i);
+                            imitationwpno.Add(i);                            
                             imitationwpdist.Add(double.Parse(Commands.Rows[i].Cells[Dist.Index].Value.ToString()));//统计与前点距离超过300m的点    并在之中添加wp
                         }
                     }
@@ -7535,7 +7540,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                 int count = 0;
                 for(int i=0;i<imitationwpno.Count;i++)
                 {
-                    int n = (int)Math.Floor(imitationwpdist[i] / 100);//按距离150分段
+                    int n = (int)Math.Floor(imitationwpdist[i] / insertwpdist);//按距离150分段
                     double lat = list[imitationwpno[i]].lat;
                     double lng = list[imitationwpno[i]].lng;
                     double lastlat = 0;
