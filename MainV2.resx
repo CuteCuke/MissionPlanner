@@ -333,8 +333,26 @@
   <data name="firmware_install.Text" xml:space="preserve">
     <value>固件安装</value>
   </data>
+  <data name="down_log.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 22</value>
+  </data>
+  <data name="down_log.Text" xml:space="preserve">
+    <value>下载日志</value>
+  </data>
+  <data name="review_log.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 22</value>
+  </data>
+  <data name="review_log.Text" xml:space="preserve">
+    <value>回顾日志</value>
+  </data>
+  <data name="toolStrip_pos.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 22</value>
+  </data>
+  <data name="toolStrip_pos.Text" xml:space="preserve">
+    <value>POS工具</value>
+  </data>
   <data name="CTX_mainmenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 180</value>
+    <value>125, 202</value>
   </data>
   <data name="&gt;&gt;CTX_mainmenu.Name" xml:space="preserve">
     <value>CTX_mainmenu</value>
@@ -4162,7 +4180,7 @@
     <value>status1</value>
   </data>
   <data name="&gt;&gt;status1.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.Status, MissionPlanner, Version=1.3.7466.26570, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.Status, MissionPlanner, Version=1.3.7470.29332, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;status1.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -5404,6 +5422,24 @@
   <data name="&gt;&gt;firmware_install.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;toolStrip_pos.Name" xml:space="preserve">
+    <value>toolStrip_pos</value>
+  </data>
+  <data name="&gt;&gt;toolStrip_pos.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;down_log.Name" xml:space="preserve">
+    <value>down_log</value>
+  </data>
+  <data name="&gt;&gt;down_log.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;review_log.Name" xml:space="preserve">
+    <value>review_log</value>
+  </data>
+  <data name="&gt;&gt;review_log.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;MenuFlightData.Name" xml:space="preserve">
     <value>MenuFlightData</value>
   </data>
@@ -5426,7 +5462,7 @@
     <value>toolStripConnectionControl</value>
   </data>
   <data name="&gt;&gt;toolStripConnectionControl.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ToolStripConnectionControl, MissionPlanner, Version=1.3.7466.26570, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ToolStripConnectionControl, MissionPlanner, Version=1.3.7470.29332, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;preflight_check.Name" xml:space="preserve">
     <value>preflight_check</value>

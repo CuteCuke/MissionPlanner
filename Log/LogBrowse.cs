@@ -3203,5 +3203,39 @@ namespace MissionPlanner.Log
         {
             zg1_ZoomEvent(zg1, null, null);
         }
+
+        private void export_pos_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.FileName = "outpos.csv";
+            int n = 1;
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamWriter sw = new StreamWriter(sfd.OpenFile()))
+                {
+                    sw.WriteLine( "type,lat,long,地图高度,相对home高度,gps高度");
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        StringBuilder sb = new StringBuilder();
+                        foreach (DataGridViewCell cell in row.Cells)
+                        {
+                            if (cell.ColumnIndex == 2)
+                            {
+                                sb.Append(cell.FormattedValue+n.ToString());
+                                sb.Append(',');
+                                n++;
+                            }
+                            else if (cell.ColumnIndex >= 6 && cell.ColumnIndex <= 10)
+                            { 
+                                sb.Append(cell.FormattedValue);
+                                sb.Append(',');
+                            }
+                        }
+
+                        sw.WriteLine(sb.ToString());
+                    }
+                }
+            }
+        }
     }
 }

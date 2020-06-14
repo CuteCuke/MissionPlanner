@@ -4927,5 +4927,19 @@ namespace MissionPlanner
                 CustomMessageBox.Show("打开淘宝商城失败");
             }
         }
+
+        private void down_log_Click(object sender, EventArgs e)
+        {
+            var form = new LogDownloadMavLink();
+
+            form.Show();
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Form logbrowse = new LogBrowse();
+            ThemeManager.ApplyThemeTo(logbrowse);
+            logbrowse.Show();
+        }
     }
 }
