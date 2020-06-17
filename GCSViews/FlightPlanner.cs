@@ -7346,6 +7346,13 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                 {
                     var missionstartwp = GetCommandList()[0];
                     var missionendwp = GetCommandList()[Commands.Rows.Count - 2];
+                    if (missionendwp.id != (ushort)MAVLink.MAV_CMD.WAYPOINT)
+                    {
+                        missionendwp.id = GetCommandList()[Commands.Rows.Count - 3].id;
+                        missionendwp.alt = GetCommandList()[Commands.Rows.Count - 3].alt;
+                        missionendwp.lat = GetCommandList()[Commands.Rows.Count - 3].lat;
+                        missionendwp.lng = GetCommandList()[Commands.Rows.Count - 3].lng;
+                    }
                     var commandno = Commands.Rows.Count;
                 // InsertCommand(1,MAVLink.MAV_CMD.VTOL_TAKEOFF,0,0,0,0,0,0,(double)vtol_takeoff_alt.Value);
                     if (tag_updownwp == false&&missionstartwp.id==(ushort)MAVLink.MAV_CMD.WAYPOINT&&missionendwp.id==(ushort)MAVLink.MAV_CMD.WAYPOINT)
@@ -7453,24 +7460,6 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                     tag_updownwp = true;
                 }
             }
-            //setfromMap();
-            //string wpno = (selectedrow + 1).ToString("0");
-
-            //    try
-            //    {
-            //        Commands.Rows.Insert(int.Parse(wpno), 1);
-            //    }
-            //    catch
-            //    {
-            //        CustomMessageBox.Show("Invalid insert position", Strings.ERROR);
-            //        return;
-            //    }
-
-            //    selectedrow = int.Parse(wpno);
-
-            //    ChangeColumnHeader(MAVLink.MAV_CMD.WAYPOINT.ToString());
-
-            //    setfromMap(MouseDownStart.Lat, MouseDownStart.Lng, (int)float.Parse(TXT_DefaultAlt.Text));
 
         }
 

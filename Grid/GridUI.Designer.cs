@@ -121,6 +121,11 @@
             this.LBL_copter_delay = new System.Windows.Forms.Label();
             this.NUM_copter_delay = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label49 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.max_alt = new System.Windows.Forms.NumericUpDown();
+            this.min_alt = new System.Windows.Forms.NumericUpDown();
+            this.chk_minmaxalt = new System.Windows.Forms.CheckBox();
             this.chk_spiral = new System.Windows.Forms.CheckBox();
             this.chk_Corridor = new System.Windows.Forms.CheckBox();
             this.label43 = new System.Windows.Forms.Label();
@@ -166,11 +171,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TRK_zoom = new MissionPlanner.Controls.MyTrackBar();
             this.map = new MissionPlanner.Controls.myGMAP();
-            this.chk_minmaxalt = new System.Windows.Forms.CheckBox();
-            this.min_alt = new System.Windows.Forms.NumericUpDown();
-            this.max_alt = new System.Windows.Forms.NumericUpDown();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_split)).BeginInit();
             this.tabCamera.SuspendLayout();
@@ -189,6 +189,8 @@
             this.groupBox_copter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_copter_delay)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.max_alt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.min_alt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_corridorwidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_leadin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_overshoot2)).BeginInit();
@@ -206,8 +208,6 @@
             this.groupBox4.SuspendLayout();
             this.tabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TRK_zoom)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.min_alt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.max_alt)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox5
@@ -948,6 +948,50 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
+            // label49
+            // 
+            resources.ApplyResources(this.label49, "label49");
+            this.label49.Name = "label49";
+            // 
+            // label48
+            // 
+            resources.ApplyResources(this.label48, "label48");
+            this.label48.Name = "label48";
+            // 
+            // max_alt
+            // 
+            resources.ApplyResources(this.max_alt, "max_alt");
+            this.max_alt.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.max_alt.Name = "max_alt";
+            this.max_alt.ValueChanged += new System.EventHandler(this.max_alt_ValueChanged);
+            // 
+            // min_alt
+            // 
+            this.min_alt.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            resources.ApplyResources(this.min_alt, "min_alt");
+            this.min_alt.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.min_alt.Name = "min_alt";
+            this.min_alt.ValueChanged += new System.EventHandler(this.min_alt_ValueChanged);
+            // 
+            // chk_minmaxalt
+            // 
+            resources.ApplyResources(this.chk_minmaxalt, "chk_minmaxalt");
+            this.chk_minmaxalt.Name = "chk_minmaxalt";
+            this.chk_minmaxalt.UseVisualStyleBackColor = true;
+            this.chk_minmaxalt.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // chk_spiral
             // 
             resources.ApplyResources(this.chk_spiral, "chk_spiral");
@@ -1388,50 +1432,6 @@
             this.map.MouseDown += new System.Windows.Forms.MouseEventHandler(this.map_MouseDown);
             this.map.MouseMove += new System.Windows.Forms.MouseEventHandler(this.map_MouseMove);
             // 
-            // chk_minmaxalt
-            // 
-            resources.ApplyResources(this.chk_minmaxalt, "chk_minmaxalt");
-            this.chk_minmaxalt.Name = "chk_minmaxalt";
-            this.chk_minmaxalt.UseVisualStyleBackColor = true;
-            this.chk_minmaxalt.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // min_alt
-            // 
-            this.min_alt.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            resources.ApplyResources(this.min_alt, "min_alt");
-            this.min_alt.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.min_alt.Name = "min_alt";
-            this.min_alt.ValueChanged += new System.EventHandler(this.min_alt_ValueChanged);
-            // 
-            // max_alt
-            // 
-            resources.ApplyResources(this.max_alt, "max_alt");
-            this.max_alt.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.max_alt.Name = "max_alt";
-            this.max_alt.ValueChanged += new System.EventHandler(this.max_alt_ValueChanged);
-            // 
-            // label48
-            // 
-            resources.ApplyResources(this.label48, "label48");
-            this.label48.Name = "label48";
-            // 
-            // label49
-            // 
-            resources.ApplyResources(this.label49, "label49");
-            this.label49.Name = "label49";
-            // 
             // GridUI
             // 
             resources.ApplyResources(this, "$this");
@@ -1471,6 +1471,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.NUM_copter_delay)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.max_alt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.min_alt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_corridorwidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_leadin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_overshoot2)).EndInit();
@@ -1491,8 +1493,6 @@
             this.groupBox4.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TRK_zoom)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.min_alt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.max_alt)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

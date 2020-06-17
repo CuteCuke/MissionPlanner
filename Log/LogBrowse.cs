@@ -2289,9 +2289,9 @@ namespace MissionPlanner.Log
             opt.Location = mp;
 
             opt.Combobox.DataSource = options;
-            opt.Button1.Text = "Filter";
+            opt.Button1.Text = "确定";
             opt.Button1.DialogResult = DialogResult.OK;
-            opt.Button2.Text = "Cancel";
+            opt.Button2.Text = "取消";
             opt.Button2.DialogResult = DialogResult.Cancel;
 
             var dr = opt.ShowDialog(this);
@@ -3206,6 +3206,7 @@ namespace MissionPlanner.Log
 
         private void export_pos_Click(object sender, EventArgs e)
         {
+            dataGridView1_ColumnHeaderMouseClick(null, null);
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.FileName = "outpos.csv";
             int n = 1;

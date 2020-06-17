@@ -64,6 +64,8 @@ namespace MissionPlanner
             this.menu = new MissionPlanner.Controls.MyButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.status1 = new MissionPlanner.Controls.Status();
+            this.airspeed_0 = new System.Windows.Forms.ToolStripButton();
+            this.shutter = new System.Windows.Forms.ToolStripButton();
             this.MainMenu.SuspendLayout();
             this.CTX_mainmenu.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -82,13 +84,15 @@ namespace MissionPlanner
             this.MenuConnect,
             this.toolStripConnectionControl,
             this.preflight_check,
-            this.lock_unlock,
-            this.auto_flight,
             this.return_flight,
-            this.jump_to,
             this.wp_no,
+            this.jump_to,
             this.resume_flight,
-            this.lj_taobao});
+            this.lj_taobao,
+            this.auto_flight,
+            this.lock_unlock,
+            this.airspeed_0,
+            this.shutter});
             this.MainMenu.Name = "MainMenu";
             this.MainMenu.ShowItemToolTips = true;
             this.MainMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MainMenu_ItemClicked);
@@ -231,6 +235,7 @@ namespace MissionPlanner
             // 
             // lock_unlock
             // 
+            this.lock_unlock.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.lock_unlock.BackColor = System.Drawing.Color.Transparent;
             this.lock_unlock.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.lock_unlock.ForeColor = System.Drawing.SystemColors.ControlLight;
@@ -241,6 +246,7 @@ namespace MissionPlanner
             // 
             // auto_flight
             // 
+            this.auto_flight.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.auto_flight.BackColor = System.Drawing.Color.Transparent;
             this.auto_flight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.auto_flight.ForeColor = System.Drawing.SystemColors.ControlLight;
@@ -251,6 +257,7 @@ namespace MissionPlanner
             // 
             // return_flight
             // 
+            this.return_flight.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.return_flight.BackColor = System.Drawing.Color.Transparent;
             this.return_flight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.return_flight.ForeColor = System.Drawing.SystemColors.ControlLight;
@@ -261,6 +268,7 @@ namespace MissionPlanner
             // 
             // jump_to
             // 
+            this.jump_to.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.jump_to.BackColor = System.Drawing.Color.Transparent;
             this.jump_to.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.jump_to.ForeColor = System.Drawing.SystemColors.ControlLight;
@@ -271,6 +279,7 @@ namespace MissionPlanner
             // 
             // wp_no
             // 
+            this.wp_no.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.wp_no.BackColor = System.Drawing.SystemColors.MenuBar;
             this.wp_no.Name = "wp_no";
             resources.ApplyResources(this.wp_no, "wp_no");
@@ -278,12 +287,13 @@ namespace MissionPlanner
             // 
             // resume_flight
             // 
+            this.resume_flight.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.resume_flight.BackColor = System.Drawing.Color.Transparent;
             this.resume_flight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.resume_flight.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.resume_flight.Image = global::MissionPlanner.Properties.Resources.light_resume;
             resources.ApplyResources(this.resume_flight, "resume_flight");
-            this.resume_flight.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.resume_flight.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.resume_flight.Name = "resume_flight";
             this.resume_flight.Click += new System.EventHandler(this.resume_flight_Click);
             // 
@@ -295,7 +305,7 @@ namespace MissionPlanner
             this.lj_taobao.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.lj_taobao.ForeColor = System.Drawing.Color.White;
             this.lj_taobao.Image = global::MissionPlanner.Properties.Resources.light_logo;
-            this.lj_taobao.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.lj_taobao.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.lj_taobao.Name = "lj_taobao";
             this.lj_taobao.Click += new System.EventHandler(this.lj_taobao_Click);
             // 
@@ -319,6 +329,26 @@ namespace MissionPlanner
             resources.ApplyResources(this.status1, "status1");
             this.status1.Name = "status1";
             this.status1.Percent = 0D;
+            // 
+            // airspeed_0
+            // 
+            this.airspeed_0.BackColor = System.Drawing.Color.Transparent;
+            this.airspeed_0.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.airspeed_0.ForeColor = System.Drawing.SystemColors.ControlLight;
+            resources.ApplyResources(this.airspeed_0, "airspeed_0");
+            this.airspeed_0.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.airspeed_0.Name = "airspeed_0";
+            this.airspeed_0.Click += new System.EventHandler(this.airspeed_0_Click);
+            // 
+            // shutter
+            // 
+            this.shutter.BackColor = System.Drawing.Color.Transparent;
+            this.shutter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.shutter.ForeColor = System.Drawing.SystemColors.ControlLight;
+            resources.ApplyResources(this.shutter, "shutter");
+            this.shutter.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.shutter.Name = "shutter";
+            this.shutter.Click += new System.EventHandler(this.shutter_Click);
             // 
             // MainV2
             // 
@@ -375,5 +405,7 @@ namespace MissionPlanner
         private System.Windows.Forms.ToolStripMenuItem toolStrip_pos;
         private System.Windows.Forms.ToolStripMenuItem down_log;
         private System.Windows.Forms.ToolStripMenuItem review_log;
+        public System.Windows.Forms.ToolStripButton airspeed_0;
+        public System.Windows.Forms.ToolStripButton shutter;
     }
 }

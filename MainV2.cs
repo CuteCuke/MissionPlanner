@@ -4941,5 +4941,34 @@ namespace MissionPlanner
             ThemeManager.ApplyThemeTo(logbrowse);
             logbrowse.Show();
         }
+
+        private void airspeed_0_Click(object sender, EventArgs e)
+        {
+            int param1 = 0;
+            int param3 = 1;
+            if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
+                param1 = 1; // gyro
+            if (MainV2.comPort.doCommand((MAVLink.MAV_CMD)Enum.Parse(typeof(MAVLink.MAV_CMD), "PREFLIGHT_CALIBRATION"),
+                        param1, 0, param3, 0, 0, 0, 0))
+            {
+
+            }
+            else
+            {
+                CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
+            }
+        }
+
+        private void shutter_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MainV2.comPort.setDigicamControl(true);
+            }
+            catch
+            {
+                CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
+            }
+        }
     }
 }
