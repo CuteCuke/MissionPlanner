@@ -51,6 +51,7 @@
     <WarningLevel>4</WarningLevel>
     <Optimize>false</Optimize>
     <CodeAnalysisRuleSet />
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>

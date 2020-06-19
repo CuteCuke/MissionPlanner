@@ -4575,17 +4575,23 @@ namespace MissionPlanner
            
                 try
                 {
-                ((ToolStripButton)sender).Enabled = false;
-                if (wpno >= 3&&!FlightPlanner.mv_return_chk_is_imitation)
-                     {                 
-                   if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
-                        MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
-                            (ushort)(wpno - 3));
-                    //MainV2.comPort.setMode("RTL");
-                    else
-                        MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
-                            (ushort)(wpno - 4));
-                } 
+                      ((ToolStripButton)sender).Enabled = false;
+                      if (wpno >= 3)
+                       {
+                            if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
+                            {
+                                MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
+                                MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
+                                            (ushort)(wpno - 2));
+                            }
+                            //MainV2.comPort.setMode("RTL");
+                            else
+                            {
+                                MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
+                                MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
+                                    (ushort)(wpno - 4));
+                            }
+                      } 
                  }
                 catch
                 {
@@ -4799,22 +4805,43 @@ namespace MissionPlanner
                         List<Locationwp> cmds = new List<Locationwp>();
 
                         var wpcount = MainV2.comPort.getWPCount();
-
+                        ushort cam=0;
                         for (ushort a = 0; a < wpcount; a++)
                         {
                             var wpdata = MainV2.comPort.getWP(a);
-
-                            if (a < lastwpno && a != 0) // allow home
+                            if (lastwpdata.id == (ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
                             {
-                                if (wpdata.id != (ushort)MAVLink.MAV_CMD.TAKEOFF)
-                                    if (wpdata.id < (ushort)MAVLink.MAV_CMD.LAST)
+                                if (a < lastwpno-1 && a != 0) // allow home
+                                {
+                                    if (wpdata.id != (ushort)MAVLink.MAV_CMD.TAKEOFF)
+                                        if (wpdata.id < (ushort)MAVLink.MAV_CMD.LAST)
+                                            continue;
+
+                                    if (wpdata.id > (ushort)MAVLink.MAV_CMD.DO_LAST)
                                         continue;
 
-                                if (wpdata.id > (ushort)MAVLink.MAV_CMD.DO_LAST)
-                                    continue;
+                                }
                             }
+                            else { 
+                                if (a < lastwpno && a != 0) // allow home
+                                {
+                                    if (wpdata.id == (ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
+                                    {
+                                        cam = a;
+                                        continue;
+                                    }
+                                    if (wpdata.id != (ushort)MAVLink.MAV_CMD.TAKEOFF)
+                                        if (wpdata.id < (ushort)MAVLink.MAV_CMD.LAST)
+                                            continue;
 
+                                    if (wpdata.id > (ushort)MAVLink.MAV_CMD.DO_LAST)
+                                        continue;
+                                
+                                }  
+                            }                        
                             cmds.Add(wpdata);
+                            if (a == lastwpno&&cam!=0)
+                                cmds.Add(MainV2.comPort.getWP(cam));
                         }
 
                         ushort wpno = 0;
@@ -4944,19 +4971,32 @@ namespace MissionPlanner
 
         private void airspeed_0_Click(object sender, EventArgs e)
         {
-            int param1 = 0;
-            int param3 = 1;
-            if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
-                param1 = 1; // gyro
-            if (MainV2.comPort.doCommand((MAVLink.MAV_CMD)Enum.Parse(typeof(MAVLink.MAV_CMD), "PREFLIGHT_CALIBRATION"),
-                        param1, 0, param3, 0, 0, 0, 0))
-            {
 
-            }
-            else
+            if (
+                CustomMessageBox.Show("你确定要执行空速清0 ?", "Action",
+                    MessageBoxButtons.YesNo) == (int)DialogResult.Yes)
             {
-                CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
-            }
+                try
+                {
+                    int param1 = 0;
+                    int param3 = 1;
+                    if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
+                        param1 = 1; // gyro
+                    if (MainV2.comPort.doCommand((MAVLink.MAV_CMD)Enum.Parse(typeof(MAVLink.MAV_CMD), "PREFLIGHT_CALIBRATION"),
+                                param1, 0, param3, 0, 0, 0, 0))
+                    {
+
+                    }
+                    else
+                    {
+                        CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
+                    }
+                }
+                catch
+                {
+                    CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
+                }
+             }
         }
 
         private void shutter_Click(object sender, EventArgs e)
