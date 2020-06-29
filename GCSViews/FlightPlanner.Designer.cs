@@ -496,6 +496,8 @@ namespace MissionPlanner.GCSViews
             this.panelWaypoints.Controls.Add(this.BUT_Add);
             this.panelWaypoints.Controls.Add(this.LBL_defalutalt);
             this.panelWaypoints.Controls.Add(this.TXT_DefaultAlt);
+            this.panelWaypoints.Controls.Add(this.LBL_WPRad);
+            this.panelWaypoints.Controls.Add(this.TXT_WPRad);
             resources.ApplyResources(this.panelWaypoints, "panelWaypoints");
             this.panelWaypoints.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panelWaypoints.Name = "panelWaypoints";
@@ -652,10 +654,8 @@ namespace MissionPlanner.GCSViews
             this.panel6.Controls.Add(this.label16);
             this.panel6.Controls.Add(this.TXT_loiterrad);
             this.panel6.Controls.Add(this.label5);
-            this.panel6.Controls.Add(this.LBL_WPRad);
             this.panel6.Controls.Add(this.label19);
             this.panel6.Controls.Add(this.refresh_updown);
-            this.panel6.Controls.Add(this.TXT_WPRad);
             this.panel6.Controls.Add(this.label18);
             this.panel6.Controls.Add(this.loiter_radius);
             this.panel6.Controls.Add(this.label10);
@@ -719,7 +719,7 @@ namespace MissionPlanner.GCSViews
             0});
             this.loiter_downalt.Name = "loiter_downalt";
             this.loiter_downalt.Value = new decimal(new int[] {
-            100,
+            60,
             0,
             0,
             0});

@@ -154,7 +154,7 @@
     <value>6</value>
   </data>
   <data name="TXT_WPRad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>157, 425</value>
+    <value>186, 5</value>
   </data>
   <data name="TXT_WPRad.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 21</value>
@@ -163,13 +163,10 @@
     <value>1</value>
   </data>
   <data name="TXT_WPRad.Text" xml:space="preserve">
-    <value>30</value>
+    <value>5</value>
   </data>
   <data name="TXT_WPRad.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
-  </data>
-  <data name="TXT_WPRad.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="&gt;&gt;TXT_WPRad.Name" xml:space="preserve">
     <value>TXT_WPRad</value>
@@ -178,10 +175,10 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;TXT_WPRad.Parent" xml:space="preserve">
-    <value>panel6</value>
+    <value>panelWaypoints</value>
   </data>
   <data name="&gt;&gt;TXT_WPRad.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>9</value>
   </data>
   <data name="TXT_DefaultAlt.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 9pt</value>
@@ -220,7 +217,7 @@
     <value>NoControl</value>
   </data>
   <data name="LBL_WPRad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 430</value>
+    <value>131, 7</value>
   </data>
   <data name="LBL_WPRad.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 12</value>
@@ -231,9 +228,6 @@
   <data name="LBL_WPRad.Text" xml:space="preserve">
     <value>WP Radius</value>
   </data>
-  <data name="LBL_WPRad.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="&gt;&gt;LBL_WPRad.Name" xml:space="preserve">
     <value>LBL_WPRad</value>
   </data>
@@ -241,10 +235,10 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;LBL_WPRad.Parent" xml:space="preserve">
-    <value>panel6</value>
+    <value>panelWaypoints</value>
   </data>
   <data name="&gt;&gt;LBL_WPRad.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>8</value>
   </data>
   <data name="LBL_defalutalt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1166,7 +1160,7 @@
     <value>Commands</value>
   </data>
   <data name="&gt;&gt;Commands.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.MyDataGridView, MissionPlanner, Version=1.3.7474.27201, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.MyDataGridView, MissionPlanner, Version=1.3.7484.17317, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Commands.Parent" xml:space="preserve">
     <value>panelWaypoints</value>
@@ -1907,7 +1901,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>10</value>
   </data>
   <data name="refresh_updown.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1937,7 +1931,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;refresh_updown.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>11</value>
   </data>
   <data name="label18.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1973,7 +1967,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>12</value>
   </data>
   <data name="loiter_radius.Location" type="System.Drawing.Point, System.Drawing">
     <value>149, 386</value>
@@ -1997,7 +1991,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;loiter_radius.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>13</value>
   </data>
   <data name="label10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2033,7 +2027,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>14</value>
   </data>
   <data name="label15.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2066,7 +2060,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>15</value>
   </data>
   <data name="loiter_upalt.Location" type="System.Drawing.Point, System.Drawing">
     <value>128, 193</value>
@@ -2087,7 +2081,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;loiter_upalt.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>16</value>
   </data>
   <data name="pilotwp_upalt.Location" type="System.Drawing.Point, System.Drawing">
     <value>128, 135</value>
@@ -2108,7 +2102,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;pilotwp_upalt.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>17</value>
   </data>
   <data name="updown_angle.Location" type="System.Drawing.Point, System.Drawing">
     <value>72, 64</value>
@@ -2129,7 +2123,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;updown_angle.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>18</value>
   </data>
   <data name="label14.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2162,7 +2156,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>19</value>
   </data>
   <data name="label12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2195,7 +2189,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>20</value>
   </data>
   <data name="label13.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2228,7 +2222,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>21</value>
   </data>
   <data name="vtol_takeoff_alt.Location" type="System.Drawing.Point, System.Drawing">
     <value>128, 111</value>
@@ -2249,7 +2243,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;vtol_takeoff_alt.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>22</value>
   </data>
   <data name="label21.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2279,7 +2273,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>23</value>
   </data>
   <data name="del_updownwp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2309,7 +2303,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;del_updownwp.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>24</value>
   </data>
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2342,7 +2336,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>25</value>
   </data>
   <data name="add_updownwp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2372,7 +2366,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;add_updownwp.ZOrder" xml:space="preserve">
-    <value>28</value>
+    <value>26</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2405,7 +2399,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>29</value>
+    <value>27</value>
   </data>
   <data name="label7.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
@@ -2441,7 +2435,7 @@
     <value>panel6</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>30</value>
+    <value>28</value>
   </data>
   <data name="panel6.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 233</value>

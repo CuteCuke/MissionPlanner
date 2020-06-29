@@ -463,6 +463,16 @@ namespace MissionPlanner.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        public static System.Drawing.Bitmap dark_airspeed0 {
+            get {
+                object obj = ResourceManager.GetObject("dark_airspeed0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         public static System.Drawing.Bitmap dark_auto {
             get {
                 object obj = ResourceManager.GetObject("dark_auto", resourceCulture);
@@ -576,6 +586,16 @@ namespace MissionPlanner.Properties {
         public static System.Drawing.Bitmap dark_return {
             get {
                 object obj = ResourceManager.GetObject("dark_return", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap dark_shuter {
+            get {
+                object obj = ResourceManager.GetObject("dark_shuter", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1017,6 +1037,16 @@ namespace MissionPlanner.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        public static System.Drawing.Bitmap light_airspeed0 {
+            get {
+                object obj = ResourceManager.GetObject("light_airspeed0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         public static System.Drawing.Bitmap light_auto {
             get {
                 object obj = ResourceManager.GetObject("light_auto", resourceCulture);
@@ -1130,6 +1160,16 @@ namespace MissionPlanner.Properties {
         public static System.Drawing.Bitmap light_return {
             get {
                 object obj = ResourceManager.GetObject("light_return", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap light_shutter {
+            get {
+                object obj = ResourceManager.GetObject("light_shutter", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

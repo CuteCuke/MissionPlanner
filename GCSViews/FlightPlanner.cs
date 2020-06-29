@@ -7486,10 +7486,18 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
         private void refresh_updown_Click(object sender, EventArgs e)
         {
             //reset angle  
-            updown_angle.Value = (int)GCSViews.FlightData.myhud.heading;          
+            updown_angle.Value = (int)GCSViews.FlightData.myhud.heading;
             //updown_angle.Value=(int)GCSViews.FlightData.myhud.current;
             //reset home
-    
+            if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduPlane)
+            {
+                TXT_WPRad.Text = "50";
+                if (tag_updownwp == false && Commands.Rows.Count != 0)
+                    loiter_upalt.Value = (decimal)GetCommandList()[0].alt;
+            }
+            else if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
+                TXT_WPRad.Text = "2";
+
             TXT_homelat.Text = MainV2.comPort.MAV.cs.lat.ToString();
 
             TXT_homelng.Text = MainV2.comPort.MAV.cs.lng.ToString();

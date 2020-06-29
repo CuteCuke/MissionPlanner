@@ -8,6 +8,7 @@ using MissionPlanner.ArduPilot;
 using MissionPlanner.Controls;
 using MissionPlanner.Log;
 using MissionPlanner.Maps;
+using MissionPlanner.MsgBox;
 using MissionPlanner.Utilities;
 using System;
 using System.Collections;
@@ -169,7 +170,7 @@ namespace MissionPlanner.Log
                 }
                 catch
                 {
-                    CustomMessageBox.Show("Line Doesn't Exist");
+                    MsgBox.CustomMessageBox.Show("Line Doesn't Exist");
                 }
 
                 return true;
@@ -317,7 +318,7 @@ namespace MissionPlanner.Log
             }
             catch (Exception ex)
             {
-                CustomMessageBox.Show("Failed to read File: " + ex.ToString());
+                MsgBox.CustomMessageBox.Show("Failed to read File: " + ex.ToString());
                 return;
             }
 
@@ -355,7 +356,7 @@ namespace MissionPlanner.Log
 
             if (dflog.logformat.Count == 0)
             {
-                CustomMessageBox.Show(Strings.WarningLogBrowseFMTMissing, Strings.ERROR);
+                MsgBox.CustomMessageBox.Show(Strings.WarningLogBrowseFMTMissing, Strings.ERROR);
                 this.Close();
                 return;
             }
@@ -766,13 +767,13 @@ namespace MissionPlanner.Log
         {
             if (dataGridView1 == null || dataGridView1.RowCount == 0 || dataGridView1.ColumnCount == 0)
             {
-                CustomMessageBox.Show(Strings.PleaseLoadValidFile, Strings.ERROR);
+                MsgBox.CustomMessageBox.Show(Strings.PleaseLoadValidFile, Strings.ERROR);
                 return;
             }
 
             if (dataGridView1.CurrentCell == null)
             {
-                CustomMessageBox.Show(Strings.PleaseSelectCell, Strings.ERROR);
+                MsgBox.CustomMessageBox.Show(Strings.PleaseSelectCell, Strings.ERROR);
                 return;
             }
 
@@ -782,26 +783,26 @@ namespace MissionPlanner.Log
 
             if (col == 0)
             {
-                CustomMessageBox.Show("Please pick another column, Highlight the cell you wish to graph",
+                MsgBox.CustomMessageBox.Show("Please pick another column, Highlight the cell you wish to graph",
                     Strings.ERROR);
                 return;
             }
 
             if (!dflog.logformat.ContainsKey(type))
             {
-                CustomMessageBox.Show(Strings.NoFMTMessage + type, Strings.ERROR);
+                MsgBox.CustomMessageBox.Show(Strings.NoFMTMessage + type, Strings.ERROR);
                 return;
             }
 
             if ((col - typecoloum - 1) < 0)
             {
-                CustomMessageBox.Show(Strings.CannotGraphField, Strings.ERROR);
+                MsgBox.CustomMessageBox.Show(Strings.CannotGraphField, Strings.ERROR);
                 return;
             }
 
             if (dflog.logformat[type].FieldNames.Count <= (col - typecoloum - 1))
             {
-                CustomMessageBox.Show(Strings.InvalidField, Strings.ERROR);
+                MsgBox.CustomMessageBox.Show(Strings.InvalidField, Strings.ERROR);
                 return;
             }
 
@@ -888,7 +889,7 @@ namespace MissionPlanner.Log
                 if (!dflog.logformat.ContainsKey(type))
                 {
                     if (displayerror)
-                        CustomMessageBox.Show(Strings.NoFMTMessage + type + " - " + fieldname, Strings.ERROR);
+                        MsgBox.CustomMessageBox.Show(Strings.NoFMTMessage + type + " - " + fieldname, Strings.ERROR);
                     return;
                 }
 
@@ -904,7 +905,7 @@ namespace MissionPlanner.Log
                     }
                     catch (Exception ex)
                     {
-                        CustomMessageBox.Show("Failed to graph item: " + ex.Message, Strings.ERROR);
+                        MsgBox.CustomMessageBox.Show("Failed to graph item: " + ex.Message, Strings.ERROR);
                     }
                 });
             }
@@ -1117,7 +1118,7 @@ namespace MissionPlanner.Log
                         log.Info("Bad Data : " + type + " " + col + " " + a);
                         if (error >= 500)
                         {
-                            CustomMessageBox.Show("There is to much bad data - failing");
+                            MsgBox.CustomMessageBox.Show("There is to much bad data - failing");
                             break;
                         }
                     }
@@ -3140,7 +3141,7 @@ namespace MissionPlanner.Log
                 }
                 catch (Exception ex)
                 {
-                    CustomMessageBox.Show("Failed to read File: " + ex.ToString());
+                    MsgBox.CustomMessageBox.Show("Failed to read File: " + ex.ToString());
                     return;
                 }
 
@@ -3206,37 +3207,256 @@ namespace MissionPlanner.Log
 
         private void export_pos_Click(object sender, EventArgs e)
         {
-            dataGridView1_ColumnHeaderMouseClick(null, null);
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.FileName = "outpos.csv";
-            int n = 1;
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                using (StreamWriter sw = new StreamWriter(sfd.OpenFile()))
-                {
-                    sw.WriteLine( "type,lat,long,地图高度,相对home高度,gps高度");
-                    foreach (DataGridViewRow row in dataGridView1.Rows)
-                    {
-                        StringBuilder sb = new StringBuilder();
-                        foreach (DataGridViewCell cell in row.Cells)
-                        {
-                            if (cell.ColumnIndex == 2)
-                            {
-                                sb.Append(cell.FormattedValue+n.ToString());
-                                sb.Append(',');
-                                n++;
-                            }
-                            else if (cell.ColumnIndex >= 6 && cell.ColumnIndex <= 10)
-                            { 
-                                sb.Append(cell.FormattedValue);
-                                sb.Append(',');
-                            }
-                        }
+            chk_datagrid.Checked = true;
+            Point mp = Control.MousePosition;
 
-                        sw.WriteLine(sb.ToString());
-                    }
+            List<string> options = new List<string>();
+
+            int b = 0;
+
+            foreach (string item2 in logdata.SeenMessageTypes)
+            {
+                string celldata = item2.Trim();
+                if (!options.Contains(celldata))
+                {
+                    options.Add(celldata);
                 }
             }
+
+            options.Sort();
+
+            Controls.OptionForm opt = new Controls.OptionForm();
+
+            opt.StartPosition = FormStartPosition.Manual;
+            opt.Location = mp;
+
+            opt.Combobox.DataSource = options;
+            opt.Combobox.SelectedItem = "CAM";
+            opt.Button1.Text = "确定";
+            opt.Button1.DialogResult = DialogResult.OK;
+            opt.Button2.Text = "取消";
+            opt.Button2.DialogResult = DialogResult.Cancel;
+
+            var dr = opt.ShowDialog(this);
+
+            // on not OK clear the filter
+            if (dr != DialogResult.OK)
+            {
+                logdatafilter.Clear();
+                dataGridView1.Rows.Clear();
+                dataGridView1.RowCount = logdata.Count;
+                dataGridView1.Invalidate();
+                return;
+            }
+
+            if (opt.SelectedItem != "")
+            {
+                logdatafilter.Clear();
+
+                int a = 0;
+                b = 0;
+
+                foreach (var item in logdata.GetEnumeratorType(opt.SelectedItem.ToUpper()))
+                {
+                    b++;
+
+                    if (item.msgtype.ToUpper() == opt.SelectedItem.ToUpper())
+                    {
+                        logdatafilter.Add(a, item);
+                        a++;
+                    }
+                }
+
+                if (!MainV2.MONO)
+                {
+                    dataGridView1.Rows.Clear();
+                    dataGridView1.RowCount = logdatafilter.Count;
+                }
+                if (opt.SelectedItem == "CAM")
+                {
+                    SaveFileDialog sfd = new SaveFileDialog();
+                    sfd.FileName = "outpos.csv";
+                    int n = 1;
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        using (StreamWriter sw = new StreamWriter(sfd.OpenFile()))
+                        {
+                            sw.WriteLine("type,lat,long,地图高度,相对home高度,gps高度,");
+                            foreach (DataGridViewRow row in dataGridView1.Rows)
+                            {
+                                StringBuilder sb = new StringBuilder();
+                                foreach (DataGridViewCell cell in row.Cells)
+                                {
+                                    if (cell.ColumnIndex == 2)
+                                    {
+                                        sb.Append(cell.FormattedValue + n.ToString());
+                                        sb.Append(',');
+                                        n++;
+                                    }
+                                    else if (cell.ColumnIndex >= 6 && cell.ColumnIndex <= 10)
+                                    {
+                                        sb.Append(cell.FormattedValue);
+                                        sb.Append(',');
+                                    }
+
+                                }
+
+                                sw.WriteLine(sb.ToString());
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    MsgBox.CustomMessageBox.Show("暂时支持CAM点的导出！");
+                }
+            }
+            else
+            {
+                logdatafilter.Clear();
+                if (!MainV2.MONO)
+                {
+                    dataGridView1.Rows.Clear();
+                    dataGridView1.RowCount = logdata.Count;
+                }
+            }
+
+            dataGridView1.Invalidate();
+
+            
+        }
+        /* 适用范围：本函数适用于将地球东半球中北半球（即东经度到东经度，北纬度至度）范围
+
+         内所有地理坐标到高斯坐标的转换           */
+
+        /* 使用说明：调用本函数后返回的结果应在满足精度的条件下进行四舍五入     */
+
+        // double jd;         输入参数: 地理坐标的经度，以秒为单位
+
+        // double wd;         输入参数: 地理坐标的纬度，以秒为单位
+
+        // short  DH;      输入参数: 三度带或六度带的带号
+
+        /*  六度带(三度带)的带号是这样得到的：从东经度到东经度自西向东按每度(3度)顺序编号
+
+        (编号从开始)，这个顺序编号就称为六度带(三度带)的带号。因此，六度带的带号的范围是-30，
+
+        三度带的带号的范围是-60。
+
+          如果一个点在图号为TH的图幅中，那麽该点所处的六度带的带号就可以这样得到：将该图号的
+
+        第、位组成的字符串先转换成数字，再减去。例如某点在图幅中，该点所在的带号就
+
+        是-30，即。
+
+          如果调用本函数去进行一般的从地理坐标到基于六度带高斯坐标的变换（非邻带转换），则参
+
+        数DH的选取按前一段的方法去确定。              
+
+          如果调用本函数去进行基于六度带邻带转换，则参数DH的选取先按上述方法去确定，然后看是
+
+        往前一个带还是后一个带进行邻带转换再确定是加还是减。        */
+        void GeoToGauss(double jd, double wd, short DH, short DH_width,ref double y,ref double x, double LP)
+
+        {
+
+            double t;     //  t=tgB
+
+            double L;     //  中央经线的经度
+
+            double l0;    //  经差
+
+            double jd_hd, wd_hd;  //  将jd、wd转换成以弧度为单位
+
+            double et2;    //  et2 = (e' ** 2) * (cosB ** 2)
+
+            double N;     //  N = C / sqrt(1 + et2)
+
+            double X;     //  克拉索夫斯基椭球中子午弧长
+
+            double m;     //  m = cosB * PI/180 * l0
+
+            double tsin, tcos;   //  sinB,cosB
+
+
+
+
+            double PI = 3.14159265358979;
+
+            double b_e2 = 0.0067385254147;
+
+            double b_c = 6399698.90178271;
+
+
+
+
+            jd_hd = jd / 3600.0 * PI / 180.0;    // 将以秒为单位的经度转换成弧度
+
+            wd_hd = wd / 3600.0 * PI / 180.0;    // 将以秒为单位的纬度转换成弧度
+
+
+
+
+            // 如果不设中央经线（缺省参数: -1000），则计算中央经线，
+
+            // 否则，使用传入的中央经线，不再使用带号和带宽参数
+
+            //L = (DH - 0.5) * DH_width ;      // 计算中央经线的经度
+
+            if (LP == -1000)
+
+            {
+
+                L = (DH - 0.5) * DH_width;      // 计算中央经线的经度
+
+            }
+
+            else
+
+            {
+
+                L = LP;
+
+            }
+
+
+
+
+            l0 = jd / 3600.0 - L;       // 计算经差
+
+            tsin =Math.Sin(wd_hd);        // 计算sinB
+
+            tcos =Math.Cos(wd_hd);        // 计算cosB
+
+            // 计算克拉索夫斯基椭球中子午弧长X
+
+            X = 111134.8611 / 3600.0 * wd - (32005.7799 * tsin + 133.9238 *Math.Pow(tsin, 3)
+
+                  + 0.6976 * Math.Pow(tsin, 5) + 0.0039 * Math.Pow(tsin, 7)) * tcos;
+
+            et2 = b_e2 * Math.Pow(tcos, 2);      //  et2 = (e' ** 2) * (cosB ** 2)
+
+            N = b_c /Math.Sqrt(1 + et2);      //  N = C / sqrt(1 + et2)
+
+            t = Math.Tan(wd_hd);         //  t=tgB
+
+            m = PI / 180 * l0 * tcos;       //  m = cosB * PI/180 * l0
+
+            x = X + N * t * (0.5 * Math.Pow(m, 2)
+
+                      + (5.0 - Math.Pow(t, 2) + 9.0 * et2 + 4 * Math.Pow(et2, 2)) * Math.Pow(m, 4) / 24.0
+
+                      + (61.0 - 58.0 * Math.Pow(t, 2) + Math.Pow(t, 4)) * Math.Pow(m, 6) / 720.0);
+
+            y = N * (m + (1.0 - Math.Pow(t, 2) + et2) * Math.Pow(m, 3) / 6.0
+
+                            + (5.0 - 18.0 * Math.Pow(t, 2) + Math.Pow(t, 4) + 14.0 * et2
+
+                               - 58.0 * et2 * Math.Pow(t, 2)) * Math.Pow(m, 5) / 120.0);
+
+
+
+
         }
     }
 }

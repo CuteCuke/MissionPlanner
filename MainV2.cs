@@ -61,6 +61,10 @@ namespace MissionPlanner
             public abstract Image resume { get; }
 
             public abstract Image logotaobao { get; }
+
+            public abstract Image airspeed0 { get; }
+
+            public abstract Image shutter { get; }
         }
 
 
@@ -253,6 +257,26 @@ namespace MissionPlanner
                         return Image.FromFile(Settings.GetRunningDirectory() + "light_logo.png");
                     else
                         return global::MissionPlanner.Properties.Resources.light_logo;
+                }
+            }
+            public override Image airspeed0
+            {
+                get
+                {
+                    if (File.Exists(Settings.GetRunningDirectory() + "light_airspeed0.png"))
+                        return Image.FromFile(Settings.GetRunningDirectory() + "light_airspeed0.png");
+                    else
+                        return global::MissionPlanner.Properties.Resources.light_airspeed0;
+                }
+            }
+            public override Image shutter
+            {
+                get
+                {
+                    if (File.Exists(Settings.GetRunningDirectory() + "light_shutter.png"))
+                        return Image.FromFile(Settings.GetRunningDirectory() + "light_shutter.png");
+                    else
+                        return global::MissionPlanner.Properties.Resources.light_shutter;
                 }
             }
         }
@@ -451,6 +475,26 @@ namespace MissionPlanner
                 }
             }
 
+            public override Image airspeed0
+            {
+                get
+                {
+                    if (File.Exists(Settings.GetRunningDirectory() + "dark_airspeed0.png"))
+                        return Image.FromFile(Settings.GetRunningDirectory() + "dark_airspeed0.png");
+                    else
+                        return global::MissionPlanner.Properties.Resources.dark_airspeed0;
+                }
+            }
+            public override Image shutter
+            {
+                get
+                {
+                    if (File.Exists(Settings.GetRunningDirectory() + "dark_shutter.png"))
+                        return Image.FromFile(Settings.GetRunningDirectory() + "dark_shutter.png");
+                    else
+                        return global::MissionPlanner.Properties.Resources.dark_shuter;
+                }
+            }
         }
 
         Controls.MainSwitcher MyView;
@@ -1337,19 +1381,27 @@ namespace MissionPlanner
             return_flight.Image = displayicons.retn;
             jump_to.Image = displayicons.jump;
             lj_taobao.Image = displayicons.logotaobao;
-            
+            airspeed_0.Image = displayicons.airspeed0;
+            shutter.Image = displayicons.shutter;
             //MenuInitConfig.Image = displayicons.initsetup;
             //MenuSimulation.Image = displayicons.sim;
             // MenuConfigTune.Image = displayicons.config_tuning;
             MenuConnect.Image = displayicons.connect;
-           // MenuHelp.Image = displayicons.help;
+            // MenuHelp.Image = displayicons.help;
 
 
-          //  MenuFlightData.ForeColor = ThemeManager.TextColor;
-          //  MenuFlightPlanner.ForeColor = ThemeManager.TextColor;
-           // MenuInitConfig.ForeColor = ThemeManager.TextColor;
-           // MenuSimulation.ForeColor = ThemeManager.TextColor;
-           // MenuConfigTune.ForeColor = ThemeManager.TextColor;
+            MenuFlightData.ForeColor = ThemeManager.TextColor;
+            MenuFlightPlanner.ForeColor = ThemeManager.TextColor;
+            resume_flight.ForeColor = ThemeManager.TextColor;
+            lock_unlock.ForeColor = ThemeManager.TextColor; ;
+            auto_flight.ForeColor = ThemeManager.TextColor; ;
+            return_flight.ForeColor = ThemeManager.TextColor; 
+            jump_to.ForeColor = ThemeManager.TextColor; ;
+            airspeed_0.ForeColor = ThemeManager.TextColor; ;
+            shutter.ForeColor = ThemeManager.TextColor;
+            // MenuInitConfig.ForeColor = ThemeManager.TextColor;
+            // MenuSimulation.ForeColor = ThemeManager.TextColor;
+            // MenuConfigTune.ForeColor = ThemeManager.TextColor;
             MenuConnect.ForeColor = ThemeManager.TextColor;
             //MenuHelp.ForeColor = ThemeManager.TextColor;
         }
@@ -4780,7 +4832,7 @@ namespace MissionPlanner
         {
             if (
                Common.MessageShowAgain("恢复任务",
-                   "警告：这将重新编程你的任务，请解锁并发出起飞命令（多旋翼）") !=
+                   "警告：这将重新编程你的任务航线，解锁并发出起飞命令（多旋翼）") !=
                DialogResult.OK)
                 return;
 
@@ -4871,7 +4923,7 @@ namespace MissionPlanner
                         // set index back to 1
                         MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid, 1);
 
-                        if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
+                        if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2&&CustomMessageBox.Show("点击确定就起飞了哟！","断点续飞",CustomMessageBox.MessageBoxButtons.YesNo)==CustomMessageBox.DialogResult.Yes)
                         {
                             while (MainV2.comPort.MAV.cs.mode.ToLower() != "Guided".ToLower())
                             {
@@ -4918,20 +4970,21 @@ namespace MissionPlanner
                                     return;
                                 }
                             }
-                        }
+                        
 
-                        timeout = 0;
-                        while (MainV2.comPort.MAV.cs.mode.ToLower() != "AUTO".ToLower())
-                        {
-                            MainV2.comPort.setMode("AUTO");
-                            Thread.Sleep(1000);
-                            Application.DoEvents();
-                            timeout++;
-
-                            if (timeout > 30)
+                            timeout = 0;
+                            while (MainV2.comPort.MAV.cs.mode.ToLower() != "AUTO".ToLower())
                             {
-                                CustomMessageBox.Show(Strings.ErrorNoResponce, Strings.ERROR);
-                                return;
+                                MainV2.comPort.setMode("AUTO");
+                                Thread.Sleep(1000);
+                                Application.DoEvents();
+                                timeout++;
+
+                                if (timeout > 30)
+                                {
+                                    CustomMessageBox.Show(Strings.ErrorNoResponce, Strings.ERROR);
+                                    return;
+                                }
                             }
                         }
                     }

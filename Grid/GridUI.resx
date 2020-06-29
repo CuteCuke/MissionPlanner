@@ -2286,13 +2286,13 @@
     <value>7, 25</value>
   </data>
   <data name="LBL_Alternating_lanes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 12</value>
+    <value>53, 12</value>
   </data>
   <data name="LBL_Alternating_lanes.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
   <data name="LBL_Alternating_lanes.Text" xml:space="preserve">
-    <value>Alternate Lanes</value>
+    <value>航线交叉</value>
   </data>
   <data name="&gt;&gt;LBL_Alternating_lanes.Name" xml:space="preserve">
     <value>LBL_Alternating_lanes</value>
@@ -2316,13 +2316,13 @@
     <value>26, 49</value>
   </data>
   <data name="LBL_Lane_Dist.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 12</value>
+    <value>77, 12</value>
   </data>
   <data name="LBL_Lane_Dist.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
   <data name="LBL_Lane_Dist.Text" xml:space="preserve">
-    <value>Min Lane separation</value>
+    <value>航线交叉间隔</value>
   </data>
   <data name="&gt;&gt;LBL_Lane_Dist.Name" xml:space="preserve">
     <value>LBL_Lane_Dist</value>
@@ -2385,19 +2385,16 @@
     <value>3</value>
   </data>
   <data name="groupBox7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 410</value>
+    <value>6, 310</value>
   </data>
   <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 182</value>
+    <value>234, 78</value>
   </data>
   <data name="groupBox7.TabIndex" type="System.Int32, mscorlib">
     <value>63</value>
   </data>
   <data name="groupBox7.Text" xml:space="preserve">
     <value>Plane 选项</value>
-  </data>
-  <data name="groupBox7.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="&gt;&gt;groupBox7.Name" xml:space="preserve">
     <value>groupBox7</value>
@@ -2949,13 +2946,13 @@
     <value>7, 94</value>
   </data>
   <data name="label32.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 12</value>
+    <value>113, 12</value>
   </data>
   <data name="label32.TabIndex" type="System.Int32, mscorlib">
     <value>61</value>
   </data>
   <data name="label32.Text" xml:space="preserve">
-    <value>引导航点延伸 [m]</value>
+    <value>进航区航点延伸 [m]</value>
   </data>
   <data name="&gt;&gt;label32.Name" xml:space="preserve">
     <value>label32</value>
@@ -3000,13 +2997,13 @@
     <value>7, 68</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 12</value>
+    <value>131, 12</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
-    <value>航点延伸 [m]</value>
+    <value>出航区航点延伸 [m/左]</value>
   </data>
   <data name="&gt;&gt;label7.Name" xml:space="preserve">
     <value>label7</value>
@@ -3102,13 +3099,13 @@
     <value>7, 42</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 12</value>
+    <value>131, 12</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>航点延伸 [m]</value>
+    <value>出航区航点延伸 [m/右]</value>
   </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
     <value>label5</value>
@@ -3198,7 +3195,7 @@
     <value>6, 6</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 344</value>
+    <value>234, 296</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
