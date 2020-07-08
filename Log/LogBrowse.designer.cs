@@ -229,6 +229,7 @@ namespace MissionPlanner.Log
             // 
             // splitContainerButGrid.Panel1
             // 
+            this.splitContainerButGrid.Panel1.Controls.Add(this.export_pos);
             this.splitContainerButGrid.Panel1.Controls.Add(this.chk_events);
             this.splitContainerButGrid.Panel1.Controls.Add(this.chk_datagrid);
             this.splitContainerButGrid.Panel1.Controls.Add(this.BUT_Graphit);
@@ -368,7 +369,6 @@ namespace MissionPlanner.Log
             // 
             // splitContainerAllTree.Panel2
             // 
-            this.splitContainerAllTree.Panel2.Controls.Add(this.export_pos);
             this.splitContainerAllTree.Panel2.Controls.Add(this.treeView1);
             // 
             // export_pos

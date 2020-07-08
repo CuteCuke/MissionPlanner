@@ -209,7 +209,7 @@
     <value>请加载一个有效的文件</value>
   </data>
   <data name="PleaseSelectCell" xml:space="preserve">
-    <value>Please select a cell first</value>
+    <value>请先选择一个一个表格</value>
   </data>
   <data name="SelectComport" xml:space="preserve">
     <value>请先选择一个串口</value>
@@ -544,10 +544,10 @@ Mission Planner将会在30秒内寻找控制板。</value>
     <value>compass variance</value>
   </data>
   <data name="pos_horiz_variance" xml:space="preserve">
-    <value>pos horiz variance</value>
+    <value>位置水平偏差</value>
   </data>
   <data name="pos_vert_variance" xml:space="preserve">
-    <value>pos vert variance</value>
+    <value>位置垂直偏差</value>
   </data>
   <data name="terrain_alt_variance" xml:space="preserve">
     <value>地形高度差异</value>
@@ -566,5 +566,11 @@ Mission Planner将会在30秒内寻找控制板。</value>
   </data>
   <data name="Failed_to_connect_to_SITL_instance" xml:space="preserve">
     <value>无法连接到SITL实例</value>
+  </data>
+  <data name="Auto" xml:space="preserve">
+    <value>自动模式</value>
+  </data>
+  <data name="Manuel" xml:space="preserve">
+    <value>手动模式</value>
   </data>
 </root>

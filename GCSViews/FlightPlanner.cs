@@ -107,7 +107,7 @@ namespace MissionPlanner.GCSViews
         private bool isMouseDown;
         private bool isMouseDraging;
         private bool ischk_imitation = false; //是否仿地飞行
-        public bool mv_return_chk_is_imitation=false;
+        public bool mv_return_chk_is_imitation = false;
         public GMapOverlay kmlpolygonsoverlay;
         public bool tag_updownwp = false;    //起降航点添加标记
         /// <summary>
@@ -273,7 +273,7 @@ namespace MissionPlanner.GCSViews
 
 
 
-            
+
             /*
             var timer = new System.Timers.Timer();
 
@@ -342,7 +342,7 @@ namespace MissionPlanner.GCSViews
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        { 
+        {
             // undo
             if (keyData == (Keys.Control | Keys.Z))
             {
@@ -680,7 +680,7 @@ namespace MissionPlanner.GCSViews
                         }
                     }
                 }
-                
+
             }
 
             IProgressReporterDialogue frmProgressReporter = new ProgressReporterDialogue
@@ -1212,7 +1212,7 @@ namespace MissionPlanner.GCSViews
                     lastbearing = MainMap.MapProvider.Projection.GetBearing(last, currentMarker.Position);
                 }
 
-                lbl_prevdist.Text = "距"+rm.GetString("lbl_prevdist.Text") + ": " + FormatDistance(lastdist, true) + " 角度: " +
+                lbl_prevdist.Text = "距" + rm.GetString("lbl_prevdist.Text") + ": " + FormatDistance(lastdist, true) + " 角度: " +
                                                    lastbearing.ToString("0");
 
                 // 0 is home
@@ -1220,7 +1220,7 @@ namespace MissionPlanner.GCSViews
                 {
                     double homedist = MainMap.MapProvider.Projection.GetDistance(currentMarker.Position, pointlist[0]);
 
-                    lbl_homedist.Text ="距"+ rm.GetString("lbl_homedist.Text") + ": " + FormatDistance(homedist, true);
+                    lbl_homedist.Text = "距" + rm.GetString("lbl_homedist.Text") + ": " + FormatDistance(homedist, true);
                 }
             }
             catch (Exception ex)
@@ -1360,7 +1360,7 @@ namespace MissionPlanner.GCSViews
 
                     overlay.overlay.ForceUpdate();
 
-                    lbl_distance.Text = "航线"+rm.GetString("lbl_distance.Text") + ": " +
+                    lbl_distance.Text = "航线" + rm.GetString("lbl_distance.Text") + ": " +
                                                        FormatDistance((
                                                                           overlay.route.Points.Select(a => (PointLatLngAlt)a)
                                                                               .Aggregate(0.0, (d, p1, p2) => d + p1.GetDistance(p2)) +
@@ -1389,14 +1389,14 @@ namespace MissionPlanner.GCSViews
                             var now = pointLatLngAlt.Item2;
                             var next = pointLatLngAlt.Item3;
 
-                            if(now == null || next == null)
+                            if (now == null || next == null)
                                 continue;
 
                             var mid = new PointLatLngAlt((now.Lat + next.Lat) / 2, (now.Lng + next.Lng) / 2,
                                 (now.Alt + next.Alt) / 2);
 
                             var pnt = new GMapMarkerPlus(mid);
-                            pnt.Tag = new midline() {now = now, next = next};
+                            pnt.Tag = new midline() { now = now, next = next };
                             overlay.overlay.Markers.Add(pnt);
                         }
                     }
@@ -1431,7 +1431,8 @@ namespace MissionPlanner.GCSViews
 
                     overlay.overlay.ForceUpdate();
 
-                    if (false) {
+                    if (false)
+                    {
                         foreach (GMapPolygon poly in overlay.overlay.Polygons)
                         {
                             foreach (var pointLatLngAlt in poly.Points.PrevNowNext())
@@ -1445,7 +1446,7 @@ namespace MissionPlanner.GCSViews
                                 var mid = new PointLatLngAlt((now.Lat + next.Lat) / 2, (now.Lng + next.Lng) / 2, 0);
 
                                 var pnt = new GMapMarkerPlus(mid);
-                                pnt.Tag = new midline() {now = now, next = next};
+                                pnt.Tag = new midline() { now = now, next = next };
                                 //overlay.overlay.Markers.Add(pnt);
                             }
                         }
@@ -1576,26 +1577,26 @@ namespace MissionPlanner.GCSViews
                 polygongridmode = true;
                 return;
             }
-           // polygongridmode = true;
+            // polygongridmode = true;
             List<PointLatLng> polygonPoints = new List<PointLatLng>();
             if (drawnpolygonsoverlay.Polygons.Count == 0)
-                {
-                    drawnpolygon.Points.Clear();
-                    drawnpolygonsoverlay.Polygons.Add(drawnpolygon);
-                }
+            {
+                drawnpolygon.Points.Clear();
+                drawnpolygonsoverlay.Polygons.Add(drawnpolygon);
+            }
 
             drawnpolygon.Fill = Brushes.Transparent;
 
-                // remove full loop is exists
+            // remove full loop is exists
             if (drawnpolygon.Points.Count > 1 &&
                     drawnpolygon.Points[0] == drawnpolygon.Points[drawnpolygon.Points.Count - 1])
-                    drawnpolygon.Points.RemoveAt(drawnpolygon.Points.Count - 1); // unmake a full loop
-            
-                drawnpolygon.Points.Add(new PointLatLng(MouseDownStart.Lat, MouseDownStart.Lng));
+                drawnpolygon.Points.RemoveAt(drawnpolygon.Points.Count - 1); // unmake a full loop
 
-                redrawPolygonSurvey(drawnpolygon.Points.Select(a => new PointLatLngAlt(a)).ToList());
+            drawnpolygon.Points.Add(new PointLatLng(MouseDownStart.Lat, MouseDownStart.Lng));
 
-                MainMap.Invalidate();
+            redrawPolygonSurvey(drawnpolygon.Points.Select(a => new PointLatLngAlt(a)).ToList());
+
+            MainMap.Invalidate();
         }
 
         public void areaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1720,8 +1721,8 @@ namespace MissionPlanner.GCSViews
             {
                 drawnpolygon.Points.Add(new PointLatLng((double)line.Cells[Lat.Index].Value, (double)line.Cells[Lon.Index].Value));
                 addpolygonmarkergrid(drawnpolygon.Points.Count.ToString(),
-                    (double)line.Cells[Lat.Index].Value, 
-                    (double)line.Cells[Lon.Index].Value,0);
+                    (double)line.Cells[Lat.Index].Value,
+                    (double)line.Cells[Lon.Index].Value, 0);
             }
             if (drawnpolygon.Points.Count > 1 &&
                    drawnpolygon.Points[0] == drawnpolygon.Points[drawnpolygon.Points.Count - 1])
@@ -2893,7 +2894,7 @@ namespace MissionPlanner.GCSViews
 
             route.Stroke = new Pen(Color.FromArgb(line.Color.R, line.Color.G, line.Color.B));
 
-            if (sender.Tag != null) 
+            if (sender.Tag != null)
                 ConvertUTMCoords(route, int.Parse(sender.Tag.ToString()));
 
             kmlpolygonsoverlay.Routes.Add(route);
@@ -3844,12 +3845,25 @@ namespace MissionPlanner.GCSViews
         {
             try
             {
-                Process.Start("http://127.0.0.1:56781/network.kml");
+                // Process.Start("http://127.0.0.1:56781/network.kml");
+                //Process.Start(@"C:\Program Files(x86)\Google\Google Earth\client\googleearth.exe", "http://127.0.0.1:56781/network.kml");
+                Process process = new Process();
+                string str = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+                process.StartInfo.FileName = str+ @"\GEclient\googleearth.exe";
+                process.StartInfo.Arguments = "http://127.0.0.1:56781/wps.kml";
+                //process.StartInfo.UseShellExecute = false;
+                //process.StartInfo.RedirectStandardOutput = false;
+                //process.StartInfo.RedirectStandardInput = true;
+                //process.StartInfo.CreateNoWindow = false;
+                process.Start();
+                process.WaitForExit();
+                process.Close();
             }
             catch
             {
-                CustomMessageBox.Show("Failed to open url http://127.0.0.1:56781/network.kml");
+                CustomMessageBox.Show("谷歌地球加载出错！");
             }
+        
         }
 
         public void loadAndAppendToolStripMenuItem_Click(object sender, EventArgs e)
@@ -4040,17 +4054,17 @@ namespace MissionPlanner.GCSViews
 
                         parser.ElementAdded += processKMLMission;
                         parser.ParseString(kml, false);
-                       //if (drawnpolygon.Points.Count > 1 &&
-                       //    drawnpolygon.Points[0] == drawnpolygon.Points[drawnpolygon.Points.Count - 1])
-                       //     drawnpolygon.Points.RemoveAt(drawnpolygon.Points.Count - 1); // unmake a full loop
+                        //if (drawnpolygon.Points.Count > 1 &&
+                        //    drawnpolygon.Points[0] == drawnpolygon.Points[drawnpolygon.Points.Count - 1])
+                        //     drawnpolygon.Points.RemoveAt(drawnpolygon.Points.Count - 1); // unmake a full loop
 
-                       // drawnpolygonsoverlay.Polygons.Add(drawnpolygon);
+                        // drawnpolygonsoverlay.Polygons.Add(drawnpolygon);
 
-                       // MainMap.UpdatePolygonLocalPosition(drawnpolygon);
+                        // MainMap.UpdatePolygonLocalPosition(drawnpolygon);
 
-                       // MainMap.Invalidate();
+                        // MainMap.Invalidate();
 
-                       // MainMap.ZoomAndCenterMarkers(drawnpolygonsoverlay.Id);
+                        // MainMap.ZoomAndCenterMarkers(drawnpolygonsoverlay.Id);
                     }
                     catch (Exception ex)
                     {
@@ -4058,7 +4072,7 @@ namespace MissionPlanner.GCSViews
                     }
                 }
             }
-         
+
         }
 
         public void loadPolygonToolStripMenuItem_Click(object sender, EventArgs e)
@@ -4633,6 +4647,7 @@ namespace MissionPlanner.GCSViews
                 }
 
                 kmlpolygonsoverlay.Polygons.Add(kmlpolygon);
+                
             }
             else if (ls != null)
             {
@@ -4643,7 +4658,7 @@ namespace MissionPlanner.GCSViews
                 foreach (var loc in ls.Coordinates)
                 {
                     kmlroute.Points.Add(new PointLatLng(loc.Latitude, loc.Longitude));
-                    drawnpolygon.Points.Add(new PointLatLng(loc.Latitude,loc.Longitude));
+                    drawnpolygon.Points.Add(new PointLatLng(loc.Latitude, loc.Longitude));
                     addpolygonmarkergrid(drawnpolygon.Points.Count.ToString(),
                         loc.Latitude,
                         loc.Longitude, 0);
@@ -4651,13 +4666,13 @@ namespace MissionPlanner.GCSViews
 
                 kmlpolygonsoverlay.Routes.Add(kmlroute);
             }
-            else if (geom != null)
-            {
-                foreach (var geometry in geom.Geometry)
-                {
-                    processKML(geometry);
-                }
-            }
+            //else if (geom != null)
+            //{
+            //    foreach (var geometry in geom.Geometry)
+            //    {
+            //        processKML(geometry);
+            //    }
+            //}
         }
 
         private void processKMLMission(object sender, ElementEventArgs e)
@@ -4713,7 +4728,7 @@ namespace MissionPlanner.GCSViews
                     kmlpolygon.Points.Add(new PointLatLng(loc.Latitude, loc.Longitude));
                     //drawnpolygon.Points.Add(new PointLatLng(loc.Longitude,loc.Latitude));
                     //addpolygonmarkergrid(drawnpolygon.Points.Count.ToString(),
-                        
+
                     //    loc.Longitude,loc.Latitude, 0);
                 }
             }
@@ -7073,7 +7088,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             }
 
             MainMap.Position = MainV2.comPort.MAV.cs.Location;
-            if(MainMap.Zoom < 17)
+            if (MainMap.Zoom < 17)
                 MainMap.Zoom = 17;
         }
 
@@ -7173,8 +7188,8 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                         {
                             ogr.NewPoint += pnt =>
                             {
-                                var mark = new GMarkerGoogle(new PointLatLngAlt(pnt), GMarkerGoogleType.brown_small);                             
-                              //  drawnpolygonsoverlay.Markers.Add(mark);
+                                var mark = new GMarkerGoogle(new PointLatLngAlt(pnt), GMarkerGoogleType.brown_small);
+                                //  drawnpolygonsoverlay.Markers.Add(mark);
                                 FlightData.kmlpolygons.Markers.Add(mark);
                                 kmlpolygonsoverlay.Markers.Add(mark);
                                 //加载kml形状的多边形  
@@ -7200,7 +7215,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                                     };
                                 FlightData.kmlpolygons.Routes.Add(route);
                                 kmlpolygonsoverlay.Routes.Add(route);
-                         
+
                             };
                             ogr.NewPolygon += ls =>
                             {
@@ -7214,7 +7229,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                                 //drawnpolygonsoverlay.Polygons.Add(polygon);
                                 FlightData.kmlpolygons.Polygons.Add(polygon);
                                 kmlpolygonsoverlay.Polygons.Add(polygon);
-                               
+
                             };
                             if (drawnpolygon.Points.Count > 1 &&
                                  drawnpolygon.Points[0] == drawnpolygon.Points[drawnpolygon.Points.Count - 1])
@@ -7222,7 +7237,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
 
                             drawnpolygonsoverlay.Polygons.Add(drawnpolygon);
                             ogr.Process();
-                           
+
                         }
                     }
                     else if (file.ToLower().EndsWith("dxf"))
@@ -7332,17 +7347,17 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
 
         private void add_updownwp_Click(object sender, EventArgs e)
         {
-            int rowindex=0;
-           // var nextwp=MainV2.comPort.MAV.cs.HomeLocation;
+            int rowindex = 0;
+            // var nextwp=MainV2.comPort.MAV.cs.HomeLocation;
             double lng = double.Parse(TXT_homelat.Text);//经纬度参数反了
-            double lat= double.Parse(TXT_homelng.Text);
+            double lat = double.Parse(TXT_homelng.Text);
             //{ double.Parse(TXT_homelat.Text),double.Parse(TXT_homelng.Text),double.Parse(TXT_homelat.Text),"H"}
             //var _list = GetCommandList();
-           // updown_angle.Value=MainV2.comPort.
+            // updown_angle.Value=MainV2.comPort.
             int numno;
-            if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduPlane) 
-            { 
-                    if (Commands.Rows.Count!= 0)
+            if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduPlane)
+            {
+                if (Commands.Rows.Count != 0)
                 {
                     var missionstartwp = GetCommandList()[0];
                     var missionendwp = GetCommandList()[Commands.Rows.Count - 2];
@@ -7354,16 +7369,16 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                         missionendwp.lng = GetCommandList()[Commands.Rows.Count - 3].lng;
                     }
                     var commandno = Commands.Rows.Count;
-                // InsertCommand(1,MAVLink.MAV_CMD.VTOL_TAKEOFF,0,0,0,0,0,0,(double)vtol_takeoff_alt.Value);
-                    if (tag_updownwp == false&&missionstartwp.id==(ushort)MAVLink.MAV_CMD.WAYPOINT&&missionendwp.id==(ushort)MAVLink.MAV_CMD.WAYPOINT)
+                    // InsertCommand(1,MAVLink.MAV_CMD.VTOL_TAKEOFF,0,0,0,0,0,0,(double)vtol_takeoff_alt.Value);
+                    if (tag_updownwp == false && missionstartwp.id == (ushort)MAVLink.MAV_CMD.WAYPOINT && missionendwp.id == (ushort)MAVLink.MAV_CMD.WAYPOINT)
                     {
-                        InsertCommand(rowindex, MAVLink.MAV_CMD.VTOL_TAKEOFF, 0, 0, 0, 0, lat,lng, (double)vtol_takeoff_alt.Value);//VTOL_TAKEOFF 起飞点
+                        InsertCommand(rowindex, MAVLink.MAV_CMD.VTOL_TAKEOFF, 0, 0, 0, 0, lat, lng, (double)vtol_takeoff_alt.Value);//VTOL_TAKEOFF 起飞点
                         //nextwp.newpos(0,(double)pilotwp_updist.Value);
-                        InsertCommand(rowindex += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,  
+                        InsertCommand(rowindex += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
                             lat += Math.Sin((double)updown_angle.Value * Math.PI / 180) * ((double)100 / 100000),
-                            lng += Math.Cos((double)updown_angle.Value*Math.PI/180) * ((double)100 / 100000), (double)pilotwp_upalt.Value);//引导wp1   
+                            lng += Math.Cos((double)updown_angle.Value * Math.PI / 180) * ((double)100 / 100000), (double)pilotwp_upalt.Value);//引导wp1   
                         //nextwp.newpos(0, (double)pilotwp_updist.Value);
-                        InsertCommand(rowindex += 1, MAVLink.MAV_CMD.LOITER_TO_ALT,0,(double)loiter_radius.Value,0,0,  
+                        InsertCommand(rowindex += 1, MAVLink.MAV_CMD.LOITER_TO_ALT, 0, (double)loiter_radius.Value, 0, 0,
                             lat += Math.Sin((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000),
                             lng += Math.Cos((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000), (double)loiter_upalt.Value);//loiter 上升 
                         //InsertCommand(rowindex += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
@@ -7392,19 +7407,19 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                                    missionstartwp.lat - 0.001, missionstartwp.alt);
                         }
                         //InsertCommand(rowindex+=1,MAVLink.MAV_CMD.WAYPOINT,0,0,0,0,lng,lat,_list.L.alt);//引导wp2   进入航线前
-                        numno = commandno + rowindex+1;
-                        if(missionendwp.lng<lat)
+                        numno = commandno + rowindex + 1;
+                        if (missionendwp.lng < lat)
                         {
-                            if (missionendwp.lat < lng) 
+                            if (missionendwp.lat < lng)
                                 InsertCommand(numno += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
-                                lat- 0.001,
+                                lat - 0.001,
                                 lng - 0.001, missionendwp.alt);
                             else
                                 InsertCommand(numno += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
                                 lat - 0.001,
                                 lng + 0.001, missionendwp.alt);
                         }
-                        else 
+                        else
                         {
                             if (missionendwp.lat < lng)
                                 InsertCommand(numno += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
@@ -7429,8 +7444,8 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                            double.Parse(TXT_homelng.Text),
                             double.Parse(TXT_homelat.Text), 0);//VTOL_LAND 
                         tag_updownwp = true;
-                    }             
-                 }
+                    }
+                }
                 else
                 {
                     InsertCommand(rowindex, MAVLink.MAV_CMD.VTOL_TAKEOFF, 0, 0, 0, 0, lat, lng, (double)vtol_takeoff_alt.Value);//VTOL_TAKEOFF 起飞点
@@ -7465,22 +7480,22 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
 
         private void del_updownwp_Click(object sender, EventArgs e)
         {
-            if (tag_updownwp&&Commands.Rows.Count>=8)
+            if (tag_updownwp && Commands.Rows.Count >= 8)
             {
-                
+
                 for (int i = 0; i < 4; i++)
                 {
-                    Commands.Rows.RemoveAt(0); 
-                    Commands.Rows.RemoveAt(Commands.Rows.Count-1);
+                    Commands.Rows.RemoveAt(0);
+                    Commands.Rows.RemoveAt(Commands.Rows.Count - 1);
                 }
-               tag_updownwp = false;
+                tag_updownwp = false;
             }
             else tag_updownwp = false;
         }
 
         private void label21_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void refresh_updown_Click(object sender, EventArgs e)
@@ -7505,37 +7520,40 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             //TXT_homealt.Text = MainV2.comPort.MAV.cs.altasl2.ToString();
             TXT_homealt.Text = (srtm.getAltitude(MainV2.comPort.MAV.cs.lat, MainV2.comPort.MAV.cs.lng).alt * CurrentState.multiplieralt).ToString();
             writeKML();
-            
+
         }
-        private List<int> imitationwpno =new List<int>();
+        private List<int> imitationwpno = new List<int>();
         private List<double> imitationwpdist = new List<double>();
         private List<int> imitationwpno2 = new List<int>();
-        
+
         private void chk_imitation_CheckedChanged(object sender, EventArgs e)
         {
-            if (chk_imitation.Checked&&!ischk_imitation) {
+            if (chk_imitation.Checked && !ischk_imitation)
+            {
                 ischk_imitation = true;
                 var list = GetCommandList();
-                currentaltmode = altmode.Terrain;
+                //currentaltmode = altmode.Terrain;
+                CMB_altmode.SelectedIndex = 2;
+                currentaltmode = (altmode)CMB_altmode.SelectedValue;
                 int insertwpdist = 100;
-                if(MainV2.comPort.MAV.cs.firmware==Firmwares.ArduPlane)
+                if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduPlane)
                 {
                     insertwpdist = 200;
                 }
-                for (int i=0;i<Commands.Rows.Count-1;i++)
+                for (int i = 0; i < Commands.Rows.Count - 1; i++)
                 {
                     //Commands.Rows[i].Cells[Frame.Index].Value = altmode.Terrain;
-                    if (Commands.Rows[i].Cells[Dist.Index].Value!=null)
-                    { 
-                        if(double.Parse(Commands.Rows[i].Cells[Dist.Index].Value.ToString()) >=insertwpdist*2&&Commands.Rows[i].Cells[Command.Index].Value.ToString()==MAVLink.MAV_CMD.WAYPOINT.ToString())
+                    if (Commands.Rows[i].Cells[Dist.Index].Value != null)
+                    {
+                        if (double.Parse(Commands.Rows[i].Cells[Dist.Index].Value.ToString()) >= insertwpdist * 2 && Commands.Rows[i].Cells[Command.Index].Value.ToString() == MAVLink.MAV_CMD.WAYPOINT.ToString())
                         {
-                            imitationwpno.Add(i);                            
+                            imitationwpno.Add(i);
                             imitationwpdist.Add(double.Parse(Commands.Rows[i].Cells[Dist.Index].Value.ToString()));//统计与前点距离超过300m的点    并在之中添加wp
                         }
                     }
                 }
                 int count = 0;
-                for(int i=0;i<imitationwpno.Count;i++)
+                for (int i = 0; i < imitationwpno.Count; i++)
                 {
                     int n = (int)Math.Floor(imitationwpdist[i] / insertwpdist);//按距离150分段
                     double lat = list[imitationwpno[i]].lat;
@@ -7543,42 +7561,63 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                     double lastlat = 0;
                     double lastlng = 0;
 
-                    if (imitationwpno[i]==1)
+                    if (imitationwpno[i] == 1)
                     {
-                         lastlat = double.Parse(TXT_homelat.Text);
-                         lastlng = double.Parse(TXT_homelng.Text);
+                        lastlat = double.Parse(TXT_homelat.Text);
+                        lastlng = double.Parse(TXT_homelng.Text);
                     }
-                    else if((double)list[imitationwpno[i] - 1].alt==0)
+                    else if ((double)list[imitationwpno[i] - 1].alt == 0)
                     {
-                         lastlat = (double)list[imitationwpno[i] - 2].lat;
-                         lastlng = (double)list[imitationwpno[i] - 2].lng;
-                         //count++;
+                        if ((double)list[imitationwpno[i] - 2].alt != 0)//针对于连续两个点是 非航点 
+                        {
+                            lastlat = (double)list[imitationwpno[i] - 2].lat;
+                            lastlng = (double)list[imitationwpno[i] - 2].lng;
+                        }
+                        else
+                        {
+                            lastlat = (double)list[imitationwpno[i] - 3].lat;
+                            lastlng = (double)list[imitationwpno[i] - 3].lng;
+                        }
+                        //count++;
                     }
                     else
                     {
-                         lastlat = (double)list[imitationwpno[i] - 1].lat;
-                         lastlng = (double)list[imitationwpno[i] - 1].lng;
+                        lastlat = (double)list[imitationwpno[i] - 1].lat;
+                        lastlng = (double)list[imitationwpno[i] - 1].lng;
                     }
-                    
-                    for(int j=1;j<n;j++)
+
+                    for (int j = 1; j < n; j++)
                     {
                         imitationwpno2.Add(imitationwpno[i] + count);
-                        InsertCommand(imitationwpno[i]+count, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,                                
-                                   lastlng+=(lng-lastlng)/n,
-                                   lastlat+=(lat-lastlat)/n, list[imitationwpno[i]].alt);//经纬度参数是反的
-                       // if (j > 1)
-                            count++;
-                        
+                        InsertCommand(imitationwpno[i] + count, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
+                                   lastlng += (lng - lastlng) / n,
+                                   lastlat += (lat - lastlat) / n, list[imitationwpno[i]].alt);//经纬度参数是反的
+                                                                                               // if (j > 1)
+                        count++;
+
                     }
                     //count++;
                 }
-                for (int i = 0; i < Commands.Rows.Count - 1; i++)
+                if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduPlane)
                 {
-                    Commands.Rows[i].Cells[Frame.Index].Value = altmode.Terrain;
+                    for (int i = 3; i < Commands.Rows.Count - 3; i++)
+                    {
+                        Commands.Rows[i].Cells[Frame.Index].Value = altmode.Terrain;
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < Commands.Rows.Count - 1; i++)
+                    {
+                        Commands.Rows[i].Cells[Frame.Index].Value = altmode.Terrain;
+                    }
                 }
             }
-            else if(ischk_imitation){
-                currentaltmode = altmode.Relative;
+            else if (ischk_imitation)
+            {
+                //currentaltmode = altmode.Relative;
+                CMB_altmode.SelectedIndex = 0;
+                currentaltmode = (altmode)CMB_altmode.SelectedValue;
                 ischk_imitation = false;
                 imitationwpno.Clear();
                 imitationwpdist.Clear();
@@ -7595,6 +7634,11 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                 }
                 imitationwpno2.Clear();
             }
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

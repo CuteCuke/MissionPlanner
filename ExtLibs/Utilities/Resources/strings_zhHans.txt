@@ -12,7 +12,7 @@ Yaw (deg)=偏航 (deg)
 GroundCourse (deg)=地面航线 (deg)
 Latitude (dd)=纬度 (dd)
 Longitude (dd)=经度 (dd)
-Altitude (dist)=高度 (dist)
+Alt (dist)=高度 (dist)
 Alt Home Offset (dist)=家的高度补偿 (dist)
 Gps Status=GPS状态
 Gps HDOP=GPS HDOP
@@ -92,3 +92,5 @@ flow_comp_m_y=光流_comp_m_y*
 flow_x=光流_x*
 flow_y=光流_y*
 flow quality=光流质量*
+
+DistToHome=离家距离(m)

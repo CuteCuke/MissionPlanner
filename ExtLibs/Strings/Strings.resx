@@ -2,7 +2,7 @@
 <root>
   <!-- 
     Microsoft ResX Schema 
-    翻译by LK
+    
     Version 2.0
     
     The primary goals of this format is to allow a simple XML format 
@@ -514,7 +514,7 @@ Please use Standard/Advanced Params for the safe settings</value>
     <value>不安全的飞行姿态</value>
   </data>
   <data name="NORCReceiver" xml:space="preserve">
-    <value>NO RC Receiver</value>
+    <value>没有RC接收器</value>
   </data>
   <data name="AutoWP" xml:space="preserve">
     <value>Auto WP</value>
@@ -565,52 +565,52 @@ Please contact your hardware vendor about signing your hardware.</value>
     <value>Please wait for the musical tones to finish before clicking OK</value>
   </data>
   <data name="ObtainFromModule" xml:space="preserve">
-    <value>Obtain From Module</value>
+    <value>从模块中获取</value>
   </data>
   <data name="SetHere" xml:space="preserve">
-    <value>Set Here</value>
+    <value>设置在这</value>
   </data>
   <data name="TrackerHome" xml:space="preserve">
-    <value>Tracker Home</value>
+    <value>追踪 Home</value>
   </data>
   <data name="velocity_variance" xml:space="preserve">
-    <value>velocity variance</value>
+    <value>速度偏差</value>
   </data>
   <data name="compass_variance" xml:space="preserve">
-    <value>compass variance</value>
+    <value>罗盘偏差</value>
   </data>
   <data name="pos_horiz_variance" xml:space="preserve">
-    <value>pos horiz variance</value>
+    <value>水平位置偏差</value>
   </data>
   <data name="pos_vert_variance" xml:space="preserve">
-    <value>pos vert variance</value>
+    <value>垂直位置偏差</value>
   </data>
   <data name="terrain_alt_variance" xml:space="preserve">
-    <value>terrain alt variance</value>
+    <value>地形高度变化</value>
   </data>
   <data name="ChangeThrottle" xml:space="preserve">
     <value>Change Throttle</value>
   </data>
   <data name="Invalid_home_location" xml:space="preserve">
-    <value>Invalid home location</value>
+    <value>无效的Home点</value>
   </data>
   <data name="Converting_bin_to_log" xml:space="preserve">
-    <value>Converting bin to log</value>
+    <value>bin文件转log文件</value>
   </data>
   <data name="UpdateNotFound" xml:space="preserve">
-    <value>No update available.</value>
+    <value>没有更新可以用.</value>
   </data>
   <data name="Failed_to_connect_to_SITL_instance" xml:space="preserve">
-    <value>Failed to connect to SITL instance</value>
+    <value>无法连接到模拟实例</value>
   </data>
   <data name="Scanning_File" xml:space="preserve">
-    <value>Scanning File</value>
+    <value>扫描文件</value>
   </data>
   <data name="Zoom_to_the_center_or_the_loaded_file" xml:space="preserve">
-    <value>Zoom to the center or the loaded file?</value>
+    <value>缩放到中心或加载的文件?</value>
   </data>
   <data name="Zoom_To" xml:space="preserve">
-    <value>Zoom To</value>
+    <value>缩放到</value>
   </data>
   <data name="Do_you_want_to_load_this_into_the_flight_data_screen" xml:space="preserve">
     <value>你是否想加载kml到飞行数据页面?</value>
@@ -619,29 +619,29 @@ Please contact your hardware vendor about signing your hardware.</value>
     <value>Load data</value>
   </data>
   <data name="Bad_KML_File" xml:space="preserve">
-    <value>Bad KML File :</value>
+    <value>错误的KML文件 :</value>
   </data>
   <data name="No_valid_heartbeats_read_from_port" xml:space="preserve">
-    <value>No valid heartbeats read from port</value>
+    <value>没有从端口读取有效的响应</value>
   </data>
   <data name="Bad_Vision_Position" xml:space="preserve">
-    <value>Bad Vision Position</value>
+    <value>视野不好的位置</value>
   </data>
   <data name="BadLogging" xml:space="preserve">
-    <value>Bad Logging</value>
+    <value>错误的日志记录</value>
   </data>
   <data name="ParamRefreshRequired" xml:space="preserve">
-    <value>A Param refresh is required - Please press F5
-old #{0}  new #{1}</value>
+    <value>需要参数刷新-请按F5
+旧的 #{0} 新的 #{1}</value>
   </data>
   <data name="Failed_to_download_the_SITL_image" xml:space="preserve">
-    <value>Failed to download the SITL image.</value>
+    <value>未能下载模拟映像</value>
   </data>
   <data name="Not_available_when_used_as_a_windows_store_app" xml:space="preserve">
     <value>Not available when used as a windows store app</value>
   </data>
   <data name="No_firmware_available_for_this_board" xml:space="preserve">
-    <value>No firmware available for this board!</value>
+    <value>此板没有可用的固件!</value>
   </data>
   <data name="OnboardOSD" xml:space="preserve">
     <value>Onboard OSD</value>
@@ -665,18 +665,24 @@ old #{0}  new #{1}</value>
     <value>电池故障</value>
   </data>
   <data name="Bad_Proximity" xml:space="preserve">
-    <value>Bad Proximity</value>
+    <value>接近不良</value>
   </data>
   <data name="Bad_SatCom" xml:space="preserve">
     <value>通信系统出错</value>
   </data>
   <data name="Prearm_check_failed" xml:space="preserve">
-    <value>Prearm检查失败</value>
+    <value>预处理检查失败</value>
   </data>
   <data name="Invalid_Location" xml:space="preserve">
-    <value>Invalid Location</value>
+    <value>无效的位置</value>
   </data>
   <data name="Loading" xml:space="preserve">
     <value>Loading</value>
+  </data>
+  <data name="Auto" xml:space="preserve">
+    <value>自动模式</value>
+  </data>
+  <data name="Manuel" xml:space="preserve">
+    <value>手动模式</value>
   </data>
 </root>

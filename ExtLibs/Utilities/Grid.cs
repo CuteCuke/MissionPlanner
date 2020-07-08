@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using MissionPlanner.Utilities;
@@ -23,11 +24,17 @@ namespace MissionPlanner.Utilities
 
         public enum StartPosition
         {
+            [Description("靠近Home")]
             Home = 0,
+            [Description("左下")]
             BottomLeft = 1,
+            [Description("左上")]
             TopLeft = 2,
+            [Description("右下")]
             BottomRight = 3,
+            [Description("右上")]
             TopRight = 4,
+            [Description("point")]
             Point = 5
         }
 

@@ -129,14 +129,14 @@
             this.chk_spiral = new System.Windows.Forms.CheckBox();
             this.chk_Corridor = new System.Windows.Forms.CheckBox();
             this.label43 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.num_corridorwidth = new System.Windows.Forms.NumericUpDown();
+            this.CMB_startfrom = new System.Windows.Forms.ComboBox();
             this.chk_crossgrid = new System.Windows.Forms.CheckBox();
             this.label32 = new System.Windows.Forms.Label();
             this.NUM_leadin = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.NUM_overshoot2 = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
-            this.CMB_startfrom = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.NUM_overshoot = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
@@ -150,6 +150,12 @@
             this.num_overlap = new System.Windows.Forms.NumericUpDown();
             this.num_sidelap = new System.Windows.Forms.NumericUpDown();
             this.tabSimple = new System.Windows.Forms.TabPage();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.rightdown = new System.Windows.Forms.CheckBox();
+            this.rightup = new System.Windows.Forms.CheckBox();
+            this.leftdown = new System.Windows.Forms.CheckBox();
+            this.leftup = new System.Windows.Forms.CheckBox();
+            this.BUT_Accept = new MissionPlanner.Controls.MyButton();
             this.label38 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.CHK_usespeed = new System.Windows.Forms.CheckBox();
@@ -167,7 +173,6 @@
             this.lbl_lowres = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
-            this.BUT_Accept = new MissionPlanner.Controls.MyButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TRK_zoom = new MissionPlanner.Controls.MyTrackBar();
             this.map = new MissionPlanner.Controls.myGMAP();
@@ -201,6 +206,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.num_overlap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_sidelap)).BeginInit();
             this.tabSimple.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_UpDownFlySpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_angle)).BeginInit();
@@ -933,14 +939,14 @@
             this.groupBox1.Controls.Add(this.chk_spiral);
             this.groupBox1.Controls.Add(this.chk_Corridor);
             this.groupBox1.Controls.Add(this.label43);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.num_corridorwidth);
+            this.groupBox1.Controls.Add(this.CMB_startfrom);
             this.groupBox1.Controls.Add(this.chk_crossgrid);
             this.groupBox1.Controls.Add(this.label32);
             this.groupBox1.Controls.Add(this.NUM_leadin);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.NUM_overshoot2);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.CMB_startfrom);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.NUM_overshoot);
             this.groupBox1.Controls.Add(this.label2);
@@ -1011,6 +1017,11 @@
             resources.ApplyResources(this.label43, "label43");
             this.label43.Name = "label43";
             // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
             // num_corridorwidth
             // 
             this.num_corridorwidth.DecimalPlaces = 1;
@@ -1032,6 +1043,13 @@
             0,
             0});
             this.num_corridorwidth.ValueChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
+            // 
+            // CMB_startfrom
+            // 
+            this.CMB_startfrom.FormattingEnabled = true;
+            resources.ApplyResources(this.CMB_startfrom, "CMB_startfrom");
+            this.CMB_startfrom.Name = "CMB_startfrom";
+            this.CMB_startfrom.SelectedIndexChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
             // 
             // chk_crossgrid
             // 
@@ -1071,18 +1089,6 @@
             0});
             this.NUM_overshoot2.Name = "NUM_overshoot2";
             this.NUM_overshoot2.ValueChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
-            // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
-            // 
-            // CMB_startfrom
-            // 
-            this.CMB_startfrom.FormattingEnabled = true;
-            resources.ApplyResources(this.CMB_startfrom, "CMB_startfrom");
-            this.CMB_startfrom.Name = "CMB_startfrom";
-            this.CMB_startfrom.SelectedIndexChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
             // 
             // label5
             // 
@@ -1200,13 +1206,59 @@
             // 
             // tabSimple
             // 
-            this.tabSimple.Controls.Add(this.label38);
+            this.tabSimple.Controls.Add(this.groupBox8);
             this.tabSimple.Controls.Add(this.groupBox6);
             this.tabSimple.Controls.Add(this.groupBox4);
-            this.tabSimple.Controls.Add(this.BUT_Accept);
             resources.ApplyResources(this.tabSimple, "tabSimple");
             this.tabSimple.Name = "tabSimple";
             this.tabSimple.UseVisualStyleBackColor = true;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.rightdown);
+            this.groupBox8.Controls.Add(this.rightup);
+            this.groupBox8.Controls.Add(this.leftdown);
+            this.groupBox8.Controls.Add(this.leftup);
+            this.groupBox8.Controls.Add(this.BUT_Accept);
+            this.groupBox8.Controls.Add(this.label38);
+            resources.ApplyResources(this.groupBox8, "groupBox8");
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.TabStop = false;
+            // 
+            // rightdown
+            // 
+            resources.ApplyResources(this.rightdown, "rightdown");
+            this.rightdown.Name = "rightdown";
+            this.rightdown.UseVisualStyleBackColor = true;
+            this.rightdown.CheckedChanged += new System.EventHandler(this.rightdown_CheckedChanged);
+            // 
+            // rightup
+            // 
+            resources.ApplyResources(this.rightup, "rightup");
+            this.rightup.Name = "rightup";
+            this.rightup.UseVisualStyleBackColor = true;
+            this.rightup.CheckedChanged += new System.EventHandler(this.rightup_CheckedChanged);
+            // 
+            // leftdown
+            // 
+            resources.ApplyResources(this.leftdown, "leftdown");
+            this.leftdown.Name = "leftdown";
+            this.leftdown.UseVisualStyleBackColor = true;
+            this.leftdown.CheckedChanged += new System.EventHandler(this.leftdown_CheckedChanged);
+            // 
+            // leftup
+            // 
+            resources.ApplyResources(this.leftup, "leftup");
+            this.leftup.Name = "leftup";
+            this.leftup.UseVisualStyleBackColor = true;
+            this.leftup.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged_1);
+            // 
+            // BUT_Accept
+            // 
+            resources.ApplyResources(this.BUT_Accept, "BUT_Accept");
+            this.BUT_Accept.Name = "BUT_Accept";
+            this.BUT_Accept.UseVisualStyleBackColor = true;
+            this.BUT_Accept.Click += new System.EventHandler(this.BUT_Accept_Click);
             // 
             // label38
             // 
@@ -1248,6 +1300,7 @@
             this.CHK_toandland.CheckState = System.Windows.Forms.CheckState.Checked;
             this.CHK_toandland.Name = "CHK_toandland";
             this.CHK_toandland.UseVisualStyleBackColor = true;
+            this.CHK_toandland.CheckedChanged += new System.EventHandler(this.CHK_toandland_CheckedChanged);
             // 
             // label24
             // 
@@ -1264,7 +1317,7 @@
             0});
             this.NUM_UpDownFlySpeed.Name = "NUM_UpDownFlySpeed";
             this.NUM_UpDownFlySpeed.Value = new decimal(new int[] {
-            10,
+            8,
             0,
             0,
             0});
@@ -1377,13 +1430,6 @@
             resources.ApplyResources(this.label46, "label46");
             this.label46.Name = "label46";
             // 
-            // BUT_Accept
-            // 
-            resources.ApplyResources(this.BUT_Accept, "BUT_Accept");
-            this.BUT_Accept.Name = "BUT_Accept";
-            this.BUT_Accept.UseVisualStyleBackColor = true;
-            this.BUT_Accept.Click += new System.EventHandler(this.BUT_Accept_Click);
-            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabSimple);
@@ -1483,7 +1529,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.num_overlap)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_sidelap)).EndInit();
             this.tabSimple.ResumeLayout(false);
-            this.tabSimple.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_UpDownFlySpeed)).EndInit();
@@ -1642,5 +1689,10 @@
         private System.Windows.Forms.CheckBox chk_minmaxalt;
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.CheckBox rightdown;
+        private System.Windows.Forms.CheckBox rightup;
+        private System.Windows.Forms.CheckBox leftdown;
+        private System.Windows.Forms.CheckBox leftup;
     }
 }

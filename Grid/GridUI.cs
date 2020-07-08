@@ -110,6 +110,7 @@ namespace MissionPlanner.Grid
                 DistUnits = plugin.Host.config["distunits"].ToString();
 
             CMB_startfrom.DataSource = Enum.GetNames(typeof(Utilities.Grid.StartPosition));
+            
             CMB_startfrom.SelectedIndex = 0;
 
             // set and angle that is good
@@ -2094,6 +2095,58 @@ namespace MissionPlanner.Grid
             if (chk_minmaxalt.Checked)
             {
                 domainUpDown1_ValueChanged(null, null);
+            }
+        }
+
+        private void CHK_toandland_CheckedChanged(object sender, EventArgs e)
+        {
+            if(CHK_toandland.Checked)
+            { chk_stopstart.Checked = false; }
+            else
+            { chk_stopstart.Checked = true; }
+        }
+
+        private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if(leftup.Checked==true)
+            { 
+                leftdown.Checked = false;
+                rightdown.Checked = false;
+                rightup.Checked = false;
+                CMB_startfrom.SelectedIndex = 2;
+            }
+        }
+
+        private void rightup_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rightup.Checked == true)
+            {
+                leftdown.Checked = false;
+                rightdown.Checked = false;
+                leftup.Checked = false;
+                CMB_startfrom.SelectedIndex = 4;
+            }
+        }
+
+        private void leftdown_CheckedChanged(object sender, EventArgs e)
+        {
+            if (leftdown.Checked == true)
+            {
+                rightup.Checked = false;
+                rightdown.Checked = false;
+                leftup.Checked = false;
+                CMB_startfrom.SelectedIndex = 1;
+            }
+        }
+
+        private void rightdown_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rightdown.Checked == true)
+            {
+                leftdown.Checked = false;
+                rightup.Checked = false;
+                leftup.Checked = false;
+                CMB_startfrom.SelectedIndex = 3;
             }
         }
     }

@@ -4619,12 +4619,14 @@ namespace MissionPlanner
 
             ((ToolStripButton)sender).Enabled = true;
         }
-
+        private double return_now_lat = 0;
+        private double return_now_lng = 0;
         private void return_flight_Click(object sender, EventArgs e)
         {
             var wpno = MainV2.comPort.getWPCount();
             lastwpstr = MainV2.comPort.MAV.cs.lastautowp.ToString();
-           
+            return_now_lat = MainV2.comPort.MAV.cs.lat;
+            return_now_lng = MainV2.comPort.MAV.cs.lng;
                 try
                 {
                       ((ToolStripButton)sender).Enabled = false;
@@ -4833,7 +4835,7 @@ namespace MissionPlanner
             if (
                Common.MessageShowAgain("恢复任务",
                    "警告：这将重新编程你的任务航线，解锁并发出起飞命令（多旋翼）") !=
-               DialogResult.OK)
+               DialogResult.OK&& MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
                 return;
 
             try
@@ -4873,6 +4875,11 @@ namespace MissionPlanner
                                         continue;
 
                                 }
+                                else if(a==lastwpno-1&&lastwp==lastwpstr)
+                                {
+                                    wpdata.lat = return_now_lat;
+                                    wpdata.lng = return_now_lng;
+                                }
                             }
                             else { 
                                 if (a < lastwpno && a != 0) // allow home
@@ -4889,7 +4896,12 @@ namespace MissionPlanner
                                     if (wpdata.id > (ushort)MAVLink.MAV_CMD.DO_LAST)
                                         continue;
                                 
-                                }  
+                                }
+                                else if(a==lastwpno && lastwp == lastwpstr)
+                                {
+                                    wpdata.lat = return_now_lat;
+                                    wpdata.lng = return_now_lng;
+                                }
                             }                        
                             cmds.Add(wpdata);
                             if (a == lastwpno&&cam!=0)
@@ -4923,7 +4935,7 @@ namespace MissionPlanner
                         // set index back to 1
                         MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid, 1);
 
-                        if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2&&CustomMessageBox.Show("点击确定就起飞了哟！","断点续飞",CustomMessageBox.MessageBoxButtons.YesNo)==CustomMessageBox.DialogResult.Yes)
+                        if (CustomMessageBox.Show("点击确定就起飞了哟！","断点续飞",CustomMessageBox.MessageBoxButtons.YesNo)==CustomMessageBox.DialogResult.Yes)
                         {
                             while (MainV2.comPort.MAV.cs.mode.ToLower() != "Guided".ToLower())
                             {

@@ -580,7 +580,7 @@ namespace MissionPlanner.GCSViews
             // 
             this.quickView4.ContextMenuStrip = this.contextMenuStripQuickView;
             this.quickView4.DataBindings.Add(new System.Windows.Forms.Binding("number", this.bindingSourceQuickTab, "yaw", true));
-            this.quickView4.desc = "yaw";
+            this.quickView4.desc = "battery_usedmah";
             resources.ApplyResources(this.quickView4, "quickView4");
             this.quickView4.Name = "quickView4";
             this.quickView4.number = 0D;

@@ -79,6 +79,15 @@ namespace MissionPlanner {
         }
         
         /// <summary>
+        ///   查找类似 自动模式 的本地化字符串。
+        /// </summary>
+        public static string Auto {
+            get {
+                return ResourceManager.GetString("Auto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Auto WP 的本地化字符串。
         /// </summary>
         public static string AutoWP {
@@ -97,7 +106,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 Bad KML File : 的本地化字符串。
+        ///   查找类似 错误的KML文件 : 的本地化字符串。
         /// </summary>
         public static string Bad_KML_File {
             get {
@@ -106,7 +115,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 Bad Proximity 的本地化字符串。
+        ///   查找类似 接近不良 的本地化字符串。
         /// </summary>
         public static string Bad_Proximity {
             get {
@@ -124,7 +133,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 Bad Vision Position 的本地化字符串。
+        ///   查找类似 视野不好的位置 的本地化字符串。
         /// </summary>
         public static string Bad_Vision_Position {
             get {
@@ -205,7 +214,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 Bad Logging 的本地化字符串。
+        ///   查找类似 错误的日志记录 的本地化字符串。
         /// </summary>
         public static string BadLogging {
             get {
@@ -350,7 +359,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 compass variance 的本地化字符串。
+        ///   查找类似 罗盘偏差 的本地化字符串。
         /// </summary>
         public static string compass_variance {
             get {
@@ -413,7 +422,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 Converting bin to log 的本地化字符串。
+        ///   查找类似 bin文件转log文件 的本地化字符串。
         /// </summary>
         public static string Converting_bin_to_log {
             get {
@@ -695,7 +704,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 Failed to connect to SITL instance 的本地化字符串。
+        ///   查找类似 无法连接到模拟实例 的本地化字符串。
         /// </summary>
         public static string Failed_to_connect_to_SITL_instance {
             get {
@@ -704,7 +713,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 Failed to download the SITL image. 的本地化字符串。
+        ///   查找类似 未能下载模拟映像 的本地化字符串。
         /// </summary>
         public static string Failed_to_download_the_SITL_image {
             get {
@@ -866,7 +875,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 Invalid home location 的本地化字符串。
+        ///   查找类似 无效的Home点 的本地化字符串。
         /// </summary>
         public static string Invalid_home_location {
             get {
@@ -875,7 +884,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 Invalid Location 的本地化字符串。
+        ///   查找类似 无效的位置 的本地化字符串。
         /// </summary>
         public static string Invalid_Location {
             get {
@@ -1020,6 +1029,15 @@ namespace MissionPlanner {
         }
         
         /// <summary>
+        ///   查找类似 手动模式 的本地化字符串。
+        /// </summary>
+        public static string Manuel {
+            get {
+                return ResourceManager.GetString("Manuel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 MAVFtp 的本地化字符串。
         /// </summary>
         public static string MAVFtp {
@@ -1066,7 +1084,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 No firmware available for this board! 的本地化字符串。
+        ///   查找类似 此板没有可用的固件! 的本地化字符串。
         /// </summary>
         public static string No_firmware_available_for_this_board {
             get {
@@ -1075,7 +1093,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 No valid heartbeats read from port 的本地化字符串。
+        ///   查找类似 没有从端口读取有效的响应 的本地化字符串。
         /// </summary>
         public static string No_valid_heartbeats_read_from_port {
             get {
@@ -1111,7 +1129,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 NO RC Receiver 的本地化字符串。
+        ///   查找类似 没有RC接收器 的本地化字符串。
         /// </summary>
         public static string NORCReceiver {
             get {
@@ -1138,7 +1156,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 Obtain From Module 的本地化字符串。
+        ///   查找类似 从模块中获取 的本地化字符串。
         /// </summary>
         public static string ObtainFromModule {
             get {
@@ -1184,8 +1202,8 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 A Param refresh is required - Please press F5
-        ///old #{0}  new #{1} 的本地化字符串。
+        ///   查找类似 需要参数刷新-请按F5
+        ///旧的 #{0} 新的 #{1} 的本地化字符串。
         /// </summary>
         public static string ParamRefreshRequired {
             get {
@@ -1268,7 +1286,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 pos horiz variance 的本地化字符串。
+        ///   查找类似 水平位置偏差 的本地化字符串。
         /// </summary>
         public static string pos_horiz_variance {
             get {
@@ -1277,7 +1295,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 pos vert variance 的本地化字符串。
+        ///   查找类似 垂直位置偏差 的本地化字符串。
         /// </summary>
         public static string pos_vert_variance {
             get {
@@ -1286,7 +1304,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 Prearm检查失败 的本地化字符串。
+        ///   查找类似 预处理检查失败 的本地化字符串。
         /// </summary>
         public static string Prearm_check_failed {
             get {
@@ -1386,7 +1404,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 Scanning File 的本地化字符串。
+        ///   查找类似 扫描文件 的本地化字符串。
         /// </summary>
         public static string Scanning_File {
             get {
@@ -1404,7 +1422,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 Set Here 的本地化字符串。
+        ///   查找类似 设置在这 的本地化字符串。
         /// </summary>
         public static string SetHere {
             get {
@@ -1458,7 +1476,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 terrain alt variance 的本地化字符串。
+        ///   查找类似 地形高度变化 的本地化字符串。
         /// </summary>
         public static string terrain_alt_variance {
             get {
@@ -1485,7 +1503,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 Tracker Home 的本地化字符串。
+        ///   查找类似 追踪 Home 的本地化字符串。
         /// </summary>
         public static string TrackerHome {
             get {
@@ -1542,7 +1560,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 No update available. 的本地化字符串。
+        ///   查找类似 没有更新可以用. 的本地化字符串。
         /// </summary>
         public static string UpdateNotFound {
             get {
@@ -1596,7 +1614,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 velocity variance 的本地化字符串。
+        ///   查找类似 速度偏差 的本地化字符串。
         /// </summary>
         public static string velocity_variance {
             get {
@@ -1691,7 +1709,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 Zoom To 的本地化字符串。
+        ///   查找类似 缩放到 的本地化字符串。
         /// </summary>
         public static string Zoom_To {
             get {
@@ -1700,7 +1718,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 Zoom to the center or the loaded file? 的本地化字符串。
+        ///   查找类似 缩放到中心或加载的文件? 的本地化字符串。
         /// </summary>
         public static string Zoom_to_the_center_or_the_loaded_file {
             get {

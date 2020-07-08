@@ -376,7 +376,7 @@
     <value>47, 12</value>
   </data>
   <data name="lnk_kml.Text" xml:space="preserve">
-    <value>查看KML</value>
+    <value>谷歌地球查看航线</value>
   </data>
   <data name="lnk_kml.ToolTip" xml:space="preserve">
     <value />
