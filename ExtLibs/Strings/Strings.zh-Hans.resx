@@ -538,10 +538,10 @@ Mission Planner将会在30秒内寻找控制板。</value>
     <value>追踪器的家</value>
   </data>
   <data name="velocity_variance" xml:space="preserve">
-    <value>velocity variance</value>
+    <value>速度偏差</value>
   </data>
   <data name="compass_variance" xml:space="preserve">
-    <value>compass variance</value>
+    <value>罗盘偏差</value>
   </data>
   <data name="pos_horiz_variance" xml:space="preserve">
     <value>位置水平偏差</value>

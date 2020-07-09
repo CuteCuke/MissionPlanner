@@ -30,6 +30,7 @@ using ZedGraph;
 using LogAnalyzer = MissionPlanner.Utilities.LogAnalyzer;
 using TableLayoutPanelCellPosition = System.Windows.Forms.TableLayoutPanelCellPosition;
 using UnauthorizedAccessException = System.UnauthorizedAccessException;
+using BrightIdeasSoftware;
 
 // written by michael oborne
 
@@ -245,7 +246,7 @@ namespace MissionPlanner.GCSViews
             CMB_modes.DataSource = ArduPilot.Common.getModesList(MainV2.comPort.MAV.cs.firmware);
             CMB_modes.ValueMember = "Key";
             CMB_modes.DisplayMember = "Value";
-
+           
             //default to auto
             CMB_modes.Text = "Auto";
 
@@ -4992,6 +4993,11 @@ namespace MissionPlanner.GCSViews
         }
 
         private void Galt_ValueInRangeChanged(object sender, AGaugeApp.AGauge.ValueInRangeChangedEventArgs e)
+        {
+
+        }
+
+        private void quickView1_PaintSurface(object sender, SkiaSharp.Views.Desktop.SKPaintSurfaceEventArgs e)
         {
 
         }

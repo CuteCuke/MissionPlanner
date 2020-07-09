@@ -4835,7 +4835,7 @@ namespace MissionPlanner
             if (
                Common.MessageShowAgain("恢复任务",
                    "警告：这将重新编程你的任务航线，解锁并发出起飞命令（多旋翼）") !=
-               DialogResult.OK&& MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
+               DialogResult.OK||MainV2.comPort.MAV.cs.firmware != Firmwares.ArduCopter2)
                 return;
 
             try
