@@ -212,7 +212,6 @@
             // 
             // ConnectionStats
             // 
-            
             this.Controls.Add(this.chk_mavlink2);
             this.Controls.Add(this.chk_signing);
             this.Controls.Add(this.groupBox1);

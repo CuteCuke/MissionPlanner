@@ -968,7 +968,7 @@
   <data name="toolStripConnectionControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>230, 43</value>
   </data>
-  <data name="preflight_check.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btn_rtk.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAeoAAAH0CAYAAADysW7RAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAE6ESURBVHhe7d15mFXVnub5+2fPNXRX5fN0Z2d2d3ZVZT2d
@@ -1309,26 +1309,20 @@
         xf9nAAAAAAAAAAAAAAAAAAAAAAA0229+8/8Dp3cskx42PwoAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="preflight_check.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="btn_rtk.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>White</value>
   </data>
-  <data name="preflight_check.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 47</value>
+  <data name="btn_rtk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 47</value>
   </data>
-  <data name="preflight_check.Text" xml:space="preserve">
-    <value>CHECK</value>
+  <data name="btn_rtk.Text" xml:space="preserve">
+    <value>RTK</value>
   </data>
-  <data name="preflight_check.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>BottomCenter</value>
+  <data name="btn_rtk.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>Overlay</value>
   </data>
-  <data name="preflight_check.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageAboveText</value>
-  </data>
-  <data name="preflight_check.ToolTipText" xml:space="preserve">
-    <value>起飞前检查</value>
-  </data>
-  <data name="preflight_check.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="btn_rtk.ToolTipText" xml:space="preserve">
+    <value>RTK</value>
   </data>
   <data name="return_flight.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3007,7 +3001,7 @@
     <value>status1</value>
   </data>
   <data name="&gt;&gt;status1.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.Status, MissionPlanner, Version=1.3.7485.27819, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.Status, MissionPlanner, Version=1.3.7521.26530, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;status1.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -4289,12 +4283,12 @@
     <value>toolStripConnectionControl</value>
   </data>
   <data name="&gt;&gt;toolStripConnectionControl.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ToolStripConnectionControl, MissionPlanner, Version=1.3.7485.27819, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ToolStripConnectionControl, MissionPlanner, Version=1.3.7521.26530, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;preflight_check.Name" xml:space="preserve">
-    <value>preflight_check</value>
+  <data name="&gt;&gt;btn_rtk.Name" xml:space="preserve">
+    <value>btn_rtk</value>
   </data>
-  <data name="&gt;&gt;preflight_check.Type" xml:space="preserve">
+  <data name="&gt;&gt;btn_rtk.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;return_flight.Name" xml:space="preserve">

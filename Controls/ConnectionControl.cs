@@ -54,7 +54,7 @@ namespace MissionPlanner.Controls
                 e.X < cmb_ConnectionType.Right &&
                 e.Y < cmb_ConnectionType.Bottom)
             {
-                cmb_ConnectionType.Visible = true;
+               // cmb_ConnectionType.Visible = true;
             }
         }
 

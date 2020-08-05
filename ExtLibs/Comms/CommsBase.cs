@@ -14,12 +14,14 @@ namespace MissionPlanner.Comms
     }
 
     public delegate inputboxreturn InputBoxShow(string title, string prompttext, ref string text);
+   // public delegate inputboxreturn InputBoxShow2(string title, string prompttext, ref string id,ref string passwd);
 
     public abstract class CommsBase
     {
         private readonly Hashtable cache = new Hashtable();
 
         public static event InputBoxShow InputBoxShow;
+       // public static event InputBoxShow2 InputBoxShow2;
 
         public static event SettingsOption Settings;
 
@@ -37,6 +39,13 @@ namespace MissionPlanner.Comms
 
             return InputBoxShow(title, prompttext, ref text);
         }
+        //protected virtual inputboxreturn OnInputBoxShow2(string title, string prompttext, ref string id,ref string passwd)
+        //{
+        //    if (InputBoxShow2 == null)
+        //        return inputboxreturn.NotSet;
+
+        //    return InputBoxShow2(title, prompttext, ref id,ref passwd);
+        //}
 
         protected virtual string OnSettings(string name, string value, bool set = false)
         {

@@ -73,12 +73,12 @@ namespace MissionPlanner.GCSViews.ConfigurationView
             Instance = this;
 
             status_line3 = null;
-
+            
+            CMB_serialport.Items.Add("NTRIP");
             CMB_serialport.Items.AddRange(SerialPort.GetPortNames());
             CMB_serialport.Items.Add("UDP Host");
             CMB_serialport.Items.Add("UDP Client");
             CMB_serialport.Items.Add("TCP Client");
-            CMB_serialport.Items.Add("NTRIP");
 
             if (threadrun)
             {
@@ -284,7 +284,10 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                     switch (CMB_serialport.Text)
                     {
                         case "NTRIP":
+                                                      
                             comPort = new CommsNTRIP();
+                           //  var l = new Configlogin();
+                           // ((CommsNTRIP)comPort).url_http = string.Format("http://{0}:{1}@rtk.ntrip.qxwz.com:8002/RTCM32_GGB", l.id, l.passwd);
                             CMB_baudrate.SelectedIndex = 0;
                             ((CommsNTRIP)comPort).lat = MainV2.comPort.MAV.cs.HomeLocation.Lat;
                             ((CommsNTRIP)comPort).lng = MainV2.comPort.MAV.cs.HomeLocation.Lng;

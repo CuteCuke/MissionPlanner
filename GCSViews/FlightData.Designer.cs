@@ -349,7 +349,7 @@ namespace MissionPlanner.GCSViews
             this.hud1.lowvoltagealert = false;
             this.hud1.message = "";
             this.hud1.messagetime = new System.DateTime(((long)(0)));
-            this.hud1.mode = "Unknown";
+            this.hud1.mode = "unknown";
             this.hud1.Name = "hud1";
             this.hud1.navpitch = 0F;
             this.hud1.navroll = 0F;
@@ -539,7 +539,7 @@ namespace MissionPlanner.GCSViews
             // 
             this.quickView6.ContextMenuStrip = this.contextMenuStripQuickView;
             this.quickView6.DataBindings.Add(new System.Windows.Forms.Binding("number", this.bindingSourceQuickTab, "DistToHome", true));
-            this.quickView6.desc = "DistToMAV";
+            this.quickView6.desc = "distTraveled";
             resources.ApplyResources(this.quickView6, "quickView6");
             this.quickView6.Name = "quickView6";
             this.quickView6.number = 0D;
@@ -796,6 +796,7 @@ namespace MissionPlanner.GCSViews
             this.CMB_modes.FormattingEnabled = true;
             resources.ApplyResources(this.CMB_modes, "CMB_modes");
             this.CMB_modes.Name = "CMB_modes";
+            this.CMB_modes.SelectedIndexChanged += new System.EventHandler(this.CMB_modes_SelectedIndexChanged);
             this.CMB_modes.Click += new System.EventHandler(this.CMB_modes_Click);
             // 
             // BUT_setmode

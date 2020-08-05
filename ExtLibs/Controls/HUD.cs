@@ -20,6 +20,7 @@ using MissionPlanner.Utilities;
 using SvgNet.SvgGdi;
 using MathHelper = MissionPlanner.Utilities.MathHelper;
 using PixelFormat = OpenTK.Graphics.OpenGL.PixelFormat;
+using System.Diagnostics;
 
 
 // Control written by Michael Oborne 2011
@@ -2431,6 +2432,7 @@ namespace MissionPlanner.Controls
                     graphicsObject.ResetTransform();
 
                     // mode and wp dist and wp
+                    tozhcn(ref _mode);
                     drawstring(_mode, font, fontsize, _whiteBrush, scrollbg.Left - 30,
                         scrollbg.Bottom + 5);
                     drawstring((int) _disttowp + distunit + ">" + _wpno, font, fontsize, _whiteBrush,
@@ -3215,6 +3217,29 @@ namespace MissionPlanner.Controls
                 catch
                 {
                 }
+            }
+        }
+        public void tozhcn(ref string mode) 
+        {
+            mode = mode.ToLower();
+            switch(mode)
+            {
+                case "auto": mode = "自动模式";
+                    break;
+                case "manual":mode = "手动模式";
+                    break;
+                case "circle":
+                    mode = "盘旋模式";
+                    break;
+                case "stabilize":
+                    mode = "增稳模式";
+                    break;
+                case "loiter":
+                    mode = "悬停模式";               
+                    break;
+                case "guided":
+                    mode = "指引模式";
+                    break;
             }
         }
     }

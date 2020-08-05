@@ -1031,9 +1031,9 @@ namespace MissionPlanner {
         /// <summary>
         ///   查找类似 手动模式 的本地化字符串。
         /// </summary>
-        public static string Manuel {
+        public static string Manual {
             get {
-                return ResourceManager.GetString("Manuel", resourceCulture);
+                return ResourceManager.GetString("Manual", resourceCulture);
             }
         }
         

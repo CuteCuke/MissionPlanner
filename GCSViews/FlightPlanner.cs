@@ -107,7 +107,7 @@ namespace MissionPlanner.GCSViews
         private bool isMouseDown;
         private bool isMouseDraging;
         private bool ischk_imitation = false; //是否仿地飞行
-        public bool mv_return_chk_is_imitation = false;
+       // public bool mv_return_chk_is_imitation = false;
         public GMapOverlay kmlpolygonsoverlay;
         public bool tag_updownwp = false;    //起降航点添加标记
         /// <summary>
@@ -621,7 +621,7 @@ namespace MissionPlanner.GCSViews
             if ((altmode)CMB_altmode.SelectedValue == altmode.Absolute)
             {
                 if ((int)DialogResult.No ==
-                    CustomMessageBox.Show("当前为绝对高度模式哟?", "Alt Mode", MessageBoxButtons.YesNo))
+                    CustomMessageBox.Show("当前为绝对高度模式哟!", "Alt Mode", MessageBoxButtons.YesNo))
                 {
                     CMB_altmode.SelectedValue = (int)altmode.Relative;
                 }
@@ -700,7 +700,7 @@ namespace MissionPlanner.GCSViews
             frmProgressReporter.Dispose();
 
             MainMap.Focus();
-            mv_return_chk_is_imitation = ischk_imitation;
+            //mv_return_chk_is_imitation = ischk_imitation;
             del_flight_Click(sender, e);
             BUT_read_Click(sender, e);
         }

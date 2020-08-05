@@ -24,7 +24,7 @@ namespace MissionPlanner.Comms
         private Stream st;
 
         private string host;
-
+        public string url_http = null;
         public double lat = 0;
         public double lng = 0;
         private IPEndPoint RemoteIpEndPoint = new IPEndPoint(IPAddress.Any, 0);
@@ -103,13 +103,18 @@ namespace MissionPlanner.Comms
             log.Info("ntrip Open");
 
             var url = OnSettings("NTRIP_url", "");
-
-            if (OnInputBoxShow("remote host", "Enter url (eg http://user:pass@host:port/mount)", ref url) ==
+            //string id=null, passwd=null;
+            //if (url == null)
+            //    url = string.Format("http://账号:密码@rtk.ntrip.qxwz.com:8002/RTCM32_GGB");
+            if (OnInputBoxShow("连接", "请输入链接\n(例：http://账号:密码@rtk.ntrip.qxwz.com:8002/RTCM32_GGB)", ref url) ==
                 inputboxreturn.Cancel)
                 throw new Exception("Canceled by request");
 
+            //if (OnInputBoxShow2("remote host", "Enter url (eg http://user:pass@host:port/mount)", ref id,ref passwd) ==
+            //   inputboxreturn.Cancel)
+            //    throw new Exception("Canceled by request");
+            
             OnSettings("NTRIP_url", url, true);
-
             Open(url);
         }
 

@@ -45,16 +45,12 @@
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.chk_movingbase = new System.Windows.Forms.CheckBox();
-            this.but_restartsvin = new MissionPlanner.Controls.MyButton();
             this.chk_m8p_130p = new System.Windows.Forms.CheckBox();
-            this.but_save_basepos = new MissionPlanner.Controls.MyButton();
-            this.dg_basepos = new MissionPlanner.Controls.MyDataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_surveyinAcc = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_surveyinDur = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.BUT_connect = new MissionPlanner.Controls.MyButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.lbl_status2 = new System.Windows.Forms.Label();
             this.lbl_status3 = new System.Windows.Forms.Label();
@@ -77,22 +73,26 @@
             this.labelbase = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.myGMAP1 = new MissionPlanner.Controls.myGMAP();
+            this.but_restartsvin = new MissionPlanner.Controls.MyButton();
+            this.but_save_basepos = new MissionPlanner.Controls.MyButton();
+            this.dg_basepos = new MissionPlanner.Controls.MyDataGridView();
             this.Lat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Long = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Alt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BaseName1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Use = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.BUT_connect = new MissionPlanner.Controls.MyButton();
             this.groupBoxm8p.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dg_basepos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_basepos)).BeginInit();
             this.SuspendLayout();
             // 
             // CMB_serialport
@@ -220,14 +220,6 @@
             this.chk_movingbase.UseVisualStyleBackColor = true;
             this.chk_movingbase.CheckedChanged += new System.EventHandler(this.chk_movingbase_CheckedChanged);
             // 
-            // but_restartsvin
-            // 
-            resources.ApplyResources(this.but_restartsvin, "but_restartsvin");
-            this.but_restartsvin.Name = "but_restartsvin";
-            this.toolTip1.SetToolTip(this.but_restartsvin, resources.GetString("but_restartsvin.ToolTip"));
-            this.but_restartsvin.UseVisualStyleBackColor = true;
-            this.but_restartsvin.Click += new System.EventHandler(this.but_restartsvin_Click);
-            // 
             // chk_m8p_130p
             // 
             resources.ApplyResources(this.chk_m8p_130p, "chk_m8p_130p");
@@ -235,31 +227,6 @@
             this.toolTip1.SetToolTip(this.chk_m8p_130p, resources.GetString("chk_m8p_130p.ToolTip"));
             this.chk_m8p_130p.UseVisualStyleBackColor = true;
             this.chk_m8p_130p.CheckedChanged += new System.EventHandler(this.chk_m8p_130p_CheckedChanged);
-            // 
-            // but_save_basepos
-            // 
-            resources.ApplyResources(this.but_save_basepos, "but_save_basepos");
-            this.but_save_basepos.Name = "but_save_basepos";
-            this.toolTip1.SetToolTip(this.but_save_basepos, resources.GetString("but_save_basepos.ToolTip"));
-            this.but_save_basepos.UseVisualStyleBackColor = true;
-            this.but_save_basepos.Click += new System.EventHandler(this.but_save_basepos_Click);
-            // 
-            // dg_basepos
-            // 
-            resources.ApplyResources(this.dg_basepos, "dg_basepos");
-            this.dg_basepos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_basepos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Lat,
-            this.Long,
-            this.Alt,
-            this.BaseName1,
-            this.Use,
-            this.Delete});
-            this.dg_basepos.Name = "dg_basepos";
-            this.dg_basepos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_basepos_CellContentClick);
-            this.dg_basepos.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_basepos_CellEndEdit);
-            this.dg_basepos.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dg_basepos_DefaultValuesNeeded);
-            this.dg_basepos.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dg_basepos_RowsRemoved);
             // 
             // label2
             // 
@@ -290,13 +257,6 @@
             // 
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            // 
-            // BUT_connect
-            // 
-            resources.ApplyResources(this.BUT_connect, "BUT_connect");
-            this.BUT_connect.Name = "BUT_connect";
-            this.BUT_connect.UseVisualStyleBackColor = true;
-            this.BUT_connect.Click += new System.EventHandler(this.BUT_connect_Click);
             // 
             // toolTip1
             // 
@@ -462,6 +422,39 @@
             this.myGMAP1.ShowTileGridLines = false;
             this.myGMAP1.Zoom = 0D;
             // 
+            // but_restartsvin
+            // 
+            resources.ApplyResources(this.but_restartsvin, "but_restartsvin");
+            this.but_restartsvin.Name = "but_restartsvin";
+            this.toolTip1.SetToolTip(this.but_restartsvin, resources.GetString("but_restartsvin.ToolTip"));
+            this.but_restartsvin.UseVisualStyleBackColor = true;
+            this.but_restartsvin.Click += new System.EventHandler(this.but_restartsvin_Click);
+            // 
+            // but_save_basepos
+            // 
+            resources.ApplyResources(this.but_save_basepos, "but_save_basepos");
+            this.but_save_basepos.Name = "but_save_basepos";
+            this.toolTip1.SetToolTip(this.but_save_basepos, resources.GetString("but_save_basepos.ToolTip"));
+            this.but_save_basepos.UseVisualStyleBackColor = true;
+            this.but_save_basepos.Click += new System.EventHandler(this.but_save_basepos_Click);
+            // 
+            // dg_basepos
+            // 
+            resources.ApplyResources(this.dg_basepos, "dg_basepos");
+            this.dg_basepos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_basepos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Lat,
+            this.Long,
+            this.Alt,
+            this.BaseName1,
+            this.Use,
+            this.Delete});
+            this.dg_basepos.Name = "dg_basepos";
+            this.dg_basepos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_basepos_CellContentClick);
+            this.dg_basepos.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_basepos_CellEndEdit);
+            this.dg_basepos.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dg_basepos_DefaultValuesNeeded);
+            this.dg_basepos.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dg_basepos_RowsRemoved);
+            // 
             // Lat
             // 
             resources.ApplyResources(this.Lat, "Lat");
@@ -496,6 +489,13 @@
             this.Delete.ReadOnly = true;
             this.Delete.Text = "删除";
             // 
+            // BUT_connect
+            // 
+            resources.ApplyResources(this.BUT_connect, "BUT_connect");
+            this.BUT_connect.Name = "BUT_connect";
+            this.BUT_connect.UseVisualStyleBackColor = true;
+            this.BUT_connect.Click += new System.EventHandler(this.BUT_connect_Click);
+            // 
             // ConfigSerialInjectGPS
             // 
             this.Controls.Add(this.myGMAP1);
@@ -513,7 +513,6 @@
             this.groupBox1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dg_basepos)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -522,6 +521,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_basepos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

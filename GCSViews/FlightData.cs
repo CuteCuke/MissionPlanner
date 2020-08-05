@@ -5001,5 +5001,10 @@ namespace MissionPlanner.GCSViews
         {
 
         }
+
+        private void CMB_modes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

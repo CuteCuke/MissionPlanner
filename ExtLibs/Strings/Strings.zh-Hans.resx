@@ -570,7 +570,7 @@ Mission Planner将会在30秒内寻找控制板。</value>
   <data name="Auto" xml:space="preserve">
     <value>自动模式</value>
   </data>
-  <data name="Manuel" xml:space="preserve">
+  <data name="Manual" xml:space="preserve">
     <value>手动模式</value>
   </data>
 </root>

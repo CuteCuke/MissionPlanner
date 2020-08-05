@@ -682,7 +682,7 @@ Please contact your hardware vendor about signing your hardware.</value>
   <data name="Auto" xml:space="preserve">
     <value>自动模式</value>
   </data>
-  <data name="Manuel" xml:space="preserve">
+  <data name="Manual" xml:space="preserve">
     <value>手动模式</value>
   </data>
 </root>

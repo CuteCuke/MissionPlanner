@@ -53,7 +53,7 @@ namespace MissionPlanner
             this.MenuFlightPlanner = new System.Windows.Forms.ToolStripButton();
             this.MenuConnect = new System.Windows.Forms.ToolStripButton();
             this.toolStripConnectionControl = new MissionPlanner.Controls.ToolStripConnectionControl();
-            this.preflight_check = new System.Windows.Forms.ToolStripButton();
+            this.btn_rtk = new System.Windows.Forms.ToolStripButton();
             this.return_flight = new System.Windows.Forms.ToolStripButton();
             this.wp_no = new System.Windows.Forms.ToolStripComboBox();
             this.jump_to = new System.Windows.Forms.ToolStripButton();
@@ -83,7 +83,7 @@ namespace MissionPlanner
             this.MenuFlightPlanner,
             this.MenuConnect,
             this.toolStripConnectionControl,
-            this.preflight_check,
+            this.btn_rtk,
             this.return_flight,
             this.wp_no,
             this.jump_to,
@@ -222,14 +222,16 @@ namespace MissionPlanner
             this.toolStripConnectionControl.Name = "toolStripConnectionControl";
             this.toolStripConnectionControl.MouseLeave += new System.EventHandler(this.MainMenu_MouseLeave);
             // 
-            // preflight_check
+            // btn_rtk
             // 
-            this.preflight_check.BackColor = System.Drawing.Color.Transparent;
-            this.preflight_check.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.preflight_check.ForeColor = System.Drawing.SystemColors.ControlLight;
-            resources.ApplyResources(this.preflight_check, "preflight_check");
-            this.preflight_check.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.preflight_check.Name = "preflight_check";
+            this.btn_rtk.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btn_rtk.BackColor = System.Drawing.Color.Transparent;
+            this.btn_rtk.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btn_rtk.ForeColor = System.Drawing.SystemColors.ControlLight;
+            resources.ApplyResources(this.btn_rtk, "btn_rtk");
+            this.btn_rtk.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.btn_rtk.Name = "btn_rtk";
+            this.btn_rtk.Click += new System.EventHandler(this.btn_rtk_Click);
             // 
             // return_flight
             // 
@@ -382,7 +384,7 @@ namespace MissionPlanner
         //public System.Windows.Forms.ToolStripButton MenuHelp;
         //public System.Windows.Forms.ToolStripButton MenuArduPilot;
         public Controls.Status status1;
-        public System.Windows.Forms.ToolStripButton preflight_check;
+        public System.Windows.Forms.ToolStripButton btn_rtk;
         public System.Windows.Forms.ToolStripButton lock_unlock;
         public System.Windows.Forms.ToolStripButton auto_flight;
         public System.Windows.Forms.ToolStripButton return_flight;
