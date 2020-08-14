@@ -42,8 +42,12 @@
             this.label36 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.lbl_footprint = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.lbl_pictures = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.lbl_photoevery = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.lbl_strips = new System.Windows.Forms.Label();
             this.NUM_split = new System.Windows.Forms.NumericUpDown();
             this.label37 = new System.Windows.Forms.Label();
             this.CHK_toandland_RTL = new System.Windows.Forms.CheckBox();
@@ -54,10 +58,6 @@
             this.label31 = new System.Windows.Forms.Label();
             this.lbl_distbetweenlines = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
-            this.lbl_strips = new System.Windows.Forms.Label();
-            this.lbl_pictures = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
             this.lbl_grndres = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.lbl_spacing = new System.Windows.Forms.Label();
@@ -169,6 +169,10 @@
             this.NUM_altitude = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.lab_highsidelap = new System.Windows.Forms.Label();
+            this.lab_highoverlap = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
             this.lbl_highres = new System.Windows.Forms.Label();
             this.lbl_lowres = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
@@ -230,8 +234,12 @@
             this.groupBox5.Controls.Add(this.label36);
             this.groupBox5.Controls.Add(this.label30);
             this.groupBox5.Controls.Add(this.lbl_footprint);
+            this.groupBox5.Controls.Add(this.label34);
+            this.groupBox5.Controls.Add(this.lbl_pictures);
             this.groupBox5.Controls.Add(this.label35);
             this.groupBox5.Controls.Add(this.lbl_photoevery);
+            this.groupBox5.Controls.Add(this.label33);
+            this.groupBox5.Controls.Add(this.lbl_strips);
             resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
@@ -314,6 +322,16 @@
             resources.ApplyResources(this.lbl_footprint, "lbl_footprint");
             this.lbl_footprint.Name = "lbl_footprint";
             // 
+            // label34
+            // 
+            resources.ApplyResources(this.label34, "label34");
+            this.label34.Name = "label34";
+            // 
+            // lbl_pictures
+            // 
+            resources.ApplyResources(this.lbl_pictures, "lbl_pictures");
+            this.lbl_pictures.Name = "lbl_pictures";
+            // 
             // label35
             // 
             resources.ApplyResources(this.label35, "label35");
@@ -323,6 +341,16 @@
             // 
             resources.ApplyResources(this.lbl_photoevery, "lbl_photoevery");
             this.lbl_photoevery.Name = "lbl_photoevery";
+            // 
+            // label33
+            // 
+            resources.ApplyResources(this.label33, "label33");
+            this.label33.Name = "label33";
+            // 
+            // lbl_strips
+            // 
+            resources.ApplyResources(this.lbl_strips, "lbl_strips");
+            this.lbl_strips.Name = "lbl_strips";
             // 
             // NUM_split
             // 
@@ -392,26 +420,6 @@
             // 
             resources.ApplyResources(this.label25, "label25");
             this.label25.Name = "label25";
-            // 
-            // lbl_strips
-            // 
-            resources.ApplyResources(this.lbl_strips, "lbl_strips");
-            this.lbl_strips.Name = "lbl_strips";
-            // 
-            // lbl_pictures
-            // 
-            resources.ApplyResources(this.lbl_pictures, "lbl_pictures");
-            this.lbl_pictures.Name = "lbl_pictures";
-            // 
-            // label33
-            // 
-            resources.ApplyResources(this.label33, "label33");
-            this.label33.Name = "label33";
-            // 
-            // label34
-            // 
-            resources.ApplyResources(this.label34, "label34");
-            this.label34.Name = "label34";
             // 
             // lbl_grndres
             // 
@@ -1384,6 +1392,10 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.lab_highsidelap);
+            this.groupBox4.Controls.Add(this.lab_highoverlap);
+            this.groupBox4.Controls.Add(this.label51);
+            this.groupBox4.Controls.Add(this.label50);
             this.groupBox4.Controls.Add(this.lbl_highres);
             this.groupBox4.Controls.Add(this.lbl_lowres);
             this.groupBox4.Controls.Add(this.label47);
@@ -1396,12 +1408,8 @@
             this.groupBox4.Controls.Add(this.lbl_spacing);
             this.groupBox4.Controls.Add(this.label29);
             this.groupBox4.Controls.Add(this.lbl_grndres);
-            this.groupBox4.Controls.Add(this.label34);
             this.groupBox4.Controls.Add(this.lbl_gndelev);
-            this.groupBox4.Controls.Add(this.lbl_pictures);
-            this.groupBox4.Controls.Add(this.label33);
             this.groupBox4.Controls.Add(this.label40);
-            this.groupBox4.Controls.Add(this.lbl_strips);
             this.groupBox4.Controls.Add(this.lbl_flighttime);
             this.groupBox4.Controls.Add(this.label25);
             this.groupBox4.Controls.Add(this.label31);
@@ -1409,6 +1417,26 @@
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
+            // 
+            // lab_highsidelap
+            // 
+            resources.ApplyResources(this.lab_highsidelap, "lab_highsidelap");
+            this.lab_highsidelap.Name = "lab_highsidelap";
+            // 
+            // lab_highoverlap
+            // 
+            resources.ApplyResources(this.lab_highoverlap, "lab_highoverlap");
+            this.lab_highoverlap.Name = "lab_highoverlap";
+            // 
+            // label51
+            // 
+            resources.ApplyResources(this.label51, "label51");
+            this.label51.Name = "label51";
+            // 
+            // label50
+            // 
+            resources.ApplyResources(this.label50, "label50");
+            this.label50.Name = "label50";
             // 
             // lbl_highres
             // 
@@ -1694,5 +1722,9 @@
         private System.Windows.Forms.CheckBox rightup;
         private System.Windows.Forms.CheckBox leftdown;
         private System.Windows.Forms.CheckBox leftup;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label lab_highsidelap;
+        private System.Windows.Forms.Label lab_highoverlap;
     }
 }

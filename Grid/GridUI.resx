@@ -261,6 +261,30 @@
   <data name="&gt;&gt;lbl_footprint.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <data name="&gt;&gt;label34.Name" xml:space="preserve">
+    <value>label34</value>
+  </data>
+  <data name="&gt;&gt;label34.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label34.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;label34.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;lbl_pictures.Name" xml:space="preserve">
+    <value>lbl_pictures</value>
+  </data>
+  <data name="&gt;&gt;lbl_pictures.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_pictures.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;lbl_pictures.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
   <data name="&gt;&gt;label35.Name" xml:space="preserve">
     <value>label35</value>
   </data>
@@ -271,7 +295,7 @@
     <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;label35.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="&gt;&gt;lbl_photoevery.Name" xml:space="preserve">
     <value>lbl_photoevery</value>
@@ -283,7 +307,31 @@
     <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;lbl_photoevery.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;label33.Name" xml:space="preserve">
+    <value>label33</value>
+  </data>
+  <data name="&gt;&gt;label33.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label33.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;label33.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;lbl_strips.Name" xml:space="preserve">
+    <value>lbl_strips</value>
+  </data>
+  <data name="&gt;&gt;lbl_strips.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_strips.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;lbl_strips.ZOrder" xml:space="preserve">
+    <value>17</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="groupBox5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -291,7 +339,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 606</value>
+    <value>0, 640</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
     <value>830, 66</value>
@@ -322,7 +370,7 @@
     <value>NoControl</value>
   </data>
   <data name="CHK_advanced.Location" type="System.Drawing.Point, System.Drawing">
-    <value>293, 43</value>
+    <value>184, 41</value>
   </data>
   <data name="CHK_advanced.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 16</value>
@@ -352,7 +400,7 @@
     <value>NoControl</value>
   </data>
   <data name="lbl_minshutter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>567, 46</value>
+    <value>455, 42</value>
   </data>
   <data name="lbl_minshutter.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 12</value>
@@ -382,7 +430,7 @@
     <value>NoControl</value>
   </data>
   <data name="CHK_footprints.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 42</value>
+    <value>94, 41</value>
   </data>
   <data name="CHK_footprints.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 16</value>
@@ -412,7 +460,7 @@
     <value>NoControl</value>
   </data>
   <data name="label44.Location" type="System.Drawing.Point, System.Drawing">
-    <value>401, 44</value>
+    <value>294, 42</value>
   </data>
   <data name="label44.Size" type="System.Drawing.Size, System.Drawing">
     <value>155, 12</value>
@@ -442,7 +490,7 @@
     <value>NoControl</value>
   </data>
   <data name="CHK_internals.Location" type="System.Drawing.Point, System.Drawing">
-    <value>42, 43</value>
+    <value>6, 41</value>
   </data>
   <data name="CHK_internals.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 16</value>
@@ -472,7 +520,7 @@
     <value>NoControl</value>
   </data>
   <data name="CHK_grid.Location" type="System.Drawing.Point, System.Drawing">
-    <value>42, 21</value>
+    <value>6, 22</value>
   </data>
   <data name="CHK_grid.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 16</value>
@@ -502,7 +550,7 @@
     <value>NoControl</value>
   </data>
   <data name="CHK_markers.Location" type="System.Drawing.Point, System.Drawing">
-    <value>293, 21</value>
+    <value>184, 21</value>
   </data>
   <data name="CHK_markers.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 16</value>
@@ -532,7 +580,7 @@
     <value>NoControl</value>
   </data>
   <data name="lbl_turnrad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>567, 21</value>
+    <value>455, 23</value>
   </data>
   <data name="lbl_turnrad.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 12</value>
@@ -562,7 +610,7 @@
     <value>NoControl</value>
   </data>
   <data name="CHK_boundary.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 20</value>
+    <value>94, 22</value>
   </data>
   <data name="CHK_boundary.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 16</value>
@@ -592,7 +640,7 @@
     <value>NoControl</value>
   </data>
   <data name="label36.Location" type="System.Drawing.Point, System.Drawing">
-    <value>401, 22</value>
+    <value>294, 23</value>
   </data>
   <data name="label36.Size" type="System.Drawing.Size, System.Drawing">
     <value>143, 12</value>
@@ -622,7 +670,7 @@
     <value>NoControl</value>
   </data>
   <data name="label30.Location" type="System.Drawing.Point, System.Drawing">
-    <value>633, 22</value>
+    <value>506, 23</value>
   </data>
   <data name="label30.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 12</value>
@@ -652,7 +700,7 @@
     <value>NoControl</value>
   </data>
   <data name="lbl_footprint.Location" type="System.Drawing.Point, System.Drawing">
-    <value>721, 22</value>
+    <value>571, 23</value>
   </data>
   <data name="lbl_footprint.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 12</value>
@@ -675,6 +723,66 @@
   <data name="&gt;&gt;lbl_footprint.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <data name="label34.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label34.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label34.Location" type="System.Drawing.Point, System.Drawing">
+    <value>671, 42</value>
+  </data>
+  <data name="label34.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 12</value>
+  </data>
+  <data name="label34.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>区域内拍照数量:</value>
+  </data>
+  <data name="&gt;&gt;label34.Name" xml:space="preserve">
+    <value>label34</value>
+  </data>
+  <data name="&gt;&gt;label34.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label34.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;label34.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="lbl_pictures.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbl_pictures.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbl_pictures.Location" type="System.Drawing.Point, System.Drawing">
+    <value>786, 42</value>
+  </data>
+  <data name="lbl_pictures.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 12</value>
+  </data>
+  <data name="lbl_pictures.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="lbl_pictures.Text" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="&gt;&gt;lbl_pictures.Name" xml:space="preserve">
+    <value>lbl_pictures</value>
+  </data>
+  <data name="&gt;&gt;lbl_pictures.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_pictures.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;lbl_pictures.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
   <data name="label35.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -682,7 +790,7 @@
     <value>NoControl</value>
   </data>
   <data name="label35.Location" type="System.Drawing.Point, System.Drawing">
-    <value>633, 45</value>
+    <value>506, 42</value>
   </data>
   <data name="label35.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 12</value>
@@ -703,7 +811,7 @@
     <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;label35.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="lbl_photoevery.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -712,7 +820,7 @@
     <value>NoControl</value>
   </data>
   <data name="lbl_photoevery.Location" type="System.Drawing.Point, System.Drawing">
-    <value>722, 44</value>
+    <value>591, 42</value>
   </data>
   <data name="lbl_photoevery.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 12</value>
@@ -733,7 +841,67 @@
     <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;lbl_photoevery.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
+  </data>
+  <data name="label33.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label33.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label33.Location" type="System.Drawing.Point, System.Drawing">
+    <value>671, 22</value>
+  </data>
+  <data name="label33.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 12</value>
+  </data>
+  <data name="label33.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="label33.Text" xml:space="preserve">
+    <value>区域内航线数量:</value>
+  </data>
+  <data name="&gt;&gt;label33.Name" xml:space="preserve">
+    <value>label33</value>
+  </data>
+  <data name="&gt;&gt;label33.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label33.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;label33.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="lbl_strips.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbl_strips.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbl_strips.Location" type="System.Drawing.Point, System.Drawing">
+    <value>786, 22</value>
+  </data>
+  <data name="lbl_strips.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 12</value>
+  </data>
+  <data name="lbl_strips.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="lbl_strips.Text" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="&gt;&gt;lbl_strips.Name" xml:space="preserve">
+    <value>lbl_strips</value>
+  </data>
+  <data name="&gt;&gt;lbl_strips.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_strips.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;lbl_strips.ZOrder" xml:space="preserve">
+    <value>17</value>
   </data>
   <data name="NUM_split.Location" type="System.Drawing.Point, System.Drawing">
     <value>554, 437</value>
@@ -865,7 +1033,7 @@
     <value>NoControl</value>
   </data>
   <data name="lbl_gndelev.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 197</value>
+    <value>127, 215</value>
   </data>
   <data name="lbl_gndelev.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 12</value>
@@ -886,7 +1054,7 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;lbl_gndelev.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>16</value>
   </data>
   <data name="label40.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -895,7 +1063,7 @@
     <value>NoControl</value>
   </data>
   <data name="label40.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 197</value>
+    <value>6, 215</value>
   </data>
   <data name="label40.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 12</value>
@@ -916,7 +1084,7 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;label40.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="lbl_flighttime.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -985,7 +1153,7 @@
     <value>NoControl</value>
   </data>
   <data name="lbl_distbetweenlines.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 110</value>
+    <value>127, 108</value>
   </data>
   <data name="lbl_distbetweenlines.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 12</value>
@@ -1015,7 +1183,7 @@
     <value>NoControl</value>
   </data>
   <data name="label25.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 110</value>
+    <value>6, 108</value>
   </data>
   <data name="label25.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 12</value>
@@ -1038,126 +1206,6 @@
   <data name="&gt;&gt;label25.ZOrder" xml:space="preserve">
     <value>19</value>
   </data>
-  <data name="lbl_strips.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lbl_strips.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lbl_strips.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 244</value>
-  </data>
-  <data name="lbl_strips.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 12</value>
-  </data>
-  <data name="lbl_strips.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="lbl_strips.Text" xml:space="preserve">
-    <value>0.00</value>
-  </data>
-  <data name="&gt;&gt;lbl_strips.Name" xml:space="preserve">
-    <value>lbl_strips</value>
-  </data>
-  <data name="&gt;&gt;lbl_strips.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbl_strips.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;lbl_strips.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="lbl_pictures.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lbl_pictures.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lbl_pictures.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 220</value>
-  </data>
-  <data name="lbl_pictures.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 12</value>
-  </data>
-  <data name="lbl_pictures.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="lbl_pictures.Text" xml:space="preserve">
-    <value>0.00</value>
-  </data>
-  <data name="&gt;&gt;lbl_pictures.Name" xml:space="preserve">
-    <value>lbl_pictures</value>
-  </data>
-  <data name="&gt;&gt;lbl_pictures.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbl_pictures.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;lbl_pictures.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="label33.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label33.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label33.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 244</value>
-  </data>
-  <data name="label33.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 12</value>
-  </data>
-  <data name="label33.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="label33.Text" xml:space="preserve">
-    <value>区域内航线数量:</value>
-  </data>
-  <data name="&gt;&gt;label33.Name" xml:space="preserve">
-    <value>label33</value>
-  </data>
-  <data name="&gt;&gt;label33.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label33.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;label33.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="label34.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label34.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label34.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 220</value>
-  </data>
-  <data name="label34.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 12</value>
-  </data>
-  <data name="label34.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="label34.Text" xml:space="preserve">
-    <value>区域内拍照数量:</value>
-  </data>
-  <data name="&gt;&gt;label34.Name" xml:space="preserve">
-    <value>label34</value>
-  </data>
-  <data name="&gt;&gt;label34.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label34.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;label34.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
   <data name="lbl_grndres.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1165,7 +1213,7 @@
     <value>NoControl</value>
   </data>
   <data name="lbl_grndres.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 133</value>
+    <value>127, 140</value>
   </data>
   <data name="lbl_grndres.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 12</value>
@@ -1186,7 +1234,7 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;lbl_grndres.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>15</value>
   </data>
   <data name="label29.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1195,7 +1243,7 @@
     <value>NoControl</value>
   </data>
   <data name="label29.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 133</value>
+    <value>6, 140</value>
   </data>
   <data name="label29.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 12</value>
@@ -1216,7 +1264,7 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;label29.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>14</value>
   </data>
   <data name="lbl_spacing.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1246,7 +1294,7 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;lbl_spacing.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>13</value>
   </data>
   <data name="label27.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1276,7 +1324,7 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;label27.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>12</value>
   </data>
   <data name="lbl_distance.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1306,7 +1354,7 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;lbl_distance.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>11</value>
   </data>
   <data name="lbl_area.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1336,7 +1384,7 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;lbl_area.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="label23.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1366,7 +1414,7 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
   </data>
   <data name="label22.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1396,7 +1444,7 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
     <value>groupBox3</value>
@@ -1429,7 +1477,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabCamera.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 646</value>
+    <value>248, 680</value>
   </data>
   <data name="tabCamera.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2457,7 +2505,7 @@
     <value>NoControl</value>
   </data>
   <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 277</value>
+    <value>7, 274</value>
   </data>
   <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 12</value>
@@ -2487,7 +2535,7 @@
     <value>NoControl</value>
   </data>
   <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 250</value>
+    <value>7, 251</value>
   </data>
   <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 12</value>
@@ -2511,7 +2559,7 @@
     <value>3</value>
   </data>
   <data name="TXT_fovV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>143, 274</value>
+    <value>143, 248</value>
   </data>
   <data name="TXT_fovV.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 21</value>
@@ -2532,7 +2580,7 @@
     <value>4</value>
   </data>
   <data name="TXT_fovH.Location" type="System.Drawing.Point, System.Drawing">
-    <value>143, 247</value>
+    <value>143, 271</value>
   </data>
   <data name="TXT_fovH.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 21</value>
@@ -2559,7 +2607,7 @@
     <value>NoControl</value>
   </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 224</value>
+    <value>7, 227</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 12</value>
@@ -2583,7 +2631,7 @@
     <value>6</value>
   </data>
   <data name="TXT_cmpixel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>143, 221</value>
+    <value>143, 224</value>
   </data>
   <data name="TXT_cmpixel.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 21</value>
@@ -2604,7 +2652,7 @@
     <value>7</value>
   </data>
   <data name="TXT_sensheight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>143, 123</value>
+    <value>143, 96</value>
   </data>
   <data name="TXT_sensheight.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 21</value>
@@ -2628,7 +2676,7 @@
     <value>8</value>
   </data>
   <data name="TXT_senswidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>143, 97</value>
+    <value>143, 118</value>
   </data>
   <data name="TXT_senswidth.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 21</value>
@@ -2652,7 +2700,7 @@
     <value>9</value>
   </data>
   <data name="TXT_imgheight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>143, 71</value>
+    <value>143, 43</value>
   </data>
   <data name="TXT_imgheight.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 21</value>
@@ -2676,7 +2724,7 @@
     <value>10</value>
   </data>
   <data name="TXT_imgwidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>143, 45</value>
+    <value>143, 69</value>
   </data>
   <data name="TXT_imgwidth.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 21</value>
@@ -3009,10 +3057,10 @@
     <value>3</value>
   </data>
   <data name="groupBox7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 327</value>
+    <value>6, 312</value>
   </data>
   <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 78</value>
+    <value>234, 112</value>
   </data>
   <data name="groupBox7.TabIndex" type="System.Int32, mscorlib">
     <value>63</value>
@@ -3135,7 +3183,7 @@
     <value>24, 394</value>
   </data>
   <data name="groupBox_copter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 227</value>
+    <value>225, 261</value>
   </data>
   <data name="groupBox_copter.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -3160,585 +3208,6 @@
   </data>
   <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Right</value>
-  </data>
-  <data name="&gt;&gt;label49.Name" xml:space="preserve">
-    <value>label49</value>
-  </data>
-  <data name="&gt;&gt;label49.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label49.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label49.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;label48.Name" xml:space="preserve">
-    <value>label48</value>
-  </data>
-  <data name="&gt;&gt;label48.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label48.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label48.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;max_alt.Name" xml:space="preserve">
-    <value>max_alt</value>
-  </data>
-  <data name="&gt;&gt;max_alt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;max_alt.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;max_alt.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;min_alt.Name" xml:space="preserve">
-    <value>min_alt</value>
-  </data>
-  <data name="&gt;&gt;min_alt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;min_alt.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;min_alt.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;chk_minmaxalt.Name" xml:space="preserve">
-    <value>chk_minmaxalt</value>
-  </data>
-  <data name="&gt;&gt;chk_minmaxalt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chk_minmaxalt.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;chk_minmaxalt.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;chk_spiral.Name" xml:space="preserve">
-    <value>chk_spiral</value>
-  </data>
-  <data name="&gt;&gt;chk_spiral.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chk_spiral.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;chk_spiral.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;chk_Corridor.Name" xml:space="preserve">
-    <value>chk_Corridor</value>
-  </data>
-  <data name="&gt;&gt;chk_Corridor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chk_Corridor.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;chk_Corridor.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;label43.Name" xml:space="preserve">
-    <value>label43</value>
-  </data>
-  <data name="&gt;&gt;label43.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label43.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label43.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;num_corridorwidth.Name" xml:space="preserve">
-    <value>num_corridorwidth</value>
-  </data>
-  <data name="&gt;&gt;num_corridorwidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;num_corridorwidth.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;num_corridorwidth.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;CMB_startfrom.Name" xml:space="preserve">
-    <value>CMB_startfrom</value>
-  </data>
-  <data name="&gt;&gt;CMB_startfrom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CMB_startfrom.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;CMB_startfrom.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;chk_crossgrid.Name" xml:space="preserve">
-    <value>chk_crossgrid</value>
-  </data>
-  <data name="&gt;&gt;chk_crossgrid.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chk_crossgrid.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;chk_crossgrid.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;label32.Name" xml:space="preserve">
-    <value>label32</value>
-  </data>
-  <data name="&gt;&gt;label32.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label32.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label32.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;NUM_leadin.Name" xml:space="preserve">
-    <value>NUM_leadin</value>
-  </data>
-  <data name="&gt;&gt;NUM_leadin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NUM_leadin.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;NUM_leadin.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;NUM_overshoot2.Name" xml:space="preserve">
-    <value>NUM_overshoot2</value>
-  </data>
-  <data name="&gt;&gt;NUM_overshoot2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NUM_overshoot2.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;NUM_overshoot2.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;NUM_overshoot.Name" xml:space="preserve">
-    <value>NUM_overshoot</value>
-  </data>
-  <data name="&gt;&gt;NUM_overshoot.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NUM_overshoot.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;NUM_overshoot.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="&gt;&gt;NUM_Distance.Name" xml:space="preserve">
-    <value>NUM_Distance</value>
-  </data>
-  <data name="&gt;&gt;NUM_Distance.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NUM_Distance.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;NUM_Distance.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 315</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>航线选项</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>tabGrid</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 503</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 12</value>
-  </data>
-  <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>每隔 [m]拍照</value>
-  </data>
-  <data name="label3.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>tabGrid</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="NUM_spacing.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 498</value>
-  </data>
-  <data name="NUM_spacing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 21</value>
-  </data>
-  <data name="NUM_spacing.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
-  </data>
-  <data name="NUM_spacing.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;NUM_spacing.Name" xml:space="preserve">
-    <value>NUM_spacing</value>
-  </data>
-  <data name="&gt;&gt;NUM_spacing.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NUM_spacing.Parent" xml:space="preserve">
-    <value>tabGrid</value>
-  </data>
-  <data name="&gt;&gt;NUM_spacing.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tabGrid.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabGrid.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabGrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 646</value>
-  </data>
-  <data name="tabGrid.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tabGrid.Text" xml:space="preserve">
-    <value>航线设置</value>
-  </data>
-  <data name="&gt;&gt;tabGrid.Name" xml:space="preserve">
-    <value>tabGrid</value>
-  </data>
-  <data name="&gt;&gt;tabGrid.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabGrid.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabGrid.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="chk_spline.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chk_spline.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="chk_spline.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 96</value>
-  </data>
-  <data name="chk_spline.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 16</value>
-  </data>
-  <data name="chk_spline.TabIndex" type="System.Int32, mscorlib">
-    <value>63</value>
-  </data>
-  <data name="chk_spline.Text" xml:space="preserve">
-    <value>Spline Exit/Entrys</value>
-  </data>
-  <data name="&gt;&gt;chk_spline.Name" xml:space="preserve">
-    <value>chk_spline</value>
-  </data>
-  <data name="&gt;&gt;chk_spline.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chk_spline.Parent" xml:space="preserve">
-    <value>groupBox_copter</value>
-  </data>
-  <data name="&gt;&gt;chk_spline.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="TXT_headinghold.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="TXT_headinghold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 45</value>
-  </data>
-  <data name="TXT_headinghold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 21</value>
-  </data>
-  <data name="TXT_headinghold.TabIndex" type="System.Int32, mscorlib">
-    <value>62</value>
-  </data>
-  <data name="TXT_headinghold.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;TXT_headinghold.Name" xml:space="preserve">
-    <value>TXT_headinghold</value>
-  </data>
-  <data name="&gt;&gt;TXT_headinghold.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TXT_headinghold.Parent" xml:space="preserve">
-    <value>groupBox_copter</value>
-  </data>
-  <data name="&gt;&gt;TXT_headinghold.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="BUT_headingholdminus.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="BUT_headingholdminus.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="BUT_headingholdminus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>190, 45</value>
-  </data>
-  <data name="BUT_headingholdminus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 23</value>
-  </data>
-  <data name="BUT_headingholdminus.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="BUT_headingholdminus.Text" xml:space="preserve">
-    <value>--</value>
-  </data>
-  <data name="&gt;&gt;BUT_headingholdminus.Name" xml:space="preserve">
-    <value>BUT_headingholdminus</value>
-  </data>
-  <data name="&gt;&gt;BUT_headingholdminus.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BUT_headingholdminus.Parent" xml:space="preserve">
-    <value>groupBox_copter</value>
-  </data>
-  <data name="&gt;&gt;BUT_headingholdminus.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="BUT_headingholdplus.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="BUT_headingholdplus.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="BUT_headingholdplus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>161, 45</value>
-  </data>
-  <data name="BUT_headingholdplus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 23</value>
-  </data>
-  <data name="BUT_headingholdplus.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="BUT_headingholdplus.Text" xml:space="preserve">
-    <value>+</value>
-  </data>
-  <data name="&gt;&gt;BUT_headingholdplus.Name" xml:space="preserve">
-    <value>BUT_headingholdplus</value>
-  </data>
-  <data name="&gt;&gt;BUT_headingholdplus.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BUT_headingholdplus.Parent" xml:space="preserve">
-    <value>groupBox_copter</value>
-  </data>
-  <data name="&gt;&gt;BUT_headingholdplus.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="CHK_copter_headingholdlock.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="CHK_copter_headingholdlock.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="CHK_copter_headingholdlock.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="CHK_copter_headingholdlock.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 73</value>
-  </data>
-  <data name="CHK_copter_headingholdlock.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 16</value>
-  </data>
-  <data name="CHK_copter_headingholdlock.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="CHK_copter_headingholdlock.Text" xml:space="preserve">
-    <value>Unlock from grid</value>
-  </data>
-  <data name="&gt;&gt;CHK_copter_headingholdlock.Name" xml:space="preserve">
-    <value>CHK_copter_headingholdlock</value>
-  </data>
-  <data name="&gt;&gt;CHK_copter_headingholdlock.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CHK_copter_headingholdlock.Parent" xml:space="preserve">
-    <value>groupBox_copter</value>
-  </data>
-  <data name="&gt;&gt;CHK_copter_headingholdlock.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="CHK_copter_headinghold.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="CHK_copter_headinghold.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="CHK_copter_headinghold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 50</value>
-  </data>
-  <data name="CHK_copter_headinghold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 16</value>
-  </data>
-  <data name="CHK_copter_headinghold.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="CHK_copter_headinghold.Text" xml:space="preserve">
-    <value>Heading Hold</value>
-  </data>
-  <data name="&gt;&gt;CHK_copter_headinghold.Name" xml:space="preserve">
-    <value>CHK_copter_headinghold</value>
-  </data>
-  <data name="&gt;&gt;CHK_copter_headinghold.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CHK_copter_headinghold.Parent" xml:space="preserve">
-    <value>groupBox_copter</value>
-  </data>
-  <data name="&gt;&gt;CHK_copter_headinghold.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="LBL_copter_delay.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="LBL_copter_delay.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="LBL_copter_delay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 23</value>
-  </data>
-  <data name="LBL_copter_delay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 12</value>
-  </data>
-  <data name="LBL_copter_delay.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="LBL_copter_delay.Text" xml:space="preserve">
-    <value>航点延迟 (sec)</value>
-  </data>
-  <data name="&gt;&gt;LBL_copter_delay.Name" xml:space="preserve">
-    <value>LBL_copter_delay</value>
-  </data>
-  <data name="&gt;&gt;LBL_copter_delay.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LBL_copter_delay.Parent" xml:space="preserve">
-    <value>groupBox_copter</value>
-  </data>
-  <data name="&gt;&gt;LBL_copter_delay.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="NUM_copter_delay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>143, 21</value>
-  </data>
-  <data name="NUM_copter_delay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 21</value>
-  </data>
-  <data name="NUM_copter_delay.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;NUM_copter_delay.Name" xml:space="preserve">
-    <value>NUM_copter_delay</value>
-  </data>
-  <data name="&gt;&gt;NUM_copter_delay.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NUM_copter_delay.Parent" xml:space="preserve">
-    <value>groupBox_copter</value>
-  </data>
-  <data name="&gt;&gt;NUM_copter_delay.ZOrder" xml:space="preserve">
-    <value>7</value>
   </data>
   <data name="label49.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4268,6 +3737,345 @@
   <data name="&gt;&gt;NUM_Distance.ZOrder" xml:space="preserve">
     <value>19</value>
   </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 300</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>航线选项</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>tabGrid</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 503</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 12</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>每隔 [m]拍照</value>
+  </data>
+  <data name="label3.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>tabGrid</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="NUM_spacing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>158, 498</value>
+  </data>
+  <data name="NUM_spacing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 21</value>
+  </data>
+  <data name="NUM_spacing.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="NUM_spacing.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;NUM_spacing.Name" xml:space="preserve">
+    <value>NUM_spacing</value>
+  </data>
+  <data name="&gt;&gt;NUM_spacing.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NUM_spacing.Parent" xml:space="preserve">
+    <value>tabGrid</value>
+  </data>
+  <data name="&gt;&gt;NUM_spacing.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tabGrid.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabGrid.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabGrid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>248, 680</value>
+  </data>
+  <data name="tabGrid.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabGrid.Text" xml:space="preserve">
+    <value>航线设置</value>
+  </data>
+  <data name="&gt;&gt;tabGrid.Name" xml:space="preserve">
+    <value>tabGrid</value>
+  </data>
+  <data name="&gt;&gt;tabGrid.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabGrid.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabGrid.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chk_spline.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chk_spline.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chk_spline.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 96</value>
+  </data>
+  <data name="chk_spline.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 16</value>
+  </data>
+  <data name="chk_spline.TabIndex" type="System.Int32, mscorlib">
+    <value>63</value>
+  </data>
+  <data name="chk_spline.Text" xml:space="preserve">
+    <value>Spline Exit/Entrys</value>
+  </data>
+  <data name="&gt;&gt;chk_spline.Name" xml:space="preserve">
+    <value>chk_spline</value>
+  </data>
+  <data name="&gt;&gt;chk_spline.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chk_spline.Parent" xml:space="preserve">
+    <value>groupBox_copter</value>
+  </data>
+  <data name="&gt;&gt;chk_spline.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TXT_headinghold.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="TXT_headinghold.Location" type="System.Drawing.Point, System.Drawing">
+    <value>114, 45</value>
+  </data>
+  <data name="TXT_headinghold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 21</value>
+  </data>
+  <data name="TXT_headinghold.TabIndex" type="System.Int32, mscorlib">
+    <value>62</value>
+  </data>
+  <data name="TXT_headinghold.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;TXT_headinghold.Name" xml:space="preserve">
+    <value>TXT_headinghold</value>
+  </data>
+  <data name="&gt;&gt;TXT_headinghold.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TXT_headinghold.Parent" xml:space="preserve">
+    <value>groupBox_copter</value>
+  </data>
+  <data name="&gt;&gt;TXT_headinghold.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="BUT_headingholdminus.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="BUT_headingholdminus.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="BUT_headingholdminus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>190, 45</value>
+  </data>
+  <data name="BUT_headingholdminus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 23</value>
+  </data>
+  <data name="BUT_headingholdminus.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="BUT_headingholdminus.Text" xml:space="preserve">
+    <value>--</value>
+  </data>
+  <data name="&gt;&gt;BUT_headingholdminus.Name" xml:space="preserve">
+    <value>BUT_headingholdminus</value>
+  </data>
+  <data name="&gt;&gt;BUT_headingholdminus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BUT_headingholdminus.Parent" xml:space="preserve">
+    <value>groupBox_copter</value>
+  </data>
+  <data name="&gt;&gt;BUT_headingholdminus.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="BUT_headingholdplus.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="BUT_headingholdplus.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="BUT_headingholdplus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 45</value>
+  </data>
+  <data name="BUT_headingholdplus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 23</value>
+  </data>
+  <data name="BUT_headingholdplus.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="BUT_headingholdplus.Text" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="&gt;&gt;BUT_headingholdplus.Name" xml:space="preserve">
+    <value>BUT_headingholdplus</value>
+  </data>
+  <data name="&gt;&gt;BUT_headingholdplus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BUT_headingholdplus.Parent" xml:space="preserve">
+    <value>groupBox_copter</value>
+  </data>
+  <data name="&gt;&gt;BUT_headingholdplus.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="CHK_copter_headingholdlock.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CHK_copter_headingholdlock.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="CHK_copter_headingholdlock.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CHK_copter_headingholdlock.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 73</value>
+  </data>
+  <data name="CHK_copter_headingholdlock.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 16</value>
+  </data>
+  <data name="CHK_copter_headingholdlock.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="CHK_copter_headingholdlock.Text" xml:space="preserve">
+    <value>Unlock from grid</value>
+  </data>
+  <data name="&gt;&gt;CHK_copter_headingholdlock.Name" xml:space="preserve">
+    <value>CHK_copter_headingholdlock</value>
+  </data>
+  <data name="&gt;&gt;CHK_copter_headingholdlock.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CHK_copter_headingholdlock.Parent" xml:space="preserve">
+    <value>groupBox_copter</value>
+  </data>
+  <data name="&gt;&gt;CHK_copter_headingholdlock.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="CHK_copter_headinghold.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CHK_copter_headinghold.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CHK_copter_headinghold.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 50</value>
+  </data>
+  <data name="CHK_copter_headinghold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 16</value>
+  </data>
+  <data name="CHK_copter_headinghold.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="CHK_copter_headinghold.Text" xml:space="preserve">
+    <value>Heading Hold</value>
+  </data>
+  <data name="&gt;&gt;CHK_copter_headinghold.Name" xml:space="preserve">
+    <value>CHK_copter_headinghold</value>
+  </data>
+  <data name="&gt;&gt;CHK_copter_headinghold.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CHK_copter_headinghold.Parent" xml:space="preserve">
+    <value>groupBox_copter</value>
+  </data>
+  <data name="&gt;&gt;CHK_copter_headinghold.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="LBL_copter_delay.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LBL_copter_delay.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LBL_copter_delay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 23</value>
+  </data>
+  <data name="LBL_copter_delay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 12</value>
+  </data>
+  <data name="LBL_copter_delay.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="LBL_copter_delay.Text" xml:space="preserve">
+    <value>航点延迟 (sec)</value>
+  </data>
+  <data name="&gt;&gt;LBL_copter_delay.Name" xml:space="preserve">
+    <value>LBL_copter_delay</value>
+  </data>
+  <data name="&gt;&gt;LBL_copter_delay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LBL_copter_delay.Parent" xml:space="preserve">
+    <value>groupBox_copter</value>
+  </data>
+  <data name="&gt;&gt;LBL_copter_delay.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="NUM_copter_delay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>143, 21</value>
+  </data>
+  <data name="NUM_copter_delay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 21</value>
+  </data>
+  <data name="NUM_copter_delay.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;NUM_copter_delay.Name" xml:space="preserve">
+    <value>NUM_copter_delay</value>
+  </data>
+  <data name="&gt;&gt;NUM_copter_delay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NUM_copter_delay.Parent" xml:space="preserve">
+    <value>groupBox_copter</value>
+  </data>
+  <data name="&gt;&gt;NUM_copter_delay.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <data name="polygon_inc.Location" type="System.Drawing.Point, System.Drawing">
     <value>142, 233</value>
   </data>
@@ -4464,7 +4272,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabSimple.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 646</value>
+    <value>248, 680</value>
   </data>
   <data name="tabSimple.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -4557,7 +4365,7 @@
     <value>5</value>
   </data>
   <data name="groupBox8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 559</value>
+    <value>6, 587</value>
   </data>
   <data name="groupBox8.Size" type="System.Drawing.Size, System.Drawing">
     <value>236, 90</value>
@@ -5159,6 +4967,54 @@
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
+  <data name="&gt;&gt;lab_highsidelap.Name" xml:space="preserve">
+    <value>lab_highsidelap</value>
+  </data>
+  <data name="&gt;&gt;lab_highsidelap.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lab_highsidelap.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;lab_highsidelap.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lab_highoverlap.Name" xml:space="preserve">
+    <value>lab_highoverlap</value>
+  </data>
+  <data name="&gt;&gt;lab_highoverlap.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lab_highoverlap.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;lab_highoverlap.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label51.Name" xml:space="preserve">
+    <value>label51</value>
+  </data>
+  <data name="&gt;&gt;label51.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label51.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label51.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label50.Name" xml:space="preserve">
+    <value>label50</value>
+  </data>
+  <data name="&gt;&gt;label50.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label50.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label50.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="&gt;&gt;lbl_highres.Name" xml:space="preserve">
     <value>lbl_highres</value>
   </data>
@@ -5169,7 +5025,7 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;lbl_highres.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;lbl_lowres.Name" xml:space="preserve">
     <value>lbl_lowres</value>
@@ -5181,7 +5037,7 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;lbl_lowres.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;label47.Name" xml:space="preserve">
     <value>label47</value>
@@ -5193,7 +5049,7 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;label47.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;label46.Name" xml:space="preserve">
     <value>label46</value>
@@ -5205,13 +5061,13 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;label46.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 284</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 269</value>
+    <value>236, 297</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -5231,6 +5087,114 @@
   <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="lab_highsidelap.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lab_highsidelap.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 272</value>
+  </data>
+  <data name="lab_highsidelap.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 12</value>
+  </data>
+  <data name="lab_highsidelap.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="lab_highsidelap.Text" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="&gt;&gt;lab_highsidelap.Name" xml:space="preserve">
+    <value>lab_highsidelap</value>
+  </data>
+  <data name="&gt;&gt;lab_highsidelap.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lab_highsidelap.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;lab_highsidelap.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lab_highoverlap.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lab_highoverlap.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 248</value>
+  </data>
+  <data name="lab_highoverlap.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 12</value>
+  </data>
+  <data name="lab_highoverlap.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="lab_highoverlap.Text" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="&gt;&gt;lab_highoverlap.Name" xml:space="preserve">
+    <value>lab_highoverlap</value>
+  </data>
+  <data name="&gt;&gt;lab_highoverlap.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lab_highoverlap.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;lab_highoverlap.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label51.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label51.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 272</value>
+  </data>
+  <data name="label51.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 12</value>
+  </data>
+  <data name="label51.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="label51.Text" xml:space="preserve">
+    <value>最高处重叠率（旁向）</value>
+  </data>
+  <data name="&gt;&gt;label51.Name" xml:space="preserve">
+    <value>label51</value>
+  </data>
+  <data name="&gt;&gt;label51.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label51.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label51.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label50.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label50.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 248</value>
+  </data>
+  <data name="label50.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 12</value>
+  </data>
+  <data name="label50.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="label50.Text" xml:space="preserve">
+    <value>最高处重叠率（航向）</value>
+  </data>
+  <data name="&gt;&gt;label50.Name" xml:space="preserve">
+    <value>label50</value>
+  </data>
+  <data name="&gt;&gt;label50.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label50.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label50.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="lbl_highres.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -5238,7 +5202,7 @@
     <value>NoControl</value>
   </data>
   <data name="lbl_highres.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 171</value>
+    <value>127, 191</value>
   </data>
   <data name="lbl_highres.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 12</value>
@@ -5259,7 +5223,7 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;lbl_highres.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="lbl_lowres.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5268,7 +5232,7 @@
     <value>NoControl</value>
   </data>
   <data name="lbl_lowres.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 156</value>
+    <value>127, 169</value>
   </data>
   <data name="lbl_lowres.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 12</value>
@@ -5289,7 +5253,7 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;lbl_lowres.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
   </data>
   <data name="label47.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5298,7 +5262,7 @@
     <value>NoControl</value>
   </data>
   <data name="label47.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 171</value>
+    <value>6, 191</value>
   </data>
   <data name="label47.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 12</value>
@@ -5319,7 +5283,7 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;label47.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="label46.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5328,7 +5292,7 @@
     <value>NoControl</value>
   </data>
   <data name="label46.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 156</value>
+    <value>6, 169</value>
   </data>
   <data name="label46.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 12</value>
@@ -5349,7 +5313,7 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;label46.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
   </data>
   <data name="tabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
@@ -5358,7 +5322,7 @@
     <value>830, 0</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 672</value>
+    <value>256, 706</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -5388,7 +5352,7 @@
     <value>Vertical</value>
   </data>
   <data name="TRK_zoom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 606</value>
+    <value>45, 640</value>
   </data>
   <data name="TRK_zoom.TabIndex" type="System.Int32, mscorlib">
     <value>47</value>
@@ -5412,7 +5376,7 @@
     <value>6, 2</value>
   </data>
   <data name="map.Size" type="System.Drawing.Size, System.Drawing">
-    <value>776, 604</value>
+    <value>776, 638</value>
   </data>
   <data name="map.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5433,7 +5397,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1086, 672</value>
+    <value>1086, 706</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Survey (Grid)</value>

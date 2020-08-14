@@ -826,7 +826,8 @@ namespace MissionPlanner.Grid
                 lbl_footprint.Text = TXT_fovH.Text + " x " + TXT_fovV.Text + " m";
                 lbl_turnrad.Text = (turnrad * 2).ToString("0") + " m";
                 lbl_gndelev.Text = mingroundelevation.ToString("0") + "-" + maxgroundelevation.ToString("0") + " m";
-
+                lab_highoverlap.Text = (Math.Round(((double)num_overlap.Value - ((maxgroundelevation - plugin.Host.cs.HomeLocation.Alt) / (double)NUM_altitude.Value) * 100),1)).ToString() + '%';
+                lab_highsidelap.Text = (Math.Round(((double)num_sidelap.Value - ((maxgroundelevation - plugin.Host.cs.HomeLocation.Alt) / (double)NUM_altitude.Value) * 100),1)).ToString() + '%';
                 if (chk_minmaxalt.Checked)
                 {
                     getlowandhighres((double)NUM_altitude.Value + (plugin.Host.cs.HomeLocation.Alt - (double)min_alt.Value),
