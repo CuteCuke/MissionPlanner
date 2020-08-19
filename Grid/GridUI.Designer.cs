@@ -86,7 +86,6 @@
             this.rad_repeatservo = new System.Windows.Forms.RadioButton();
             this.rad_trigdist = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.BUT_samplephoto = new MissionPlanner.Controls.MyButton();
             this.label21 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -104,7 +103,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.BUT_save = new MissionPlanner.Controls.MyButton();
             this.tabGrid = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.LBL_Alternating_lanes = new System.Windows.Forms.Label();
@@ -155,11 +153,8 @@
             this.rightup = new System.Windows.Forms.CheckBox();
             this.leftdown = new System.Windows.Forms.CheckBox();
             this.leftup = new System.Windows.Forms.CheckBox();
-            this.BUT_Accept = new MissionPlanner.Controls.MyButton();
             this.label38 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.CHK_usespeed = new System.Windows.Forms.CheckBox();
-            this.CHK_toandland = new System.Windows.Forms.CheckBox();
             this.label24 = new System.Windows.Forms.Label();
             this.NUM_UpDownFlySpeed = new System.Windows.Forms.NumericUpDown();
             this.label26 = new System.Windows.Forms.Label();
@@ -177,9 +172,14 @@
             this.lbl_lowres = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
+            this.CHK_usespeed = new System.Windows.Forms.CheckBox();
+            this.CHK_toandland = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TRK_zoom = new MissionPlanner.Controls.MyTrackBar();
             this.map = new MissionPlanner.Controls.myGMAP();
+            this.BUT_Accept = new MissionPlanner.Controls.MyButton();
+            this.BUT_samplephoto = new MissionPlanner.Controls.MyButton();
+            this.BUT_save = new MissionPlanner.Controls.MyButton();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_split)).BeginInit();
             this.tabCamera.SuspendLayout();
@@ -567,6 +567,8 @@
             // chk_stopstart
             // 
             resources.ApplyResources(this.chk_stopstart, "chk_stopstart");
+            this.chk_stopstart.Checked = true;
+            this.chk_stopstart.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_stopstart.Name = "chk_stopstart";
             this.chk_stopstart.UseVisualStyleBackColor = true;
             // 
@@ -688,13 +690,6 @@
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
-            // BUT_samplephoto
-            // 
-            resources.ApplyResources(this.BUT_samplephoto, "BUT_samplephoto");
-            this.BUT_samplephoto.Name = "BUT_samplephoto";
-            this.BUT_samplephoto.UseVisualStyleBackColor = true;
-            this.BUT_samplephoto.Click += new System.EventHandler(this.BUT_samplephoto_Click);
-            // 
             // label21
             // 
             resources.ApplyResources(this.label21, "label21");
@@ -807,20 +802,11 @@
             resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
             // 
-            // BUT_save
-            // 
-            resources.ApplyResources(this.BUT_save, "BUT_save");
-            this.BUT_save.Name = "BUT_save";
-            this.BUT_save.UseVisualStyleBackColor = true;
-            this.BUT_save.Click += new System.EventHandler(this.BUT_save_Click);
-            // 
             // tabGrid
             // 
             this.tabGrid.Controls.Add(this.groupBox7);
             this.tabGrid.Controls.Add(this.groupBox_copter);
             this.tabGrid.Controls.Add(this.groupBox1);
-            this.tabGrid.Controls.Add(this.label3);
-            this.tabGrid.Controls.Add(this.NUM_spacing);
             resources.ApplyResources(this.tabGrid, "tabGrid");
             this.tabGrid.Name = "tabGrid";
             this.tabGrid.UseVisualStyleBackColor = true;
@@ -864,14 +850,8 @@
             // groupBox_copter
             // 
             resources.ApplyResources(this.groupBox_copter, "groupBox_copter");
-            this.groupBox_copter.Controls.Add(this.chk_spline);
-            this.groupBox_copter.Controls.Add(this.TXT_headinghold);
-            this.groupBox_copter.Controls.Add(this.BUT_headingholdminus);
-            this.groupBox_copter.Controls.Add(this.BUT_headingholdplus);
-            this.groupBox_copter.Controls.Add(this.CHK_copter_headingholdlock);
-            this.groupBox_copter.Controls.Add(this.CHK_copter_headinghold);
-            this.groupBox_copter.Controls.Add(this.LBL_copter_delay);
-            this.groupBox_copter.Controls.Add(this.NUM_copter_delay);
+            this.groupBox_copter.Controls.Add(this.label37);
+            this.groupBox_copter.Controls.Add(this.NUM_split);
             this.groupBox_copter.Name = "groupBox_copter";
             this.groupBox_copter.TabStop = false;
             // 
@@ -939,11 +919,6 @@
             // groupBox1
             // 
             resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Controls.Add(this.label49);
-            this.groupBox1.Controls.Add(this.label48);
-            this.groupBox1.Controls.Add(this.max_alt);
-            this.groupBox1.Controls.Add(this.min_alt);
-            this.groupBox1.Controls.Add(this.chk_minmaxalt);
             this.groupBox1.Controls.Add(this.chk_spiral);
             this.groupBox1.Controls.Add(this.chk_Corridor);
             this.groupBox1.Controls.Add(this.label43);
@@ -1261,13 +1236,6 @@
             this.leftup.UseVisualStyleBackColor = true;
             this.leftup.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged_1);
             // 
-            // BUT_Accept
-            // 
-            resources.ApplyResources(this.BUT_Accept, "BUT_Accept");
-            this.BUT_Accept.Name = "BUT_Accept";
-            this.BUT_Accept.UseVisualStyleBackColor = true;
-            this.BUT_Accept.Click += new System.EventHandler(this.BUT_Accept_Click);
-            // 
             // label38
             // 
             resources.ApplyResources(this.label38, "label38");
@@ -1276,8 +1244,6 @@
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.polygon_inc);
-            this.groupBox6.Controls.Add(this.CHK_usespeed);
-            this.groupBox6.Controls.Add(this.CHK_toandland);
             this.groupBox6.Controls.Add(this.label45);
             this.groupBox6.Controls.Add(this.label24);
             this.groupBox6.Controls.Add(this.NUM_UpDownFlySpeed);
@@ -1294,21 +1260,6 @@
             resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.TabStop = false;
-            // 
-            // CHK_usespeed
-            // 
-            resources.ApplyResources(this.CHK_usespeed, "CHK_usespeed");
-            this.CHK_usespeed.Name = "CHK_usespeed";
-            this.CHK_usespeed.UseVisualStyleBackColor = true;
-            // 
-            // CHK_toandland
-            // 
-            resources.ApplyResources(this.CHK_toandland, "CHK_toandland");
-            this.CHK_toandland.Checked = true;
-            this.CHK_toandland.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CHK_toandland.Name = "CHK_toandland";
-            this.CHK_toandland.UseVisualStyleBackColor = true;
-            this.CHK_toandland.CheckedChanged += new System.EventHandler(this.CHK_toandland_CheckedChanged);
             // 
             // label24
             // 
@@ -1458,6 +1409,19 @@
             resources.ApplyResources(this.label46, "label46");
             this.label46.Name = "label46";
             // 
+            // CHK_usespeed
+            // 
+            resources.ApplyResources(this.CHK_usespeed, "CHK_usespeed");
+            this.CHK_usespeed.Name = "CHK_usespeed";
+            this.CHK_usespeed.UseVisualStyleBackColor = true;
+            // 
+            // CHK_toandland
+            // 
+            resources.ApplyResources(this.CHK_toandland, "CHK_toandland");
+            this.CHK_toandland.Name = "CHK_toandland";
+            this.CHK_toandland.UseVisualStyleBackColor = true;
+            this.CHK_toandland.CheckedChanged += new System.EventHandler(this.CHK_toandland_CheckedChanged);
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabSimple);
@@ -1506,17 +1470,53 @@
             this.map.MouseDown += new System.Windows.Forms.MouseEventHandler(this.map_MouseDown);
             this.map.MouseMove += new System.Windows.Forms.MouseEventHandler(this.map_MouseMove);
             // 
+            // BUT_Accept
+            // 
+            resources.ApplyResources(this.BUT_Accept, "BUT_Accept");
+            this.BUT_Accept.Name = "BUT_Accept";
+            this.BUT_Accept.UseVisualStyleBackColor = true;
+            this.BUT_Accept.Click += new System.EventHandler(this.BUT_Accept_Click);
+            // 
+            // BUT_samplephoto
+            // 
+            resources.ApplyResources(this.BUT_samplephoto, "BUT_samplephoto");
+            this.BUT_samplephoto.Name = "BUT_samplephoto";
+            this.BUT_samplephoto.UseVisualStyleBackColor = true;
+            this.BUT_samplephoto.Click += new System.EventHandler(this.BUT_samplephoto_Click);
+            // 
+            // BUT_save
+            // 
+            resources.ApplyResources(this.BUT_save, "BUT_save");
+            this.BUT_save.Name = "BUT_save";
+            this.BUT_save.UseVisualStyleBackColor = true;
+            this.BUT_save.Click += new System.EventHandler(this.BUT_save_Click);
+            // 
             // GridUI
             // 
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.TRK_zoom);
             this.Controls.Add(this.map);
-            this.Controls.Add(this.label37);
+            this.Controls.Add(this.BUT_headingholdminus);
+            this.Controls.Add(this.chk_minmaxalt);
+            this.Controls.Add(this.CHK_toandland);
+            this.Controls.Add(this.BUT_headingholdplus);
+            this.Controls.Add(this.NUM_spacing);
+            this.Controls.Add(this.CHK_copter_headingholdlock);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.CHK_copter_headinghold);
+            this.Controls.Add(this.LBL_copter_delay);
             this.Controls.Add(this.CHK_toandland_RTL);
+            this.Controls.Add(this.NUM_copter_delay);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.CHK_camdirection);
-            this.Controls.Add(this.NUM_split);
+            this.Controls.Add(this.CHK_usespeed);
+            this.Controls.Add(this.TXT_headinghold);
+            this.Controls.Add(this.chk_spline);
+            this.Controls.Add(this.label48);
+            this.Controls.Add(this.label49);
+            this.Controls.Add(this.min_alt);
+            this.Controls.Add(this.max_alt);
             this.Name = "GridUI";
             this.Load += new System.EventHandler(this.GridUI_Load);
             this.Resize += new System.EventHandler(this.GridUI_Resize);
@@ -1536,7 +1536,6 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_focallength)).EndInit();
             this.tabGrid.ResumeLayout(false);
-            this.tabGrid.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_Lane_Dist)).EndInit();

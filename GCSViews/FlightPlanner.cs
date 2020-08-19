@@ -47,6 +47,7 @@ using ILog = log4net.ILog;
 using Placemark = SharpKml.Dom.Placemark;
 using Point = System.Drawing.Point;
 using Xamarin.Forms.Xaml;
+using Microsoft.Scripting.Metadata;
 
 namespace MissionPlanner.GCSViews
 {
@@ -271,7 +272,7 @@ namespace MissionPlanner.GCSViews
             drawnpolygon.Stroke = new Pen(Color.Red, 2);
             drawnpolygon.Fill = Brushes.Transparent;
 
-
+           // ThemeManager.ApplyThemeTo(panel6);
 
 
             /*
@@ -7349,176 +7350,264 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
         {
             int rowindex = 0;
             // var nextwp=MainV2.comPort.MAV.cs.HomeLocation;
-            double lng = double.Parse(TXT_homelat.Text);//经纬度参数反了
+            double lng = double.Parse(TXT_homelat.Text);//insertcommad经纬度参数反了
             double lat = double.Parse(TXT_homelng.Text);
             //{ double.Parse(TXT_homelat.Text),double.Parse(TXT_homelng.Text),double.Parse(TXT_homelat.Text),"H"}
             //var _list = GetCommandList();
             // updown_angle.Value=MainV2.comPort.
             int numno;
-            if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduPlane)
-            {
-                if (Commands.Rows.Count != 0)
+            if (MainV2.comPort.BaseStream.IsOpen) 
+            { 
+                if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduPlane)
                 {
-                    var missionstartwp = GetCommandList()[0];
-                    var missionendwp = GetCommandList()[Commands.Rows.Count - 2];
-                    if (missionendwp.id != (ushort)MAVLink.MAV_CMD.WAYPOINT)
-                    {
-                        missionendwp.id = GetCommandList()[Commands.Rows.Count - 3].id;
-                        missionendwp.alt = GetCommandList()[Commands.Rows.Count - 3].alt;
-                        missionendwp.lat = GetCommandList()[Commands.Rows.Count - 3].lat;
-                        missionendwp.lng = GetCommandList()[Commands.Rows.Count - 3].lng;
+                    if (Commands.Rows.Count != 0)
+                    {                        
+                        Locationwp missionstartwp=new Locationwp();//获取Commands开始与结束航点
+                        Locationwp missionendwp = new Locationwp();
+                        for(int i=0;i<Commands.Rows.Count;i++)
+                        {
+                            if (GetCommandList()[i].id==(ushort)MAVLink.MAV_CMD.WAYPOINT) 
+                            {
+                                missionstartwp.id=GetCommandList()[i].id;
+                                missionstartwp.alt = GetCommandList()[i].alt;
+                                missionstartwp.lat = GetCommandList()[i].lat;
+                                missionstartwp.lng = GetCommandList()[i].lng;
+                                break;
+                            }
+                        }
+                        for(int i=Commands.Rows.Count-1;i>=0;i--)
+                        {
+                            if (GetCommandList()[i].id == (ushort)MAVLink.MAV_CMD.WAYPOINT)
+                            {
+                                missionendwp.id = GetCommandList()[i].id;
+                                missionendwp.alt = GetCommandList()[i].alt;
+                                missionendwp.lat = GetCommandList()[i].lat;
+                                missionendwp.lng = GetCommandList()[i].lng;
+                                break;
+                            }
+                        }
+
+                        var commandno = Commands.Rows.Count;
+                        // InsertCommand(1,MAVLink.MAV_CMD.VTOL_TAKEOFF,0,0,0,0,0,0,(double)vtol_takeoff_alt.Value);
+                        if (tag_updownwp == false && missionstartwp.id == (ushort)MAVLink.MAV_CMD.WAYPOINT && missionendwp.id == (ushort)MAVLink.MAV_CMD.WAYPOINT)
+                        {
+                            InsertCommand(rowindex, MAVLink.MAV_CMD.VTOL_TAKEOFF, 0, 0, 0, 0, lat, lng, (double)vtol_takeoff_alt.Value);//VTOL_TAKEOFF 起飞点
+                            //nextwp.newpos(0,(double)pilotwp_updist.Value);
+                            InsertCommand(rowindex += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
+                                lat += Math.Sin((double)updown_angle.Value * Math.PI / 180) * ((double)100 / 100000),
+                                lng += Math.Cos((double)updown_angle.Value * Math.PI / 180) * ((double)100 / 100000), (double)pilotwp_upalt.Value);//引导wp1   
+                            //nextwp.newpos(0, (double)pilotwp_updist.Value);
+                            InsertCommand(rowindex += 1, MAVLink.MAV_CMD.LOITER_TO_ALT, 0, (double)loiter_radius.Value, 0, 0,
+                                lat += Math.Sin((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000),
+                                lng += Math.Cos((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000), (double)loiter_upalt.Value);//loiter 上升 
+                            //InsertCommand(rowindex += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
+                            //    lat += Math.Sin((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000),
+                            //    lng += Math.Cos((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000), missionstartwp.alt);
+                            if (missionstartwp.lng < lat)
+                            {
+                                if (missionstartwp.lat < lng)
+                                    InsertCommand(rowindex += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
+                                        missionstartwp.lng + 0.001,
+                                        missionstartwp.lat + 0.001, missionstartwp.alt);
+                                else
+                                    InsertCommand(rowindex += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
+                                       missionstartwp.lng + 0.001,
+                                       missionstartwp.lat - 0.001, missionstartwp.alt);
+                            }
+                            else
+                            {
+                                if (missionstartwp.lat < lng)
+                                    InsertCommand(rowindex += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
+                                        missionstartwp.lng - 0.001,
+                                        missionstartwp.lat + 0.001, missionstartwp.alt);
+                                else
+                                    InsertCommand(rowindex += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
+                                       missionstartwp.lng - 0.001,
+                                       missionstartwp.lat - 0.001, missionstartwp.alt);
+                            }
+                            //InsertCommand(rowindex+=1,MAVLink.MAV_CMD.WAYPOINT,0,0,0,0,lng,lat,_list.L.alt);//引导wp2   进入航线前
+                            numno = commandno + rowindex + 1;
+                            if (missionendwp.lng < lat)
+                            {
+                                if (missionendwp.lat < lng)
+                                    InsertCommand(numno += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
+                                    lat - 0.001,
+                                    lng - 0.001, missionendwp.alt);
+                                else
+                                    InsertCommand(numno += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
+                                    lat - 0.001,
+                                    lng + 0.001, missionendwp.alt);
+                            }
+                            else
+                            {
+                                if (missionendwp.lat < lng)
+                                    InsertCommand(numno += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
+                                    lat + 0.001,
+                                    lng - 0.001, missionendwp.alt);
+                                else
+                                    InsertCommand(numno += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
+                                    lat + 0.001,
+                                    lng + 0.001, missionendwp.alt);
+                            }
+                            //InsertCommand(numno, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0, lat, lng, missionstartwp.alt - (double)pilotwp_downalt.Value);//引导wp3     返回盘旋点前
+                            //InsertCommand(numno += 1, MAVLink.MAV_CMD.LOITER_TO_ALT, 0,(double)loiter_radius.Value,  0, 0,
+                            //   lat -= Math.Sin((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_downdist.Value / 100000),
+                            //   lng -= Math.Cos((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_downdist.Value / 100000), (double)loiter_downalt.Value);//loiter 下降 
+                            InsertCommand(numno += 1, MAVLink.MAV_CMD.LOITER_TO_ALT, 0, (double)loiter_radius.Value, 0, 0,
+                              lat,
+                              lng, (double)loiter_downalt.Value);//loiter 下降 
+                            InsertCommand(numno += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
+                               lat -= Math.Sin((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000),
+                               lng -= Math.Cos((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000), (double)pilotwp_downalt.Value);//引导4
+                            InsertCommand(numno += 1, MAVLink.MAV_CMD.VTOL_LAND, 0, 0, 0, 0,
+                               double.Parse(TXT_homelng.Text),
+                                double.Parse(TXT_homelat.Text), 0);//VTOL_LAND 
+                            tag_updownwp = true;
+                        }
                     }
-                    var commandno = Commands.Rows.Count;
-                    // InsertCommand(1,MAVLink.MAV_CMD.VTOL_TAKEOFF,0,0,0,0,0,0,(double)vtol_takeoff_alt.Value);
-                    if (tag_updownwp == false && missionstartwp.id == (ushort)MAVLink.MAV_CMD.WAYPOINT && missionendwp.id == (ushort)MAVLink.MAV_CMD.WAYPOINT)
+                    else
                     {
-                        InsertCommand(rowindex, MAVLink.MAV_CMD.VTOL_TAKEOFF, 0, 0, 0, 0, lat, lng, (double)vtol_takeoff_alt.Value);//VTOL_TAKEOFF 起飞点
-                        //nextwp.newpos(0,(double)pilotwp_updist.Value);
-                        InsertCommand(rowindex += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
-                            lat += Math.Sin((double)updown_angle.Value * Math.PI / 180) * ((double)100 / 100000),
-                            lng += Math.Cos((double)updown_angle.Value * Math.PI / 180) * ((double)100 / 100000), (double)pilotwp_upalt.Value);//引导wp1   
-                        //nextwp.newpos(0, (double)pilotwp_updist.Value);
-                        InsertCommand(rowindex += 1, MAVLink.MAV_CMD.LOITER_TO_ALT, 0, (double)loiter_radius.Value, 0, 0,
-                            lat += Math.Sin((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000),
-                            lng += Math.Cos((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000), (double)loiter_upalt.Value);//loiter 上升 
-                        //InsertCommand(rowindex += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
-                        //    lat += Math.Sin((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000),
-                        //    lng += Math.Cos((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000), missionstartwp.alt);
-                        if (missionstartwp.lng < lat)
-                        {
-                            if (missionstartwp.lat < lng)
-                                InsertCommand(rowindex += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
-                                    missionstartwp.lng + 0.001,
-                                    missionstartwp.lat + 0.001, missionstartwp.alt);
-                            else
-                                InsertCommand(rowindex += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
-                                   missionstartwp.lng + 0.001,
-                                   missionstartwp.lat - 0.001, missionstartwp.alt);
-                        }
-                        else
-                        {
-                            if (missionstartwp.lat < lng)
-                                InsertCommand(rowindex += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
-                                    missionstartwp.lng - 0.001,
-                                    missionstartwp.lat + 0.001, missionstartwp.alt);
-                            else
-                                InsertCommand(rowindex += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
-                                   missionstartwp.lng - 0.001,
-                                   missionstartwp.lat - 0.001, missionstartwp.alt);
-                        }
-                        //InsertCommand(rowindex+=1,MAVLink.MAV_CMD.WAYPOINT,0,0,0,0,lng,lat,_list.L.alt);//引导wp2   进入航线前
-                        numno = commandno + rowindex + 1;
-                        if (missionendwp.lng < lat)
-                        {
-                            if (missionendwp.lat < lng)
-                                InsertCommand(numno += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
-                                lat - 0.001,
-                                lng - 0.001, missionendwp.alt);
-                            else
-                                InsertCommand(numno += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
-                                lat - 0.001,
-                                lng + 0.001, missionendwp.alt);
-                        }
-                        else
-                        {
-                            if (missionendwp.lat < lng)
-                                InsertCommand(numno += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
-                                lat + 0.001,
-                                lng - 0.001, missionendwp.alt);
-                            else
-                                InsertCommand(numno += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
-                                lat + 0.001,
-                                lng + 0.001, missionendwp.alt);
-                        }
-                        //InsertCommand(numno, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0, lat, lng, missionstartwp.alt - (double)pilotwp_downalt.Value);//引导wp3     返回盘旋点前
-                        //InsertCommand(numno += 1, MAVLink.MAV_CMD.LOITER_TO_ALT, 0,(double)loiter_radius.Value,  0, 0,
-                        //   lat -= Math.Sin((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_downdist.Value / 100000),
-                        //   lng -= Math.Cos((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_downdist.Value / 100000), (double)loiter_downalt.Value);//loiter 下降 
-                        InsertCommand(numno += 1, MAVLink.MAV_CMD.LOITER_TO_ALT, 0, (double)loiter_radius.Value, 0, 0,
-                          lat,
-                          lng, (double)loiter_downalt.Value);//loiter 下降 
-                        InsertCommand(numno += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
-                           lat -= Math.Sin((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000),
-                           lng -= Math.Cos((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000), (double)pilotwp_downalt.Value);//引导4
-                        InsertCommand(numno += 1, MAVLink.MAV_CMD.VTOL_LAND, 0, 0, 0, 0,
-                           double.Parse(TXT_homelng.Text),
-                            double.Parse(TXT_homelat.Text), 0);//VTOL_LAND 
-                        tag_updownwp = true;
+                        MessageBox.Show("请规划航线后添加起降！");
                     }
                 }
-                else
+                if (MainV2.comPort.MAV.cs.firmware==Firmwares.ArduCopter2)
                 {
-                    InsertCommand(rowindex, MAVLink.MAV_CMD.VTOL_TAKEOFF, 0, 0, 0, 0, lat, lng, (double)vtol_takeoff_alt.Value);//VTOL_TAKEOFF 起飞点
-                                                                                                                                //nextwp.newpos(0,(double)pilotwp_updist.Value);
-                    InsertCommand(rowindex += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
-                        lat += Math.Sin((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000),
-                        lng += Math.Cos((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000), (double)pilotwp_upalt.Value);//引导wp1   
-                                                                                                                                                            //nextwp.newpos(0, (double)pilotwp_updist.Value);
-                    InsertCommand(rowindex += 1, MAVLink.MAV_CMD.LOITER_TO_ALT, 0, (double)loiter_radius.Value, 0, 0,
-                        lat += Math.Sin((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000),
-                        lng += Math.Cos((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000), (double)loiter_upalt.Value);//loiter 上升 
-                    InsertCommand(rowindex += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
-                        lat += Math.Sin((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000),
-                        lng += Math.Cos((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000), (double)loiter_upalt.Value);
-                    //InsertCommand(rowindex+=1,MAVLink.MAV_CMD.WAYPOINT,0,0,0,0,lng,lat,_list.L.alt);//引导wp2   进入航线前
-                    numno = rowindex + 1;
-                    InsertCommand(numno, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0, lat, lng, (double)loiter_upalt.Value);//引导wp3
-                    InsertCommand(numno += 1, MAVLink.MAV_CMD.LOITER_TO_ALT, 0, (double)loiter_radius.Value, 0, 0,
-                       lat -= Math.Sin((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_downdist.Value / 100000),
-                       lng -= Math.Cos((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_downdist.Value / 100000), (double)loiter_downalt.Value);//loiter 下降 
-                    InsertCommand(numno += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
-                       lat -= Math.Sin((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000),
-                       lng -= Math.Cos((double)updown_angle.Value * Math.PI / 180) * ((double)pilotwp_updist.Value / 100000), (double)pilotwp_downalt.Value);//引导4
-                    InsertCommand(numno += 1, MAVLink.MAV_CMD.VTOL_LAND, 0, 0, 0, 0,
-                       double.Parse(TXT_homelng.Text),
-                        double.Parse(TXT_homelat.Text), 0);//VTOL_LAND 
-                    tag_updownwp = true;
+                    if(Commands.Rows.Count!=0)
+                    {
+                        var commandno = Commands.Rows.Count;
+                        Locationwp missionendwp = new Locationwp();
+                        for (int i = Commands.Rows.Count - 1; i >= 0; i--)
+                        {
+                            if (GetCommandList()[i].id == (ushort)MAVLink.MAV_CMD.WAYPOINT)
+                            {
+                                missionendwp.id = GetCommandList()[i].id;
+                                missionendwp.alt = GetCommandList()[i].alt;
+                                missionendwp.lat = GetCommandList()[i].lat;
+                                missionendwp.lng = GetCommandList()[i].lng;
+                                break;
+                            }
+                        }
+                        if (tag_updownwp == false && missionendwp.id == (ushort)MAVLink.MAV_CMD.WAYPOINT)
+                        {
+                            InsertCommand(0, MAVLink.MAV_CMD.TAKEOFF, 20, 0, 0, 0, lat, lng, (double)vtol_takeoff_alt.Value);
+                            InsertCommand(commandno +=1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0, lat, lng, missionendwp.alt);
+                            InsertCommand(commandno +=1, MAVLink.MAV_CMD.LAND, 0, 0, 0, 0, lat, lng, 0);
+                            tag_updownwp = true;
+                        }
+                       }
+                    else
+                    {
+                        MessageBox.Show("请规划航线后添加起降！");
+                    }
                 }
             }
-
+            else
+            {
+                MessageBox.Show("请连接飞控！");
+            }
         }
 
         private void del_updownwp_Click(object sender, EventArgs e)
         {
-            if (tag_updownwp && Commands.Rows.Count >= 8)
+            
+            if(MainV2.comPort.BaseStream.IsOpen)
             {
-
-                for (int i = 0; i < 4; i++)
+                if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduPlane)
                 {
-                    Commands.Rows.RemoveAt(0);
-                    Commands.Rows.RemoveAt(Commands.Rows.Count - 1);
+                    if (tag_updownwp && Commands.Rows.Count >= 8)
+                    {
+                        //删头尾航点
+                        for (int i = 0; i < 4; i++)
+                        {
+                            Commands.Rows.RemoveAt(0);
+                            Commands.Rows.RemoveAt(Commands.Rows.Count - 1);
+                        }
+                        tag_updownwp = false;
+                    }
+                    else tag_updownwp = false;
                 }
-                tag_updownwp = false;
+                if(MainV2.comPort.MAV.cs.firmware==Firmwares.ArduCopter2)
+                {
+                    if (tag_updownwp && Commands.Rows.Count >= 3)
+                    {                       
+                        Commands.Rows.RemoveAt(0);
+                        Commands.Rows.RemoveAt(Commands.Rows.Count - 1);
+                        Commands.Rows.RemoveAt(Commands.Rows.Count - 1);
+                        tag_updownwp = false;
+                    }
+                    else tag_updownwp = false;
+                }
             }
-            else tag_updownwp = false;
+            else
+            {
+                MessageBox.Show("请连接飞控！");
+            }
         }
 
         private void label21_Click(object sender, EventArgs e)
         {
 
         }
-
-        private void refresh_updown_Click(object sender, EventArgs e)
+        private void refreshhome()
         {
-            //reset angle  
-            updown_angle.Value = (int)GCSViews.FlightData.myhud.heading;
-            //updown_angle.Value=(int)GCSViews.FlightData.myhud.current;
-            //reset home
-            if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduPlane)
-            {
-                TXT_WPRad.Text = "50";
-                if (tag_updownwp == false && Commands.Rows.Count != 0)
-                    loiter_upalt.Value = (decimal)GetCommandList()[0].alt;
-            }
-            else if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
-                TXT_WPRad.Text = "2";
-
             TXT_homelat.Text = MainV2.comPort.MAV.cs.lat.ToString();
 
             TXT_homelng.Text = MainV2.comPort.MAV.cs.lng.ToString();
 
             //TXT_homealt.Text = MainV2.comPort.MAV.cs.altasl2.ToString();
             TXT_homealt.Text = (srtm.getAltitude(MainV2.comPort.MAV.cs.lat, MainV2.comPort.MAV.cs.lng).alt * CurrentState.multiplieralt).ToString();
+        }
+        private void refresh_updown_Click(object sender, EventArgs e)
+        {
+            //reset angle  
+            updown_angle.Value = (int)GCSViews.FlightData.myhud.heading;
+            //updown_angle.Value=(int)GCSViews.FlightData.myhud.current;
+            //reset home
+            if (MainV2.comPort.BaseStream.IsOpen)
+            { 
+                if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduPlane)
+                {
+                    TXT_WPRad.Text = "50";
+                    refreshhome();
+                    gpb_takeoffandland.Visible = true;
+                    gpb_takeoffandland.Height = 277;
+                    panel_plane.Visible = true;
+                    if (tag_updownwp == false && Commands.Rows.Count != 0)
+                    {
+                        for(int i=0;i<Commands.Rows.Count;i++)
+                        {
+                            if (GetCommandList()[i].id == (ushort)MAVLink.MAV_CMD.WAYPOINT)
+                            {
+                                loiter_upalt.Value = (decimal)GetCommandList()[i].alt;
+                                break;
+                            }
+                        }
+                    }
+                }
+                else if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
+                { 
+                    TXT_WPRad.Text = "2";
+                    refreshhome();
+                    gpb_takeoffandland.Visible = true;
+                    gpb_takeoffandland.Height = 130;
+                    panel_plane.Visible = false;
+                    if (tag_updownwp == false && Commands.Rows.Count != 0)
+                    {
+                        for (int i = 0; i < Commands.Rows.Count; i++)
+                        {
+                            if (GetCommandList()[i].id == (ushort)MAVLink.MAV_CMD.WAYPOINT)
+                            {
+                                vtol_takeoff_alt.Value = (decimal)GetCommandList()[i].alt;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                gpb_takeoffandland.Visible = false;
+            }
             writeKML();
 
         }
@@ -7637,6 +7726,16 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
         }
 
         private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void gpb_takeoffandland_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }

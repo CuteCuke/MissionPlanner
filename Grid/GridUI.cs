@@ -818,7 +818,7 @@ namespace MissionPlanner.Grid
             else
             {
                 // Meters
-                lbl_area.Text = calcpolygonarea(list).ToString("#") + " m^2";
+                lbl_area.Text = (calcpolygonarea(list)/1000000).ToString("f6") + " km^2";
                 lbl_distance.Text = routetotal.ToString("0.##") + " km";
                 lbl_spacing.Text = NUM_spacing.Value.ToString("0.#") + " m";
                 lbl_grndres.Text = TXT_cmpixel.Text;
