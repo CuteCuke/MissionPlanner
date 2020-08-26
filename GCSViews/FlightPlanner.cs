@@ -1715,42 +1715,9 @@ namespace MissionPlanner.GCSViews
 
         public void but_writewpfast_Click(object sender, EventArgs e)
         {
-            drawnpolygonsoverlay.Markers.Clear();
-            drawnpolygonsoverlay.Polygons.Clear();
-            drawnpolygon.Points.Clear();
-            foreach (DataGridViewRow line in Commands.Rows)
-            {
-                drawnpolygon.Points.Add(new PointLatLng((double)line.Cells[Lat.Index].Value, (double)line.Cells[Lon.Index].Value));
-                addpolygonmarkergrid(drawnpolygon.Points.Count.ToString(),
-                    (double)line.Cells[Lat.Index].Value,
-                    (double)line.Cells[Lon.Index].Value, 0);
-            }
-            if (drawnpolygon.Points.Count > 1 &&
-                   drawnpolygon.Points[0] == drawnpolygon.Points[drawnpolygon.Points.Count - 1])
-                drawnpolygon.Points.RemoveAt(drawnpolygon.Points.Count - 1); // unmake a full loop
-
-            drawnpolygonsoverlay.Polygons.Add(drawnpolygon);
-
-            MainMap.UpdatePolygonLocalPosition(drawnpolygon);
-
-            MainMap.Invalidate();
-
-            MainMap.ZoomAndCenterMarkers(drawnpolygonsoverlay.Id);
-
-            quickadd = true;
-
-            // mono fix
-            try
-            {
-                Commands.CurrentCell = null;
-            }
-            catch { }
-
-            Commands.Rows.Clear();
-
-            selectedrow = 0;
-            quickadd = false;
-            writeKML();
+            SimpleGrid.GridPlugin grid = new SimpleGrid.GridPlugin();
+            grid.Host = new PluginHost();
+            grid.but_Click(sender,e);
         }
 
         private double calcpolygonarea(List<PointLatLng> polygon)
@@ -7107,7 +7074,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
 
         private void creat_flight_click(object sender, EventArgs e)
         {
-            GridPlugin grid = new GridPlugin();
+            Grid.GridPlugin grid = new Grid.GridPlugin();
             grid.Host = new PluginHost();
             grid.but_Click(sender, e);
         }
@@ -7596,6 +7563,11 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                         for (int i = 0; i < Commands.Rows.Count; i++)
                         {
                             if (GetCommandList()[i].id == (ushort)MAVLink.MAV_CMD.WAYPOINT)
+                            {
+                                vtol_takeoff_alt.Value = (decimal)GetCommandList()[i].alt;
+                                break;
+                            }
+                            if (GetCommandList()[i].id == (ushort)MAVLink.MAV_CMD.LOITER_TURNS)
                             {
                                 vtol_takeoff_alt.Value = (decimal)GetCommandList()[i].alt;
                                 break;

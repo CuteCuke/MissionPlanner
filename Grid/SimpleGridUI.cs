@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
@@ -40,6 +41,7 @@ namespace MissionPlanner.SimpleGrid
             map.Overlays.Add(layerpolygons);
 
             CMB_startfrom.DataSource = Enum.GetNames(typeof(Utilities.Grid.StartPosition));
+            
             CMB_startfrom.SelectedIndex = 0;
 
             // set and angle that is good
@@ -305,6 +307,7 @@ namespace MissionPlanner.SimpleGrid
 
             int strips = 0;
             int a = 1;
+            int m_n = 0;//tag = M  航点数量
             PointLatLngAlt prevpoint = grid[0];
             foreach (var item in grid)
             {
@@ -314,6 +317,7 @@ namespace MissionPlanner.SimpleGrid
                     {
                         layerpolygons.Markers.Add(new GMarkerGoogle(item, GMarkerGoogleType.green) { ToolTipText = a.ToString(), ToolTipMode = MarkerTooltipMode.OnMouseOver });
                         a++;
+                        m_n++;
                     }
                 }
                 else
@@ -344,9 +348,10 @@ namespace MissionPlanner.SimpleGrid
 
             Console.WriteLine("Poly Dist " + wppoly.Distance);
 
-            lbl_area.Text = calcpolygonarea(plugin.Host.FPDrawnPolygon.Points).ToString("#") + " m^2";
+            lbl_area.Text = (calcpolygonarea(plugin.Host.FPDrawnPolygon.Points)/1000000).ToString("f6") + " km^2";
 
-            lbl_distance.Text = wppoly.Distance.ToString("0.##") + " km";
+            
+            lbl_distance.Text = (wppoly.Distance+((double)loiter_r.Value*Math.PI*2*m_n)/1000).ToString("0.##") + " km";
 
 
             lbl_strips.Text = ((int)(strips / 2)).ToString();
@@ -418,22 +423,26 @@ namespace MissionPlanner.SimpleGrid
                 //plugin.Host.AddWPtoList(MAVLink.MAV_CMD.DO_CHANGE_SPEED, 1,
                 //    (int)((float)NUM_UpDownFlySpeed.Value / CurrentState.multiplierspeed), 0, 0, 0, 0, 0,
                 //    null);
+                plugin.Host.AddWPtoList(MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0, grid[0].Lng,grid[0].Lat, grid[0].Alt);
+
+                plugin.Host.AddWPtoList(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, (double)cam_dist.Value, 0, 0, 0, 0, 0, 0);
 
                 grid.ForEach(plla =>
                 {
                     if (plla.Tag == "M")
                     {
                         if (CHK_internals.Checked)
-                            plugin.Host.AddWPtoList(MAVLink.MAV_CMD.LOITER_TURNS, (double)loiter_turn.Value, (double)loiter_r.Value, 0, 0, plla.Lng, plla.Lat, plla.Alt);
+                            plugin.Host.AddWPtoList(MAVLink.MAV_CMD.LOITER_TURNS, (double)loiter_turn.Value,0 ,(double)loiter_r.Value, 0, plla.Lng, plla.Lat, plla.Alt);
                     }
                     else
                     {
-                        if (!(plla.Lat == lastpnt.Lat && plla.Lng == lastpnt.Lng && plla.Alt == lastpnt.Alt))
-                            plugin.Host.AddWPtoList(MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0, plla.Lng, plla.Lat, plla.Alt);
+                        //if (!(plla.Lat == lastpnt.Lat && plla.Lng == lastpnt.Lng && plla.Alt == lastpnt.Alt))
+                        //    plugin.Host.AddWPtoList(MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0, plla.Lng, plla.Lat, plla.Alt);
 
                         lastpnt = plla;
                     }
                 });
+                plugin.Host.AddWPtoList(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 0, 0, 0, 0, 0);
 
                 MainV2.instance.FlightPlanner.quickadd = false;
 

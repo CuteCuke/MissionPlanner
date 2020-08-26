@@ -41,6 +41,10 @@
             this.label22 = new System.Windows.Forms.Label();
             this.tabSimple = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.loiter_r = new System.Windows.Forms.NumericUpDown();
+            this.loiter_turn = new System.Windows.Forms.NumericUpDown();
             this.label24 = new System.Windows.Forms.Label();
             this.NUM_UpDownFlySpeed = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
@@ -64,13 +68,13 @@
             this.chk_markers = new System.Windows.Forms.CheckBox();
             this.chk_boundary = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.loiter_turn = new System.Windows.Forms.NumericUpDown();
-            this.loiter_r = new System.Windows.Forms.NumericUpDown();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.cam_dist = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox5.SuspendLayout();
             this.tabSimple.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loiter_r)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loiter_turn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_UpDownFlySpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_spacing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_overshoot2)).BeginInit();
@@ -80,8 +84,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.NUM_overshoot)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.loiter_turn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.loiter_r)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cam_dist)).BeginInit();
             this.SuspendLayout();
             // 
             // map
@@ -172,6 +175,8 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.label10);
+            this.groupBox6.Controls.Add(this.cam_dist);
             this.groupBox6.Controls.Add(this.label9);
             this.groupBox6.Controls.Add(this.label8);
             this.groupBox6.Controls.Add(this.loiter_r);
@@ -197,6 +202,56 @@
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.TabStop = false;
             this.groupBox6.Enter += new System.EventHandler(this.groupBox6_Enter);
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
+            // 
+            // loiter_r
+            // 
+            this.loiter_r.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            resources.ApplyResources(this.loiter_r, "loiter_r");
+            this.loiter_r.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.loiter_r.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.loiter_r.Name = "loiter_r";
+            this.loiter_r.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // loiter_turn
+            // 
+            resources.ApplyResources(this.loiter_turn, "loiter_turn");
+            this.loiter_turn.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.loiter_turn.Name = "loiter_turn";
+            this.loiter_turn.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label24
             // 
@@ -226,7 +281,6 @@
             // 
             // NUM_spacing
             // 
-            this.NUM_spacing.DecimalPlaces = 2;
             resources.ApplyResources(this.NUM_spacing, "NUM_spacing");
             this.NUM_spacing.Maximum = new decimal(new int[] {
             9999,
@@ -240,7 +294,7 @@
             0});
             this.NUM_spacing.Name = "NUM_spacing";
             this.NUM_spacing.Value = new decimal(new int[] {
-            50,
+            100,
             0,
             0,
             0});
@@ -335,7 +389,6 @@
             // 
             // NUM_Distance
             // 
-            this.NUM_Distance.DecimalPlaces = 2;
             resources.ApplyResources(this.NUM_Distance, "NUM_Distance");
             this.NUM_Distance.Maximum = new decimal(new int[] {
             9999,
@@ -349,7 +402,7 @@
             65536});
             this.NUM_Distance.Name = "NUM_Distance";
             this.NUM_Distance.Value = new decimal(new int[] {
-            50,
+            100,
             0,
             0,
             0});
@@ -422,55 +475,30 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             // 
-            // loiter_turn
+            // cam_dist
             // 
-            resources.ApplyResources(this.loiter_turn, "loiter_turn");
-            this.loiter_turn.Minimum = new decimal(new int[] {
-            1,
+            resources.ApplyResources(this.cam_dist, "cam_dist");
+            this.cam_dist.Maximum = new decimal(new int[] {
+            200,
             0,
             0,
             0});
-            this.loiter_turn.Name = "loiter_turn";
-            this.loiter_turn.Value = new decimal(new int[] {
-            1,
+            this.cam_dist.Minimum = new decimal(new int[] {
+            8,
             0,
             0,
             0});
-            // 
-            // loiter_r
-            // 
-            this.loiter_r.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            resources.ApplyResources(this.loiter_r, "loiter_r");
-            this.loiter_r.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.loiter_r.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.loiter_r.Name = "loiter_r";
-            this.loiter_r.Value = new decimal(new int[] {
-            100,
+            this.cam_dist.Name = "cam_dist";
+            this.cam_dist.Value = new decimal(new int[] {
+            16,
             0,
             0,
             0});
             // 
-            // label8
+            // label10
             // 
-            resources.ApplyResources(this.label8, "label8");
-            this.label8.Name = "label8";
-            // 
-            // label9
-            // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.Name = "label9";
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
             // 
             // GridUI
             // 
@@ -486,6 +514,8 @@
             this.tabSimple.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loiter_r)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loiter_turn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_UpDownFlySpeed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_spacing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_overshoot2)).EndInit();
@@ -496,8 +526,7 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.loiter_turn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.loiter_r)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cam_dist)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -543,5 +572,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown loiter_r;
         private System.Windows.Forms.NumericUpDown loiter_turn;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.NumericUpDown cam_dist;
     }
 }

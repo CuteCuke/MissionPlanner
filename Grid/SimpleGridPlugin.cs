@@ -60,7 +60,7 @@ namespace MissionPlanner.SimpleGrid
             return true;
         }
 
-        void but_Click(object sender, EventArgs e)
+       public void but_Click(object sender, EventArgs e)
         {
             if (Host.FPDrawnPolygon != null && Host.FPDrawnPolygon.Points.Count > 2)
             {
