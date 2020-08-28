@@ -108,6 +108,7 @@ namespace MissionPlanner.GCSViews
         private bool isMouseDown;
         private bool isMouseDraging;
         private bool ischk_imitation = false; //是否仿地飞行
+        public double wp_distance;//绘制的航线距离
        // public bool mv_return_chk_is_imitation = false;
         public GMapOverlay kmlpolygonsoverlay;
         public bool tag_updownwp = false;    //起降航点添加标记
@@ -7710,6 +7711,209 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+        List<Locationwp> locationwps = new List<Locationwp>();//暂存cmd 航点列表
+        List< List<Locationwp>> per_locationwps = new List<List<Locationwp>>();//航点分段
+        private void chk_ispart_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chk_ispart.Checked)
+            {
+                btn_per.Visible = true;
+                num_per.Visible = true;
+                wp_distance= (overlay.route.Points.Select(a => (PointLatLngAlt)a).Aggregate(0.0, (d, p1, p2) => d + p1.GetDistance(p2))
+                    +overlay.homeroute.Points.Select(a => (PointLatLngAlt)a).Aggregate(0.0, (d, p1, p2) => d + p1.GetDistance(p2))) /1000.0;
+                //GetCommandList();
+                locationwps.Clear();
+                per_locationwps.Clear();
+                for(int i=0;i<GetCommandList().Count;i++)
+                {
+                    locationwps.Add(GetCommandList()[i]);
+                }
+                if (wp_distance>0) 
+                {
+                    num_per.Maximum = (decimal)Math.Ceiling(wp_distance / (double)num_per_dist.Value);
+                    int n = (int)num_per.Maximum;
+                    int m = (int)Math.Ceiling((double)locationwps.Count / n);
+                                      
+                    for(int i=0;i<n;i++)
+                    {
+                        List<Locationwp> wps = new List<Locationwp>(); 
+                        for(int j=0;j<m;j++)
+                        {
+                            if (i * m + j < locationwps.Count)
+                                wps.Add(locationwps[i * m + j]);
+                            else
+                                break;
+                        }
+                        per_locationwps.Add(wps);
+                    }
+                }
+            }
+            else
+            {
+                btn_per.Visible = false;
+                num_per.Visible = false;
+                del_flight_Click(sender, e);
+                //for (int i = 0; i < locationwps.Count; i++)
+                //    Command.Items.Add(locationwps[i]);
+                processToScreen2(locationwps);
+            }
+        }
+        private void processToScreen2(List<Locationwp> cmds, bool append = false)
+        {
+            quickadd = true;
+
+
+            // mono fix
+            Commands.CurrentCell = null;
+
+            while (Commands.Rows.Count > 0 && !append) Commands.Rows.Clear();
+
+            if (cmds.Count == 0)
+            {
+                quickadd = false;
+                return;
+            }
+
+            Commands.SuspendLayout();
+            Commands.Enabled = false;
+
+            int i = Commands.Rows.Count - 1;
+            int cmdidx = -1;
+            foreach (Locationwp temp in cmds)
+            {
+                i++;
+                cmdidx++;
+                //Console.WriteLine("FP processToScreen " + i);
+                if (temp.id == 0 && i != 0) // 0 and not home
+                    break;
+                if (temp.id == 255 && i != 0) // bad record - never loaded any WP's - but have started the board up.
+                    break;
+                if (cmdidx == 0 && append)
+                {
+                    // we dont want to add home again.
+                    i--;
+                    continue;
+                }
+                if (i + 1 >= Commands.Rows.Count)
+                {
+                    selectedrow = Commands.Rows.Add();
+                }
+                //if (i == 0 && temp.alt == 0) // skip 0 home
+                //  continue;
+                DataGridViewTextBoxCell cell;
+                DataGridViewComboBoxCell cellcmd;
+                cellcmd = Commands.Rows[i].Cells[Command.Index] as DataGridViewComboBoxCell;
+                cellcmd.Value = "UNKNOWN";
+                cellcmd.Tag = temp.id;
+
+                foreach (object value in Enum.GetValues(typeof(MAVLink.MAV_CMD)))
+                {
+                    if ((ushort)value == temp.id)
+                    {
+                        if (Program.MONO || cellcmd.Items.Contains(value.ToString()))
+                            cellcmd.Value = value.ToString();
+                        break;
+                    }
+                }
+
+                // from ap_common.h
+                if (temp.id == (ushort)MAVLink.MAV_CMD.WAYPOINT || temp.id == (ushort)MAVLink.MAV_CMD.SPLINE_WAYPOINT ||
+                    temp.id == (ushort)MAVLink.MAV_CMD.TAKEOFF || temp.id == (ushort)MAVLink.MAV_CMD.DO_SET_HOME)
+                {
+                    // not home
+                    if (i != 0)
+                    {
+                        CMB_altmode.SelectedValue = temp.frame;
+                        CMB_altmode.SelectedValue = temp.frame;
+                    }
+                }
+
+                DataGridViewComboBoxCell cellframe = Commands.Rows[i].Cells[Frame.Index] as DataGridViewComboBoxCell;
+                cellframe.Value = (int)temp.frame;
+                cell = Commands.Rows[i].Cells[Alt.Index] as DataGridViewTextBoxCell;
+                cell.Value = temp.alt * CurrentState.multiplieralt;
+                cell = Commands.Rows[i].Cells[Lat.Index] as DataGridViewTextBoxCell;
+                cell.Value = temp.lat;
+                cell = Commands.Rows[i].Cells[Lon.Index] as DataGridViewTextBoxCell;
+                cell.Value = temp.lng;
+
+                cell = Commands.Rows[i].Cells[Param1.Index] as DataGridViewTextBoxCell;
+                cell.Value = temp.p1;
+                cell = Commands.Rows[i].Cells[Param2.Index] as DataGridViewTextBoxCell;
+                cell.Value = temp.p2;
+                cell = Commands.Rows[i].Cells[Param3.Index] as DataGridViewTextBoxCell;
+                cell.Value = temp.p3;
+                cell = Commands.Rows[i].Cells[Param4.Index] as DataGridViewTextBoxCell;
+                cell.Value = temp.p4;
+
+                // convert to utm/other
+                convertFromGeographic(temp.lat, temp.lng);
+            }
+
+            Commands.Enabled = true;
+            Commands.ResumeLayout();
+
+            setWPParams();
+
+            var type = (MAVLink.MAV_MISSION_TYPE)Invoke((Func<MAVLink.MAV_MISSION_TYPE>)delegate
+            {
+                return (MAVLink.MAV_MISSION_TYPE)cmb_missiontype.SelectedValue;
+            });
+
+            if (!append && type == MAVLink.MAV_MISSION_TYPE.MISSION)
+            {
+                try
+                {
+                    DataGridViewTextBoxCell cellhome;
+                    cellhome = Commands.Rows[0].Cells[Lat.Index] as DataGridViewTextBoxCell;
+                    if (cellhome.Value != null)
+                    {
+                        if (cellhome.Value.ToString() != TXT_homelat.Text && cellhome.Value.ToString() != "0")
+                        {
+                            var dr = CustomMessageBox.Show("重新设置home点的坐标", "重置home",
+                                MessageBoxButtons.YesNo);
+
+                            if (dr == (int)DialogResult.Yes)
+                            {
+                                TXT_homelat.Text = (double.Parse(cellhome.Value.ToString())).ToString();
+                                cellhome = Commands.Rows[0].Cells[Lon.Index] as DataGridViewTextBoxCell;
+                                TXT_homelng.Text = (double.Parse(cellhome.Value.ToString())).ToString();
+                                cellhome = Commands.Rows[0].Cells[Alt.Index] as DataGridViewTextBoxCell;
+                                TXT_homealt.Text =
+                                    (double.Parse(cellhome.Value.ToString()) * CurrentState.multiplieralt).ToString();
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    log.Error(ex.ToString());
+                } // if there is no valid home
+
+                //if (Commands.RowCount > 0)
+                //{
+                //    log.Info("remove home from list");
+                //    Commands.Rows.Remove(Commands.Rows[0]); // remove home row
+                //}
+            }
+
+            quickadd = false;
+
+            writeKML();
+
+            MainMap_OnMapZoomChanged();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_per_Click(object sender, EventArgs e)
+        {
+            del_flight_Click(sender, e);
+            processToScreen2(per_locationwps[(int)num_per.Value-1]);
         }
     }
 }

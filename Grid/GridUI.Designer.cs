@@ -86,6 +86,7 @@
             this.rad_repeatservo = new System.Windows.Forms.RadioButton();
             this.rad_trigdist = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.BUT_samplephoto = new MissionPlanner.Controls.MyButton();
             this.label21 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -103,6 +104,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.BUT_save = new MissionPlanner.Controls.MyButton();
             this.tabGrid = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.LBL_Alternating_lanes = new System.Windows.Forms.Label();
@@ -110,20 +112,7 @@
             this.NUM_Lane_Dist = new System.Windows.Forms.NumericUpDown();
             this.label28 = new System.Windows.Forms.Label();
             this.groupBox_copter = new System.Windows.Forms.GroupBox();
-            this.chk_spline = new System.Windows.Forms.CheckBox();
-            this.TXT_headinghold = new System.Windows.Forms.TextBox();
-            this.BUT_headingholdminus = new System.Windows.Forms.Button();
-            this.BUT_headingholdplus = new System.Windows.Forms.Button();
-            this.CHK_copter_headingholdlock = new System.Windows.Forms.CheckBox();
-            this.CHK_copter_headinghold = new System.Windows.Forms.CheckBox();
-            this.LBL_copter_delay = new System.Windows.Forms.Label();
-            this.NUM_copter_delay = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label49 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.max_alt = new System.Windows.Forms.NumericUpDown();
-            this.min_alt = new System.Windows.Forms.NumericUpDown();
-            this.chk_minmaxalt = new System.Windows.Forms.CheckBox();
             this.chk_spiral = new System.Windows.Forms.CheckBox();
             this.chk_Corridor = new System.Windows.Forms.CheckBox();
             this.label43 = new System.Windows.Forms.Label();
@@ -139,6 +128,19 @@
             this.NUM_overshoot = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.NUM_Distance = new System.Windows.Forms.NumericUpDown();
+            this.chk_spline = new System.Windows.Forms.CheckBox();
+            this.TXT_headinghold = new System.Windows.Forms.TextBox();
+            this.BUT_headingholdminus = new System.Windows.Forms.Button();
+            this.BUT_headingholdplus = new System.Windows.Forms.Button();
+            this.CHK_copter_headingholdlock = new System.Windows.Forms.CheckBox();
+            this.CHK_copter_headinghold = new System.Windows.Forms.CheckBox();
+            this.LBL_copter_delay = new System.Windows.Forms.Label();
+            this.NUM_copter_delay = new System.Windows.Forms.NumericUpDown();
+            this.label49 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.max_alt = new System.Windows.Forms.NumericUpDown();
+            this.min_alt = new System.Windows.Forms.NumericUpDown();
+            this.chk_minmaxalt = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.NUM_spacing = new System.Windows.Forms.NumericUpDown();
             this.polygon_inc = new System.Windows.Forms.NumericUpDown();
@@ -153,6 +155,7 @@
             this.rightup = new System.Windows.Forms.CheckBox();
             this.leftdown = new System.Windows.Forms.CheckBox();
             this.leftup = new System.Windows.Forms.CheckBox();
+            this.BUT_Accept = new MissionPlanner.Controls.MyButton();
             this.label38 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label24 = new System.Windows.Forms.Label();
@@ -177,9 +180,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TRK_zoom = new MissionPlanner.Controls.MyTrackBar();
             this.map = new MissionPlanner.Controls.myGMAP();
-            this.BUT_Accept = new MissionPlanner.Controls.MyButton();
-            this.BUT_samplephoto = new MissionPlanner.Controls.MyButton();
-            this.BUT_save = new MissionPlanner.Controls.MyButton();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_split)).BeginInit();
             this.tabCamera.SuspendLayout();
@@ -196,15 +196,15 @@
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_Lane_Dist)).BeginInit();
             this.groupBox_copter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NUM_copter_delay)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.max_alt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.min_alt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_corridorwidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_leadin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_overshoot2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_overshoot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_Distance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUM_copter_delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.max_alt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.min_alt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_spacing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.polygon_inc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_overlap)).BeginInit();
@@ -690,6 +690,13 @@
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
+            // BUT_samplephoto
+            // 
+            resources.ApplyResources(this.BUT_samplephoto, "BUT_samplephoto");
+            this.BUT_samplephoto.Name = "BUT_samplephoto";
+            this.BUT_samplephoto.UseVisualStyleBackColor = true;
+            this.BUT_samplephoto.Click += new System.EventHandler(this.BUT_samplephoto_Click);
+            // 
             // label21
             // 
             resources.ApplyResources(this.label21, "label21");
@@ -802,6 +809,13 @@
             resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
             // 
+            // BUT_save
+            // 
+            resources.ApplyResources(this.BUT_save, "BUT_save");
+            this.BUT_save.Name = "BUT_save";
+            this.BUT_save.UseVisualStyleBackColor = true;
+            this.BUT_save.Click += new System.EventHandler(this.BUT_save_Click);
+            // 
             // tabGrid
             // 
             this.tabGrid.Controls.Add(this.groupBox7);
@@ -855,67 +869,6 @@
             this.groupBox_copter.Name = "groupBox_copter";
             this.groupBox_copter.TabStop = false;
             // 
-            // chk_spline
-            // 
-            resources.ApplyResources(this.chk_spline, "chk_spline");
-            this.chk_spline.Name = "chk_spline";
-            this.chk_spline.UseVisualStyleBackColor = true;
-            // 
-            // TXT_headinghold
-            // 
-            resources.ApplyResources(this.TXT_headinghold, "TXT_headinghold");
-            this.TXT_headinghold.Name = "TXT_headinghold";
-            this.TXT_headinghold.ReadOnly = true;
-            // 
-            // BUT_headingholdminus
-            // 
-            resources.ApplyResources(this.BUT_headingholdminus, "BUT_headingholdminus");
-            this.BUT_headingholdminus.Name = "BUT_headingholdminus";
-            this.BUT_headingholdminus.UseVisualStyleBackColor = true;
-            this.BUT_headingholdminus.Click += new System.EventHandler(this.BUT_headingholdminus_Click);
-            // 
-            // BUT_headingholdplus
-            // 
-            resources.ApplyResources(this.BUT_headingholdplus, "BUT_headingholdplus");
-            this.BUT_headingholdplus.Name = "BUT_headingholdplus";
-            this.BUT_headingholdplus.UseVisualStyleBackColor = true;
-            this.BUT_headingholdplus.Click += new System.EventHandler(this.BUT_headingholdplus_Click);
-            // 
-            // CHK_copter_headingholdlock
-            // 
-            resources.ApplyResources(this.CHK_copter_headingholdlock, "CHK_copter_headingholdlock");
-            this.CHK_copter_headingholdlock.Name = "CHK_copter_headingholdlock";
-            this.CHK_copter_headingholdlock.UseVisualStyleBackColor = true;
-            this.CHK_copter_headingholdlock.CheckedChanged += new System.EventHandler(this.CHK_copter_headingholdlock_CheckedChanged);
-            // 
-            // CHK_copter_headinghold
-            // 
-            resources.ApplyResources(this.CHK_copter_headinghold, "CHK_copter_headinghold");
-            this.CHK_copter_headinghold.Name = "CHK_copter_headinghold";
-            this.CHK_copter_headinghold.UseVisualStyleBackColor = true;
-            this.CHK_copter_headinghold.CheckedChanged += new System.EventHandler(this.CHK_copter_headinghold_CheckedChanged);
-            // 
-            // LBL_copter_delay
-            // 
-            resources.ApplyResources(this.LBL_copter_delay, "LBL_copter_delay");
-            this.LBL_copter_delay.Name = "LBL_copter_delay";
-            // 
-            // NUM_copter_delay
-            // 
-            this.NUM_copter_delay.DecimalPlaces = 1;
-            this.NUM_copter_delay.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            resources.ApplyResources(this.NUM_copter_delay, "NUM_copter_delay");
-            this.NUM_copter_delay.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.NUM_copter_delay.Name = "NUM_copter_delay";
-            // 
             // groupBox1
             // 
             resources.ApplyResources(this.groupBox1, "groupBox1");
@@ -936,50 +889,6 @@
             this.groupBox1.Controls.Add(this.NUM_Distance);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
-            // 
-            // label49
-            // 
-            resources.ApplyResources(this.label49, "label49");
-            this.label49.Name = "label49";
-            // 
-            // label48
-            // 
-            resources.ApplyResources(this.label48, "label48");
-            this.label48.Name = "label48";
-            // 
-            // max_alt
-            // 
-            resources.ApplyResources(this.max_alt, "max_alt");
-            this.max_alt.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.max_alt.Name = "max_alt";
-            this.max_alt.ValueChanged += new System.EventHandler(this.max_alt_ValueChanged);
-            // 
-            // min_alt
-            // 
-            this.min_alt.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            resources.ApplyResources(this.min_alt, "min_alt");
-            this.min_alt.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.min_alt.Name = "min_alt";
-            this.min_alt.ValueChanged += new System.EventHandler(this.min_alt_ValueChanged);
-            // 
-            // chk_minmaxalt
-            // 
-            resources.ApplyResources(this.chk_minmaxalt, "chk_minmaxalt");
-            this.chk_minmaxalt.Name = "chk_minmaxalt";
-            this.chk_minmaxalt.UseVisualStyleBackColor = true;
-            this.chk_minmaxalt.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // chk_spiral
             // 
@@ -1116,6 +1025,111 @@
             0});
             this.NUM_Distance.ValueChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
             // 
+            // chk_spline
+            // 
+            resources.ApplyResources(this.chk_spline, "chk_spline");
+            this.chk_spline.Name = "chk_spline";
+            this.chk_spline.UseVisualStyleBackColor = true;
+            // 
+            // TXT_headinghold
+            // 
+            resources.ApplyResources(this.TXT_headinghold, "TXT_headinghold");
+            this.TXT_headinghold.Name = "TXT_headinghold";
+            this.TXT_headinghold.ReadOnly = true;
+            // 
+            // BUT_headingholdminus
+            // 
+            resources.ApplyResources(this.BUT_headingholdminus, "BUT_headingholdminus");
+            this.BUT_headingholdminus.Name = "BUT_headingholdminus";
+            this.BUT_headingholdminus.UseVisualStyleBackColor = true;
+            this.BUT_headingholdminus.Click += new System.EventHandler(this.BUT_headingholdminus_Click);
+            // 
+            // BUT_headingholdplus
+            // 
+            resources.ApplyResources(this.BUT_headingholdplus, "BUT_headingholdplus");
+            this.BUT_headingholdplus.Name = "BUT_headingholdplus";
+            this.BUT_headingholdplus.UseVisualStyleBackColor = true;
+            this.BUT_headingholdplus.Click += new System.EventHandler(this.BUT_headingholdplus_Click);
+            // 
+            // CHK_copter_headingholdlock
+            // 
+            resources.ApplyResources(this.CHK_copter_headingholdlock, "CHK_copter_headingholdlock");
+            this.CHK_copter_headingholdlock.Name = "CHK_copter_headingholdlock";
+            this.CHK_copter_headingholdlock.UseVisualStyleBackColor = true;
+            this.CHK_copter_headingholdlock.CheckedChanged += new System.EventHandler(this.CHK_copter_headingholdlock_CheckedChanged);
+            // 
+            // CHK_copter_headinghold
+            // 
+            resources.ApplyResources(this.CHK_copter_headinghold, "CHK_copter_headinghold");
+            this.CHK_copter_headinghold.Name = "CHK_copter_headinghold";
+            this.CHK_copter_headinghold.UseVisualStyleBackColor = true;
+            this.CHK_copter_headinghold.CheckedChanged += new System.EventHandler(this.CHK_copter_headinghold_CheckedChanged);
+            // 
+            // LBL_copter_delay
+            // 
+            resources.ApplyResources(this.LBL_copter_delay, "LBL_copter_delay");
+            this.LBL_copter_delay.Name = "LBL_copter_delay";
+            // 
+            // NUM_copter_delay
+            // 
+            this.NUM_copter_delay.DecimalPlaces = 1;
+            this.NUM_copter_delay.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            resources.ApplyResources(this.NUM_copter_delay, "NUM_copter_delay");
+            this.NUM_copter_delay.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.NUM_copter_delay.Name = "NUM_copter_delay";
+            // 
+            // label49
+            // 
+            resources.ApplyResources(this.label49, "label49");
+            this.label49.Name = "label49";
+            // 
+            // label48
+            // 
+            resources.ApplyResources(this.label48, "label48");
+            this.label48.Name = "label48";
+            // 
+            // max_alt
+            // 
+            resources.ApplyResources(this.max_alt, "max_alt");
+            this.max_alt.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.max_alt.Name = "max_alt";
+            this.max_alt.ValueChanged += new System.EventHandler(this.max_alt_ValueChanged);
+            // 
+            // min_alt
+            // 
+            this.min_alt.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            resources.ApplyResources(this.min_alt, "min_alt");
+            this.min_alt.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.min_alt.Name = "min_alt";
+            this.min_alt.ValueChanged += new System.EventHandler(this.min_alt_ValueChanged);
+            // 
+            // chk_minmaxalt
+            // 
+            resources.ApplyResources(this.chk_minmaxalt, "chk_minmaxalt");
+            this.chk_minmaxalt.Name = "chk_minmaxalt";
+            this.chk_minmaxalt.UseVisualStyleBackColor = true;
+            this.chk_minmaxalt.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
@@ -1235,6 +1249,13 @@
             this.leftup.Name = "leftup";
             this.leftup.UseVisualStyleBackColor = true;
             this.leftup.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged_1);
+            // 
+            // BUT_Accept
+            // 
+            resources.ApplyResources(this.BUT_Accept, "BUT_Accept");
+            this.BUT_Accept.Name = "BUT_Accept";
+            this.BUT_Accept.UseVisualStyleBackColor = true;
+            this.BUT_Accept.Click += new System.EventHandler(this.BUT_Accept_Click);
             // 
             // label38
             // 
@@ -1470,27 +1491,6 @@
             this.map.MouseDown += new System.Windows.Forms.MouseEventHandler(this.map_MouseDown);
             this.map.MouseMove += new System.Windows.Forms.MouseEventHandler(this.map_MouseMove);
             // 
-            // BUT_Accept
-            // 
-            resources.ApplyResources(this.BUT_Accept, "BUT_Accept");
-            this.BUT_Accept.Name = "BUT_Accept";
-            this.BUT_Accept.UseVisualStyleBackColor = true;
-            this.BUT_Accept.Click += new System.EventHandler(this.BUT_Accept_Click);
-            // 
-            // BUT_samplephoto
-            // 
-            resources.ApplyResources(this.BUT_samplephoto, "BUT_samplephoto");
-            this.BUT_samplephoto.Name = "BUT_samplephoto";
-            this.BUT_samplephoto.UseVisualStyleBackColor = true;
-            this.BUT_samplephoto.Click += new System.EventHandler(this.BUT_samplephoto_Click);
-            // 
-            // BUT_save
-            // 
-            resources.ApplyResources(this.BUT_save, "BUT_save");
-            this.BUT_save.Name = "BUT_save";
-            this.BUT_save.UseVisualStyleBackColor = true;
-            this.BUT_save.Click += new System.EventHandler(this.BUT_save_Click);
-            // 
             // GridUI
             // 
             resources.ApplyResources(this, "$this");
@@ -1541,16 +1541,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.NUM_Lane_Dist)).EndInit();
             this.groupBox_copter.ResumeLayout(false);
             this.groupBox_copter.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NUM_copter_delay)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.max_alt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.min_alt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_corridorwidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_leadin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_overshoot2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_overshoot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_Distance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUM_copter_delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.max_alt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.min_alt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_spacing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.polygon_inc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_overlap)).EndInit();
