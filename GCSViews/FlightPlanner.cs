@@ -1362,7 +1362,7 @@ namespace MissionPlanner.GCSViews
 
                     overlay.overlay.ForceUpdate();
 
-                    lbl_distance.Text = "航线" + rm.GetString("lbl_distance.Text") + ": " +
+                    lbl_distance.Text = "航线直线" + rm.GetString("lbl_distance.Text") + ": " +
                                                        FormatDistance((
                                                                           overlay.route.Points.Select(a => (PointLatLngAlt)a)
                                                                               .Aggregate(0.0, (d, p1, p2) => d + p1.GetDistance(p2)) +
@@ -7856,47 +7856,47 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
 
             setWPParams();
 
-            var type = (MAVLink.MAV_MISSION_TYPE)Invoke((Func<MAVLink.MAV_MISSION_TYPE>)delegate
-            {
-                return (MAVLink.MAV_MISSION_TYPE)cmb_missiontype.SelectedValue;
-            });
+            //var type = (MAVLink.MAV_MISSION_TYPE)Invoke((Func<MAVLink.MAV_MISSION_TYPE>)delegate
+            //{
+            //    return (MAVLink.MAV_MISSION_TYPE)cmb_missiontype.SelectedValue;
+            //});
 
-            if (!append && type == MAVLink.MAV_MISSION_TYPE.MISSION)
-            {
-                try
-                {
-                    DataGridViewTextBoxCell cellhome;
-                    cellhome = Commands.Rows[0].Cells[Lat.Index] as DataGridViewTextBoxCell;
-                    if (cellhome.Value != null)
-                    {
-                        if (cellhome.Value.ToString() != TXT_homelat.Text && cellhome.Value.ToString() != "0")
-                        {
-                            var dr = CustomMessageBox.Show("重新设置home点的坐标", "重置home",
-                                MessageBoxButtons.YesNo);
+            //if (!append && type == MAVLink.MAV_MISSION_TYPE.MISSION)
+            //{
+            //    try
+            //    {
+            //        DataGridViewTextBoxCell cellhome;
+            //        cellhome = Commands.Rows[0].Cells[Lat.Index] as DataGridViewTextBoxCell;
+            //        if (cellhome.Value != null)
+            //        {
+            //            if (cellhome.Value.ToString() != TXT_homelat.Text && cellhome.Value.ToString() != "0")
+            //            {
+            //                var dr = CustomMessageBox.Show("重新设置home点的坐标", "重置home",
+            //                    MessageBoxButtons.YesNo);
 
-                            if (dr == (int)DialogResult.Yes)
-                            {
-                                TXT_homelat.Text = (double.Parse(cellhome.Value.ToString())).ToString();
-                                cellhome = Commands.Rows[0].Cells[Lon.Index] as DataGridViewTextBoxCell;
-                                TXT_homelng.Text = (double.Parse(cellhome.Value.ToString())).ToString();
-                                cellhome = Commands.Rows[0].Cells[Alt.Index] as DataGridViewTextBoxCell;
-                                TXT_homealt.Text =
-                                    (double.Parse(cellhome.Value.ToString()) * CurrentState.multiplieralt).ToString();
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    log.Error(ex.ToString());
-                } // if there is no valid home
+            //                if (dr == (int)DialogResult.Yes)
+            //                {
+            //                    TXT_homelat.Text = (double.Parse(cellhome.Value.ToString())).ToString();
+            //                    cellhome = Commands.Rows[0].Cells[Lon.Index] as DataGridViewTextBoxCell;
+            //                    TXT_homelng.Text = (double.Parse(cellhome.Value.ToString())).ToString();
+            //                    cellhome = Commands.Rows[0].Cells[Alt.Index] as DataGridViewTextBoxCell;
+            //                    TXT_homealt.Text =
+            //                        (double.Parse(cellhome.Value.ToString()) * CurrentState.multiplieralt).ToString();
+            //                }
+            //            }
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        log.Error(ex.ToString());
+            //    } // if there is no valid home
 
-                //if (Commands.RowCount > 0)
-                //{
-                //    log.Info("remove home from list");
-                //    Commands.Rows.Remove(Commands.Rows[0]); // remove home row
-                //}
-            }
+            //    //if (Commands.RowCount > 0)
+            //    //{
+            //    //    log.Info("remove home from list");
+            //    //    Commands.Rows.Remove(Commands.Rows[0]); // remove home row
+            //    //}
+            //}
 
             quickadd = false;
 
@@ -7913,7 +7913,65 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
         private void btn_per_Click(object sender, EventArgs e)
         {
             del_flight_Click(sender, e);
+
             processToScreen2(per_locationwps[(int)num_per.Value-1]);
+   
+            if(Commands.Rows.Count>3)//航线命令，开头跟结尾修正， insertcommand   lat跟lng反向
+            {
+                if(GetCommandList()[0].id==(ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
+                {
+                    if(GetCommandList()[0].p1!=0)
+                    { 
+                        if((int)num_per.Value>1)
+                        {
+                            InsertCommand(0, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0, 
+                                per_locationwps[(int)num_per.Value - 2][per_locationwps[(int)num_per.Value - 2].Count - 1].lng,
+                                per_locationwps[(int)num_per.Value - 2][per_locationwps[(int)num_per.Value - 2].Count - 1].lat,
+                                per_locationwps[(int)num_per.Value - 2][per_locationwps[(int)num_per.Value - 2].Count - 1].alt);
+                        }
+                    }
+                    else
+                    {
+                        Commands.Rows.RemoveAt(0);
+                    }
+                }
+                if(GetCommandList()[0].id==(ushort)MAVLink.MAV_CMD.WAYPOINT)
+                {
+                    if(GetCommandList()[1].id!=(ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST&& GetCommandList()[2].id != (ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
+                    {
+                       // Locationwp camwp = new Locationwp();
+                        for(int i=0;i<locationwps.Count;i++)
+                        {
+                            if(locationwps[i].id==(ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
+                            {
+                                InsertCommand(1,MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST,locationwps[i].p1,0,locationwps[i].p3,0,0,0,0);
+                                break;
+                            }
+                        }
+
+                    }
+                }
+                if(GetCommandList()[Commands.Rows.Count-1].id==(ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
+                {
+                    if(GetCommandList()[Commands.Rows.Count-1].p1!=0)
+                    {
+                        if((int)num_per.Value<num_per.Maximum)
+                        {
+                            InsertCommand(Commands.Rows.Count, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,                               
+                                per_locationwps[(int)num_per.Value][0].lng,
+                                per_locationwps[(int)num_per.Value][0].lat,
+                                per_locationwps[(int)num_per.Value][0].alt);
+                            InsertCommand(Commands.Rows.Count+1, MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
+                        }
+                    }
+                }
+                else
+                {
+                    InsertCommand(Commands.Rows.Count, MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
+                }
+            }
+
+            //InsertCommand(Commands.Rows.Count, MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0,1, 0, 0, 0, 0);
         }
     }
 }

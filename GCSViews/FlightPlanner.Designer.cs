@@ -546,6 +546,7 @@ namespace MissionPlanner.GCSViews
             // 
             resources.ApplyResources(this.chk_ispart, "chk_ispart");
             this.chk_ispart.Name = "chk_ispart";
+            this.toolTip1.SetToolTip(this.chk_ispart, resources.GetString("chk_ispart.ToolTip"));
             this.chk_ispart.UseVisualStyleBackColor = true;
             this.chk_ispart.CheckedChanged += new System.EventHandler(this.chk_ispart_CheckedChanged);
             // 

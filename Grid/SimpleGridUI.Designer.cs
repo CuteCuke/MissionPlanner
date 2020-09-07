@@ -41,6 +41,8 @@
             this.label22 = new System.Windows.Forms.Label();
             this.tabSimple = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cam_dist = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.loiter_r = new System.Windows.Forms.NumericUpDown();
@@ -68,11 +70,10 @@
             this.chk_markers = new System.Windows.Forms.CheckBox();
             this.chk_boundary = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.cam_dist = new System.Windows.Forms.NumericUpDown();
-            this.label10 = new System.Windows.Forms.Label();
             this.groupBox5.SuspendLayout();
             this.tabSimple.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cam_dist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loiter_r)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loiter_turn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_UpDownFlySpeed)).BeginInit();
@@ -84,7 +85,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.NUM_overshoot)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cam_dist)).BeginInit();
             this.SuspendLayout();
             // 
             // map
@@ -203,6 +203,31 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Enter += new System.EventHandler(this.groupBox6_Enter);
             // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
+            // cam_dist
+            // 
+            resources.ApplyResources(this.cam_dist, "cam_dist");
+            this.cam_dist.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.cam_dist.Minimum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.cam_dist.Name = "cam_dist";
+            this.cam_dist.Value = new decimal(new int[] {
+            16,
+            0,
+            0,
+            0});
+            // 
             // label9
             // 
             resources.ApplyResources(this.label9, "label9");
@@ -262,13 +287,13 @@
             // 
             resources.ApplyResources(this.NUM_UpDownFlySpeed, "NUM_UpDownFlySpeed");
             this.NUM_UpDownFlySpeed.Maximum = new decimal(new int[] {
-            360,
+            16,
             0,
             0,
             0});
             this.NUM_UpDownFlySpeed.Name = "NUM_UpDownFlySpeed";
             this.NUM_UpDownFlySpeed.Value = new decimal(new int[] {
-            5,
+            8,
             0,
             0,
             0});
@@ -475,31 +500,6 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             // 
-            // cam_dist
-            // 
-            resources.ApplyResources(this.cam_dist, "cam_dist");
-            this.cam_dist.Maximum = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
-            this.cam_dist.Minimum = new decimal(new int[] {
-            8,
-            0,
-            0,
-            0});
-            this.cam_dist.Name = "cam_dist";
-            this.cam_dist.Value = new decimal(new int[] {
-            16,
-            0,
-            0,
-            0});
-            // 
-            // label10
-            // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.Name = "label10";
-            // 
             // GridUI
             // 
             resources.ApplyResources(this, "$this");
@@ -514,6 +514,7 @@
             this.tabSimple.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cam_dist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loiter_r)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loiter_turn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_UpDownFlySpeed)).EndInit();
@@ -526,7 +527,6 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cam_dist)).EndInit();
             this.ResumeLayout(false);
 
         }
