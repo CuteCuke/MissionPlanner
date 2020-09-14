@@ -422,12 +422,12 @@ namespace MissionPlanner.SimpleGrid
 
                 PointLatLngAlt lastpnt = PointLatLngAlt.Zero;
 
-                plugin.Host.AddWPtoList(MAVLink.MAV_CMD.DO_CHANGE_SPEED, 1,
-                    (int)((float)NUM_UpDownFlySpeed.Value / CurrentState.multiplierspeed), 0, 0, 0, 0, 0,
-                    null);
+                //plugin.Host.AddWPtoList(MAVLink.MAV_CMD.DO_CHANGE_SPEED, 1,
+                //    (int)((float)NUM_UpDownFlySpeed.Value / CurrentState.multiplierspeed), 0, 0, 0, 0, 0,
+                //    null);
                 plugin.Host.AddWPtoList(MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0, grid[0].Lng,grid[0].Lat, grid[0].Alt);
 
-                plugin.Host.AddWPtoList(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, (double)cam_dist.Value, 0, 0, 0, 0, 0, 0);
+                plugin.Host.AddWPtoList(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, (double)cam_dist.Value, 0, 1, 0, 0, 0, 0);
 
                 grid.ForEach(plla =>
                 {
@@ -473,6 +473,27 @@ namespace MissionPlanner.SimpleGrid
         private void groupBox6_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void chk_set_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chk_set.Checked==true)
+            {
+                gb_set.Visible = true;
+            }
+            else
+            {
+                gb_set.Visible = false;
+            }
+        }
+
+        private void num_alt_ValueChanged(object sender, EventArgs e)
+        {
+            NUM_altitude.Value = num_alt.Value;
+            NUM_Distance.Value = num_alt.Value;
+            NUM_spacing.Value = num_alt.Value;
+            loiter_r.Value = num_alt.Value;
+            domainUpDown1_ValueChanged(sender, e);
         }
     }
 }

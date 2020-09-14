@@ -70,6 +70,9 @@
             this.chk_markers = new System.Windows.Forms.CheckBox();
             this.chk_boundary = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.gb_set = new System.Windows.Forms.GroupBox();
+            this.chk_set = new System.Windows.Forms.CheckBox();
+            this.num_alt = new System.Windows.Forms.NumericUpDown();
             this.groupBox5.SuspendLayout();
             this.tabSimple.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -85,6 +88,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.NUM_overshoot)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.gb_set.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.num_alt)).BeginInit();
             this.SuspendLayout();
             // 
             // map
@@ -175,16 +180,12 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.num_alt);
+            this.groupBox6.Controls.Add(this.gb_set);
             this.groupBox6.Controls.Add(this.label10);
             this.groupBox6.Controls.Add(this.cam_dist);
-            this.groupBox6.Controls.Add(this.label9);
-            this.groupBox6.Controls.Add(this.label8);
-            this.groupBox6.Controls.Add(this.loiter_r);
-            this.groupBox6.Controls.Add(this.loiter_turn);
             this.groupBox6.Controls.Add(this.label24);
             this.groupBox6.Controls.Add(this.NUM_UpDownFlySpeed);
-            this.groupBox6.Controls.Add(this.label3);
-            this.groupBox6.Controls.Add(this.NUM_spacing);
             this.groupBox6.Controls.Add(this.label7);
             this.groupBox6.Controls.Add(this.label4);
             this.groupBox6.Controls.Add(this.NUM_overshoot2);
@@ -194,8 +195,6 @@
             this.groupBox6.Controls.Add(this.BUT_Accept);
             this.groupBox6.Controls.Add(this.label1);
             this.groupBox6.Controls.Add(this.CMB_startfrom);
-            this.groupBox6.Controls.Add(this.label2);
-            this.groupBox6.Controls.Add(this.NUM_Distance);
             this.groupBox6.Controls.Add(this.NUM_overshoot);
             this.groupBox6.Controls.Add(this.label5);
             resources.ApplyResources(this.groupBox6, "groupBox6");
@@ -258,7 +257,7 @@
             0});
             this.loiter_r.Name = "loiter_r";
             this.loiter_r.Value = new decimal(new int[] {
-            100,
+            120,
             0,
             0,
             0});
@@ -319,7 +318,7 @@
             0});
             this.NUM_spacing.Name = "NUM_spacing";
             this.NUM_spacing.Value = new decimal(new int[] {
-            100,
+            120,
             0,
             0,
             0});
@@ -377,7 +376,7 @@
             0});
             this.NUM_altitude.Name = "NUM_altitude";
             this.NUM_altitude.Value = new decimal(new int[] {
-            100,
+            120,
             0,
             0,
             0});
@@ -427,7 +426,7 @@
             65536});
             this.NUM_Distance.Name = "NUM_Distance";
             this.NUM_Distance.Value = new decimal(new int[] {
-            100,
+            120,
             0,
             0,
             0});
@@ -451,6 +450,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.chk_set);
             this.groupBox4.Controls.Add(this.CHK_internals);
             this.groupBox4.Controls.Add(this.chk_grid);
             this.groupBox4.Controls.Add(this.chk_markers);
@@ -500,6 +500,53 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             // 
+            // gb_set
+            // 
+            this.gb_set.Controls.Add(this.label2);
+            this.gb_set.Controls.Add(this.NUM_Distance);
+            this.gb_set.Controls.Add(this.label3);
+            this.gb_set.Controls.Add(this.loiter_r);
+            this.gb_set.Controls.Add(this.label9);
+            this.gb_set.Controls.Add(this.NUM_spacing);
+            this.gb_set.Controls.Add(this.label8);
+            this.gb_set.Controls.Add(this.loiter_turn);
+            resources.ApplyResources(this.gb_set, "gb_set");
+            this.gb_set.Name = "gb_set";
+            this.gb_set.TabStop = false;
+            // 
+            // chk_set
+            // 
+            resources.ApplyResources(this.chk_set, "chk_set");
+            this.chk_set.Name = "chk_set";
+            this.chk_set.UseVisualStyleBackColor = true;
+            this.chk_set.CheckedChanged += new System.EventHandler(this.chk_set_CheckedChanged);
+            // 
+            // num_alt
+            // 
+            this.num_alt.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            resources.ApplyResources(this.num_alt, "num_alt");
+            this.num_alt.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.num_alt.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.num_alt.Name = "num_alt";
+            this.num_alt.Value = new decimal(new int[] {
+            120,
+            0,
+            0,
+            0});
+            this.num_alt.ValueChanged += new System.EventHandler(this.num_alt_ValueChanged);
+            // 
             // GridUI
             // 
             resources.ApplyResources(this, "$this");
@@ -527,6 +574,9 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.gb_set.ResumeLayout(false);
+            this.gb_set.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.num_alt)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -574,5 +624,8 @@
         private System.Windows.Forms.NumericUpDown loiter_turn;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.NumericUpDown cam_dist;
+        private System.Windows.Forms.GroupBox gb_set;
+        private System.Windows.Forms.CheckBox chk_set;
+        private System.Windows.Forms.NumericUpDown num_alt;
     }
 }

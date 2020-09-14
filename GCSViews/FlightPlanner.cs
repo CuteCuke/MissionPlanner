@@ -7924,10 +7924,18 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                     { 
                         if((int)num_per.Value>1)
                         {
-                            InsertCommand(0, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0, 
-                                per_locationwps[(int)num_per.Value - 2][per_locationwps[(int)num_per.Value - 2].Count - 1].lng,
-                                per_locationwps[(int)num_per.Value - 2][per_locationwps[(int)num_per.Value - 2].Count - 1].lat,
-                                per_locationwps[(int)num_per.Value - 2][per_locationwps[(int)num_per.Value - 2].Count - 1].alt);
+                            for (int i = per_locationwps[(int)num_per.Value - 2].Count - 1; i >= 0; i--)
+                            {
+                                if (per_locationwps[(int)num_per.Value - 2][i].id == (ushort)MAVLink.MAV_CMD.WAYPOINT)
+                                {
+
+                                    InsertCommand(0, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
+                                        per_locationwps[(int)num_per.Value - 2][i].lng,
+                                        per_locationwps[(int)num_per.Value - 2][i].lat,
+                                        per_locationwps[(int)num_per.Value - 2][i].alt);
+                                    break;
+                                }
+                            }
                         }
                     }
                     else
@@ -7935,20 +7943,36 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                         Commands.Rows.RemoveAt(0);
                     }
                 }
-                if(GetCommandList()[0].id==(ushort)MAVLink.MAV_CMD.WAYPOINT)
+                if(GetCommandList()[0].id==(ushort)MAVLink.MAV_CMD.WAYPOINT|| GetCommandList()[0].id == (ushort)MAVLink.MAV_CMD.LOITER_TURNS)
                 {
-                    if(GetCommandList()[1].id!=(ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST&& GetCommandList()[2].id != (ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
+                    if ((double)num_per.Value > 1)
                     {
-                       // Locationwp camwp = new Locationwp();
-                        for(int i=0;i<locationwps.Count;i++)
+                        if (GetCommandList()[1].id != (ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST && 
+                            GetCommandList()[2].id != (ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
                         {
-                            if(locationwps[i].id==(ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
+                            // Locationwp camwp = new Locationwp();
+                            for (int i = 0; i < locationwps.Count; i++)
                             {
-                                InsertCommand(1,MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST,locationwps[i].p1,0,locationwps[i].p3,0,0,0,0);
-                                break;
+                                if (locationwps[i].id == (ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
+                                {
+                                    InsertCommand(0, MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, locationwps[i].p1, 0, locationwps[i].p3, 0, 0, 0, 0);
+                                    break;
+                                }
+                            }
+                            for(int i=per_locationwps[(int)num_per.Value-2].Count-1;i>=0;i--)
+                            {
+                                if(per_locationwps[(int)num_per.Value-2][i].id==(ushort)MAVLink.MAV_CMD.WAYPOINT || 
+                                    per_locationwps[(int)num_per.Value - 2][i].id == (ushort)MAVLink.MAV_CMD.LOITER_TURNS)
+                                {
+
+                                    InsertCommand(0, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
+                                        per_locationwps[(int)num_per.Value - 2][i].lng,
+                                        per_locationwps[(int)num_per.Value - 2][i].lat,
+                                        per_locationwps[(int)num_per.Value - 2][i].alt);
+                                    break;
+                                }
                             }
                         }
-
                     }
                 }
                 if(GetCommandList()[Commands.Rows.Count-1].id==(ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
@@ -7957,11 +7981,21 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                     {
                         if((int)num_per.Value<num_per.Maximum)
                         {
-                            InsertCommand(Commands.Rows.Count, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,                               
-                                per_locationwps[(int)num_per.Value][0].lng,
-                                per_locationwps[(int)num_per.Value][0].lat,
-                                per_locationwps[(int)num_per.Value][0].alt);
-                            InsertCommand(Commands.Rows.Count+1, MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
+                           
+                            for(int i=0;i<per_locationwps[(int)num_per.Value].Count;i++)
+                            {
+                                if(per_locationwps[(int)num_per.Value][i].id==(ushort)MAVLink.MAV_CMD.WAYPOINT)
+                                {
+                                    InsertCommand(Commands.Rows.Count, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
+                                        per_locationwps[(int)num_per.Value][i].lng,
+                                        per_locationwps[(int)num_per.Value][i].lat,
+                                        per_locationwps[(int)num_per.Value][i].alt);
+                                    break;
+                                }
+                            }
+
+                            InsertCommand(Commands.Rows.Count, MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
+
                         }
                     }
                 }
