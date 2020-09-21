@@ -7324,7 +7324,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             //var _list = GetCommandList();
             // updown_angle.Value=MainV2.comPort.
             int numno;
-            if (MainV2.comPort.BaseStream.IsOpen) 
+            if (MainV2.comPort.BaseStream.IsOpen&&gpb_takeoffandland.Visible==true) 
             { 
                 if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduPlane)
                 {
@@ -7435,7 +7435,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                     }
                     else
                     {
-                        MessageBox.Show("请规划航线后添加起降！");
+                        CustomMessageBox.Show("请规划航线后添加起降！",Strings.Warning);
                     }
                 }
                 if (MainV2.comPort.MAV.cs.firmware==Firmwares.ArduCopter2)
@@ -7465,13 +7465,13 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                        }
                     else
                     {
-                        MessageBox.Show("请规划航线后添加起降！");
+                        CustomMessageBox.Show("请规划航线后添加起降！",Strings.Warning);
                     }
                 }
             }
             else
             {
-                MessageBox.Show("请连接飞控！");
+                CustomMessageBox.Show("请连接飞控并点击刷新！！！",Strings.Warning);
             }
         }
 
@@ -7508,7 +7508,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             }
             else
             {
-                MessageBox.Show("请连接飞控！");
+                CustomMessageBox.Show("请连接飞控！",Strings.Warning);
             }
         }
 
@@ -7525,6 +7525,8 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             //TXT_homealt.Text = MainV2.comPort.MAV.cs.altasl2.ToString();
             TXT_homealt.Text = (srtm.getAltitude(MainV2.comPort.MAV.cs.lat, MainV2.comPort.MAV.cs.lng).alt * CurrentState.multiplieralt).ToString();
         }
+
+        [Obsolete]
         private void refresh_updown_Click(object sender, EventArgs e)
         {
             //reset angle  
@@ -7532,7 +7534,27 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             //updown_angle.Value=(int)GCSViews.FlightData.myhud.current;
             //reset home
             if (MainV2.comPort.BaseStream.IsOpen)
-            { 
+            {
+                var flytime =MainV2.comPort.GetParam("STAT_FLTTIME") / 3600;
+                lbl_flytimenum.Text=flytime.ToString("0.##");
+                if (flytime > 200.00)
+                {
+                    CustomMessageBox.Show("飞行时间超过200小时，请返厂保养", Strings.Warning);
+                    lbl_flytime.ForeColor = Color.Yellow;
+                    lbl_flytimenum.ForeColor = Color.Yellow;
+                    if(flytime>300.00)
+                    {
+                        lbl_flytime.ForeColor = Color.Red;
+                        lbl_flytimenum.ForeColor = Color.Red;
+                        return;
+                    }
+                    
+                }else
+                {
+                    ThemeManager.ApplyThemeTo(lbl_flytime);
+                    ThemeManager.ApplyThemeTo(lbl_flytimenum);
+                }
+
                 if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduPlane)
                 {
                     TXT_WPRad.Text = "50";
@@ -7580,6 +7602,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             else
             {
                 gpb_takeoffandland.Visible = false;
+                lbl_flytimenum.Text = "0.00";
             }
             writeKML();
 
