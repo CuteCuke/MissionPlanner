@@ -5728,15 +5728,15 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
 
         public void switchDockingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (panelAction.Dock == DockStyle.Bottom)
+            if (panelWaypoints.Dock != DockStyle.Bottom)
             {
-                panelAction.Dock = DockStyle.Right;
+                //panelAction.Dock = DockStyle.Right;
                 panelWaypoints.Dock = DockStyle.Bottom;
             }
             else
             {
-                panelAction.Dock = DockStyle.Bottom;
-                panelAction.Height = 120;
+                //panelAction.Dock = DockStyle.Bottom;
+                //panelAction.Height = 120;
                 panelWaypoints.Dock = DockStyle.Right;
                 panelWaypoints.Width = Width / 2;
             }
