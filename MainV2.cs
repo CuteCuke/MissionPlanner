@@ -4885,6 +4885,9 @@ namespace MissionPlanner
                                 {
                                     wpdata.lat = return_now_lat;
                                     wpdata.lng = return_now_lng;
+                                    wpdata.id = (ushort)MAVLink.MAV_CMD.WAYPOINT;
+                                    wpdata.p1 = 0;
+                                    wpdata.p3 = 0;
                                     return_now_lat = 0;
                                     return_now_lng = 0;//用完归0
                                 }

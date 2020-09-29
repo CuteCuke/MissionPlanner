@@ -28,6 +28,7 @@ namespace MissionPlanner.SimpleGrid
         GMapPolygon wppoly;
         private GridPlugin plugin;
         List<PointLatLngAlt> grid;
+      //  List<PointLatLng> listpoly = new List<PointLatLng>();
 
         public GridUI(GridPlugin plugin)
         {
@@ -46,7 +47,9 @@ namespace MissionPlanner.SimpleGrid
 
             // set and angle that is good
             list = new List<PointLatLngAlt>();
-            plugin.Host.FPDrawnPolygon.Points.ForEach(x => { list.Add(x); });
+            plugin.Host.FPDrawnPolygon.Points.ForEach(x => { list.Add(x);
+                //listpoly.Add(x);
+            });
             NUM_angle.Value = (decimal)((getAngleOfLongestSide(list) + 360) % 360);
 
             // Map Events
@@ -348,7 +351,7 @@ namespace MissionPlanner.SimpleGrid
 
             Console.WriteLine("Poly Dist " + wppoly.Distance);
 
-            lbl_area.Text = (calcpolygonarea(plugin.Host.FPDrawnPolygon.Points)/1000000).ToString("f6") + " km^2";
+            lbl_area.Text = (calcpolygonarea(list) /1000000).ToString("f6") + " km^2";
 
             if(chk_markers.Checked==true)
                 lbl_distance.Text = (wppoly.Distance + ((double)loiter_r.Value * Math.PI * 2 * a) / 1000).ToString("0.##") + " km";
@@ -365,7 +368,7 @@ namespace MissionPlanner.SimpleGrid
 
         }
 
-        double calcpolygonarea(List<PointLatLng> polygon)
+        double calcpolygonarea(List<PointLatLngAlt> polygon)
         {
             // should be a closed polygon
             // coords are in lat long
@@ -373,7 +376,7 @@ namespace MissionPlanner.SimpleGrid
 
             if (polygon.Count == 0)
             {
-                CustomMessageBox.Show("Please define a polygon!");
+                CustomMessageBox.Show("请绘制一个多边形!");
                 return 0;
             }
 
@@ -411,7 +414,7 @@ namespace MissionPlanner.SimpleGrid
             if (polygon[0] == polygon[polygon.Count - 1])
                 polygon.RemoveAt(polygon.Count - 1); // unmake a full loop
 
-            return Math.Abs( answer);
+            return Math.Abs(answer);
         }
 
         private void BUT_Accept_Click(object sender, EventArgs e)

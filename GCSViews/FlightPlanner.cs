@@ -1337,7 +1337,7 @@ namespace MissionPlanner.GCSViews
                     try
                     {
                         if (TXT_WPRad.Text == "") TXT_WPRad.Text = "5";
-                        if (TXT_loiterrad.Text == "") TXT_loiterrad.Text = "30";
+                        if (TXT_loiterrad.Text == "") TXT_loiterrad.Text = "5";
 
                         overlay.CreateOverlay(home,
                             commandlist,
@@ -7558,6 +7558,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                 if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduPlane)
                 {
                     TXT_WPRad.Text = "50";
+
                     refreshhome();
                     gpb_takeoffandland.Visible = true;
                     gpb_takeoffandland.Height = 277;
@@ -7577,6 +7578,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                 else if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
                 { 
                     TXT_WPRad.Text = "2";
+                    TXT_loiterrad.Text = vtol_takeoff_alt.Value.ToString();
                     refreshhome();
                     gpb_takeoffandland.Visible = true;
                     gpb_takeoffandland.Height = 130;
@@ -7603,6 +7605,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             {
                 gpb_takeoffandland.Visible = false;
                 lbl_flytimenum.Text = "0.00";
+                CustomMessageBox.Show("请连接飞机后，点击刷新！！！");
             }
             writeKML();
 
@@ -7615,7 +7618,14 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
         {
             if (chk_imitation.Checked && !ischk_imitation)
             {
+                
                 ischk_imitation = true;
+                if (!tag_updownwp)
+                {
+                    CustomMessageBox.Show("请添加起降后，勾选仿地飞行！！！");
+                    return;
+                    
+                }
                 var list = GetCommandList();
                 //currentaltmode = altmode.Terrain;
                 CMB_altmode.SelectedIndex = 2;
@@ -7633,14 +7643,14 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                         if (double.Parse(Commands.Rows[i].Cells[Dist.Index].Value.ToString()) >= insertwpdist * 2 && Commands.Rows[i].Cells[Command.Index].Value.ToString() == MAVLink.MAV_CMD.WAYPOINT.ToString())
                         {
                             imitationwpno.Add(i);
-                            imitationwpdist.Add(double.Parse(Commands.Rows[i].Cells[Dist.Index].Value.ToString()));//统计与前点距离超过300m的点    并在之中添加wp
+                            imitationwpdist.Add(double.Parse(Commands.Rows[i].Cells[Dist.Index].Value.ToString()));//统计与前点距离超过wpdist的点    并在之中添加wp
                         }
                     }
                 }
                 int count = 0;
                 for (int i = 0; i < imitationwpno.Count; i++)
                 {
-                    int n = (int)Math.Floor(imitationwpdist[i] / insertwpdist);//按距离150分段
+                    int n = (int)Math.Floor(imitationwpdist[i] / insertwpdist);//按距离分段
                     double lat = list[imitationwpno[i]].lat;
                     double lng = list[imitationwpno[i]].lng;
                     double lastlat = 0;
@@ -7698,12 +7708,12 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                     }
                 }
             }
-            else if (ischk_imitation)
+            else if (ischk_imitation&&tag_updownwp)
             {
-                //currentaltmode = altmode.Relative;
+                ischk_imitation = false;//currentaltmode = altmode.Relative;              
                 CMB_altmode.SelectedIndex = 0;
                 currentaltmode = (altmode)CMB_altmode.SelectedValue;
-                ischk_imitation = false;
+                
                 imitationwpno.Clear();
                 imitationwpdist.Clear();
                 if (Commands.Rows.Count > 0)
