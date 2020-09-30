@@ -1045,8 +1045,8 @@ namespace MissionPlanner.Grid
             double viewwidth = (sensorwidth * flscale / 1000);
             double viewheight = (sensorheight * flscale / 1000);
 
-            float fovh1 = (float)(Math.Atan(sensorwidth / (2 * focallen)) * rad2deg * 2);
-            float fovv1 = (float)(Math.Atan(sensorheight / (2 * focallen)) * rad2deg * 2);
+            //float fovh1 = (float)(Math.Atan(sensorwidth / (2 * focallen)) * rad2deg * 2);
+            //float fovv1 = (float)(Math.Atan(sensorheight / (2 * focallen)) * rad2deg * 2);
 
             fovh = viewwidth;
             fovv = viewheight;

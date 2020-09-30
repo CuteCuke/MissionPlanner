@@ -310,8 +310,8 @@ namespace MissionPlanner.GCSViews
             }
             else
             {
-                // CMB_altmode.Visible = true;
-                CMB_altmode.Visible = false;
+                 CMB_altmode.Visible = true;
+                //CMB_altmode.Visible = false;
             }
 
             // hide spline wp options if not arducopter

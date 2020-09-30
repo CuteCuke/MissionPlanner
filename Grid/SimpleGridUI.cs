@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.SqlTypes;
 using System.Drawing;
+using System.IO;
 using System.Reflection;
+using System.Text;
 using System.Windows.Forms;
+using System.Xml;
 using GeoAPI.CoordinateSystems;
 using GeoAPI.CoordinateSystems.Transformations;
 using GMap.NET;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 using log4net;
+using MissionPlanner.Grid;
 using MissionPlanner.Plugin;
 using MissionPlanner.Utilities;
 using ProjNet.CoordinateSystems;
@@ -28,7 +33,12 @@ namespace MissionPlanner.SimpleGrid
         GMapPolygon wppoly;
         private GridPlugin plugin;
         List<PointLatLngAlt> grid;
-      //  List<PointLatLng> listpoly = new List<PointLatLng>();
+        public string DistUnits = "";
+        public string inchpixel = "";
+        public string feet_fovH = "";
+        public string feet_fovV = "";
+        Dictionary<string, camerainfo> cameras = new Dictionary<string, camerainfo>();
+        //  List<PointLatLng> listpoly = new List<PointLatLng>();
 
         public GridUI(GridPlugin plugin)
         {
@@ -58,6 +68,10 @@ namespace MissionPlanner.SimpleGrid
             map.MouseUp += new MouseEventHandler(map_MouseUp);
             map.MouseDown += new System.Windows.Forms.MouseEventHandler(this.map_MouseDown);
             map.MouseMove += new System.Windows.Forms.MouseEventHandler(this.map_MouseMove);
+
+            xmlcamera(false, Settings.GetRunningDirectory() + "camerasBuiltin.xml");
+
+            xmlcamera(false, Settings.GetUserDataDirectory() + "cameras.xml");
         }
 
         void loadsettings()
@@ -281,6 +295,11 @@ namespace MissionPlanner.SimpleGrid
 
         private void domainUpDown1_ValueChanged(object sender, EventArgs e)
         {
+            if (CMB_camera.Text != "")
+            {
+                doCalc();
+            }
+
             Host2 = plugin.Host;
 
             grid = Utilities.Grid.CreateGrid(list, (double) NUM_altitude.Value, (double) NUM_Distance.Value,
@@ -361,6 +380,7 @@ namespace MissionPlanner.SimpleGrid
 
             lbl_strips.Text = ((int)(strips / 2)).ToString();
             lbl_distbetweenlines.Text = NUM_Distance.Value.ToString("0.##") + " m";
+            lbl_homeres.Text = TXT_cmpixel.Text + " cm/pixel";
 
                 map.HoldInvalidation = false;
 
@@ -419,6 +439,7 @@ namespace MissionPlanner.SimpleGrid
 
         private void BUT_Accept_Click(object sender, EventArgs e)
         {
+           
             if (grid != null && grid.Count > 0)
             {
                 MainV2.instance.FlightPlanner.quickadd = true;
@@ -489,14 +510,274 @@ namespace MissionPlanner.SimpleGrid
                 gb_set.Visible = false;
             }
         }
-
+        private double cam35mmxy_circlecenterdist_120m = 1.231896;//以35mm a7r 镜头在120m高度 照片区域直径与圆心距离比值做参考
         private void num_alt_ValueChanged(object sender, EventArgs e)
         {
             NUM_altitude.Value = num_alt.Value;
-            NUM_Distance.Value = num_alt.Value;
-            NUM_spacing.Value = num_alt.Value;
+            //NUM_Distance.Value = num_alt.Value;
+            //NUM_spacing.Value = num_alt.Value;
             loiter_r.Value = num_alt.Value;
+            if(CMB_camera.Text=="")
+            {
+                NUM_Distance.Value = num_alt.Value;
+                NUM_spacing.Value = num_alt.Value;
+            }
+            else
+            {
+                NUM_Distance.Value = (decimal)circledist(double.Parse(TXT_fovH.Text)/2,double.Parse (TXT_fovV.Text)/2);
+                NUM_spacing.Value = (decimal)circledist(double.Parse(TXT_fovH.Text)/2, double.Parse(TXT_fovV.Text) / 2);
+            }
             domainUpDown1_ValueChanged(sender, e);
+        }
+        double circledist (double x,double y)
+        {
+            x = x * x;
+            y = y * y;
+            double d=Math.Sqrt(x + y);
+            d = d * 2 / cam35mmxy_circlecenterdist_120m;
+            return Math.Round(d);
+        }
+        private void CMB_camera_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cameras.ContainsKey(CMB_camera.Text))
+            {
+                camerainfo camera = cameras[CMB_camera.Text];
+
+                NUM_focallength.Value = (decimal)camera.focallen;
+                TXT_imgheight.Text = camera.imageheight.ToString();
+                TXT_imgwidth.Text = camera.imagewidth.ToString();
+                TXT_sensheight.Text = camera.sensorheight.ToString();
+                TXT_senswidth.Text = camera.sensorwidth.ToString();
+
+                //NUM_Distance.Enabled = false;
+            }
+            // GMapMarkerOverlap.Clear();
+            //num_alt_ValueChanged(null, null);
+            domainUpDown1_ValueChanged(null, null);
+            if (CMB_camera.Text == "")
+            {
+                NUM_Distance.Value = num_alt.Value;
+                NUM_spacing.Value = num_alt.Value;
+            }
+            else
+            {
+                NUM_Distance.Value = (decimal)circledist(double.Parse(TXT_fovH.Text) / 2, double.Parse(TXT_fovV.Text) / 2);
+                NUM_spacing.Value = (decimal)circledist(double.Parse(TXT_fovH.Text) / 2, double.Parse(TXT_fovV.Text) / 2);
+            }
+        }
+        private void xmlcamera(bool write, string filename)
+        {
+            bool exists = File.Exists(filename);
+
+            if (write || !exists)
+            {
+                try
+                {
+                    XmlTextWriter xmlwriter = new XmlTextWriter(filename, Encoding.ASCII);
+                    xmlwriter.Formatting = Formatting.Indented;
+
+                    xmlwriter.WriteStartDocument();
+
+                    xmlwriter.WriteStartElement("Cameras");
+
+                    foreach (string key in cameras.Keys)
+                    {
+                        try
+                        {
+                            if (key == "")
+                                continue;
+                            xmlwriter.WriteStartElement("Camera");
+                            xmlwriter.WriteElementString("name", cameras[key].name);
+                            xmlwriter.WriteElementString("flen", cameras[key].focallen.ToString(new System.Globalization.CultureInfo("en-US")));
+                            xmlwriter.WriteElementString("imgh", cameras[key].imageheight.ToString(new System.Globalization.CultureInfo("en-US")));
+                            xmlwriter.WriteElementString("imgw", cameras[key].imagewidth.ToString(new System.Globalization.CultureInfo("en-US")));
+                            xmlwriter.WriteElementString("senh", cameras[key].sensorheight.ToString(new System.Globalization.CultureInfo("en-US")));
+                            xmlwriter.WriteElementString("senw", cameras[key].sensorwidth.ToString(new System.Globalization.CultureInfo("en-US")));
+                            xmlwriter.WriteEndElement();
+                        }
+                        catch { }
+                    }
+
+                    xmlwriter.WriteEndElement();
+
+                    xmlwriter.WriteEndDocument();
+                    xmlwriter.Close();
+
+                }
+                catch (Exception ex) { CustomMessageBox.Show(ex.ToString()); }
+            }
+            else
+            {
+                try
+                {
+                    using (XmlTextReader xmlreader = new XmlTextReader(filename))
+                    {
+                        while (xmlreader.Read())
+                        {
+                            xmlreader.MoveToElement();
+                            try
+                            {
+                                switch (xmlreader.Name)
+                                {
+                                    case "Camera":
+                                        {
+                                            camerainfo camera = new camerainfo();
+
+                                            while (xmlreader.Read())
+                                            {
+                                                bool dobreak = false;
+                                                xmlreader.MoveToElement();
+                                                switch (xmlreader.Name)
+                                                {
+                                                    case "name":
+                                                        camera.name = xmlreader.ReadString();
+                                                        break;
+                                                    case "imgw":
+                                                        camera.imagewidth = float.Parse(xmlreader.ReadString(), new System.Globalization.CultureInfo("en-US"));
+                                                        break;
+                                                    case "imgh":
+                                                        camera.imageheight = float.Parse(xmlreader.ReadString(), new System.Globalization.CultureInfo("en-US"));
+                                                        break;
+                                                    case "senw":
+                                                        camera.sensorwidth = float.Parse(xmlreader.ReadString(), new System.Globalization.CultureInfo("en-US"));
+                                                        break;
+                                                    case "senh":
+                                                        camera.sensorheight = float.Parse(xmlreader.ReadString(), new System.Globalization.CultureInfo("en-US"));
+                                                        break;
+                                                    case "flen":
+                                                        camera.focallen = float.Parse(xmlreader.ReadString(), new System.Globalization.CultureInfo("en-US"));
+                                                        break;
+                                                    case "Camera":
+                                                        cameras[camera.name] = camera;
+                                                        dobreak = true;
+                                                        break;
+                                                }
+                                                if (dobreak)
+                                                    break;
+                                            }
+                                            string temp = xmlreader.ReadString();
+                                        }
+                                        break;
+                                    case "Config":
+                                        break;
+                                    case "xml":
+                                        break;
+                                    default:
+                                        if (xmlreader.Name == "") // line feeds
+                                            break;
+                                        //config[xmlreader.Name] = xmlreader.ReadString();
+                                        break;
+                                }
+                            }
+                            catch (Exception ee) { Console.WriteLine(ee.Message); } // silent fail on bad entry
+                        }
+                    }
+                }
+                catch (Exception ex) { Console.WriteLine("Bad Camera File: " + ex.ToString()); } // bad config file
+
+                // populate list
+                foreach (var camera in cameras.Values)
+                {
+                    if (!CMB_camera.Items.Contains(camera.name))
+                        CMB_camera.Items.Add(camera.name);
+                }
+            }
+        }
+
+        private void BUT_save_Click(object sender, EventArgs e)
+        {
+            camerainfo camera = new camerainfo();
+
+            string camname = "Default";
+
+            if (MissionPlanner.Controls.InputBox.Show("Camera Name", "Please and a camera name", ref camname) != System.Windows.Forms.DialogResult.OK)
+                return;
+
+            CMB_camera.Text = camname;
+
+            // check if camera exists alreay
+            if (cameras.ContainsKey(CMB_camera.Text))
+            {
+                camera = cameras[CMB_camera.Text];
+            }
+            else
+            {
+                cameras.Add(CMB_camera.Text, camera);
+            }
+
+            try
+            {
+                camera.name = CMB_camera.Text;
+                camera.focallen = (float)NUM_focallength.Value;
+                camera.imageheight = float.Parse(TXT_imgheight.Text);
+                camera.imagewidth = float.Parse(TXT_imgwidth.Text);
+                camera.sensorheight = float.Parse(TXT_sensheight.Text);
+                camera.sensorwidth = float.Parse(TXT_senswidth.Text);
+            }
+            catch { CustomMessageBox.Show("One of your entries is not a valid number"); return; }
+
+            cameras[CMB_camera.Text] = camera;
+
+            xmlcamera(true, Settings.GetUserDataDirectory() + "cameras.xml");
+        }
+        void doCalc()
+        {
+            try
+            {
+                // entered values
+                float flyalt = (float)CurrentState.fromDistDisplayUnit((float)NUM_altitude.Value);
+                int imagewidth = int.Parse(TXT_imgwidth.Text);
+                int imageheight = int.Parse(TXT_imgheight.Text);
+              
+
+                double viewwidth = 0;
+                double viewheight = 0;
+
+                getFOV(flyalt, ref viewwidth, ref viewheight);
+
+
+                TXT_fovH.Text = viewwidth.ToString("#.#");
+                TXT_fovV.Text = viewheight.ToString("#.#");
+                // Imperial
+                feet_fovH = (viewwidth * 3.2808399f).ToString("#.#");
+                feet_fovV = (viewheight * 3.2808399f).ToString("#.#");
+
+                //    mm  / pixels * 100
+                TXT_cmpixel.Text = ((viewheight / imageheight) * 100*Math.Sqrt(2)).ToString("0.00");
+                // Imperial
+                inchpixel = (((viewheight / imageheight) * 100) * 0.393701).ToString("0.00 inches");
+
+                
+            }
+            catch { return; }
+        }
+        void getFOV(double flyalt, ref double fovh, ref double fovv)
+        {
+            double focallen = (double)NUM_focallength.Value;
+            double sensorwidth = double.Parse(TXT_senswidth.Text);
+            double sensorheight = double.Parse(TXT_sensheight.Text);
+
+            // scale      mm / mm
+            double flscale = (1000 * flyalt) / focallen;
+
+            //   mm * mm / 1000
+            double viewwidth = (sensorwidth * flscale / 1000);
+            double viewheight = (sensorheight * flscale / 1000);
+
+            float fovh1 = (float)(Math.Atan(sensorwidth / (2 * focallen)) * rad2deg * 2);
+            float fovv1 = (float)(Math.Atan(sensorheight / (2 * focallen)) * rad2deg * 2);
+
+            fovh = viewwidth;
+            fovv = viewheight;
+        }
+        void getFOVangle(ref double fovh, ref double fovv)
+        {
+            double focallen = (double)NUM_focallength.Value;
+            double sensorwidth = double.Parse(TXT_senswidth.Text);
+            double sensorheight = double.Parse(TXT_sensheight.Text);
+
+            fovh = (float)(Math.Atan(sensorwidth / (2 * focallen)) * rad2deg * 2);
+            fovv = (float)(Math.Atan(sensorheight / (2 * focallen)) * rad2deg * 2);
         }
     }
 }
