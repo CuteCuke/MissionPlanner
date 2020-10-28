@@ -109,7 +109,8 @@ namespace MissionPlanner.GCSViews
         private bool isMouseDraging;
         private bool ischk_imitation = false; //是否仿地飞行
         public double wp_distance;//绘制的航线距离
-       // public bool mv_return_chk_is_imitation = false;
+                                  // public bool mv_return_chk_is_imitation = false;
+        private double circlewpdist = 0;
         public GMapOverlay kmlpolygonsoverlay;
         public bool tag_updownwp = false;    //起降航点添加标记
         /// <summary>
@@ -1361,13 +1362,13 @@ namespace MissionPlanner.GCSViews
                     MainMap.Overlays.Insert(1, overlay.overlay);
 
                     overlay.overlay.ForceUpdate();
-
-                    lbl_distance.Text = "航线直线" + rm.GetString("lbl_distance.Text") + ": " +
+                    loiterwpdist();
+                    lbl_distance.Text = "航线" + rm.GetString("lbl_distance.Text") + ": " +
                                                        FormatDistance((
                                                                           overlay.route.Points.Select(a => (PointLatLngAlt)a)
                                                                               .Aggregate(0.0, (d, p1, p2) => d + p1.GetDistance(p2)) +
                                                                           overlay.homeroute.Points.Select(a => (PointLatLngAlt)a)
-                                                                              .Aggregate(0.0, (d, p1, p2) => d + p1.GetDistance(p2))) /
+                                                                              .Aggregate(0.0, (d, p1, p2) => d + p1.GetDistance(p2))+circlewpdist) /
                                                                       1000.0, false);
 
                     setgradanddistandaz(overlay.pointlist, home);
@@ -1490,6 +1491,18 @@ namespace MissionPlanner.GCSViews
             catch (FormatException ex)
             {
                 CustomMessageBox.Show(Strings.InvalidNumberEntered + "\n" + ex.Message, Strings.ERROR);
+            }
+        }
+        private void loiterwpdist()
+        {
+            circlewpdist = 0;
+            var list = GetCommandList();
+            for(int i=0;i<list.Count;i++)
+            {
+                if(list[i].id==(ushort)MAVLink.MAV_CMD.LOITER_TURNS)
+                {
+                    circlewpdist += list[i].p1 * 2 * Math.PI * list[i].p3;
+                }
             }
         }
 
@@ -7753,8 +7766,9 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             {
                 btn_per.Visible = true;
                 num_per.Visible = true;
+                loiterwpdist();
                 wp_distance= (overlay.route.Points.Select(a => (PointLatLngAlt)a).Aggregate(0.0, (d, p1, p2) => d + p1.GetDistance(p2))
-                    +overlay.homeroute.Points.Select(a => (PointLatLngAlt)a).Aggregate(0.0, (d, p1, p2) => d + p1.GetDistance(p2))) /1000.0;
+                    +overlay.homeroute.Points.Select(a => (PointLatLngAlt)a).Aggregate(0.0, (d, p1, p2) => d + p1.GetDistance(p2))+circlewpdist) /1000.0;
                 //GetCommandList();
                 locationwps.Clear();
                 per_locationwps.Clear();

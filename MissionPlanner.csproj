@@ -146,6 +146,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="CoordConvertDLL\CoordConvertDLL.csproj">
+      <Project>{0705d465-925a-497b-9386-1bfe32c2b88d}</Project>
+      <Name>CoordConvertDLL</Name>
+    </ProjectReference>
     <ProjectReference Include="ExtLibs\alglibnet\alglibnet.csproj">
       <Project>{b994d8d2-c052-4616-9d20-386640c7387f}</Project>
       <Name>alglibnet</Name>
@@ -554,6 +558,12 @@
     <Compile Include="Joystick\JoystickAxis.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Log\Coordinateconvert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Log\Coordinateconvert.Designer.cs">
+      <DependentUpon>Coordinateconvert.cs</DependentUpon>
+    </Compile>
     <Compile Include="Log\MavlinkLogBase.cs" />
     <Compile Include="MainV2.cs">
       <SubType>Form</SubType>
@@ -829,6 +839,9 @@
       <DependentUpon>SimpleGridUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Joystick\JoystickAxis.resx" />
+    <EmbeddedResource Include="Log\Coordinateconvert.resx">
+      <DependentUpon>Coordinateconvert.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Log\LogStrings.resx">
       <DependentUpon>LogStrings.cs</DependentUpon>
     </EmbeddedResource>

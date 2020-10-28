@@ -40,26 +40,26 @@ namespace MissionPlanner.Log
             this.splitContainerZgGrid = new System.Windows.Forms.SplitContainer();
             this.splitContainerZgMap = new System.Windows.Forms.SplitContainer();
             this.zg1 = new ZedGraph.ZedGraphControl();
+            this.BUT_Graphit_R = new MissionPlanner.Controls.MyButton();
+            this.BUT_removeitem = new MissionPlanner.Controls.MyButton();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.myGMAP1 = new MissionPlanner.Controls.myGMAP();
             this.splitContainerButGrid = new System.Windows.Forms.SplitContainer();
+            this.export_pos = new MissionPlanner.Controls.MyButton();
             this.chk_events = new System.Windows.Forms.CheckBox();
             this.chk_datagrid = new System.Windows.Forms.CheckBox();
             this.chk_msg = new System.Windows.Forms.CheckBox();
             this.chk_errors = new System.Windows.Forms.CheckBox();
             this.chk_mode = new System.Windows.Forms.CheckBox();
-            this.BUT_Graphit_R = new MissionPlanner.Controls.MyButton();
             this.chk_time = new System.Windows.Forms.CheckBox();
             this.CHK_map = new System.Windows.Forms.CheckBox();
             this.CMB_preselect = new System.Windows.Forms.ComboBox();
-            this.BUT_removeitem = new MissionPlanner.Controls.MyButton();
-            this.dataGridView1 = new MissionPlanner.Controls.MyDataGridView();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.splitContainerAllTree = new System.Windows.Forms.SplitContainer();
-            this.export_pos = new MissionPlanner.Controls.MyButton();
+            this.dataGridView1 = new MissionPlanner.Controls.MyDataGridView();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerZgGrid)).BeginInit();
             this.splitContainerZgGrid.Panel1.SuspendLayout();
@@ -73,11 +73,11 @@ namespace MissionPlanner.Log
             this.splitContainerButGrid.Panel1.SuspendLayout();
             this.splitContainerButGrid.Panel2.SuspendLayout();
             this.splitContainerButGrid.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerAllTree)).BeginInit();
             this.splitContainerAllTree.Panel1.SuspendLayout();
             this.splitContainerAllTree.Panel2.SuspendLayout();
             this.splitContainerAllTree.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -138,6 +138,9 @@ namespace MissionPlanner.Log
             // splitContainerZgMap.Panel1
             // 
             this.splitContainerZgMap.Panel1.Controls.Add(this.zg1);
+            this.splitContainerZgMap.Panel1.Controls.Add(this.BUT_Graphit_R);
+            this.splitContainerZgMap.Panel1.Controls.Add(this.BUT_removeitem);
+            this.splitContainerZgMap.Panel1.Controls.Add(this.BUT_Graphit);
             // 
             // splitContainerZgMap.Panel2
             // 
@@ -164,6 +167,20 @@ namespace MissionPlanner.Log
             this.zg1.ZoomEvent += new ZedGraph.ZedGraphControl.ZoomEventHandler(this.zg1_ZoomEvent);
             this.zg1.MouseMoveEvent += new ZedGraph.ZedGraphControl.ZedMouseEventHandler(this.zg1_MouseMoveEvent);
             this.zg1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.zg1_MouseDoubleClick);
+            // 
+            // BUT_Graphit_R
+            // 
+            resources.ApplyResources(this.BUT_Graphit_R, "BUT_Graphit_R");
+            this.BUT_Graphit_R.Name = "BUT_Graphit_R";
+            this.BUT_Graphit_R.UseVisualStyleBackColor = true;
+            this.BUT_Graphit_R.Click += new System.EventHandler(this.BUT_Graphit_R_Click);
+            // 
+            // BUT_removeitem
+            // 
+            resources.ApplyResources(this.BUT_removeitem, "BUT_removeitem");
+            this.BUT_removeitem.Name = "BUT_removeitem";
+            this.BUT_removeitem.UseVisualStyleBackColor = true;
+            this.BUT_removeitem.Click += new System.EventHandler(this.BUT_removeitem_Click);
             // 
             // label4
             // 
@@ -232,22 +249,26 @@ namespace MissionPlanner.Log
             this.splitContainerButGrid.Panel1.Controls.Add(this.export_pos);
             this.splitContainerButGrid.Panel1.Controls.Add(this.chk_events);
             this.splitContainerButGrid.Panel1.Controls.Add(this.chk_datagrid);
-            this.splitContainerButGrid.Panel1.Controls.Add(this.BUT_Graphit);
             this.splitContainerButGrid.Panel1.Controls.Add(this.chk_msg);
             this.splitContainerButGrid.Panel1.Controls.Add(this.BUT_cleargraph);
             this.splitContainerButGrid.Panel1.Controls.Add(this.chk_errors);
             this.splitContainerButGrid.Panel1.Controls.Add(this.BUT_loadlog);
             this.splitContainerButGrid.Panel1.Controls.Add(this.chk_mode);
-            this.splitContainerButGrid.Panel1.Controls.Add(this.BUT_Graphit_R);
             this.splitContainerButGrid.Panel1.Controls.Add(this.chk_time);
             this.splitContainerButGrid.Panel1.Controls.Add(this.CHK_map);
             this.splitContainerButGrid.Panel1.Controls.Add(this.CMB_preselect);
-            this.splitContainerButGrid.Panel1.Controls.Add(this.BUT_removeitem);
             // 
             // splitContainerButGrid.Panel2
             // 
             this.splitContainerButGrid.Panel2.Controls.Add(this.dataGridView1);
             this.splitContainerButGrid.Panel2Collapsed = true;
+            // 
+            // export_pos
+            // 
+            resources.ApplyResources(this.export_pos, "export_pos");
+            this.export_pos.Name = "export_pos";
+            this.export_pos.UseVisualStyleBackColor = true;
+            this.export_pos.Click += new System.EventHandler(this.export_pos_Click);
             // 
             // chk_events
             // 
@@ -292,13 +313,6 @@ namespace MissionPlanner.Log
             this.chk_mode.UseVisualStyleBackColor = true;
             this.chk_mode.CheckedChanged += new System.EventHandler(this.chk_mode_CheckedChanged);
             // 
-            // BUT_Graphit_R
-            // 
-            resources.ApplyResources(this.BUT_Graphit_R, "BUT_Graphit_R");
-            this.BUT_Graphit_R.Name = "BUT_Graphit_R";
-            this.BUT_Graphit_R.UseVisualStyleBackColor = true;
-            this.BUT_Graphit_R.Click += new System.EventHandler(this.BUT_Graphit_R_Click);
-            // 
             // chk_time
             // 
             resources.ApplyResources(this.chk_time, "chk_time");
@@ -322,28 +336,6 @@ namespace MissionPlanner.Log
             resources.ApplyResources(this.CMB_preselect, "CMB_preselect");
             this.CMB_preselect.Name = "CMB_preselect";
             this.CMB_preselect.SelectedIndexChanged += new System.EventHandler(this.CMB_preselect_SelectedIndexChanged);
-            // 
-            // BUT_removeitem
-            // 
-            resources.ApplyResources(this.BUT_removeitem, "BUT_removeitem");
-            this.BUT_removeitem.Name = "BUT_removeitem";
-            this.BUT_removeitem.UseVisualStyleBackColor = true;
-            this.BUT_removeitem.Click += new System.EventHandler(this.BUT_removeitem_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
-            resources.ApplyResources(this.dataGridView1, "dataGridView1");
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-            this.dataGridView1.CellValueNeeded += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.dataGridView1_CellValueNeeded);
-            this.dataGridView1.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
-            this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
             // 
             // treeView1
             // 
@@ -371,12 +363,20 @@ namespace MissionPlanner.Log
             // 
             this.splitContainerAllTree.Panel2.Controls.Add(this.treeView1);
             // 
-            // export_pos
+            // dataGridView1
             // 
-            resources.ApplyResources(this.export_pos, "export_pos");
-            this.export_pos.Name = "export_pos";
-            this.export_pos.UseVisualStyleBackColor = true;
-            this.export_pos.Click += new System.EventHandler(this.export_pos_Click);
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
+            resources.ApplyResources(this.dataGridView1, "dataGridView1");
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            this.dataGridView1.CellValueNeeded += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.dataGridView1_CellValueNeeded);
+            this.dataGridView1.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
+            this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
             // 
             // LogBrowse
             // 
@@ -401,11 +401,11 @@ namespace MissionPlanner.Log
             this.splitContainerButGrid.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerButGrid)).EndInit();
             this.splitContainerButGrid.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.splitContainerAllTree.Panel1.ResumeLayout(false);
             this.splitContainerAllTree.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerAllTree)).EndInit();
             this.splitContainerAllTree.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }

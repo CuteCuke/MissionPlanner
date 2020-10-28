@@ -306,7 +306,7 @@
         </AHRS_TRIM_Z>
         <AHRS_WIND_MAX>
             <DisplayName>Maximum wind</DisplayName>
-            <Description>允许的空速和地面速度之间的最大差值。这使得飞机能够应对故障的空速传感器。值为零表示按原样使用空速。</Description>
+            <Description>设置地速和空速之间的最大允许差。这使得飞机能够应付失灵的空速传感器。值为零意味着飞机将直接使用读取到的空速，哪怕数据有异</Description>
             <Range>0 127</Range>
             <Units>m/s</Units>
             <Increment>1</Increment>
@@ -4703,8 +4703,8 @@
             <User>Standard</User>
         </PRX_IGN_ANG4>
         <PRX_IGN_ANG5>
-            <DisplayName>距离传感器忽略角度5</DisplayName>
-            <Description>Proximity sensor ignore angle 5</Description>
+            <DisplayName>Proximity sensor ignore angle 5</DisplayName>
+            <Description>距离传感器忽略角度5</Description>
             <Units>degrees</Units>
             <Range>0 360</Range>
             <User>Standard</User>
@@ -4869,7 +4869,7 @@
         </RC1_REVERSED>
         <RC1_TRIM>
             <DisplayName>RC trim PWM</DisplayName>
-            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -4884,7 +4884,7 @@
         </RC10_DZ>
         <RC10_MAX>
             <DisplayName>RC max PWM</DisplayName>
-            <Description>RC最大PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC最大PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -4892,7 +4892,7 @@
         </RC10_MAX>
         <RC10_MIN>
             <DisplayName>RC min PWM</DisplayName>
-            <Description>RC最小PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC最小PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -4906,7 +4906,7 @@
         </RC10_REVERSED>
         <RC10_TRIM>
             <DisplayName>RC trim PWM</DisplayName>
-            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -4921,7 +4921,7 @@
         </RC11_DZ>
         <RC11_MAX>
             <DisplayName>RC max PWM</DisplayName>
-            <Description>RC最大PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC最大PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -4929,7 +4929,7 @@
         </RC11_MAX>
         <RC11_MIN>
             <DisplayName>RC min PWM</DisplayName>
-            <Description>RC最小PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC最小PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -4943,7 +4943,7 @@
         </RC11_REVERSED>
         <RC11_TRIM>
             <DisplayName>RC trim PWM</DisplayName>
-            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5054,7 +5054,7 @@
         </RC14_REVERSED>
         <RC14_TRIM>
             <DisplayName>RC trim PWM</DisplayName>
-            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5069,7 +5069,7 @@
         </RC15_DZ>
         <RC15_MAX>
             <DisplayName>RC max PWM</DisplayName>
-            <Description>RC最大PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC最大PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5077,7 +5077,7 @@
         </RC15_MAX>
         <RC15_MIN>
             <DisplayName>RC min PWM</DisplayName>
-            <Description>RC最小PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC最小PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5091,7 +5091,7 @@
         </RC15_REVERSED>
         <RC15_TRIM>
             <DisplayName>RC trim PWM</DisplayName>
-            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5106,7 +5106,7 @@
         </RC16_DZ>
         <RC16_MAX>
             <DisplayName>RC max PWM</DisplayName>
-            <Description>RC最大PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC最大PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5114,7 +5114,7 @@
         </RC16_MAX>
         <RC16_MIN>
             <DisplayName>RC min PWM</DisplayName>
-            <Description>RC最小PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC最小PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5128,7 +5128,7 @@
         </RC16_REVERSED>
         <RC16_TRIM>
             <DisplayName>RC trim PWM</DisplayName>
-            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5143,7 +5143,7 @@
         </RC2_DZ>
         <RC2_MAX>
             <DisplayName>RC max PWM</DisplayName>
-            <Description>RC最大PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC最大PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5151,7 +5151,7 @@
         </RC2_MAX>
         <RC2_MIN>
             <DisplayName>RC min PWM</DisplayName>
-            <Description>RC最小PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC最小PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5165,7 +5165,7 @@
         </RC2_REVERSED>
         <RC2_TRIM>
             <DisplayName>RC trim PWM</DisplayName>
-            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5180,7 +5180,7 @@
         </RC3_DZ>
         <RC3_MAX>
             <DisplayName>RC max PWM</DisplayName>
-            <Description>RC最大PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC最大PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5188,7 +5188,7 @@
         </RC3_MAX>
         <RC3_MIN>
             <DisplayName>RC min PWM</DisplayName>
-            <Description>RC最小PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC最小PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5202,7 +5202,7 @@
         </RC3_REVERSED>
         <RC3_TRIM>
             <DisplayName>RC trim PWM</DisplayName>
-            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5217,7 +5217,7 @@
         </RC4_DZ>
         <RC4_MAX>
             <DisplayName>RC max PWM</DisplayName>
-            <Description>RC最大PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC最大PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5225,7 +5225,7 @@
         </RC4_MAX>
         <RC4_MIN>
             <DisplayName>RC min PWM</DisplayName>
-            <Description>RC最小PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC最小PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5239,7 +5239,7 @@
         </RC4_REVERSED>
         <RC4_TRIM>
             <DisplayName>RC trim PWM</DisplayName>
-            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5254,7 +5254,7 @@
         </RC5_DZ>
         <RC5_MAX>
             <DisplayName>RC max PWM</DisplayName>
-            <Description>RC最大PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC最大PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5262,7 +5262,7 @@
         </RC5_MAX>
         <RC5_MIN>
             <DisplayName>RC min PWM</DisplayName>
-            <Description>RC最小PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC最小PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5276,7 +5276,7 @@
         </RC5_REVERSED>
         <RC5_TRIM>
             <DisplayName>RC trim PWM</DisplayName>
-            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5291,7 +5291,7 @@
         </RC6_DZ>
         <RC6_MAX>
             <DisplayName>RC max PWM</DisplayName>
-            <Description>RC最大PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC最大PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5299,7 +5299,7 @@
         </RC6_MAX>
         <RC6_MIN>
             <DisplayName>RC min PWM</DisplayName>
-            <Description>RC最小PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC最小PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5313,7 +5313,7 @@
         </RC6_REVERSED>
         <RC6_TRIM>
             <DisplayName>RC trim PWM</DisplayName>
-            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5328,7 +5328,7 @@
         </RC7_DZ>
         <RC7_MAX>
             <DisplayName>RC max PWM</DisplayName>
-            <Description>RC最大PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC最大PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5336,7 +5336,7 @@
         </RC7_MAX>
         <RC7_MIN>
             <DisplayName>RC min PWM</DisplayName>
-            <Description>RC最小PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC最小PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5350,7 +5350,7 @@
         </RC7_REVERSED>
         <RC7_TRIM>
             <DisplayName>RC trim PWM</DisplayName>
-            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5365,7 +5365,7 @@
         </RC8_DZ>
         <RC8_MAX>
             <DisplayName>RC max PWM</DisplayName>
-            <Description>RC最大PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC最大PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5373,7 +5373,7 @@
         </RC8_MAX>
         <RC8_MIN>
             <DisplayName>RC min PWM</DisplayName>
-            <Description>RC最小PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC最小PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5387,7 +5387,7 @@
         </RC8_REVERSED>
         <RC8_TRIM>
             <DisplayName>RC trim PWM</DisplayName>
-            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5402,7 +5402,7 @@
         </RC9_DZ>
         <RC9_MAX>
             <DisplayName>RC max PWM</DisplayName>
-            <Description>RC最大PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC最大PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5410,7 +5410,7 @@
         </RC9_MAX>
         <RC9_MIN>
             <DisplayName>RC min PWM</DisplayName>
-            <Description>RC最小PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC最小PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -5424,7 +5424,7 @@
         </RC9_REVERSED>
         <RC9_TRIM>
             <DisplayName>RC trim PWM</DisplayName>
-            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中性点为1500，上限为2000。</Description>
+            <Description>RC调整（中性）PWM脉冲宽度。 通常，下限为1000，中点为1500，上限为2000。</Description>
             <Units>pwm</Units>
             <Range>800 2200</Range>
             <Increment>1</Increment>
@@ -7219,7 +7219,7 @@
         </TERRAIN_SPACING>
         <THR_DZ>
             <DisplayName>Throttle deadzone</DisplayName>
-            <Description>中间油门上方和下方的死区。用于AltHold，Loiter，PosHold飞行模式</Description>
+            <Description>中间油门上方和下方的盲区。用于AltHold，Loiter，PosHold飞行模式</Description>
             <User>Standard</User>
             <Range>0 300</Range>
             <Units>pwm</Units>

@@ -26,6 +26,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using ZedGraph; // Graphs
+using CoordConvert;
 
 [assembly: ExtensionType(typeof(Dictionary<string, object>), typeof(LogBrowse.ext))]
 
@@ -3277,16 +3278,24 @@ namespace MissionPlanner.Log
                     SaveFileDialog sfd = new SaveFileDialog();
                     sfd.FileName = "outpos.csv";
                     int n = 1;
+                    double x,y;
                     if (sfd.ShowDialog() == DialogResult.OK)
                     {
                         using (StreamWriter sw = new StreamWriter(sfd.OpenFile()))
                         {
-                            sw.WriteLine("type,lat,long,地图高度,相对home高度,gps高度,");
+                            sw.WriteLine("type,lat,long,CGCS2000X,CGCS2000Y,地图高度,相对home高度,gps高度,");
                             foreach (DataGridViewRow row in dataGridView1.Rows)
                             {
+                                // GeoToGauss(double.Parse(row.Cells[7].Value.ToString()),double.Parse(row.Cells[6].Value.ToString()), (short)((double.Parse(row.Cells[7].Value.ToString())-1.5)/3+1), 3, ref y,ref x, -1000);
+
+                                XYZCoordinate cgcs2000 = GaussProjection.GaussProjCal(new BLHCoordinate(double.Parse(row.Cells[6].Value.ToString()), double.Parse(row.Cells[7].Value.ToString()), double.Parse(row.Cells[8].Value.ToString())), CoordConsts.cgcs2000atum, 0);
+                                x = cgcs2000.X;
+                                y = cgcs2000.Y;
+                               // z = cgcs2000.Z;
                                 StringBuilder sb = new StringBuilder();
                                 foreach (DataGridViewCell cell in row.Cells)
                                 {
+                                    
                                     if (cell.ColumnIndex == 2)
                                     {
                                         sb.Append(cell.FormattedValue + n.ToString());
@@ -3297,6 +3306,14 @@ namespace MissionPlanner.Log
                                     {
                                         sb.Append(cell.FormattedValue);
                                         sb.Append(',');
+                                        
+                                        if (cell.ColumnIndex == 7)
+                                        {
+                                            sb.Append(y);
+                                            sb.Append(',');
+                                            sb.Append(x);
+                                            sb.Append(',');
+                                        }                                     
                                     }
 
                                 }
@@ -3381,18 +3398,18 @@ namespace MissionPlanner.Log
 
 
 
-            double PI = 3.14159265358979;
+           // double PI = 3.14159265358979;
 
-            double b_e2 = 0.0067385254147;
+            double b_e2 = 0.00669438002290;//第一偏心率平方e^2
 
-            double b_c = 6399698.90178271;
-
-
+            double b_c = 6399593.62586;//极曲率半径c (m)
 
 
-            jd_hd = jd / 3600.0 * PI / 180.0;    // 将以秒为单位的经度转换成弧度
 
-            wd_hd = wd / 3600.0 * PI / 180.0;    // 将以秒为单位的纬度转换成弧度
+
+            jd_hd = jd / 3600.0 * Math.PI / 180.0;    // 将以秒为单位的经度转换成弧度
+
+            wd_hd = wd / 3600.0 * Math.PI / 180.0;    // 将以秒为单位的纬度转换成弧度
 
 
 
@@ -3440,7 +3457,7 @@ namespace MissionPlanner.Log
 
             t = Math.Tan(wd_hd);         //  t=tgB
 
-            m = PI / 180 * l0 * tcos;       //  m = cosB * PI/180 * l0
+            m = Math.PI / 180 * l0 * tcos;       //  m = cosB * PI/180 * l0
 
             x = X + N * t * (0.5 * Math.Pow(m, 2)
 
