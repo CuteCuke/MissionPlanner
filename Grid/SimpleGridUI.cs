@@ -37,6 +37,8 @@ namespace MissionPlanner.SimpleGrid
         public string inchpixel = "";
         public string feet_fovH = "";
         public string feet_fovV = "";
+        public double homelat = 0;
+        public double homelong = 0;
         Dictionary<string, camerainfo> cameras = new Dictionary<string, camerainfo>();
         //  List<PointLatLng> listpoly = new List<PointLatLng>();
 
@@ -62,6 +64,7 @@ namespace MissionPlanner.SimpleGrid
             });
             NUM_angle.Value = (decimal)((getAngleOfLongestSide(list) + 360) % 360);
 
+            map.ZoomAndCenterMarkers("polygons");//缩放到多边形
             // Map Events
             map.OnMarkerEnter += new MarkerEnter(map_OnMarkerEnter);
             map.OnMarkerLeave += new MarkerLeave(map_OnMarkerLeave);
@@ -384,7 +387,7 @@ namespace MissionPlanner.SimpleGrid
 
                 map.HoldInvalidation = false;
 
-            map.ZoomAndCenterMarkers("polygons");
+            //map.ZoomAndCenterMarkers("polygons");
 
         }
 
@@ -445,11 +448,45 @@ namespace MissionPlanner.SimpleGrid
                 MainV2.instance.FlightPlanner.quickadd = true;
 
                 PointLatLngAlt lastpnt = PointLatLngAlt.Zero;
-
+                
+                if(MainV2.comPort.BaseStream.IsOpen)
+                {
+                    homelat = MainV2.comPort.MAV.cs.HomeLocation.Lat;
+                    homelong = MainV2.comPort.MAV.cs.HomeLocation.Lng;
+                }
                 //plugin.Host.AddWPtoList(MAVLink.MAV_CMD.DO_CHANGE_SPEED, 1,
                 //    (int)((float)NUM_UpDownFlySpeed.Value / CurrentState.multiplierspeed), 0, 0, 0, 0, 0,
                 //    null);
-                plugin.Host.AddWPtoList(MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0, grid[0].Lng,grid[0].Lat, grid[0].Alt);
+                double lat, lng;
+                int n=2;//计算第一个wp
+                if (chk_markers.Checked)
+                    n = 1;
+                if(Math.Abs( grid[n].Lat-homelat)>Math.Abs( grid[n].Lng-homelong))
+                {
+                    if (grid[n].Lat>= homelat)
+                    {
+                        lat = grid[n].Lat - (double)loiter_r.Value * 0.0009 / 100;
+                        lng = grid[n].Lng;
+                    }else
+                    {
+                        lat = grid[n].Lat + (double)loiter_r.Value * 0.0009 / 100;
+                        lng = grid[n].Lng;
+                    }
+                }
+                else
+                {
+                    if (grid[n].Lng >= homelong)
+                    {
+                        lat = grid[n].Lat;
+                        lng = grid[n].Lng - (double)loiter_r.Value * 0.001035 / 100;
+                    }
+                    else
+                    {
+                        lat = grid[n].Lat;
+                        lng = grid[n].Lng + (double)loiter_r.Value * 0.001035 / 100;
+                    }
+                }
+                plugin.Host.AddWPtoList(MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0, lng,lat, grid[0].Alt);
 
                 plugin.Host.AddWPtoList(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, (double)cam_dist.Value, 0, 1, 0, 0, 0, 0);
 

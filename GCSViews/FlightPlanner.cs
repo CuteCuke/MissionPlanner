@@ -49,6 +49,7 @@ using Point = System.Drawing.Point;
 using Xamarin.Forms.Xaml;
 using Microsoft.Scripting.Metadata;
 
+
 namespace MissionPlanner.GCSViews
 {
     public partial class FlightPlanner : MyUserControl, IDeactivate, IActivate
@@ -274,7 +275,7 @@ namespace MissionPlanner.GCSViews
             drawnpolygon.Stroke = new Pen(Color.Red, 2);
             drawnpolygon.Fill = Brushes.Transparent;
 
-           // ThemeManager.ApplyThemeTo(panel6);
+            // ThemeManager.ApplyThemeTo(panel6);
 
 
             /*
@@ -311,7 +312,7 @@ namespace MissionPlanner.GCSViews
             }
             else
             {
-                 CMB_altmode.Visible = true;
+                CMB_altmode.Visible = true;
                 //CMB_altmode.Visible = false;
             }
 
@@ -1368,7 +1369,7 @@ namespace MissionPlanner.GCSViews
                                                                           overlay.route.Points.Select(a => (PointLatLngAlt)a)
                                                                               .Aggregate(0.0, (d, p1, p2) => d + p1.GetDistance(p2)) +
                                                                           overlay.homeroute.Points.Select(a => (PointLatLngAlt)a)
-                                                                              .Aggregate(0.0, (d, p1, p2) => d + p1.GetDistance(p2))+circlewpdist) /
+                                                                              .Aggregate(0.0, (d, p1, p2) => d + p1.GetDistance(p2)) + circlewpdist) /
                                                                       1000.0, false);
 
                     setgradanddistandaz(overlay.pointlist, home);
@@ -1497,9 +1498,9 @@ namespace MissionPlanner.GCSViews
         {
             circlewpdist = 0;
             var list = GetCommandList();
-            for(int i=0;i<list.Count;i++)
+            for (int i = 0; i < list.Count; i++)
             {
-                if(list[i].id==(ushort)MAVLink.MAV_CMD.LOITER_TURNS)
+                if (list[i].id == (ushort)MAVLink.MAV_CMD.LOITER_TURNS)
                 {
                     circlewpdist += list[i].p1 * 2 * Math.PI * list[i].p3;
                 }
@@ -1731,7 +1732,7 @@ namespace MissionPlanner.GCSViews
         {
             SimpleGrid.GridPlugin grid = new SimpleGrid.GridPlugin();
             grid.Host = new PluginHost();
-            grid.but_Click(sender,e);
+            grid.but_Click(sender, e);
         }
 
         private double calcpolygonarea(List<PointLatLng> polygon)
@@ -2380,7 +2381,7 @@ namespace MissionPlanner.GCSViews
 
         public void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
-            if (CurentRectMarker == null && CurrentRallyPt == null && groupmarkers.Count == 0)
+            if (CurentRectMarker == null && CurrentRallyPt == null && groupmarkers.Count == 0 && currentMarker == null)
             {
                 deleteWPToolStripMenuItem.Enabled = false;
             }
@@ -2863,7 +2864,10 @@ namespace MissionPlanner.GCSViews
 
 
             if (currentMarker != null)
+            {
                 CurentRectMarker = null;
+                POI.POIDelete(CurrentPOIMarker);
+            }
 
             writeKML();
         }
@@ -3831,7 +3835,7 @@ namespace MissionPlanner.GCSViews
                 //Process.Start(@"C:\Program Files(x86)\Google\Google Earth\client\googleearth.exe", "http://127.0.0.1:56781/network.kml");
                 Process process = new Process();
                 string str = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
-                process.StartInfo.FileName = str+ @"\GEclient\googleearth.exe";
+                process.StartInfo.FileName = str + @"\GEclient\googleearth.exe";
                 process.StartInfo.Arguments = "http://127.0.0.1:56781/wps.kml";
                 //process.StartInfo.UseShellExecute = false;
                 //process.StartInfo.RedirectStandardOutput = false;
@@ -3845,7 +3849,7 @@ namespace MissionPlanner.GCSViews
             {
                 CustomMessageBox.Show("谷歌地球加载出错！");
             }
-        
+
         }
 
         public void loadAndAppendToolStripMenuItem_Click(object sender, EventArgs e)
@@ -4629,7 +4633,7 @@ namespace MissionPlanner.GCSViews
                 }
 
                 kmlpolygonsoverlay.Polygons.Add(kmlpolygon);
-                
+
             }
             else if (ls != null)
             {
@@ -5282,6 +5286,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             SaveFile_Click(null, null);
         }
 
+        [Obsolete]
         private void saveWPs(IProgressReporterDialogue sender)
         {
             try
@@ -7337,26 +7342,26 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             //var _list = GetCommandList();
             // updown_angle.Value=MainV2.comPort.
             int numno;
-            if (MainV2.comPort.BaseStream.IsOpen&&gpb_takeoffandland.Visible==true) 
-            { 
+            if (MainV2.comPort.BaseStream.IsOpen && gpb_takeoffandland.Visible == true)
+            {
                 if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduPlane)
                 {
                     if (Commands.Rows.Count != 0)
-                    {                        
-                        Locationwp missionstartwp=new Locationwp();//获取Commands开始与结束航点
+                    {
+                        Locationwp missionstartwp = new Locationwp();//获取Commands开始与结束航点
                         Locationwp missionendwp = new Locationwp();
-                        for(int i=0;i<Commands.Rows.Count;i++)
+                        for (int i = 0; i < Commands.Rows.Count; i++)
                         {
-                            if (GetCommandList()[i].id==(ushort)MAVLink.MAV_CMD.WAYPOINT) 
+                            if (GetCommandList()[i].id == (ushort)MAVLink.MAV_CMD.WAYPOINT)
                             {
-                                missionstartwp.id=GetCommandList()[i].id;
+                                missionstartwp.id = GetCommandList()[i].id;
                                 missionstartwp.alt = GetCommandList()[i].alt;
                                 missionstartwp.lat = GetCommandList()[i].lat;
                                 missionstartwp.lng = GetCommandList()[i].lng;
                                 break;
                             }
                         }
-                        for(int i=Commands.Rows.Count-1;i>=0;i--)
+                        for (int i = Commands.Rows.Count - 1; i >= 0; i--)
                         {
                             if (GetCommandList()[i].id == (ushort)MAVLink.MAV_CMD.WAYPOINT)
                             {
@@ -7448,12 +7453,12 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                     }
                     else
                     {
-                        CustomMessageBox.Show("请规划航线后添加起降！",Strings.Warning);
+                        CustomMessageBox.Show("请规划航线后添加起降！", Strings.Warning);
                     }
                 }
-                if (MainV2.comPort.MAV.cs.firmware==Firmwares.ArduCopter2)
+                if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
                 {
-                    if(Commands.Rows.Count!=0)
+                    if (Commands.Rows.Count != 0)
                     {
                         var commandno = Commands.Rows.Count;
                         Locationwp missionendwp = new Locationwp();
@@ -7471,27 +7476,27 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                         if (tag_updownwp == false && missionendwp.id == (ushort)MAVLink.MAV_CMD.WAYPOINT)
                         {
                             InsertCommand(0, MAVLink.MAV_CMD.TAKEOFF, 20, 0, 0, 0, lat, lng, (double)vtol_takeoff_alt.Value);
-                            InsertCommand(commandno +=1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0, lat, lng, missionendwp.alt);
-                            InsertCommand(commandno +=1, MAVLink.MAV_CMD.LAND, 0, 0, 0, 0, lat, lng, 0);
+                            InsertCommand(commandno += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0, lat, lng, missionendwp.alt);
+                            InsertCommand(commandno += 1, MAVLink.MAV_CMD.LAND, 0, 0, 0, 0, lat, lng, 0);
                             tag_updownwp = true;
                         }
-                       }
+                    }
                     else
                     {
-                        CustomMessageBox.Show("请规划航线后添加起降！",Strings.Warning);
+                        CustomMessageBox.Show("请规划航线后添加起降！", Strings.Warning);
                     }
                 }
             }
             else
             {
-                CustomMessageBox.Show("请连接飞控并点击刷新！！！",Strings.Warning);
+                CustomMessageBox.Show("请连接飞控并点击刷新！！！", Strings.Warning);
             }
         }
 
         private void del_updownwp_Click(object sender, EventArgs e)
         {
-            
-            if(MainV2.comPort.BaseStream.IsOpen)
+
+            if (MainV2.comPort.BaseStream.IsOpen)
             {
                 if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduPlane)
                 {
@@ -7507,10 +7512,10 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                     }
                     else tag_updownwp = false;
                 }
-                if(MainV2.comPort.MAV.cs.firmware==Firmwares.ArduCopter2)
+                if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
                 {
                     if (tag_updownwp && Commands.Rows.Count >= 3)
-                    {                       
+                    {
                         Commands.Rows.RemoveAt(0);
                         Commands.Rows.RemoveAt(Commands.Rows.Count - 1);
                         Commands.Rows.RemoveAt(Commands.Rows.Count - 1);
@@ -7521,7 +7526,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             }
             else
             {
-                CustomMessageBox.Show("请连接飞控！",Strings.Warning);
+                CustomMessageBox.Show("请连接飞控！", Strings.Warning);
             }
         }
 
@@ -7548,21 +7553,22 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             //reset home
             if (MainV2.comPort.BaseStream.IsOpen)
             {
-                var flytime =MainV2.comPort.GetParam("STAT_FLTTIME") / 3600;
-                lbl_flytimenum.Text=flytime.ToString("0.##");
+                var flytime = MainV2.comPort.GetParam("STAT_FLTTIME") / 3600;
+                lbl_flytimenum.Text = flytime.ToString("0.##");
                 if (flytime > 200.00)
                 {
                     CustomMessageBox.Show("飞行时间超过200小时，请返厂保养", Strings.Warning);
                     lbl_flytime.ForeColor = Color.Yellow;
                     lbl_flytimenum.ForeColor = Color.Yellow;
-                    if(flytime>300.00)
+                    if (flytime > 300.00)
                     {
                         lbl_flytime.ForeColor = Color.Red;
                         lbl_flytimenum.ForeColor = Color.Red;
                         return;
                     }
-                    
-                }else
+
+                }
+                else
                 {
                     ThemeManager.ApplyThemeTo(lbl_flytime);
                     ThemeManager.ApplyThemeTo(lbl_flytimenum);
@@ -7578,7 +7584,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                     panel_plane.Visible = true;
                     if (tag_updownwp == false && Commands.Rows.Count != 0)
                     {
-                        for(int i=0;i<Commands.Rows.Count;i++)
+                        for (int i = 0; i < Commands.Rows.Count; i++)
                         {
                             if (GetCommandList()[i].id == (ushort)MAVLink.MAV_CMD.WAYPOINT)
                             {
@@ -7589,7 +7595,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                     }
                 }
                 else if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
-                { 
+                {
                     TXT_WPRad.Text = "2";
                     TXT_loiterrad.Text = vtol_takeoff_alt.Value.ToString();
                     refreshhome();
@@ -7631,13 +7637,13 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
         {
             if (chk_imitation.Checked && !ischk_imitation)
             {
-                
+
                 ischk_imitation = true;
                 if (!tag_updownwp)
                 {
                     CustomMessageBox.Show("请添加起降后，勾选仿地飞行！！！");
                     return;
-                    
+
                 }
                 var list = GetCommandList();
                 //currentaltmode = altmode.Terrain;
@@ -7721,12 +7727,12 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                     }
                 }
             }
-            else if (ischk_imitation&&tag_updownwp)
+            else if (ischk_imitation && tag_updownwp)
             {
                 ischk_imitation = false;//currentaltmode = altmode.Relative;              
                 CMB_altmode.SelectedIndex = 0;
                 currentaltmode = (altmode)CMB_altmode.SelectedValue;
-                
+
                 imitationwpno.Clear();
                 imitationwpdist.Clear();
                 if (Commands.Rows.Count > 0)
@@ -7759,33 +7765,33 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
 
         }
         List<Locationwp> locationwps = new List<Locationwp>();//暂存cmd 航点列表
-        List< List<Locationwp>> per_locationwps = new List<List<Locationwp>>();//航点分段
+        List<List<Locationwp>> per_locationwps = new List<List<Locationwp>>();//航点分段
         private void chk_ispart_CheckedChanged(object sender, EventArgs e)
         {
-            if(chk_ispart.Checked)
+            if (chk_ispart.Checked)
             {
                 btn_per.Visible = true;
                 num_per.Visible = true;
                 loiterwpdist();
-                wp_distance= (overlay.route.Points.Select(a => (PointLatLngAlt)a).Aggregate(0.0, (d, p1, p2) => d + p1.GetDistance(p2))
-                    +overlay.homeroute.Points.Select(a => (PointLatLngAlt)a).Aggregate(0.0, (d, p1, p2) => d + p1.GetDistance(p2))+circlewpdist) /1000.0;
+                wp_distance = (overlay.route.Points.Select(a => (PointLatLngAlt)a).Aggregate(0.0, (d, p1, p2) => d + p1.GetDistance(p2))
+                    + overlay.homeroute.Points.Select(a => (PointLatLngAlt)a).Aggregate(0.0, (d, p1, p2) => d + p1.GetDistance(p2)) + circlewpdist) / 1000.0;
                 //GetCommandList();
                 locationwps.Clear();
                 per_locationwps.Clear();
-                for(int i=0;i<GetCommandList().Count;i++)
+                for (int i = 0; i < GetCommandList().Count; i++)
                 {
                     locationwps.Add(GetCommandList()[i]);
                 }
-                if (wp_distance>0) 
+                if (wp_distance > 0)
                 {
                     num_per.Maximum = (decimal)Math.Ceiling(wp_distance / (double)num_per_dist.Value);
                     int n = (int)num_per.Maximum;
                     int m = (int)Math.Ceiling((double)locationwps.Count / n);
-                                      
-                    for(int i=0;i<n;i++)
+
+                    for (int i = 0; i < n; i++)
                     {
-                        List<Locationwp> wps = new List<Locationwp>(); 
-                        for(int j=0;j<m;j++)
+                        List<Locationwp> wps = new List<Locationwp>();
+                        for (int j = 0; j < m; j++)
                         {
                             if (i * m + j < locationwps.Count)
                                 wps.Add(locationwps[i * m + j]);
@@ -7961,15 +7967,15 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
         {
             del_flight_Click(sender, e);
 
-            processToScreen2(per_locationwps[(int)num_per.Value-1]);
-   
-            if(Commands.Rows.Count>3)//航线命令，开头跟结尾修正， insertcommand   lat跟lng反向
+            processToScreen2(per_locationwps[(int)num_per.Value - 1]);
+
+            if (Commands.Rows.Count > 3)//航线命令，开头跟结尾修正， insertcommand   lat跟lng反向
             {
-                if(GetCommandList()[0].id==(ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
+                if (GetCommandList()[0].id == (ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
                 {
-                    if(GetCommandList()[0].p1!=0)
-                    { 
-                        if((int)num_per.Value>1)
+                    if (GetCommandList()[0].p1 != 0)
+                    {
+                        if ((int)num_per.Value > 1)
                         {
                             for (int i = per_locationwps[(int)num_per.Value - 2].Count - 1; i >= 0; i--)
                             {
@@ -7990,11 +7996,11 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                         Commands.Rows.RemoveAt(0);
                     }
                 }
-                if(GetCommandList()[0].id==(ushort)MAVLink.MAV_CMD.WAYPOINT|| GetCommandList()[0].id == (ushort)MAVLink.MAV_CMD.LOITER_TURNS)
+                if (GetCommandList()[0].id == (ushort)MAVLink.MAV_CMD.WAYPOINT || GetCommandList()[0].id == (ushort)MAVLink.MAV_CMD.LOITER_TURNS)
                 {
                     if ((double)num_per.Value > 1)
                     {
-                        if (GetCommandList()[1].id != (ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST && 
+                        if (GetCommandList()[1].id != (ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST &&
                             GetCommandList()[2].id != (ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
                         {
                             // Locationwp camwp = new Locationwp();
@@ -8006,9 +8012,9 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                                     break;
                                 }
                             }
-                            for(int i=per_locationwps[(int)num_per.Value-2].Count-1;i>=0;i--)
+                            for (int i = per_locationwps[(int)num_per.Value - 2].Count - 1; i >= 0; i--)
                             {
-                                if(per_locationwps[(int)num_per.Value-2][i].id==(ushort)MAVLink.MAV_CMD.WAYPOINT || 
+                                if (per_locationwps[(int)num_per.Value - 2][i].id == (ushort)MAVLink.MAV_CMD.WAYPOINT ||
                                     per_locationwps[(int)num_per.Value - 2][i].id == (ushort)MAVLink.MAV_CMD.LOITER_TURNS)
                                 {
 
@@ -8022,16 +8028,16 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                         }
                     }
                 }
-                if(GetCommandList()[Commands.Rows.Count-1].id==(ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
+                if (GetCommandList()[Commands.Rows.Count - 1].id == (ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
                 {
-                    if(GetCommandList()[Commands.Rows.Count-1].p1!=0)
+                    if (GetCommandList()[Commands.Rows.Count - 1].p1 != 0)
                     {
-                        if((int)num_per.Value<num_per.Maximum)
+                        if ((int)num_per.Value < num_per.Maximum)
                         {
-                           
-                            for(int i=0;i<per_locationwps[(int)num_per.Value].Count;i++)
+
+                            for (int i = 0; i < per_locationwps[(int)num_per.Value].Count; i++)
                             {
-                                if(per_locationwps[(int)num_per.Value][i].id==(ushort)MAVLink.MAV_CMD.WAYPOINT)
+                                if (per_locationwps[(int)num_per.Value][i].id == (ushort)MAVLink.MAV_CMD.WAYPOINT)
                                 {
                                     InsertCommand(Commands.Rows.Count, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
                                         per_locationwps[(int)num_per.Value][i].lng,
@@ -8041,18 +8047,27 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                                 }
                             }
 
-                            InsertCommand(Commands.Rows.Count, MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
+                            InsertCommand(Commands.Rows.Count, MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 0, 0, 0, 0, 0);
 
                         }
                     }
                 }
                 else
                 {
-                    InsertCommand(Commands.Rows.Count, MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
+                    InsertCommand(Commands.Rows.Count, MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 0, 0, 0, 0, 0);
                 }
             }
 
             //InsertCommand(Commands.Rows.Count, MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0,1, 0, 0, 0, 0);
+        }
+
+        private void delMarkPointToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // POI.POIDelete(point);
+            //POI.POIs = null;
+            POI.POIs.Clear();//清空点
+            POI.UpdateOverlay(poioverlay);//更新
+
         }
     }
 }

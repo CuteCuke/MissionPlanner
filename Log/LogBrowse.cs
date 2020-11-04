@@ -3283,7 +3283,7 @@ namespace MissionPlanner.Log
                     {
                         using (StreamWriter sw = new StreamWriter(sfd.OpenFile()))
                         {
-                            sw.WriteLine("type,lat,long,CGCS2000X,CGCS2000Y,地图高度,相对home高度,gps高度,");
+                            sw.WriteLine("type,lat,long,CGCS2000X,CGCS2000Y,高度,相对home高度,gps高度,");
                             foreach (DataGridViewRow row in dataGridView1.Rows)
                             {
                                 // GeoToGauss(double.Parse(row.Cells[7].Value.ToString()),double.Parse(row.Cells[6].Value.ToString()), (short)((double.Parse(row.Cells[7].Value.ToString())-1.5)/3+1), 3, ref y,ref x, -1000);

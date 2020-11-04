@@ -54,9 +54,9 @@ namespace MissionPlanner
             this.MenuConnect = new System.Windows.Forms.ToolStripButton();
             this.toolStripConnectionControl = new MissionPlanner.Controls.ToolStripConnectionControl();
             this.btn_rtk = new System.Windows.Forms.ToolStripButton();
-            this.return_flight = new System.Windows.Forms.ToolStripButton();
-            this.wp_no = new System.Windows.Forms.ToolStripComboBox();
             this.jump_to = new System.Windows.Forms.ToolStripButton();
+            this.wp_no = new System.Windows.Forms.ToolStripComboBox();
+            this.return_flight = new System.Windows.Forms.ToolStripButton();
             this.resume_flight = new System.Windows.Forms.ToolStripButton();
             this.lj_taobao = new System.Windows.Forms.ToolStripButton();
             this.auto_flight = new System.Windows.Forms.ToolStripButton();
@@ -84,11 +84,11 @@ namespace MissionPlanner
             this.MenuConnect,
             this.toolStripConnectionControl,
             this.btn_rtk,
-            this.return_flight,
-            this.wp_no,
             this.jump_to,
+            this.wp_no,
             this.resume_flight,
             this.lj_taobao,
+            this.return_flight,
             this.auto_flight,
             this.lock_unlock,
             this.airspeed_0,
@@ -233,24 +233,6 @@ namespace MissionPlanner
             this.btn_rtk.Name = "btn_rtk";
             this.btn_rtk.Click += new System.EventHandler(this.btn_rtk_Click);
             // 
-            // return_flight
-            // 
-            this.return_flight.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.return_flight.BackColor = System.Drawing.Color.Transparent;
-            this.return_flight.ForeColor = System.Drawing.SystemColors.ControlLight;
-            resources.ApplyResources(this.return_flight, "return_flight");
-            this.return_flight.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.return_flight.Name = "return_flight";
-            this.return_flight.Click += new System.EventHandler(this.return_flight_Click);
-            // 
-            // wp_no
-            // 
-            this.wp_no.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.wp_no.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.wp_no.Name = "wp_no";
-            resources.ApplyResources(this.wp_no, "wp_no");
-            this.wp_no.Click += new System.EventHandler(this.wp_no_Click);
-            // 
             // jump_to
             // 
             this.jump_to.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -260,6 +242,24 @@ namespace MissionPlanner
             this.jump_to.Margin = new System.Windows.Forms.Padding(0);
             this.jump_to.Name = "jump_to";
             this.jump_to.Click += new System.EventHandler(this.jump_to_Click);
+            // 
+            // wp_no
+            // 
+            this.wp_no.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.wp_no.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.wp_no.Name = "wp_no";
+            resources.ApplyResources(this.wp_no, "wp_no");
+            this.wp_no.Click += new System.EventHandler(this.wp_no_Click);
+            // 
+            // return_flight
+            // 
+            this.return_flight.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.return_flight.BackColor = System.Drawing.Color.Transparent;
+            this.return_flight.ForeColor = System.Drawing.SystemColors.ControlLight;
+            resources.ApplyResources(this.return_flight, "return_flight");
+            this.return_flight.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.return_flight.Name = "return_flight";
+            this.return_flight.Click += new System.EventHandler(this.return_flight_Click);
             // 
             // resume_flight
             // 

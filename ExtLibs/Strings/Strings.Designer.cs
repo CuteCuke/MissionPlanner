@@ -1476,7 +1476,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 地形高度变化 的本地化字符串。
+        ///   查找类似 地形高度误差 的本地化字符串。
         /// </summary>
         public static string terrain_alt_variance {
             get {

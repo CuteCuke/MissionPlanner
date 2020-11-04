@@ -89,6 +89,7 @@ namespace MissionPlanner.Grid
             routesOverlay = new GMapOverlay("routes");
             map.Overlays.Add(routesOverlay);
 
+            //map.ZoomAndCenterMarkers("polygons");
             // Map Events
             map.OnMapZoomChanged += new MapZoomChanged(map_OnMapZoomChanged);
             map.OnMarkerEnter += new MarkerEnter(map_OnMarkerEnter);

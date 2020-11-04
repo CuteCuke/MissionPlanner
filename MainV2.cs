@@ -4623,6 +4623,8 @@ namespace MissionPlanner
         }
         private double return_now_lat = 0;
         private double return_now_lng = 0;
+
+        [Obsolete]
         private void return_flight_Click(object sender, EventArgs e)
         {
             if (CustomMessageBox.Show("你确定你想返航！","返航",
@@ -4633,21 +4635,22 @@ namespace MissionPlanner
                 lastwpstr = MainV2.comPort.MAV.cs.lastautowp.ToString();
                 return_now_lat = MainV2.comPort.MAV.cs.lat;
                 return_now_lng = MainV2.comPort.MAV.cs.lng;
-                    try
+                MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 0, 0, 0, 0, 0);
+                try
                     {
                           ((ToolStripButton)sender).Enabled = false;
                           if (wpno >= 3)
                            {
                                 if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
                                 {
-                                    MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
+                                    MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 0, 0, 0, 0, 0);
                                     MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
                                                 (ushort)(wpno - 2));
                                 }
                                 //MainV2.comPort.setMode("RTL");
                                 else
                                 {
-                                    MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
+                                    MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 0, 0, 0, 0, 0);
                                     MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
                                         (ushort)(wpno - 4));
                                 }
