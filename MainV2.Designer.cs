@@ -56,9 +56,9 @@ namespace MissionPlanner
             this.btn_rtk = new System.Windows.Forms.ToolStripButton();
             this.jump_to = new System.Windows.Forms.ToolStripButton();
             this.wp_no = new System.Windows.Forms.ToolStripComboBox();
-            this.return_flight = new System.Windows.Forms.ToolStripButton();
             this.resume_flight = new System.Windows.Forms.ToolStripButton();
             this.lj_taobao = new System.Windows.Forms.ToolStripButton();
+            this.return_flight = new System.Windows.Forms.ToolStripButton();
             this.auto_flight = new System.Windows.Forms.ToolStripButton();
             this.lock_unlock = new System.Windows.Forms.ToolStripButton();
             this.airspeed_0 = new System.Windows.Forms.ToolStripButton();
@@ -66,6 +66,7 @@ namespace MissionPlanner
             this.menu = new MissionPlanner.Controls.MyButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.status1 = new MissionPlanner.Controls.Status();
+            this.close_cam = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenu.SuspendLayout();
             this.CTX_mainmenu.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -109,7 +110,8 @@ namespace MissionPlanner
             this.simulition,
             this.config_tune,
             this.firmware_install,
-            this.toolStrip_pos});
+            this.toolStrip_pos,
+            this.close_cam});
             this.CTX_mainmenu.Name = "CTX_mainmenu";
             resources.ApplyResources(this.CTX_mainmenu, "CTX_mainmenu");
             // 
@@ -251,16 +253,6 @@ namespace MissionPlanner
             resources.ApplyResources(this.wp_no, "wp_no");
             this.wp_no.Click += new System.EventHandler(this.wp_no_Click);
             // 
-            // return_flight
-            // 
-            this.return_flight.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.return_flight.BackColor = System.Drawing.Color.Transparent;
-            this.return_flight.ForeColor = System.Drawing.SystemColors.ControlLight;
-            resources.ApplyResources(this.return_flight, "return_flight");
-            this.return_flight.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.return_flight.Name = "return_flight";
-            this.return_flight.Click += new System.EventHandler(this.return_flight_Click);
-            // 
             // resume_flight
             // 
             this.resume_flight.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -283,6 +275,16 @@ namespace MissionPlanner
             this.lj_taobao.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.lj_taobao.Name = "lj_taobao";
             this.lj_taobao.Click += new System.EventHandler(this.lj_taobao_Click);
+            // 
+            // return_flight
+            // 
+            this.return_flight.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.return_flight.BackColor = System.Drawing.Color.Transparent;
+            this.return_flight.ForeColor = System.Drawing.SystemColors.ControlLight;
+            resources.ApplyResources(this.return_flight, "return_flight");
+            this.return_flight.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.return_flight.Name = "return_flight";
+            this.return_flight.Click += new System.EventHandler(this.return_flight_Click);
             // 
             // auto_flight
             // 
@@ -343,6 +345,12 @@ namespace MissionPlanner
             this.status1.Name = "status1";
             this.status1.Percent = 0D;
             // 
+            // close_cam
+            // 
+            this.close_cam.Name = "close_cam";
+            resources.ApplyResources(this.close_cam, "close_cam");
+            this.close_cam.Click += new System.EventHandler(this.close_cam_Click);
+            // 
             // MainV2
             // 
             resources.ApplyResources(this, "$this");
@@ -400,5 +408,6 @@ namespace MissionPlanner
         private System.Windows.Forms.ToolStripMenuItem review_log;
         public System.Windows.Forms.ToolStripButton airspeed_0;
         public System.Windows.Forms.ToolStripButton shutter;
+        private System.Windows.Forms.ToolStripMenuItem close_cam;
     }
 }

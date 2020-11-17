@@ -1304,7 +1304,7 @@ namespace MissionPlanner {
         }
         
         /// <summary>
-        ///   查找类似 预处理检查失败 的本地化字符串。
+        ///   查找类似 解锁前检查失败 的本地化字符串。
         /// </summary>
         public static string Prearm_check_failed {
             get {

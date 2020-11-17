@@ -671,7 +671,7 @@ Please contact your hardware vendor about signing your hardware.</value>
     <value>通信系统出错</value>
   </data>
   <data name="Prearm_check_failed" xml:space="preserve">
-    <value>预处理检查失败</value>
+    <value>解锁前检查失败</value>
   </data>
   <data name="Invalid_Location" xml:space="preserve">
     <value>无效的位置</value>

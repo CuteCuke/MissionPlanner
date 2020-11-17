@@ -106,7 +106,7 @@ namespace MissionPlanner.Comms
             //string id=null, passwd=null;
             //if (url == null)
             //    url = string.Format("http://账号:密码@rtk.ntrip.qxwz.com:8002/RTCM32_GGB");
-            if (OnInputBoxShow("连接", "请输入链接\n(例：http://账号:密码@rtk.ntrip.qxwz.com:8002/RTCM32_GGB)", ref url) ==
+            if (OnInputBoxShow("连接", "请输入链接\n(例：http://账号:密码@rtk.ntrip.qxwz.com:8003/RTCM32_GGB)", ref url) ==
                 inputboxreturn.Cancel)
                 throw new Exception("Canceled by request");
 

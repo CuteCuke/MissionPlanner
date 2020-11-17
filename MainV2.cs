@@ -4624,7 +4624,7 @@ namespace MissionPlanner
         private double return_now_lat = 0;
         private double return_now_lng = 0;
 
-        [Obsolete]
+
         private void return_flight_Click(object sender, EventArgs e)
         {
             if (CustomMessageBox.Show("你确定你想返航！","返航",
@@ -4635,7 +4635,7 @@ namespace MissionPlanner
                 lastwpstr = MainV2.comPort.MAV.cs.lastautowp.ToString();
                 return_now_lat = MainV2.comPort.MAV.cs.lat;
                 return_now_lng = MainV2.comPort.MAV.cs.lng;
-                MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 0, 0, 0, 0, 0);
+               // MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent, (byte)MainV2.comPort.compidcurrent, MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
                 try
                     {
                           ((ToolStripButton)sender).Enabled = false;
@@ -4643,14 +4643,14 @@ namespace MissionPlanner
                            {
                                 if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
                                 {
-                                    MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 0, 0, 0, 0, 0);
+                                    MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
                                     MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
                                                 (ushort)(wpno - 2));
                                 }
                                 //MainV2.comPort.setMode("RTL");
                                 else
                                 {
-                                    MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 0, 0, 0, 0, 0);
+                                    MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
                                     MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
                                         (ushort)(wpno - 4));
                                 }
@@ -5096,6 +5096,21 @@ namespace MissionPlanner
             GCSViews.ConfigurationView.ConfigSerialInjectGPS rtk = new GCSViews.ConfigurationView.ConfigSerialInjectGPS();
             rtk.Show();
             
+        }
+
+     
+        private void close_cam_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
+                MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent, (byte)MainV2.comPort.compidcurrent, MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
+            }
+            catch
+            {
+                CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
+            }
+          //  MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 0, 0, 0, 0, 0);
         }
     }
 }

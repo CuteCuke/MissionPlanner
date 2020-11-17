@@ -5006,5 +5006,10 @@ namespace MissionPlanner.GCSViews
         {
 
         }
+
+        private void modifyandSetSpeed_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
