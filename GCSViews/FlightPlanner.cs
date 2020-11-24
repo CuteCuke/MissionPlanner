@@ -3837,6 +3837,7 @@ namespace MissionPlanner.GCSViews
                 string str = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
                 process.StartInfo.FileName = str + @"\GEclient\googleearth.exe";
                 process.StartInfo.Arguments = "http://127.0.0.1:56781/wps.kml";
+                
                 //process.StartInfo.UseShellExecute = false;
                 //process.StartInfo.RedirectStandardOutput = false;
                 //process.StartInfo.RedirectStandardInput = true;
@@ -5712,7 +5713,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
 
                 try
                 {
-                    TXT_loiterrad.Enabled = false;
+                    TXT_loiterrad.Enabled = true;
                     if (param.ContainsKey("LOITER_RADIUS"))
                     {
                         TXT_loiterrad.Text = (((double)param["LOITER_RADIUS"] * CurrentState.multiplierdist)).ToString();
@@ -7486,6 +7487,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                         CustomMessageBox.Show("请规划航线后添加起降！", Strings.Warning);
                     }
                 }
+                writeKML();
             }
             else
             {
@@ -7523,6 +7525,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                     }
                     else tag_updownwp = false;
                 }
+                writeKML();
             }
             else
             {
@@ -7596,8 +7599,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                 }
                 else if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
                 {
-                    TXT_WPRad.Text = "2";
-                    TXT_loiterrad.Text = vtol_takeoff_alt.Value.ToString();
+                    TXT_WPRad.Text = "2";                   
                     refreshhome();
                     gpb_takeoffandland.Visible = true;
                     gpb_takeoffandland.Height = 130;
@@ -7618,6 +7620,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                             }
                         }
                     }
+                    TXT_loiterrad.Text = vtol_takeoff_alt.Value.ToString();
                 }
             }
             else
@@ -7642,6 +7645,8 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                 if (!tag_updownwp)
                 {
                     CustomMessageBox.Show("请添加起降后，勾选仿地飞行！！！");
+                    ischk_imitation = false;
+                    chk_imitation.Checked = false;
                     return;
 
                 }
@@ -8067,6 +8072,11 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             //POI.POIs = null;
             POI.POIs.Clear();//清空点
             POI.UpdateOverlay(poioverlay);//更新
+
+        }
+
+        private void CHK_verifyheight_CheckedChanged(object sender, EventArgs e)
+        {
 
         }
     }

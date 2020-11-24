@@ -4630,7 +4630,8 @@ namespace MissionPlanner
             if (CustomMessageBox.Show("你确定你想返航！","返航",
                            CustomMessageBox.MessageBoxButtons.YesNo) ==
                        CustomMessageBox.DialogResult.Yes)
-            { 
+            {
+                ((ToolStripButton)sender).Enabled = false;
                 var wpno = MainV2.comPort.getWPCount();
                 lastwpstr = MainV2.comPort.MAV.cs.lastautowp.ToString();
                 return_now_lat = MainV2.comPort.MAV.cs.lat;
@@ -4638,23 +4639,37 @@ namespace MissionPlanner
                // MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent, (byte)MainV2.comPort.compidcurrent, MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
                 try
                     {
-                          ((ToolStripButton)sender).Enabled = false;
+                        
                           if (wpno >= 3)
                            {
-                                if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
+                                for (int i=0; i < wpno; i++)
                                 {
-                                    MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
-                                    MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
-                                                (ushort)(wpno - 2));
+                                    if (MainV2.comPort.getWP((ushort)i).id == (ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST&&MainV2.comPort.getWP((ushort)i).p1==0)
+                                    {
+                                        MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
+                                           (ushort)(i));
+
+                                    }
+
                                 }
-                                //MainV2.comPort.setMode("RTL");
-                                else
-                                {
-                                    MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
-                                    MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
-                                        (ushort)(wpno - 4));
-                                }
-                          } 
+
+                          if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
+                            {
+
+                                //MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
+                                //MainV2.comPort.doCommandInt((byte)MainV2.comPort.sysidcurrent, (byte)MainV2.comPort.compidcurrent, MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
+                                MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
+                                            (ushort)(wpno - 2));
+                            }
+                            //MainV2.comPort.setMode("RTL");
+                          else
+                            {
+                                //MainV2.comPort.doCommandInt((byte)MainV2.comPort.sysidcurrent, (byte)MainV2.comPort.compidcurrent, MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
+                                //MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
+                                MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
+                                            (ushort)(wpno - 4));
+                            }
+                        } 
                      }
                     catch
                     {
@@ -4841,6 +4856,7 @@ namespace MissionPlanner
         private string lastwpstr="1";
         private void resume_flight_Click(object sender, EventArgs e)
         {
+            
             if (
                Common.MessageShowAgain("恢复任务",
                    "警告：这将重新编程你的任务航线，解锁并发出起飞命令（多旋翼）") !=
@@ -4851,6 +4867,11 @@ namespace MissionPlanner
             {
                 if (MainV2.comPort.BaseStream.IsOpen)
                 {
+                    if(MainV2.comPort.MAV.cs.firmware!=Firmwares.ArduCopter2)
+                    {
+                        CustomMessageBox.Show("断点续飞仅支持多旋翼！");
+                        return;
+                    }
                     string lastwp = lastwpstr;
                     if (lastwp == "-1")
                         lastwp = "1";
@@ -4988,7 +5009,7 @@ namespace MissionPlanner
                                 MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent,
                                     (byte)MainV2.comPort.compidcurrent, MAVLink.MAV_CMD.TAKEOFF, 0, 0, 0, 0, 0, 0,
                                     lastwpdata.alt);
-                                Thread.Sleep(1000);
+                                Thread.Sleep(2000);
                                 Application.DoEvents();
                                 timeout++;
 
@@ -5093,8 +5114,16 @@ namespace MissionPlanner
         }
         private void btn_rtk_Click(object sender, EventArgs e)
         {
-            GCSViews.ConfigurationView.ConfigSerialInjectGPS rtk = new GCSViews.ConfigurationView.ConfigSerialInjectGPS();
-            rtk.Show();
+            try
+            {
+                GCSViews.ConfigurationView.ConfigSerialInjectGPS rtk = new GCSViews.ConfigurationView.ConfigSerialInjectGPS();
+                rtk.Show();
+            }
+            catch
+            {
+                CustomMessageBox.Show(Strings.Warning, Strings.ERROR);
+            }
+            
             
         }
 
@@ -5104,7 +5133,7 @@ namespace MissionPlanner
             try
             {
                 //MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
-                MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent, (byte)MainV2.comPort.compidcurrent, MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
+                MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent, (byte)MainV2.comPort.compidcurrent, MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST,-1, 0, 1, 0, 0, 0, 0);
             }
             catch
             {

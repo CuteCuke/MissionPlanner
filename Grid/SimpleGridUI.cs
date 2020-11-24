@@ -550,6 +550,7 @@ namespace MissionPlanner.SimpleGrid
         private double cam35mmxy_circlecenterdist_120m = 1.231896;//以35mm a7r 镜头在120m高度 照片区域直径与圆心距离比值做参考
         private void num_alt_ValueChanged(object sender, EventArgs e)
         {
+            ((NumericUpDown)sender).Enabled = false;
             NUM_altitude.Value = num_alt.Value;
             //NUM_Distance.Value = num_alt.Value;
             //NUM_spacing.Value = num_alt.Value;
@@ -564,7 +565,9 @@ namespace MissionPlanner.SimpleGrid
                 NUM_Distance.Value = (decimal)circledist(double.Parse(TXT_fovH.Text)/2,double.Parse (TXT_fovV.Text)/2);
                 NUM_spacing.Value = (decimal)circledist(double.Parse(TXT_fovH.Text)/2, double.Parse(TXT_fovV.Text) / 2);
             }
-            domainUpDown1_ValueChanged(sender, e);
+            domainUpDown1_ValueChanged(null, null);
+            map.ZoomAndCenterMarkers("polygons");
+            ((NumericUpDown)sender).Enabled = true;
         }
         double circledist (double x,double y)
         {
