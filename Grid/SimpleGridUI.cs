@@ -19,6 +19,7 @@ using MissionPlanner.Plugin;
 using MissionPlanner.Utilities;
 using ProjNet.CoordinateSystems;
 using ProjNet.CoordinateSystems.Transformations;
+using CoordConvert;
 
 namespace MissionPlanner.SimpleGrid
 {
@@ -451,42 +452,33 @@ namespace MissionPlanner.SimpleGrid
                 
                 if(MainV2.comPort.BaseStream.IsOpen)
                 {
-                    homelat = MainV2.comPort.MAV.cs.HomeLocation.Lat;
-                    homelong = MainV2.comPort.MAV.cs.HomeLocation.Lng;
+                    homelat = MainV2.comPort.MAV.cs.lat;
+                    homelong = MainV2.comPort.MAV.cs.lng;
+                }
+                else
+                {
+                    homelat = double.Parse(MainV2.instance.FlightPlanner.TXT_homelat.Text);
+                    homelong = double.Parse(MainV2.instance.FlightPlanner.TXT_homelng.Text);
                 }
                 //plugin.Host.AddWPtoList(MAVLink.MAV_CMD.DO_CHANGE_SPEED, 1,
                 //    (int)((float)NUM_UpDownFlySpeed.Value / CurrentState.multiplierspeed), 0, 0, 0, 0, 0,
                 //    null);
-                double lat, lng;
+                double X, Y;
                 int n=2;//计算第一个wp
                 if (chk_markers.Checked)
                     n = 1;
-                if(Math.Abs( grid[n].Lat-homelat)>Math.Abs( grid[n].Lng-homelong))
-                {
-                    if (grid[n].Lat>= homelat)
-                    {
-                        lat = grid[n].Lat - (double)loiter_r.Value * 0.0009 / 100;
-                        lng = grid[n].Lng;
-                    }else
-                    {
-                        lat = grid[n].Lat + (double)loiter_r.Value * 0.0009 / 100;
-                        lng = grid[n].Lng;
-                    }
-                }
-                else
-                {
-                    if (grid[n].Lng >= homelong)
-                    {
-                        lat = grid[n].Lat;
-                        lng = grid[n].Lng - (double)loiter_r.Value * 0.001035 / 100;
-                    }
-                    else
-                    {
-                        lat = grid[n].Lat;
-                        lng = grid[n].Lng + (double)loiter_r.Value * 0.001035 / 100;
-                    }
-                }
-                plugin.Host.AddWPtoList(MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0, lng,lat, grid[0].Alt);
+                var firstwp = grid[n];
+                var firstwpxyz = GaussProjection.GaussProjCal(new BLHCoordinate(firstwp.Lat,firstwp.Lng,firstwp.Alt),CoordConsts.cgcs2000atum,0);
+                var homexyz = GaussProjection.GaussProjCal(new BLHCoordinate(homelat,homelong,0), CoordConsts.cgcs2000atum, 0);
+                double dist_hometofirstwp = squar(firstwpxyz.X - homexyz.X, firstwpxyz.Y - homexyz.Y);
+                double dist_rat = (double)loiter_r.Value / dist_hometofirstwp;
+
+                //目标XY
+                        X = firstwpxyz.X - dist_rat * (firstwpxyz.X - homexyz.X);
+                        Y = firstwpxyz.Y - dist_rat * (firstwpxyz.Y - homexyz.Y);
+
+                var targetwp = GaussProjection.GaussProjInvCal(new XYZCoordinate(X, Y, 0), CoordConsts.cgcs2000atum, (int)((firstwp.Lng - 1.5) / 3 + 1)*3);//根据第一个航点计算带号
+                plugin.Host.AddWPtoList(MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0, targetwp.L,targetwp.B, grid[n].Alt);
 
                 plugin.Host.AddWPtoList(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, (double)cam_dist.Value, 0, 1, 0, 0, 0, 0);
 
@@ -520,7 +512,10 @@ namespace MissionPlanner.SimpleGrid
                 CustomMessageBox.Show("Bad Grid", "Error");
             }
         }
-
+        private double squar(double x,double y)
+        {
+            return Math.Sqrt(x * x + y * y);
+        }
         private void GridUI_Resize(object sender, EventArgs e)
         {
             map.ZoomAndCenterMarkers("polygons");
