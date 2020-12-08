@@ -60,7 +60,7 @@ namespace MissionPlanner.Utilities
             try
             {
                 listener = new TcpListener(IPAddress.Any, 56781);
-
+               // string path = AppDomain.CurrentDomain.BaseDirectory;
                 listener.Start();
             }
             catch (Exception e)
@@ -1096,6 +1096,33 @@ namespace MissionPlanner.Utilities
                         stream.Close();
                     }
                     /////////////////////////////////////////////////////////////////
+                    else if (url.ToLower().Contains("/jscss/"))
+                    {
+                        Console.WriteLine(url);
+                        string type = "";
+                        if (url.ToLower().Contains(".js"))
+                        {
+                            type = "Content-Type:text/javascript";
+                        }
+                        else if (url.ToLower().Contains(".css"))
+                        {
+                            type = "Content-Type:text/css";
+                        }
+                        string header = "HTTP/1.1 200 OK\r\nConnection: close\r\n"+type+"\r\n\r\n";
+                        byte[] temp = asciiEncoding.GetBytes(header);
+                        stream.Write(temp, 0, temp.Length);
+
+                        string[] p = url.Split(' ');
+                      
+                        string path = AppDomain.CurrentDomain.BaseDirectory + p[1];
+                        Console.WriteLine(path);
+                        string content = File.ReadAllText(path);
+
+
+                        temp = asciiEncoding.GetBytes(content);
+                        stream.Write(temp, 0, temp.Length);
+                    }
+                    ///
                     else if (url.ToLower().Contains(" / "))
                     {
                         Console.WriteLine(url);
@@ -1104,23 +1131,174 @@ namespace MissionPlanner.Utilities
                         stream.Write(temp, 0, temp.Length);
 
                         string content = @"
-                <a href=/mav/>Mavelous</a>
-<a href=/mavlink/>Mavelous traffic</a>
-<a href=/hud.jpg>Hud image</a>
-<a href=/map.jpg>Map image </a>
-<a href=/both.jpg>Map & hud image</a>
-<a href=/hud.html>hud html5</a>
-<a href=/network.kml>network kml</a>
-<a href=/georefnetwork.kml>georef kml</a>
+             <!DOCTYPE html>
+<html lang='zh'>
+  <head>
+    <meta charset = 'utf-8' />
+    <meta http-equiv ='X-UA-Compatible' content ='IE=edge' />     
+    <meta name = 'viewport' content = 'width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no'/>
+    <title > Hello World! </title>
+   
+       <script src = '/jscss/Cesium/Cesium.js' crossorigin = 'anonymous' > </script>
+      
+       <script src = 'https://api.tianditu.gov.cn/cdn/plugins/cesium/cesiumTdt.js' ></script>
+         
+       <script src = '/jscss/tdt.js'></script>
+          
+       <script type = 'text/javascript' src = '/jscss/Cesium/Sandcastle/Sandcastle-header.js'></script>
+             
+       <script type = 'module' src = '/jscss/Cesium/Sandcastle/load-cesium-es6.js'></script>
+       <link rel='stylesheet' type='text/css' href='/jscss/Cesium/Widgets/widgets.css'>
+       <link rel='stylesheet' type='text/css' href='/jscss/Cesium/Sandcastle/templates/bucket.css'>
+           
+
+      <style>
+            html,
+            body,
+            #cesiumContainer {
+                    width: 100 %;
+                    height: 100 %;
+                    margin: 0;
+                    padding: 0;
+                    overflow: hidden;
+                    }
+             .cesium-widget-credits{
+                    display: none !important;
+                    }
+        </style>
+  </head >
+  <body>
+    <div id = 'cesiumContainer'></div>
+ 
+    <div id = 'loadingOverlay'>
+    <h1> Loading...</h1></div>
+        
+    <div id = 'toolbar' ></div>
+         
+    <script>
+
+    var viewer = new Cesium.Viewer('cesiumContainer',{
+          animation:false,          
+          baseLayerPicker:false,          
+          fullscreenButton:false,
+          geocoder:true,          
+          homeButton:true,
+          infoBox:false,
+          scene3DOnly:false,
+          selectionoIndicatr:false,
+          timeline:false,         
+          navigationHelpButton:true,
+          navigationInstructionsInitiallyVisibl:false,
+          useDefaultRenderLoop:true,
+          showRenderLoopErrors:true,
+          projectionPicker:false, 
+});
+          loadmap(viewer);
+    </script>
+
+    <script id = 'cesium_sandcastle_script' >
+      var czml = [wps.czml];
+      var dataSourcePromise = Cesium.CzmlDataSource.load(czml);
+                    viewer.dataSources.add(dataSourcePromise);
+                    viewer.zoomTo(dataSourcePromise);
+
+    </script>
+  </body>
+</html>
 
 ";
+                        content = content.Replace("wps.czml", FlightPlanner.instance.czml);
                         temp = asciiEncoding.GetBytes(content);
                         stream.Write(temp, 0, temp.Length);
                     }
-                    /////////////////////////////////////////////////////////////////
+
+
+                    //                    /////////////////////////////////////////////////////////////////
+                  
+                    //////////////////////////////////////////////////////////////////////////
+                    //else if (url.ToLower().Contains("/cesium/sandcastle/load-cesium-es6.js"))
+                    //{
+                    //    Console.WriteLine(url);
+                    //    string header = "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/html\r\n\r\n";
+                    //    byte[] temp = asciiEncoding.GetBytes(header);
+                    //    stream.Write(temp, 0, temp.Length);
+
+                    //    string path = AppDomain.CurrentDomain.BaseDirectory + "//jscss//load-cesium-es6.js";
+
+                    //    string content = File.ReadAllText(path);
+
+
+                    //    temp = asciiEncoding.GetBytes(content);
+                    //    stream.Write(temp, 0, temp.Length);
+                    //}
+                    ////////////////////////////////////////////////////////////////////////////////
+                    //else if (url.ToLower().Contains("/cesium/sandcastle/sandcastle-header.js"))
+                    //{
+                    //    Console.WriteLine(url);
+                    //    string header = "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/html\r\n\r\n";
+                    //    byte[] temp = asciiEncoding.GetBytes(header);
+                    //    stream.Write(temp, 0, temp.Length);
+
+                    //    string path = AppDomain.CurrentDomain.BaseDirectory + "//jscss//Sandcastle-header.js";
+
+                    //    string content = File.ReadAllText(path);
+
+
+                    //    temp = asciiEncoding.GetBytes(content);
+                    //    stream.Write(temp, 0, temp.Length);
+                    //}
+                    ///////////////////////////////////////////////////////////////////////////////
+                    //else if (url.ToLower().Contains("/tdt.js"))
+                    //{
+                    //    Console.WriteLine(url);
+                    //    string header = "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/html\r\n\r\n";
+                    //    byte[] temp = asciiEncoding.GetBytes(header);
+                    //    stream.Write(temp, 0, temp.Length);
+
+                    //    string path = AppDomain.CurrentDomain.BaseDirectory + "//jscss//tdt.js";
+
+                    //    string content = File.ReadAllText(path);
+
+
+                    //    temp = asciiEncoding.GetBytes(content);
+                    //    stream.Write(temp, 0, temp.Length);
+                    //}
+                    //////////////////////////////////////////////////////////////////////////////
+                    //else if (url.ToLower().Contains("/cesium/widgets/widgets.css"))
+                    //{
+                    //    Console.WriteLine(url);
+                    //    string header = "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/html\r\n\r\n";
+                    //    byte[] temp = asciiEncoding.GetBytes(header);
+                    //    stream.Write(temp, 0, temp.Length);
+
+                    //    string path = AppDomain.CurrentDomain.BaseDirectory + "//jscss//widgets.css";
+
+                    //    string content = File.ReadAllText(path);
+
+
+                    //    temp = asciiEncoding.GetBytes(content);
+                    //    stream.Write(temp, 0, temp.Length);
+                    //}
+                    //                    /////////////////////////////////////////////////////////////////////////////
+                    //                    else if (url.ToLower().Contains("/cesium/sandcastle/templates/bucket.css"))
+                    //                    {
+                    //                        Console.WriteLine(url);
+                    //                        string header = "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/html\r\n\r\n";
+                    //                        byte[] temp = asciiEncoding.GetBytes(header);
+                    //                        stream.Write(temp, 0, temp.Length);
+
+                    //                        string path = AppDomain.CurrentDomain.BaseDirectory + "//jscss//bucket.css";
+
+                    //                        string content = File.ReadAllText(path);
+
+
+                    //                        temp = asciiEncoding.GetBytes(content);
+                    //                        stream.Write(temp, 0, temp.Length);
+                    //                    }
+                    //                    ///
                     else
                     {
-                        string header = "HTTP/1.1 404 not found\r\nContent-Type: text/plain\r\n\r\n";
+                        string header = "HTTP /1.1 404 not found\r\nContent-Type: text/plain\r\n\r\n";
                         byte[] temp = asciiEncoding.GetBytes(header);
                         stream.Write(temp, 0, temp.Length);
                     }
@@ -1136,7 +1314,7 @@ namespace MissionPlanner.Utilities
             }
         }
 
-
+       
         public static Color HexStringToColor(string hexColor)
         {
             string hc = (hexColor);

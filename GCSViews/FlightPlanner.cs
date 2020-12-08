@@ -48,7 +48,7 @@ using Placemark = SharpKml.Dom.Placemark;
 using Point = System.Drawing.Point;
 using Xamarin.Forms.Xaml;
 using Microsoft.Scripting.Metadata;
-
+using System.Text;
 
 namespace MissionPlanner.GCSViews
 {
@@ -2300,7 +2300,7 @@ namespace MissionPlanner.GCSViews
 
                 Settings.Instance["TXT_DefaultAlt"] = TXT_DefaultAlt.Text;
 
-                Settings.Instance["CMB_altmode"] = CMB_altmode.Text;
+                Settings.Instance["CMB_altmode"] = "Relative";
 
                 Settings.Instance["fpminaltwarning"] = TXT_altwarn.Text;
 
@@ -3826,25 +3826,111 @@ namespace MissionPlanner.GCSViews
 
             writeKML();
         }
+        public void writeczml(List<Locationwp> list)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            double alt;
+            sfd.FileName = "outwps.czml";
+            //if(sfd.ShowDialog() == DialogResult.OK)
+            if (true)
+            {
+                using (StreamWriter sw = new StreamWriter(sfd.OpenFile()))
+                {
+                    int i = 0;
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("{\n\tid:\"document\",\n\tname:\"CZML wplines\",\n\tversion:\"1.0\",\n},");
+                    sb.Append("{\n\tid:\"wpline\",\n\tname:\"wpline for plan\",\n\tpolyline:{\n\t\tpositions:{\n\t\t\tcartographicDegrees:[");
+                    foreach(var p in list)
+                    {
+                        if ((altmode)p.frame == altmode.Relative)
+                            alt = p.alt + MainV2.comPort.MAV.cs.HomeAlt;
+                        else if ((altmode)p.frame == altmode.Terrain)
+                            alt = p.alt + srtm.getAltitude(p.lat, p.lng).alt;
+                        else
+                            alt = p.alt;
+                        if(p.id==22||p.id==84)
+                            {
+                                sb.Append(p.lng + "," + p.lat + "," + MainV2.comPort.MAV.cs.HomeAlt + ",");
+                                sb.Append(p.lng + "," + p.lat + "," + alt + ",");
+                            }
+                        if (p.id==16||p.id==18||p.id==21)
+                            {                           
+                                sb.Append(p.lng + "," + p.lat + "," + alt + ",");
+                            }
+                        if(p.id == 31)
+                            {
+                            double t ;
+                            if ((altmode)list[i - 1].frame == altmode.Relative)
+                                t = list[i - 1].alt + MainV2.comPort.MAV.cs.HomeAlt;
+                            else if ((altmode)list[i - 1].frame == altmode.Terrain)
+                                t = list[i - 1].alt + srtm.getAltitude(p.lat, p.lng).alt;
+                            else
+                                t = list[i - 1].alt;
 
+                            sb.Append(p.lng + "," + p.lat + "," + t + ",");
+                            sb.Append(p.lng + "," + p.lat + "," + alt + ",");
+                        }
+                        if (p.id == 85)
+                        {
+                            alt += list[i - 1].alt;
+                            sb.Append(p.lng + "," + p.lat + "," + alt+ ",");
+                            sb.Append(p.lng + "," + p.lat + "," + MainV2.comPort.MAV.cs.HomeAlt + ",");                          
+                        }
+                        i++;
+                    }
+                    sb.Append("]},\n\t\tmaterial:{\n\t\t\tsolidColor:{\n\t\t\t\tcolor:{\n\t\t\t\t\trgba:[0, 255, 0, 255],\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\twidth:1,\n\t\t},\n\t},");
+                    int n = 1;
+
+                    foreach (var p in list)
+                    {
+                        if ((altmode)p.frame == altmode.Relative)
+                            alt = p.alt + MainV2.comPort.MAV.cs.HomeAlt;
+                        else if ((altmode)p.frame == altmode.Terrain)
+                            alt = p.alt + srtm.getAltitude(p.lat, p.lng).alt;
+                        else
+                            alt = p.alt;
+                        if (p.id == 18)
+                        {
+                            sb.Append("\n{\n\tid:\"circle"+n+"\",\n\tname:\"wp for circle\",\n\tposition:{\n\t\tcartographicDegrees: [" + p.lng + ", " + p.lat + "," + alt + "]");
+                            sb.Append("},\n\tpoint:{\n\t\tcolor:{\n\t\trgba: [255, 255, 255, 255],\n\t\t},\n\tpixelSize: 5,\n\t},\n\t ellipse: {\n\t");
+                            sb.Append("\tsemiMinorAxis: " + p.p3 + ",\n\t\tsemiMajorAxis: " + p.p3 + ",\n\t\theight: " + alt + ",\n\t\tfill:false, \n\t\toutline:true,\n\t\toutlineColor:{rgba:[0,255,0,255]},\n\t\t},\n\t},");
+                            n++;
+                        }
+                        if (p.id == 31)
+                        {
+                            sb.Append("\n{\n\tid:\"circle" + n + "\",\n\tname:\"wp for circle\",\n\tposition:{\n\t\tcartographicDegrees: [" + p.lng + ", " + p.lat + "," + alt + "]");
+                            sb.Append("},\n\tpoint:{\n\t\tcolor:{\n\t\trgba: [255, 255, 255, 255],\n\t\t},\n\tpixelSize: 5,\n\t},\n\t ellipse: {\n\t");
+                            sb.Append("\tsemiMinorAxis: " + p.p2 + ",\n\t\tsemiMajorAxis: " + p.p2 + ",\n\t\theight: " + alt + ",\n\t\tfill:false, \n\t\toutline:true,\n\t\toutlineColor:{rgba:[0,255,0,255]},\n\t\t},\n\t},");
+                            n++;
+                        }
+
+                    }
+                    // return sb.ToString();
+                    sw.WriteLine(sb.ToString());
+                    czml = sb.ToString();
+                   // sb.Clear();
+                }
+            }
+        }
+        public string czml;
         public void lnk_kml_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
             {
                 // Process.Start("http://127.0.0.1:56781/network.kml");
-                //Process.Start(@"C:\Program Files(x86)\Google\Google Earth\client\googleearth.exe", "http://127.0.0.1:56781/network.kml");
-                Process process = new Process();
-                string str = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
-                process.StartInfo.FileName = str + @"\GEclient\googleearth.exe";
-                process.StartInfo.Arguments = "http://127.0.0.1:56781/wps.kml";
-                
-                //process.StartInfo.UseShellExecute = false;
-                //process.StartInfo.RedirectStandardOutput = false;
-                //process.StartInfo.RedirectStandardInput = true;
-                //process.StartInfo.CreateNoWindow = false;
-                process.Start();
-                process.WaitForExit();
-                process.Close();
+                //Process.Start("http://localhost:8080/", writeczml(GetCommandList()));
+                writeczml(GetCommandList());
+               // string path = AppDomain.CurrentDomain.BaseDirectory;
+                Process.Start("http://127.0.0.1:56781/");
+                //Process process = new Process();
+                //string str = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+                //process.StartInfo.FileName = str + @"\GEclient\googleearth.exe";
+                //process.StartInfo.Arguments = "http://127.0.0.1:56781/wps.kml";
+
+
+                //process.Start();
+                //process.WaitForExit();
+                //process.Close();
             }
             catch
             {
@@ -7115,6 +7201,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             tag_updownwp = false;
             ischk_imitation = false;
             chk_imitation.Checked = false;
+            CMB_altmode.Text = "Relative";
             imitationwpno.Clear();
             imitationwpdist.Clear();
             imitationwpno2.Clear();
