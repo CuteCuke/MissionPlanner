@@ -1045,56 +1045,55 @@ namespace MissionPlanner.Utilities
                         }
                     }
                     /////////////////////////////////////////////////////////////////
-                    else if (url.ToLower().Contains(".jpg"))
-                    {
-                        Regex rex = new Regex(@"([^\s]+)\s(.+)\sHTTP/1", RegexOptions.IgnoreCase);
+                    //else if (url.ToLower().Contains(".jpg"))
+                    //{
+                    //    Regex rex = new Regex(@"([^\s]+)\s(.+)\sHTTP/1", RegexOptions.IgnoreCase);
 
-                        Match match = rex.Match(url);
+                    //    Match match = rex.Match(url);
 
-                        if (match.Success)
-                        {
-                            string fileurl = match.Groups[2].Value;
+                    //    if (match.Success)
+                    //    {
+                    //        string fileurl = match.Groups[2].Value;
 
-                            using (Image orig = Image.FromFile(georefimagepath + fileurl))
-                            using (Image resi = ResizeImage(orig, new Size(640, 480)))
-                            using (MemoryStream memstream = new MemoryStream())
-                            {
-                                resi.Save(memstream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    //        using (Image orig = Image.FromFile(georefimagepath + fileurl))
+                    //        using (Image resi = ResizeImage(orig, new Size(640, 480)))
+                    //        using (MemoryStream memstream = new MemoryStream())
+                    //        {
+                    //            resi.Save(memstream, System.Drawing.Imaging.ImageFormat.Jpeg);
 
-                                memstream.Position = 0;
-                                string header =
-                                    "HTTP/1.1 200 OK\r\nServer: here\r\nKeep-Alive: timeout=15, max=100\r\nConnection: Keep-Alive\r\nContent-Type: image/jpg\r\nX-Pad: avoid browser bug\r\nContent-Length: " +
-                                    memstream.Length + "\r\n\r\n";
-                                byte[] temp = asciiEncoding.GetBytes(header);
-                                stream.Write(temp, 0, temp.Length);
+                    //            memstream.Position = 0;
+                    //            string header =
+                    //                "HTTP/1.1 200 OK\r\nServer: here\r\nKeep-Alive: timeout=15, max=100\r\nConnection: Keep-Alive\r\nContent-Type: image/jpg\r\nX-Pad: avoid browser bug\r\nContent-Length: " +
+                    //                memstream.Length + "\r\n\r\n";
+                    //            byte[] temp = asciiEncoding.GetBytes(header);
+                    //            stream.Write(temp, 0, temp.Length);
 
-                                using (BinaryReader file = new BinaryReader(memstream))
-                                {
-                                    byte[] buffer = new byte[1024];
-                                    while (file.BaseStream.Position < file.BaseStream.Length)
-                                    {
-                                        int leng = file.Read(buffer, 0, buffer.Length);
+                    //            using (BinaryReader file = new BinaryReader(memstream))
+                    //            {
+                    //                byte[] buffer = new byte[1024];
+                    //                while (file.BaseStream.Position < file.BaseStream.Length)
+                    //                {
+                    //                    int leng = file.Read(buffer, 0, buffer.Length);
 
-                                        stream.Write(buffer, 0, leng);
-                                    }
-                                }
-                            }
+                    //                    stream.Write(buffer, 0, leng);
+                    //                }
+                    //            }
+                    //        }
 
-                            stream.Flush();
+                    //        stream.Flush();
 
-                            goto again;
+                    //        goto again;
 
-                            //stream.Close();
-                        }
-                        /////////////////////////////////////////////////////////////////
-                        else
-                        {
-                            string header = "HTTP/1.1 404 not found\r\nContent-Type: image/jpg\r\n\r\n";
-                            byte[] temp = asciiEncoding.GetBytes(header);
-                            stream.Write(temp, 0, temp.Length);
-                        }
-                        stream.Close();
-                    }
+                    //        //stream.Close();
+                    //    }
+                    //    else
+                    //    {
+                    //        string header = "HTTP/1.1 404 not found\r\nContent-Type: image/jpg\r\n\r\n";
+                    //        byte[] temp = asciiEncoding.GetBytes(header);
+                    //        stream.Write(temp, 0, temp.Length);
+                    //    }
+                    //    stream.Close();
+                    //}
                     /////////////////////////////////////////////////////////////////
                     else if (url.ToLower().Contains("/jscss/"))
                     {
@@ -1107,6 +1106,10 @@ namespace MissionPlanner.Utilities
                         else if (url.ToLower().Contains(".css"))
                         {
                             type = "Content-Type:text/css";
+                        }
+                        else if (url.ToLower().Contains(".svg"))
+                        {
+                            type = "Content-Type: image/svg+xml";
                         }
                         string header = "HTTP/1.1 200 OK\r\nConnection: close\r\n"+type+"\r\n\r\n";
                         byte[] temp = asciiEncoding.GetBytes(header);
@@ -1122,7 +1125,9 @@ namespace MissionPlanner.Utilities
                         temp = asciiEncoding.GetBytes(content);
                         stream.Write(temp, 0, temp.Length);
                     }
-                    ///
+                    ///////
+                    
+                    /////
                     else if (url.ToLower().Contains(" / "))
                     {
                         Console.WriteLine(url);
@@ -1134,14 +1139,14 @@ namespace MissionPlanner.Utilities
              <!DOCTYPE html>
 <html lang='zh'>
   <head>
-    <meta charset = 'utf-8' />
-    <meta http-equiv ='X-UA-Compatible' content ='IE=edge' />     
-    <meta name = 'viewport' content = 'width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no'/>
-    <title > Hello World! </title>
+    <meta charset='utf-8'/>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'/>     
+    <meta name= 'viewport' content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no'/>
+    <title> Hello World! </title>
    
-       <script src = '/jscss/Cesium/Cesium.js' crossorigin = 'anonymous' > </script>
+       <script src = '/jscss/Cesium/Cesium.js' crossorigin = 'anonymous'> </script>
       
-       <script src = 'https://api.tianditu.gov.cn/cdn/plugins/cesium/cesiumTdt.js' ></script>
+       <script src = 'https://api.tianditu.gov.cn/cdn/plugins/cesium/cesiumTdt.js'></script>
          
        <script src = '/jscss/tdt.js'></script>
           
@@ -1155,9 +1160,9 @@ namespace MissionPlanner.Utilities
       <style>
             html,
             body,
-            #cesiumContainer {
-                    width: 100 %;
-                    height: 100 %;
+            #cesiumContainer{
+                    width: 100%;
+                    height: 100%;
                     margin: 0;
                     padding: 0;
                     overflow: hidden;
@@ -1173,7 +1178,7 @@ namespace MissionPlanner.Utilities
     <div id = 'loadingOverlay'>
     <h1> Loading...</h1></div>
         
-    <div id = 'toolbar' ></div>
+    <div id = 'toolbar'></div>
          
     <script>
 
@@ -1196,7 +1201,7 @@ namespace MissionPlanner.Utilities
           loadmap(viewer);
     </script>
 
-    <script id = 'cesium_sandcastle_script' >
+    <script id = 'cesium_sandcastle_script'>
       var czml = [wps.czml];
       var dataSourcePromise = Cesium.CzmlDataSource.load(czml);
                     viewer.dataSources.add(dataSourcePromise);

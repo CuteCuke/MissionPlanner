@@ -31,10 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GridUI));
             this.map = new MissionPlanner.Controls.myGMAP();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.lbl_distbetweenlines = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
             this.lbl_strips = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
+            this.chk_markers = new System.Windows.Forms.CheckBox();
+            this.chk_grid = new System.Windows.Forms.CheckBox();
+            this.lbl_distbetweenlines = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.CHK_internals = new System.Windows.Forms.CheckBox();
+            this.chk_set = new System.Windows.Forms.CheckBox();
+            this.chk_boundary = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.NUM_overshoot2 = new System.Windows.Forms.NumericUpDown();
             this.NUM_altitude = new System.Windows.Forms.NumericUpDown();
@@ -69,11 +74,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.CMB_startfrom = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.chk_set = new System.Windows.Forms.CheckBox();
-            this.CHK_internals = new System.Windows.Forms.CheckBox();
-            this.chk_grid = new System.Windows.Forms.CheckBox();
-            this.chk_markers = new System.Windows.Forms.CheckBox();
-            this.chk_boundary = new System.Windows.Forms.CheckBox();
+            this.lbl_homeres = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -96,8 +98,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.BUT_save = new MissionPlanner.Controls.MyButton();
-            this.label18 = new System.Windows.Forms.Label();
-            this.lbl_homeres = new System.Windows.Forms.Label();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_overshoot2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_altitude)).BeginInit();
@@ -159,6 +159,32 @@
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
             // 
+            // lbl_strips
+            // 
+            resources.ApplyResources(this.lbl_strips, "lbl_strips");
+            this.lbl_strips.Name = "lbl_strips";
+            // 
+            // label33
+            // 
+            resources.ApplyResources(this.label33, "label33");
+            this.label33.Name = "label33";
+            // 
+            // chk_markers
+            // 
+            resources.ApplyResources(this.chk_markers, "chk_markers");
+            this.chk_markers.Name = "chk_markers";
+            this.chk_markers.UseVisualStyleBackColor = true;
+            this.chk_markers.CheckedChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
+            // 
+            // chk_grid
+            // 
+            resources.ApplyResources(this.chk_grid, "chk_grid");
+            this.chk_grid.Checked = true;
+            this.chk_grid.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_grid.Name = "chk_grid";
+            this.chk_grid.UseVisualStyleBackColor = true;
+            this.chk_grid.CheckedChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
+            // 
             // lbl_distbetweenlines
             // 
             resources.ApplyResources(this.lbl_distbetweenlines, "lbl_distbetweenlines");
@@ -169,15 +195,30 @@
             resources.ApplyResources(this.label25, "label25");
             this.label25.Name = "label25";
             // 
-            // lbl_strips
+            // CHK_internals
             // 
-            resources.ApplyResources(this.lbl_strips, "lbl_strips");
-            this.lbl_strips.Name = "lbl_strips";
+            resources.ApplyResources(this.CHK_internals, "CHK_internals");
+            this.CHK_internals.Checked = true;
+            this.CHK_internals.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CHK_internals.Name = "CHK_internals";
+            this.CHK_internals.UseVisualStyleBackColor = true;
+            this.CHK_internals.CheckedChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
             // 
-            // label33
+            // chk_set
             // 
-            resources.ApplyResources(this.label33, "label33");
-            this.label33.Name = "label33";
+            resources.ApplyResources(this.chk_set, "chk_set");
+            this.chk_set.Name = "chk_set";
+            this.chk_set.UseVisualStyleBackColor = true;
+            this.chk_set.CheckedChanged += new System.EventHandler(this.chk_set_CheckedChanged);
+            // 
+            // chk_boundary
+            // 
+            resources.ApplyResources(this.chk_boundary, "chk_boundary");
+            this.chk_boundary.Checked = true;
+            this.chk_boundary.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_boundary.Name = "chk_boundary";
+            this.chk_boundary.UseVisualStyleBackColor = true;
+            this.chk_boundary.CheckedChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
             // 
             // label7
             // 
@@ -333,7 +374,7 @@
             0});
             resources.ApplyResources(this.num_alt, "num_alt");
             this.num_alt.Maximum = new decimal(new int[] {
-            1000,
+            255,
             0,
             0,
             0});
@@ -543,46 +584,15 @@
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
             // 
-            // chk_set
+            // lbl_homeres
             // 
-            resources.ApplyResources(this.chk_set, "chk_set");
-            this.chk_set.Name = "chk_set";
-            this.chk_set.UseVisualStyleBackColor = true;
-            this.chk_set.CheckedChanged += new System.EventHandler(this.chk_set_CheckedChanged);
+            resources.ApplyResources(this.lbl_homeres, "lbl_homeres");
+            this.lbl_homeres.Name = "lbl_homeres";
             // 
-            // CHK_internals
+            // label18
             // 
-            resources.ApplyResources(this.CHK_internals, "CHK_internals");
-            this.CHK_internals.Checked = true;
-            this.CHK_internals.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CHK_internals.Name = "CHK_internals";
-            this.CHK_internals.UseVisualStyleBackColor = true;
-            this.CHK_internals.CheckedChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
-            // 
-            // chk_grid
-            // 
-            resources.ApplyResources(this.chk_grid, "chk_grid");
-            this.chk_grid.Checked = true;
-            this.chk_grid.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_grid.Name = "chk_grid";
-            this.chk_grid.UseVisualStyleBackColor = true;
-            this.chk_grid.CheckedChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
-            // 
-            // chk_markers
-            // 
-            resources.ApplyResources(this.chk_markers, "chk_markers");
-            this.chk_markers.Name = "chk_markers";
-            this.chk_markers.UseVisualStyleBackColor = true;
-            this.chk_markers.CheckedChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
-            // 
-            // chk_boundary
-            // 
-            resources.ApplyResources(this.chk_boundary, "chk_boundary");
-            this.chk_boundary.Checked = true;
-            this.chk_boundary.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_boundary.Name = "chk_boundary";
-            this.chk_boundary.UseVisualStyleBackColor = true;
-            this.chk_boundary.CheckedChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
+            resources.ApplyResources(this.label18, "label18");
+            this.label18.Name = "label18";
             // 
             // tabControl1
             // 
@@ -742,16 +752,6 @@
             this.BUT_save.Name = "BUT_save";
             this.BUT_save.UseVisualStyleBackColor = true;
             this.BUT_save.Click += new System.EventHandler(this.BUT_save_Click);
-            // 
-            // label18
-            // 
-            resources.ApplyResources(this.label18, "label18");
-            this.label18.Name = "label18";
-            // 
-            // lbl_homeres
-            // 
-            resources.ApplyResources(this.lbl_homeres, "lbl_homeres");
-            this.lbl_homeres.Name = "lbl_homeres";
             // 
             // GridUI
             // 

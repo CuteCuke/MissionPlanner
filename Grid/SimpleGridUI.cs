@@ -583,12 +583,12 @@ namespace MissionPlanner.SimpleGrid
                 TXT_imgwidth.Text = camera.imagewidth.ToString();
                 TXT_sensheight.Text = camera.sensorheight.ToString();
                 TXT_senswidth.Text = camera.sensorwidth.ToString();
-
+                doCalc();
                 //NUM_Distance.Enabled = false;
             }
             // GMapMarkerOverlap.Clear();
             //num_alt_ValueChanged(null, null);
-            domainUpDown1_ValueChanged(null, null);
+           
             if (CMB_camera.Text == "")
             {
                 NUM_Distance.Value = num_alt.Value;
@@ -599,6 +599,8 @@ namespace MissionPlanner.SimpleGrid
                 NUM_Distance.Value = (decimal)circledist(double.Parse(TXT_fovH.Text) / 2, double.Parse(TXT_fovV.Text) / 2);
                 NUM_spacing.Value = (decimal)circledist(double.Parse(TXT_fovH.Text) / 2, double.Parse(TXT_fovV.Text) / 2);
             }
+            domainUpDown1_ValueChanged(null, null);
+            map.ZoomAndCenterMarkers("polygons");
         }
         private void xmlcamera(bool write, string filename)
         {
