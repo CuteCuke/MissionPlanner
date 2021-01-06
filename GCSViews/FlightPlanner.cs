@@ -3830,6 +3830,9 @@ namespace MissionPlanner.GCSViews
         {
             SaveFileDialog sfd = new SaveFileDialog();
             double alt;
+            double homelat = MainV2.comPort.MAV.cs.lat;
+            double homelng= MainV2.comPort.MAV.cs.lng;
+            double homealt = MainV2.comPort.MAV.cs.HomeAlt;
             sfd.FileName = "outwps.czml";
             //if(sfd.ShowDialog() == DialogResult.OK)
             if (true)
@@ -3850,8 +3853,9 @@ namespace MissionPlanner.GCSViews
                             alt = p.alt;
                         if(p.id==22||p.id==84)
                             {
-                                sb.Append(p.lng + "," + p.lat + "," + MainV2.comPort.MAV.cs.HomeAlt + ",");
-                                sb.Append(p.lng + "," + p.lat + "," + alt + ",");
+                                var takeoffalt = homealt + p.alt;
+                                sb.Append(homelng + "," + homelat + "," + homealt + ",");
+                                sb.Append(homelng+ "," + homelat + "," + takeoffalt + ",");
                             }
                         if (p.id==16||p.id==18||p.id==21)
                             {                           
@@ -7465,7 +7469,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                         // InsertCommand(1,MAVLink.MAV_CMD.VTOL_TAKEOFF,0,0,0,0,0,0,(double)vtol_takeoff_alt.Value);
                         if (tag_updownwp == false && missionstartwp.id == (ushort)MAVLink.MAV_CMD.WAYPOINT && missionendwp.id == (ushort)MAVLink.MAV_CMD.WAYPOINT)
                         {
-                            InsertCommand(rowindex, MAVLink.MAV_CMD.VTOL_TAKEOFF, 0, 0, 0, 0, lat, lng, (double)vtol_takeoff_alt.Value);//VTOL_TAKEOFF 起飞点
+                            InsertCommand(rowindex, MAVLink.MAV_CMD.VTOL_TAKEOFF, 0, 0, 0, 0, 0, 0, (double)vtol_takeoff_alt.Value);//VTOL_TAKEOFF 起飞点
                             //nextwp.newpos(0,(double)pilotwp_updist.Value);
                             InsertCommand(rowindex += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0,
                                 lat += Math.Sin((double)updown_angle.Value * Math.PI / 180) * ((double)100 / 100000),
@@ -7563,7 +7567,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                         }
                         if (tag_updownwp == false && missionendwp.id == (ushort)MAVLink.MAV_CMD.WAYPOINT)
                         {
-                            InsertCommand(0, MAVLink.MAV_CMD.TAKEOFF, 20, 0, 0, 0, lat, lng, (double)vtol_takeoff_alt.Value);
+                            InsertCommand(0, MAVLink.MAV_CMD.TAKEOFF, 20, 0, 0, 0, 0, 0, (double)vtol_takeoff_alt.Value);
                             InsertCommand(commandno += 1, MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0, lat, lng, missionendwp.alt);
                             InsertCommand(commandno += 1, MAVLink.MAV_CMD.LAND, 0, 0, 0, 0, lat, lng, 0);
                             tag_updownwp = true;

@@ -1120,6 +1120,11 @@
             0,
             0,
             0});
+            this.min_alt.Minimum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            -2147483648});
             this.min_alt.Name = "min_alt";
             this.min_alt.ValueChanged += new System.EventHandler(this.min_alt_ValueChanged);
             // 
