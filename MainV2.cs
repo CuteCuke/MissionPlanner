@@ -4630,34 +4630,50 @@ namespace MissionPlanner
 
             try
             {
+                ((ToolStripButton)sender).Enabled = false;
                 if (CustomMessageBox.Show("你确定你想返航！", "返航",
                       CustomMessageBox.MessageBoxButtons.YesNo) ==
                   CustomMessageBox.DialogResult.Yes)
                 {
-                    ((ToolStripButton)sender).Enabled = false;
+                    
                     var wpno = MainV2.comPort.getWPCount(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid);
                     lastwpstr = MainV2.comPort.MAV.cs.lastautowp.ToString();
                     return_now_lat = MainV2.comPort.MAV.cs.lat;
                     return_now_lng = MainV2.comPort.MAV.cs.lng;
+                    //if (MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent, (byte)MainV2.comPort.compidcurrent, MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0))
+                    //{ }
+                    //else
+                    //    CustomMessageBox.Show(Strings.CommandFailed+"关闭拍照失败", Strings.ERROR); 
 
                     if (wpno >= 3)
                     {
-                        
 
                         if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
                         {
-
-                           // MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
-                            MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent, (byte)MainV2.comPort.compidcurrent, MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
-                            Thread.Sleep(100);
+                            for(int i=wpno-3;i>=wpno/2;i--)
+                            {
+                                if(comPort.getWP((ushort)i).id==(ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
+                                {
+                                    MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
+                                       (ushort)(i));
+                                    break;
+                                }
+                            }
                             MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
                                         (ushort)(wpno - 2));
                         }
-                        //MainV2.comPort.setMode("RTL");
                         else if(MainV2.comPort.MAV.cs.firmware == Firmwares.ArduPlane)
                         {
-                            //MainV2.comPort.doCommandInt((byte)MainV2.comPort.sysidcurrent, (byte)MainV2.comPort.compidcurrent, MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
-                            MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
+                            //MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
+                            for (int i = wpno - 5; i >=wpno / 2; i--)
+                            {
+                                if (comPort.getWP((ushort)i).id == (ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
+                                {
+                                    MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
+                                       (ushort)(i));
+                                    break;
+                                }
+                            }
                             MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
                                         (ushort)(wpno - 4));
                         }
@@ -4669,8 +4685,8 @@ namespace MissionPlanner
                 CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
             }
 
-                ((ToolStripButton)sender).Enabled = true;
-           
+            ((ToolStripButton)sender).Enabled = true;
+
         }
 
        

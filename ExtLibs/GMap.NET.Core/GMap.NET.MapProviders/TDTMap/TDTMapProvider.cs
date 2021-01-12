@@ -4,15 +4,15 @@
     using GMap.NET.Projections;
     using System;
 
-    public abstract class AMapProviderBase : GMapProvider
+    public abstract class TDTMapProviderBase : GMapProvider
     {
         private GMapProvider[] overlays;
 
-        public AMapProviderBase()
+        public TDTMapProviderBase()
         {
             this.MaxZoom = null;
-            base.RefererUrl = "http://www.amap.com/";
-            base.Copyright = string.Format("©{0} 高德软件 Image© DigitalGlobe & chinasiwei | AIRBUS & EastDawn", DateTime.Today.Year);
+            base.RefererUrl = "https://map.tianditu.gov.cn/";
+            base.Copyright = string.Format("GS({0})1719号 - 甲测资字1100471", DateTime.Today.Year);
         }
 
         public override GMapProvider[] Overlays
@@ -36,12 +36,12 @@
         }
     }
 
-    public class AMapProvider : AMapProviderBase
+    public class TDTMapProvider : TDTMapProviderBase
     {
-        private readonly Guid id = new Guid("EF3DD303-3F74-4938-BF40-232D0595EE88");
-        public static readonly AMapProvider Instance = new AMapProvider();
-        private readonly string name = GMap.NET.Core.Resources.Strings.AMap;
-        private static readonly string UrlFormat = "http://webrd04.is.autonavi.com/appmaptile?x={0}&y={1}&z={2}&lang=zh_cn&size=1&scale=1&style=7";
+        private readonly Guid id = new Guid("EF3DD303-3F74-4938-BF40-232D0595EE8A");
+        public static readonly TDTMapProvider Instance = new TDTMapProvider();
+        private readonly string name = GMap.NET.Core.Resources.Strings.TDTMap;
+        private static readonly string UrlFormat = "https://t6.tianditu.gov.cn/DataServer?T=img_w&x={0}&y={1}&l={2}&tk=ef6151d9f0386f3b2a2fdf1d58fe9b32";
 
         public override PureImage GetTileImage(GPoint pos, int zoom)
         {

@@ -42,7 +42,7 @@ namespace GMap.NET.MapProviders
          }
       }
 
-      readonly string name = Resources.Strings.GoogleChinaMap;
+      readonly string name = Core.Resources.Strings.GoogleChinaMap;
       public override string Name
       {
          get

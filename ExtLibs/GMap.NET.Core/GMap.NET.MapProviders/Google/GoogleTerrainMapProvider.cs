@@ -32,7 +32,7 @@ namespace GMap.NET.MapProviders
          }
       }
 
-      readonly string name = Resources.Strings.GoogleTerrainMap;
+      readonly string name = Core.Resources.Strings.GoogleTerrainMap;
       public override string Name
       {
          get

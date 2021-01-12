@@ -2107,7 +2107,7 @@ namespace GMap.NET.MapProviders
             }
         }
 
-        readonly string name = Resources.Strings.GoogleMap;
+        readonly string name = NET.Core.Resources.Strings.GoogleMap;
         public override string Name
         {
             get

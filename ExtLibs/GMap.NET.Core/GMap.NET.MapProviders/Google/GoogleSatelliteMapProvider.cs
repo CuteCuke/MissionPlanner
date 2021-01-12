@@ -32,7 +32,7 @@ namespace GMap.NET.MapProviders
          }
       }
 
-      readonly string name = Resources.Strings.GoogleSatelliteMap;
+      readonly string name = Core.Resources.Strings.GoogleSatelliteMap;
       public override string Name
       {
          get

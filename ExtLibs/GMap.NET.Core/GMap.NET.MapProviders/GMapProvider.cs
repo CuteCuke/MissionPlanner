@@ -84,6 +84,9 @@ namespace GMap.NET.MapProviders
         public static readonly AMapProvider AMap = AMapProvider.Instance;
         public static readonly AMapSateliteProvider AMapStatelite = AMapSateliteProvider.Instance;
 
+        public static readonly TDTMapProvider TdtMap = TDTMapProvider.Instance;
+      //  public static readonly TDTMapSateliteProvider TdtMapSatelite = TDTMapSateliteProvider.Instance;
+
         public static readonly GoogleMapProvider GoogleMap = GoogleMapProvider.Instance;
         public static readonly GoogleSatelliteMapProvider GoogleSatelliteMap = GoogleSatelliteMapProvider.Instance;
         public static readonly GoogleHybridMapProvider GoogleHybridMap = GoogleHybridMapProvider.Instance;
