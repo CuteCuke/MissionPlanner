@@ -816,6 +816,11 @@ namespace MissionPlanner.SimpleGrid
             fovh = (float)(Math.Atan(sensorwidth / (2 * focallen)) * rad2deg * 2);
             fovv = (float)(Math.Atan(sensorheight / (2 * focallen)) * rad2deg * 2);
         }
+        private void maprefresh(object sender,EventArgs e)
+        {
+            domainUpDown1_ValueChanged(null,null);
+            map.ZoomAndCenterMarkers("polygons");
+        }
     }
 }
 

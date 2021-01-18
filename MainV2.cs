@@ -1276,6 +1276,7 @@ namespace MissionPlanner
 
             // save config to test we have write access
             SaveConfig();
+
         }
 
         void cmb_sysid_Click(object sender, EventArgs e)
@@ -4694,7 +4695,6 @@ namespace MissionPlanner
         {
             if (!MainV2.comPort.BaseStream.IsOpen)
                 return;
-
             // arm the MAV
             try
             {
@@ -4702,7 +4702,7 @@ namespace MissionPlanner
                 var action = MainV2.comPort.MAV.cs.armed ? "加锁" : "解锁";
 
                 //if (isitarmed)
-                    if (CustomMessageBox.Show("你确定你想" + action, action,
+                    if (CustomMessageBox.Show("当前模式为\n\r……………………"+GCSViews.FlightData.myhud.mode+"……………………\n\r你确定你想------" + action, action,
                             CustomMessageBox.MessageBoxButtons.YesNo) !=
                         CustomMessageBox.DialogResult.Yes)
                         return;

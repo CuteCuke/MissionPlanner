@@ -546,7 +546,7 @@
             0,
             0});
             this.NUM_angle.Name = "NUM_angle";
-            this.NUM_angle.ValueChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
+            this.NUM_angle.ValueChanged += new System.EventHandler(this.maprefresh);
             // 
             // label6
             // 
@@ -570,7 +570,7 @@
             this.CMB_startfrom.FormattingEnabled = true;
             resources.ApplyResources(this.CMB_startfrom, "CMB_startfrom");
             this.CMB_startfrom.Name = "CMB_startfrom";
-            this.CMB_startfrom.SelectedIndexChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
+            this.CMB_startfrom.SelectedIndexChanged += new System.EventHandler(this.maprefresh);
             // 
             // groupBox4
             // 
