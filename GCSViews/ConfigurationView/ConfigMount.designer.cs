@@ -108,7 +108,7 @@ namespace MissionPlanner.GCSViews.ConfigurationView
             this.CHK_stab_tilt = new MissionPlanner.Controls.MavlinkCheckBox();
             this.CHK_stab_roll = new MissionPlanner.Controls.MavlinkCheckBox();
             this.CHK_stab_pan = new MissionPlanner.Controls.MavlinkCheckBox();
-            this.CMB_shuttertype =  new ComboBox();
+            this.CMB_shuttertype = new System.Windows.Forms.ComboBox();
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
@@ -1474,8 +1474,6 @@ namespace MissionPlanner.GCSViews.ConfigurationView
         private MavlinkNumericUpDown NUD_CONTROL_y;
         private System.Windows.Forms.Label label33;
         private MavlinkNumericUpDown NUD_CONTROL_x;
-        private MavlinkCheckBox CHK_stab_tilt;
-        private MavlinkCheckBox CHK_stab_roll;
         private MavlinkCheckBox CHK_stab_pan;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
@@ -1497,5 +1495,7 @@ namespace MissionPlanner.GCSViews.ConfigurationView
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label label44;
         private ComboBox CMB_shuttertype;
+        public MavlinkCheckBox CHK_stab_tilt;
+        public MavlinkCheckBox CHK_stab_roll;
     }
 }

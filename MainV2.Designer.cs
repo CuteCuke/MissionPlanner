@@ -49,6 +49,7 @@ namespace MissionPlanner
             this.toolStrip_pos = new System.Windows.Forms.ToolStripMenuItem();
             this.down_log = new System.Windows.Forms.ToolStripMenuItem();
             this.review_log = new System.Windows.Forms.ToolStripMenuItem();
+            this.close_cam = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuFlightData = new System.Windows.Forms.ToolStripButton();
             this.MenuFlightPlanner = new System.Windows.Forms.ToolStripButton();
             this.MenuConnect = new System.Windows.Forms.ToolStripButton();
@@ -63,10 +64,10 @@ namespace MissionPlanner
             this.lock_unlock = new System.Windows.Forms.ToolStripButton();
             this.airspeed_0 = new System.Windows.Forms.ToolStripButton();
             this.shutter = new System.Windows.Forms.ToolStripButton();
+            this.switch_yt = new System.Windows.Forms.ToolStripButton();
             this.menu = new MissionPlanner.Controls.MyButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.status1 = new MissionPlanner.Controls.Status();
-            this.close_cam = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenu.SuspendLayout();
             this.CTX_mainmenu.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -93,7 +94,8 @@ namespace MissionPlanner
             this.auto_flight,
             this.lock_unlock,
             this.airspeed_0,
-            this.shutter});
+            this.shutter,
+            this.switch_yt});
             this.MainMenu.Name = "MainMenu";
             this.MainMenu.ShowItemToolTips = true;
             this.MainMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MainMenu_ItemClicked);
@@ -185,6 +187,12 @@ namespace MissionPlanner
             this.review_log.Name = "review_log";
             resources.ApplyResources(this.review_log, "review_log");
             this.review_log.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // close_cam
+            // 
+            this.close_cam.Name = "close_cam";
+            resources.ApplyResources(this.close_cam, "close_cam");
+            this.close_cam.Click += new System.EventHandler(this.close_cam_Click);
             // 
             // MenuFlightData
             // 
@@ -324,6 +332,17 @@ namespace MissionPlanner
             this.shutter.Name = "shutter";
             this.shutter.Click += new System.EventHandler(this.shutter_Click);
             // 
+            // switch_yt
+            // 
+            this.switch_yt.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.switch_yt.BackColor = System.Drawing.Color.Transparent;
+            this.switch_yt.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.switch_yt.ForeColor = System.Drawing.SystemColors.ControlLight;
+            resources.ApplyResources(this.switch_yt, "switch_yt");
+            this.switch_yt.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.switch_yt.Name = "switch_yt";
+            this.switch_yt.Click += new System.EventHandler(this.switch_yt_Click);
+            // 
             // menu
             // 
             resources.ApplyResources(this.menu, "menu");
@@ -344,12 +363,6 @@ namespace MissionPlanner
             resources.ApplyResources(this.status1, "status1");
             this.status1.Name = "status1";
             this.status1.Percent = 0D;
-            // 
-            // close_cam
-            // 
-            this.close_cam.Name = "close_cam";
-            resources.ApplyResources(this.close_cam, "close_cam");
-            this.close_cam.Click += new System.EventHandler(this.close_cam_Click);
             // 
             // MainV2
             // 
@@ -409,5 +422,6 @@ namespace MissionPlanner
         public System.Windows.Forms.ToolStripButton airspeed_0;
         public System.Windows.Forms.ToolStripButton shutter;
         private System.Windows.Forms.ToolStripMenuItem close_cam;
+        public System.Windows.Forms.ToolStripButton switch_yt;
     }
 }

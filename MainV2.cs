@@ -91,7 +91,8 @@ namespace MissionPlanner
                         return global::MissionPlanner.Properties.Resources.light_flightplan_icon;
                 }
             }
-            public override Image lck {
+            public override Image lck
+            {
                 get
                 {
                     if (File.Exists(Settings.GetRunningDirectory() + "lock.png"))
@@ -101,7 +102,8 @@ namespace MissionPlanner
                 }
             }
 
-            public override Image auto  {
+            public override Image auto
+            {
                 get
                 {
                     if (File.Exists(Settings.GetRunningDirectory() + "auto.png"))
@@ -110,7 +112,7 @@ namespace MissionPlanner
                         return global::MissionPlanner.Properties.Resources.light_auto;
                 }
             }
-            public override Image retn 
+            public override Image retn
             {
                 get
                 {
@@ -238,7 +240,7 @@ namespace MissionPlanner
                         return global::MissionPlanner.Properties.Resources.wizardicon;
                 }
             }
-            public override Image resume 
+            public override Image resume
             {
                 get
                 {
@@ -304,7 +306,7 @@ namespace MissionPlanner
                         return global::MissionPlanner.Properties.Resources.dark_flightplan_icon;
                 }
             }
-            public override Image lck 
+            public override Image lck
             {
                 get
                 {
@@ -314,7 +316,7 @@ namespace MissionPlanner
                         return global::MissionPlanner.Properties.Resources.dark_lock;
                 }
             }
-            public override Image auto 
+            public override Image auto
             {
                 get
                 {
@@ -324,7 +326,7 @@ namespace MissionPlanner
                         return global::MissionPlanner.Properties.Resources.dark_auto;
                 }
             }
-            public override Image retn 
+            public override Image retn
             {
                 get
                 {
@@ -334,7 +336,7 @@ namespace MissionPlanner
                         return global::MissionPlanner.Properties.Resources.dark_return;
                 }
             }
-            public override Image jump 
+            public override Image jump
             {
                 get
                 {
@@ -1264,7 +1266,7 @@ namespace MissionPlanner
 
             //MenuArduPilot.Image = new Bitmap(Properties.Resources._0d92fed790a3a70170e61a86db103f399a595c70, (int)(200), 31);
             //MenuArduPilot.Width = MenuArduPilot.Image.Width;
-           // lj_taobao.Width = lj_taobao.Image.Width;
+            // lj_taobao.Width = lj_taobao.Image.Width;
             //if (Program.Logo2 != null)
             //    MenuArduPilot.Image = Program.Logo2;
 
@@ -1397,7 +1399,7 @@ namespace MissionPlanner
             resume_flight.ForeColor = ThemeManager.TextColor;
             lock_unlock.ForeColor = ThemeManager.TextColor; ;
             auto_flight.ForeColor = ThemeManager.TextColor; ;
-            return_flight.ForeColor = ThemeManager.TextColor; 
+            return_flight.ForeColor = ThemeManager.TextColor;
             jump_to.ForeColor = ThemeManager.TextColor; ;
             airspeed_0.ForeColor = ThemeManager.TextColor; ;
             shutter.ForeColor = ThemeManager.TextColor;
@@ -1825,7 +1827,7 @@ namespace MissionPlanner
                     }
                     return;
                 }
-               comPort.getParamList();//comPort.MAV.sysid, comPort.MAV.compid);
+                comPort.getParamList();//comPort.MAV.sysid, comPort.MAV.compid);
 
                 _connectionControl.UpdateSysIDS();
 
@@ -3283,7 +3285,7 @@ namespace MissionPlanner
 
 
             ThreadPool.QueueUserWorkItem(LoadGDALImages);
-            
+
             ThreadPool.QueueUserWorkItem(BGLoadAirports);
 
             ThreadPool.QueueUserWorkItem(BGCreateMaps);
@@ -3510,7 +3512,7 @@ namespace MissionPlanner
             MissionPlanner.Utilities.Tracking.AddTiming("AppLoad", "Load Time",
                 (DateTime.Now - Program.starttime).TotalMilliseconds, "");
 
-            int p = (int) Environment.OSVersion.Platform;
+            int p = (int)Environment.OSVersion.Platform;
             bool isWin = (p != 4) && (p != 6) && (p != 128);
             bool winXp = isWin && Environment.OSVersion.Version.Major == 5;
             if (winXp)
@@ -4609,10 +4611,10 @@ namespace MissionPlanner
         {
             try
             {
-                if (CustomMessageBox.Show("点击yes就要起飞了哟！" ,"AUTO模式", CustomMessageBox.MessageBoxButtons.YesNo) ==CustomMessageBox.DialogResult.Yes)
-                { 
+                if (CustomMessageBox.Show("点击yes就要起飞了哟！", "AUTO模式", CustomMessageBox.MessageBoxButtons.YesNo) == CustomMessageBox.DialogResult.Yes)
+                {
                     ((ToolStripButton)sender).Enabled = false;
-                     MainV2.comPort.setMode("Auto");
+                    MainV2.comPort.setMode("Auto");
                 }
             }
             catch
@@ -4636,7 +4638,7 @@ namespace MissionPlanner
                       CustomMessageBox.MessageBoxButtons.YesNo) ==
                   CustomMessageBox.DialogResult.Yes)
                 {
-                    
+
                     var wpno = MainV2.comPort.getWPCount(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid);
                     lastwpstr = MainV2.comPort.MAV.cs.lastautowp.ToString();
                     return_now_lat = MainV2.comPort.MAV.cs.lat;
@@ -4651,9 +4653,9 @@ namespace MissionPlanner
 
                         if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
                         {
-                            for(int i=wpno-3;i>=wpno/2;i--)
+                            for (int i = wpno - 3; i >= wpno / 2; i--)
                             {
-                                if(comPort.getWP((ushort)i).id==(ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
+                                if (comPort.getWP((ushort)i).id == (ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
                                 {
                                     MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
                                        (ushort)(i));
@@ -4663,10 +4665,10 @@ namespace MissionPlanner
                             MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
                                         (ushort)(wpno - 2));
                         }
-                        else if(MainV2.comPort.MAV.cs.firmware == Firmwares.ArduPlane)
+                        else if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduPlane)
                         {
                             //MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
-                            for (int i = wpno - 5; i >=wpno / 2; i--)
+                            for (int i = wpno - 5; i >= wpno / 2; i--)
                             {
                                 if (comPort.getWP((ushort)i).id == (ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
                                 {
@@ -4690,7 +4692,7 @@ namespace MissionPlanner
 
         }
 
-       
+
         private void lock_unlock_Click(object sender, EventArgs e)
         {
             if (!MainV2.comPort.BaseStream.IsOpen)
@@ -4702,10 +4704,10 @@ namespace MissionPlanner
                 var action = MainV2.comPort.MAV.cs.armed ? "加锁" : "解锁";
 
                 //if (isitarmed)
-                    if (CustomMessageBox.Show("当前模式为\n\r……………………"+GCSViews.FlightData.myhud.mode+"……………………\n\r你确定你想------" + action, action,
-                            CustomMessageBox.MessageBoxButtons.YesNo) !=
-                        CustomMessageBox.DialogResult.Yes)
-                        return;
+                if (CustomMessageBox.Show("当前模式为\n\r……………………" + GCSViews.FlightData.myhud.mode + "……………………\n\r你确定你想------" + action, action,
+                        CustomMessageBox.MessageBoxButtons.YesNo) !=
+                    CustomMessageBox.DialogResult.Yes)
+                    return;
                 StringBuilder sb = new StringBuilder();
                 var sub = MainV2.comPort.SubscribeToPacketType(MAVLink.MAVLINK_MSG_ID.STATUSTEXT, message =>
                 {
@@ -4862,21 +4864,21 @@ namespace MissionPlanner
                 }
             }
         }
-        private string lastwpstr="1";
+        private string lastwpstr = "1";
         private void resume_flight_Click(object sender, EventArgs e)
         {
-            
+
             if (
                Common.MessageShowAgain("恢复任务",
                    "警告：这将重新编程你的任务航线，解锁并发出起飞命令（多旋翼）") !=
-               DialogResult.OK||MainV2.comPort.MAV.cs.firmware != Firmwares.ArduCopter2)
+               DialogResult.OK || MainV2.comPort.MAV.cs.firmware != Firmwares.ArduCopter2)
                 return;
 
             try
             {
                 if (MainV2.comPort.BaseStream.IsOpen)
                 {
-                    if(MainV2.comPort.MAV.cs.firmware!=Firmwares.ArduCopter2)
+                    if (MainV2.comPort.MAV.cs.firmware != Firmwares.ArduCopter2)
                     {
                         CustomMessageBox.Show("断点续飞仅支持多旋翼！");
                         return;
@@ -4888,7 +4890,7 @@ namespace MissionPlanner
                     if (InputBox.Show("恢复点", "重新开始任务从航点（），默认是点击返航时的断点！", ref lastwp) == DialogResult.OK)
                     {
                         int timeout = 0;
-                        int lastwpno = int.Parse(lastwp)-1;
+                        int lastwpno = int.Parse(lastwp) - 1;
 
                         // scan and check wp's we are skipping
                         // get our target wp
@@ -4900,13 +4902,13 @@ namespace MissionPlanner
 
                         var wpcount = MainV2.comPort.getWPCount((byte)MainV2.comPort.sysidcurrent,
                                     (byte)MainV2.comPort.compidcurrent);
-                        ushort cam=0;
+                        ushort cam = 0;
                         for (ushort a = 0; a < wpcount; a++)
                         {
                             var wpdata = MainV2.comPort.getWP(a);
                             if (lastwpdata.id == (ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
                             {
-                                if (a < lastwpno-1 && a != 0) // allow home
+                                if (a < lastwpno - 1 && a != 0) // allow home
                                 {
                                     if (wpdata.id != (ushort)MAVLink.MAV_CMD.TAKEOFF)
                                         if (wpdata.id < (ushort)MAVLink.MAV_CMD.LAST)
@@ -4916,7 +4918,7 @@ namespace MissionPlanner
                                         continue;
 
                                 }
-                                else if(a==lastwpno-1&&lastwp==lastwpstr&&(return_now_lat!=0||return_now_lng!=0))
+                                else if (a == lastwpno - 1 && lastwp == lastwpstr && (return_now_lat != 0 || return_now_lng != 0))
                                 {
                                     wpdata.lat = return_now_lat;
                                     wpdata.lng = return_now_lng;
@@ -4927,7 +4929,8 @@ namespace MissionPlanner
                                     return_now_lng = 0;//用完归0
                                 }
                             }
-                            else { 
+                            else
+                            {
                                 if (a < lastwpno && a != 0) // allow home
                                 {
                                     if (wpdata.id == (ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
@@ -4941,18 +4944,18 @@ namespace MissionPlanner
 
                                     if (wpdata.id > (ushort)MAVLink.MAV_CMD.DO_LAST)
                                         continue;
-                                
+
                                 }
-                                else if(a==lastwpno && lastwp == lastwpstr && (return_now_lat != 0 || return_now_lng != 0))
+                                else if (a == lastwpno && lastwp == lastwpstr && (return_now_lat != 0 || return_now_lng != 0))
                                 {
                                     wpdata.lat = return_now_lat;
                                     wpdata.lng = return_now_lng;
                                     return_now_lat = 0;
                                     return_now_lng = 0;//用完归0
                                 }
-                            }                        
+                            }
                             cmds.Add(wpdata);
-                            if (a == lastwpno&&cam!=0)
+                            if (a == lastwpno && cam != 0)
                                 cmds.Add(MainV2.comPort.getWP((byte)MainV2.comPort.sysidcurrent,
                                     (byte)MainV2.comPort.compidcurrent, cam));
                         }
@@ -4980,13 +4983,13 @@ namespace MissionPlanner
 
                         MainV2.comPort.setWPACK((byte)MainV2.comPort.sysidcurrent,
                                     (byte)MainV2.comPort.compidcurrent);
-                        
+
                         GCSViews.FlightPlanner.instance.BUT_read_Click(this, null);
 
                         // set index back to 1
                         MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid, 1);
 
-                        if (CustomMessageBox.Show("点击确定就起飞了哟！","断点续飞",CustomMessageBox.MessageBoxButtons.YesNo)==CustomMessageBox.DialogResult.Yes)
+                        if (CustomMessageBox.Show("点击确定就起飞了哟！", "断点续飞", CustomMessageBox.MessageBoxButtons.YesNo) == CustomMessageBox.DialogResult.Yes)
                         {
                             while (MainV2.comPort.MAV.cs.mode.ToLower() != "Guided".ToLower())
                             {
@@ -5034,7 +5037,7 @@ namespace MissionPlanner
                                     return;
                                 }
                             }
-                        
+
 
                             timeout = 0;
                             while (MainV2.comPort.MAV.cs.mode.ToLower() != "AUTO".ToLower())
@@ -5114,7 +5117,7 @@ namespace MissionPlanner
                 {
                     CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
                 }
-             }
+            }
         }
 
         private void shutter_Click(object sender, EventArgs e)
@@ -5139,23 +5142,66 @@ namespace MissionPlanner
             {
                 CustomMessageBox.Show(Strings.Warning, Strings.ERROR);
             }
-            
-            
+
+
         }
 
-     
+
         private void close_cam_Click(object sender, EventArgs e)
         {
             try
             {
                 //MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
-                MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent, (byte)MainV2.comPort.compidcurrent, MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST,0, 0, 0, 0, 0, 0, 0);
+                MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent, (byte)MainV2.comPort.compidcurrent, MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 0, 0, 0, 0, 0);
             }
             catch
             {
                 CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
             }
-          //  MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 0, 0, 0, 0, 0);
+            //  MainV2.comPort.doCommand(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 0, 0, 0, 0, 0);
+        }
+        
+        private void switch_yt_Click(object sender, EventArgs e)
+        {
+            if (MainV2.comPort.BaseStream.IsOpen)
+            {
+                bool isopenyuntai = MainV2.comPort.GetParam("MNT_STAB_TILT")==1?true:false;
+                var active = isopenyuntai ? "关闭" : "打开";
+                if (
+                    CustomMessageBox.Show("你确定要" + active + "云台?", active,
+                        MessageBoxButtons.YesNo) == (int)DialogResult.Yes)
+                {
+                    try
+                    {
+                        if (isopenyuntai)
+                        {
+                            MavlinkCheckBox yt1 = new MavlinkCheckBox();
+                            MavlinkCheckBox yt2 = new MavlinkCheckBox();
+                            yt1.setup(1, 0, "MNT_STAB_TILT", MainV2.comPort.MAV.param);
+                            yt2.setup(1, 0, "MNT_STAB_ROLL", MainV2.comPort.MAV.param);
+                            yt1.Checked = false;
+                            yt2.Checked = false;
+                            isopenyuntai = false;
+                            switch_yt.ForeColor = Color.Red;
+                        }
+                        else
+                        {
+                            MavlinkCheckBox yt1 = new MavlinkCheckBox();
+                            MavlinkCheckBox yt2 = new MavlinkCheckBox();
+                            yt1.setup(1, 0, "MNT_STAB_TILT", MainV2.comPort.MAV.param);
+                            yt2.setup(1, 0, "MNT_STAB_ROLL", MainV2.comPort.MAV.param);
+                            yt1.Checked = true;
+                            yt2.Checked = true;
+                            isopenyuntai = true;
+                            switch_yt.ForeColor = Color.Green;
+                        }
+                    }
+                    catch
+                    {
+                        CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
+                    }
+                }
+            }
         }
     }
 }
