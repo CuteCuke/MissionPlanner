@@ -120,14 +120,14 @@
     <senh>4.7058</senh>
     <senw>6.2372</senw>
   </Camera>-->
-  <Camera>
+  <!--<Camera>
     <name>Sony A6000</name>
     <flen>20</flen>
     <imgh>6000</imgh>
     <imgw>4000</imgw>
     <senh>23.5</senh>
     <senw>15.6</senw>
-  </Camera>
+  </Camera>-->
   <Camera>
     <name>Sony A7R</name>
     <flen>35</flen>
@@ -234,11 +234,19 @@
   </Camera>-->
   <Camera>
     <name>Sony a7R2</name>
-    <flen>5</flen>
-    <imgh>4608</imgh>
-    <imgw>3456</imgw>
-    <senh>6.16</senh>
-    <senw>4.62</senw>
+    <flen>35</flen>
+    <imgh>7952</imgh>
+    <imgw>5304</imgw>
+    <senh>35.8</senh>
+    <senw>23.9</senw>
+  </Camera>
+  <Camera>
+    <name>Sony a7R4</name>
+    <flen>40</flen>
+    <imgh>9600</imgh>
+    <imgw>6400</imgw>
+    <senh>35.7</senh>
+    <senw>23.8</senw>
   </Camera>
  <!--<Camera>
     <name>AeroHawk_8MP</name>
