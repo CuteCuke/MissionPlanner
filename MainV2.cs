@@ -4653,15 +4653,15 @@ namespace MissionPlanner
 
                         if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
                         {
-                            for (int i = wpno - 3; i >= wpno / 2; i--)
-                            {
-                                if (comPort.getWP((ushort)i).id == (ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
-                                {
-                                    MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
-                                       (ushort)(i));
-                                    break;
-                                }
-                            }
+                            //for (int i = wpno - 3; i >= wpno / 2; i--)
+                            //{
+                            //    if (comPort.getWP((ushort)i).id == (ushort)MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST)
+                            //    {
+                            //        MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
+                            //           (ushort)(i));
+                            //        break;
+                            //    }
+                            //}
                             MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
                                         (ushort)(wpno - 2));
                         }
