@@ -365,7 +365,7 @@
     <PackageReference Include="GeoJSON.Net" version="1.1.64" targetFramework="net462" />
     <PackageReference Include="IronPython" version="2.7.8.1" targetFramework="net462" />
     <PackageReference Include="IronPython.StdLib" version="2.7.8.1" targetFramework="net462" />
-    <PackageReference Include="log4net" version="2.0.8" targetFramework="net462" />
+    <PackageReference Include="log4net" version="2.0.12" targetFramework="net462" />
     <PackageReference Include="Microsoft.Web.WebJobs.Publish">
       <Version>2.0.0</Version>
     </PackageReference>
