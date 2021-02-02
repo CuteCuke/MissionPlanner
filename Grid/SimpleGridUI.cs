@@ -20,6 +20,7 @@ using MissionPlanner.Utilities;
 using ProjNet.CoordinateSystems;
 using ProjNet.CoordinateSystems.Transformations;
 using CoordConvert;
+using MissionPlanner.GCSViews;
 
 namespace MissionPlanner.SimpleGrid
 {
@@ -32,6 +33,7 @@ namespace MissionPlanner.SimpleGrid
 
         GMapOverlay layerpolygons;
         GMapPolygon wppoly;
+        GMapOverlay kmlpolygonsoverlay;
         private GridPlugin plugin;
         List<PointLatLngAlt> grid;
         public string DistUnits = "";
@@ -54,6 +56,9 @@ namespace MissionPlanner.SimpleGrid
             layerpolygons = new GMapOverlay( "polygons");
             map.Overlays.Add(layerpolygons);
 
+            kmlpolygonsoverlay = new GMapOverlay("kmlpolygons");
+            map.Overlays.Add(kmlpolygonsoverlay);
+
             CMB_startfrom.DataSource = Enum.GetNames(typeof(Utilities.Grid.StartPosition));
             
             CMB_startfrom.SelectedIndex = 0;
@@ -73,6 +78,14 @@ namespace MissionPlanner.SimpleGrid
             map.MouseDown += new System.Windows.Forms.MouseEventHandler(this.map_MouseDown);
             map.MouseMove += new System.Windows.Forms.MouseEventHandler(this.map_MouseMove);
 
+            foreach (var temp in FlightData.kmlpolygons.Polygons)
+            {
+                kmlpolygonsoverlay.Polygons.Add(new GMapPolygon(temp.Points, "") { Fill = Brushes.Transparent });
+            }
+            foreach (var temp in FlightData.kmlpolygons.Routes)
+            {
+                kmlpolygonsoverlay.Routes.Add(new GMapRoute(temp.Points, ""));
+            }
             xmlcamera(false, Settings.GetRunningDirectory() + "camerasBuiltin.xml");
 
             xmlcamera(false, Settings.GetUserDataDirectory() + "cameras.xml");
@@ -84,10 +97,13 @@ namespace MissionPlanner.SimpleGrid
             {
                 
                 loadsetting("simplegrid_alt", NUM_altitude);
-
+                loadsetting("simplegrid_alt", num_alt);
                 loadsetting("simplegrid_dist", NUM_Distance);
                 loadsetting("simplegrid_overshoot1", NUM_overshoot);
                 loadsetting("simplegrid_overshoot2", NUM_overshoot2);
+                loadsetting("simplegrid_camera", CMB_camera);
+                loadsetting("simplegrid_cam_dist", cam_dist);
+                loadsetting("simplegrid_startfrom", CMB_startfrom);
 
             }
         }
@@ -119,10 +135,14 @@ namespace MissionPlanner.SimpleGrid
         {
             plugin.Host.config["simplegrid_alt"] = NUM_altitude.Value.ToString();
             plugin.Host.config["simplegrid_angle"] = NUM_angle.Value.ToString();
-
+            plugin.Host.config["simplegrid_camera"] = CMB_camera.Text;
             plugin.Host.config["simplegrid_dist"] = NUM_Distance.Value.ToString();
             plugin.Host.config["simplegrid_overshoot1"] = NUM_overshoot.Value.ToString();
             plugin.Host.config["simplegrid_overshoot2"] = NUM_overshoot2.Value.ToString();
+
+            plugin.Host.config["simplegrid_cam_dist"] = cam_dist.Value.ToString();
+            plugin.Host.config["simplegrid_startfrom"] = CMB_startfrom.Text;
+
         }
 
         List<PointLatLngAlt> list = new List<PointLatLngAlt>();

@@ -65,6 +65,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.but_largemagcal = new MissionPlanner.Controls.MyButton();
             this.label4 = new System.Windows.Forms.Label();
+            this.CHK_compass_learn = new MissionPlanner.Controls.MavlinkCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.myDataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.compassInfoBindingSource)).BeginInit();
             this.groupBoxonboardcalib.SuspendLayout();
@@ -90,13 +91,13 @@
             this.Up,
             this.Down});
             this.myDataGridView1.DataSource = this.compassInfoBindingSource;
-            this.myDataGridView1.Location = new System.Drawing.Point(3, 49);
+            this.myDataGridView1.Location = new System.Drawing.Point(3, 45);
             this.myDataGridView1.MultiSelect = false;
             this.myDataGridView1.Name = "myDataGridView1";
             this.myDataGridView1.ReadOnly = true;
             this.myDataGridView1.RowHeadersWidth = 20;
             this.myDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.myDataGridView1.Size = new System.Drawing.Size(600, 209);
+            this.myDataGridView1.Size = new System.Drawing.Size(600, 193);
             this.myDataGridView1.TabIndex = 0;
             this.myDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.myDataGridView1_CellContentClick);
             this.myDataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.myDataGridView1_RowPostPaint);
@@ -164,9 +165,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 33);
+            this.label1.Location = new System.Drawing.Point(3, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(438, 13);
+            this.label1.Size = new System.Drawing.Size(557, 12);
             this.label1.TabIndex = 1;
             this.label1.Text = "Set the Compass Priority by reordering the compasses in the table below (Highest " +
     "at the top)\r\n";
@@ -177,7 +178,7 @@
             this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label6.Location = new System.Drawing.Point(3, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(583, 22);
+            this.label6.Size = new System.Drawing.Size(583, 20);
             this.label6.TabIndex = 80;
             this.label6.Text = "Compass Priority";
             // 
@@ -185,9 +186,9 @@
             // 
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox5.Location = new System.Drawing.Point(-1, 18);
+            this.groupBox5.Location = new System.Drawing.Point(-1, 17);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(1125, 10);
+            this.groupBox5.Size = new System.Drawing.Size(1125, 9);
             this.groupBox5.TabIndex = 79;
             this.groupBox5.TabStop = false;
             // 
@@ -209,34 +210,34 @@
             this.groupBoxonboardcalib.Controls.Add(this.BUT_OBmagcalaccept);
             this.groupBoxonboardcalib.Controls.Add(this.BUT_OBmagcalcancel);
             this.groupBoxonboardcalib.Controls.Add(this.BUT_OBmagcalstart);
-            this.groupBoxonboardcalib.Location = new System.Drawing.Point(3, 313);
+            this.groupBoxonboardcalib.Location = new System.Drawing.Point(3, 289);
             this.groupBoxonboardcalib.Name = "groupBoxonboardcalib";
-            this.groupBoxonboardcalib.Size = new System.Drawing.Size(600, 162);
+            this.groupBoxonboardcalib.Size = new System.Drawing.Size(600, 150);
             this.groupBoxonboardcalib.TabIndex = 81;
             this.groupBoxonboardcalib.TabStop = false;
             this.groupBoxonboardcalib.Text = "Onboard Mag Calibration";
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(321, 107);
+            this.pictureBox3.Location = new System.Drawing.Point(321, 99);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(23, 23);
+            this.pictureBox3.Size = new System.Drawing.Size(23, 21);
             this.pictureBox3.TabIndex = 20;
             this.pictureBox3.TabStop = false;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(321, 78);
+            this.pictureBox2.Location = new System.Drawing.Point(321, 72);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(23, 23);
+            this.pictureBox2.Size = new System.Drawing.Size(23, 21);
             this.pictureBox2.TabIndex = 19;
             this.pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(321, 49);
+            this.pictureBox1.Location = new System.Drawing.Point(321, 45);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(23, 23);
+            this.pictureBox1.Size = new System.Drawing.Size(23, 21);
             this.pictureBox1.TabIndex = 18;
             this.pictureBox1.TabStop = false;
             // 
@@ -246,7 +247,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.Red;
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(203, 139);
+            this.label2.Location = new System.Drawing.Point(203, 128);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(181, 13);
             this.label2.TabIndex = 17;
@@ -256,9 +257,9 @@
             // 
             this.label10.AutoSize = true;
             this.label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label10.Location = new System.Drawing.Point(7, 139);
+            this.label10.Location = new System.Drawing.Point(7, 128);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(40, 13);
+            this.label10.Size = new System.Drawing.Size(47, 12);
             this.label10.TabIndex = 16;
             this.label10.Text = "Fitness";
             // 
@@ -267,10 +268,10 @@
             this.mavlinkComboBoxfitness.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.mavlinkComboBoxfitness.Enabled = false;
             this.mavlinkComboBoxfitness.FormattingEnabled = true;
-            this.mavlinkComboBoxfitness.Location = new System.Drawing.Point(57, 135);
+            this.mavlinkComboBoxfitness.Location = new System.Drawing.Point(57, 125);
             this.mavlinkComboBoxfitness.Name = "mavlinkComboBoxfitness";
             this.mavlinkComboBoxfitness.ParamName = null;
-            this.mavlinkComboBoxfitness.Size = new System.Drawing.Size(140, 21);
+            this.mavlinkComboBoxfitness.Size = new System.Drawing.Size(140, 20);
             this.mavlinkComboBoxfitness.SubControl = null;
             this.mavlinkComboBoxfitness.TabIndex = 15;
             // 
@@ -278,9 +279,9 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label9.Location = new System.Drawing.Point(6, 117);
+            this.label9.Location = new System.Drawing.Point(6, 108);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(37, 13);
+            this.label9.Size = new System.Drawing.Size(35, 12);
             this.label9.TabIndex = 14;
             this.label9.Text = "Mag 3";
             // 
@@ -288,9 +289,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label8.Location = new System.Drawing.Point(6, 88);
+            this.label8.Location = new System.Drawing.Point(6, 81);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(37, 13);
+            this.label8.Size = new System.Drawing.Size(35, 12);
             this.label8.TabIndex = 13;
             this.label8.Text = "Mag 2";
             // 
@@ -298,9 +299,9 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(6, 59);
+            this.label7.Location = new System.Drawing.Point(6, 54);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(37, 13);
+            this.label7.Size = new System.Drawing.Size(35, 12);
             this.label7.TabIndex = 12;
             this.label7.Text = "Mag 1";
             // 
@@ -309,11 +310,11 @@
             this.horizontalProgressBar3.DrawLabel = true;
             this.horizontalProgressBar3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.horizontalProgressBar3.Label = null;
-            this.horizontalProgressBar3.Location = new System.Drawing.Point(57, 107);
+            this.horizontalProgressBar3.Location = new System.Drawing.Point(57, 99);
             this.horizontalProgressBar3.maxline = 0;
             this.horizontalProgressBar3.minline = 0;
             this.horizontalProgressBar3.Name = "horizontalProgressBar3";
-            this.horizontalProgressBar3.Size = new System.Drawing.Size(258, 23);
+            this.horizontalProgressBar3.Size = new System.Drawing.Size(258, 21);
             this.horizontalProgressBar3.TabIndex = 6;
             // 
             // horizontalProgressBar2
@@ -321,11 +322,11 @@
             this.horizontalProgressBar2.DrawLabel = true;
             this.horizontalProgressBar2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.horizontalProgressBar2.Label = null;
-            this.horizontalProgressBar2.Location = new System.Drawing.Point(57, 78);
+            this.horizontalProgressBar2.Location = new System.Drawing.Point(57, 72);
             this.horizontalProgressBar2.maxline = 0;
             this.horizontalProgressBar2.minline = 0;
             this.horizontalProgressBar2.Name = "horizontalProgressBar2";
-            this.horizontalProgressBar2.Size = new System.Drawing.Size(258, 23);
+            this.horizontalProgressBar2.Size = new System.Drawing.Size(258, 21);
             this.horizontalProgressBar2.TabIndex = 5;
             // 
             // horizontalProgressBar1
@@ -333,31 +334,31 @@
             this.horizontalProgressBar1.DrawLabel = true;
             this.horizontalProgressBar1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.horizontalProgressBar1.Label = null;
-            this.horizontalProgressBar1.Location = new System.Drawing.Point(57, 49);
+            this.horizontalProgressBar1.Location = new System.Drawing.Point(57, 45);
             this.horizontalProgressBar1.maxline = 0;
             this.horizontalProgressBar1.minline = 0;
             this.horizontalProgressBar1.Name = "horizontalProgressBar1";
-            this.horizontalProgressBar1.Size = new System.Drawing.Size(258, 23);
+            this.horizontalProgressBar1.Size = new System.Drawing.Size(258, 21);
             this.horizontalProgressBar1.TabIndex = 4;
             // 
             // lbl_obmagresult
             // 
             this.lbl_obmagresult.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lbl_obmagresult.Location = new System.Drawing.Point(350, 20);
+            this.lbl_obmagresult.Location = new System.Drawing.Point(350, 18);
             this.lbl_obmagresult.Multiline = true;
             this.lbl_obmagresult.Name = "lbl_obmagresult";
             this.lbl_obmagresult.ReadOnly = true;
             this.lbl_obmagresult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.lbl_obmagresult.Size = new System.Drawing.Size(244, 110);
+            this.lbl_obmagresult.Size = new System.Drawing.Size(244, 102);
             this.lbl_obmagresult.TabIndex = 3;
             // 
             // BUT_OBmagcalaccept
             // 
             this.BUT_OBmagcalaccept.Enabled = false;
             this.BUT_OBmagcalaccept.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BUT_OBmagcalaccept.Location = new System.Drawing.Point(125, 20);
+            this.BUT_OBmagcalaccept.Location = new System.Drawing.Point(125, 18);
             this.BUT_OBmagcalaccept.Name = "BUT_OBmagcalaccept";
-            this.BUT_OBmagcalaccept.Size = new System.Drawing.Size(75, 23);
+            this.BUT_OBmagcalaccept.Size = new System.Drawing.Size(75, 21);
             this.BUT_OBmagcalaccept.TabIndex = 1;
             this.BUT_OBmagcalaccept.Text = "Accept";
             this.BUT_OBmagcalaccept.UseVisualStyleBackColor = true;
@@ -367,9 +368,9 @@
             // 
             this.BUT_OBmagcalcancel.Enabled = false;
             this.BUT_OBmagcalcancel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BUT_OBmagcalcancel.Location = new System.Drawing.Point(206, 20);
+            this.BUT_OBmagcalcancel.Location = new System.Drawing.Point(206, 18);
             this.BUT_OBmagcalcancel.Name = "BUT_OBmagcalcancel";
-            this.BUT_OBmagcalcancel.Size = new System.Drawing.Size(75, 23);
+            this.BUT_OBmagcalcancel.Size = new System.Drawing.Size(75, 21);
             this.BUT_OBmagcalcancel.TabIndex = 2;
             this.BUT_OBmagcalcancel.Text = "Cancel";
             this.BUT_OBmagcalcancel.UseVisualStyleBackColor = true;
@@ -378,9 +379,9 @@
             // BUT_OBmagcalstart
             // 
             this.BUT_OBmagcalstart.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BUT_OBmagcalstart.Location = new System.Drawing.Point(44, 20);
+            this.BUT_OBmagcalstart.Location = new System.Drawing.Point(44, 18);
             this.BUT_OBmagcalstart.Name = "BUT_OBmagcalstart";
-            this.BUT_OBmagcalstart.Size = new System.Drawing.Size(75, 23);
+            this.BUT_OBmagcalstart.Size = new System.Drawing.Size(75, 21);
             this.BUT_OBmagcalstart.TabIndex = 0;
             this.BUT_OBmagcalstart.Text = "Start";
             this.BUT_OBmagcalstart.UseVisualStyleBackColor = true;
@@ -394,12 +395,12 @@
             // 
             this.mavlinkCheckBoxUseCompass1.AutoSize = true;
             this.mavlinkCheckBoxUseCompass1.Enabled = false;
-            this.mavlinkCheckBoxUseCompass1.Location = new System.Drawing.Point(3, 277);
+            this.mavlinkCheckBoxUseCompass1.Location = new System.Drawing.Point(3, 256);
             this.mavlinkCheckBoxUseCompass1.Name = "mavlinkCheckBoxUseCompass1";
             this.mavlinkCheckBoxUseCompass1.OffValue = 0D;
             this.mavlinkCheckBoxUseCompass1.OnValue = 1D;
             this.mavlinkCheckBoxUseCompass1.ParamName = null;
-            this.mavlinkCheckBoxUseCompass1.Size = new System.Drawing.Size(100, 17);
+            this.mavlinkCheckBoxUseCompass1.Size = new System.Drawing.Size(102, 16);
             this.mavlinkCheckBoxUseCompass1.TabIndex = 82;
             this.mavlinkCheckBoxUseCompass1.Text = "Use Compass 1";
             this.mavlinkCheckBoxUseCompass1.UseVisualStyleBackColor = true;
@@ -408,12 +409,12 @@
             // 
             this.mavlinkCheckBoxUseCompass3.AutoSize = true;
             this.mavlinkCheckBoxUseCompass3.Enabled = false;
-            this.mavlinkCheckBoxUseCompass3.Location = new System.Drawing.Point(248, 277);
+            this.mavlinkCheckBoxUseCompass3.Location = new System.Drawing.Point(248, 256);
             this.mavlinkCheckBoxUseCompass3.Name = "mavlinkCheckBoxUseCompass3";
             this.mavlinkCheckBoxUseCompass3.OffValue = 0D;
             this.mavlinkCheckBoxUseCompass3.OnValue = 1D;
             this.mavlinkCheckBoxUseCompass3.ParamName = null;
-            this.mavlinkCheckBoxUseCompass3.Size = new System.Drawing.Size(100, 17);
+            this.mavlinkCheckBoxUseCompass3.Size = new System.Drawing.Size(102, 16);
             this.mavlinkCheckBoxUseCompass3.TabIndex = 83;
             this.mavlinkCheckBoxUseCompass3.Text = "Use Compass 3";
             this.mavlinkCheckBoxUseCompass3.UseVisualStyleBackColor = true;
@@ -422,12 +423,12 @@
             // 
             this.mavlinkCheckBoxUseCompass2.AutoSize = true;
             this.mavlinkCheckBoxUseCompass2.Enabled = false;
-            this.mavlinkCheckBoxUseCompass2.Location = new System.Drawing.Point(128, 277);
+            this.mavlinkCheckBoxUseCompass2.Location = new System.Drawing.Point(128, 256);
             this.mavlinkCheckBoxUseCompass2.Name = "mavlinkCheckBoxUseCompass2";
             this.mavlinkCheckBoxUseCompass2.OffValue = 0D;
             this.mavlinkCheckBoxUseCompass2.OnValue = 1D;
             this.mavlinkCheckBoxUseCompass2.ParamName = null;
-            this.mavlinkCheckBoxUseCompass2.Size = new System.Drawing.Size(100, 17);
+            this.mavlinkCheckBoxUseCompass2.Size = new System.Drawing.Size(102, 16);
             this.mavlinkCheckBoxUseCompass2.TabIndex = 84;
             this.mavlinkCheckBoxUseCompass2.Text = "Use Compass 2";
             this.mavlinkCheckBoxUseCompass2.UseVisualStyleBackColor = true;
@@ -435,18 +436,18 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(0, 261);
+            this.label3.Location = new System.Drawing.Point(0, 241);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(255, 13);
+            this.label3.Size = new System.Drawing.Size(317, 12);
             this.label3.TabIndex = 85;
             this.label3.Text = "Do you want to disable any of the first 3 compasses?";
             // 
             // but_largemagcal
             // 
             this.but_largemagcal.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.but_largemagcal.Location = new System.Drawing.Point(3, 481);
+            this.but_largemagcal.Location = new System.Drawing.Point(3, 444);
             this.but_largemagcal.Name = "but_largemagcal";
-            this.but_largemagcal.Size = new System.Drawing.Size(75, 23);
+            this.but_largemagcal.Size = new System.Drawing.Size(75, 21);
             this.but_largemagcal.TabIndex = 21;
             this.but_largemagcal.Text = "Large Vehicle MagCal";
             this.but_largemagcal.UseVisualStyleBackColor = true;
@@ -455,16 +456,31 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(0, 297);
+            this.label4.Location = new System.Drawing.Point(0, 274);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(281, 13);
+            this.label4.Size = new System.Drawing.Size(347, 12);
             this.label4.TabIndex = 86;
             this.label4.Text = "A mag calibration is required to remap the above changes.";
             // 
+            // CHK_compass_learn
+            // 
+            this.CHK_compass_learn.Enabled = false;
+            this.CHK_compass_learn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.CHK_compass_learn.Location = new System.Drawing.Point(103, 444);
+            this.CHK_compass_learn.Name = "CHK_compass_learn";
+            this.CHK_compass_learn.OffValue = 0D;
+            this.CHK_compass_learn.OnValue = 1D;
+            this.CHK_compass_learn.ParamName = null;
+            this.CHK_compass_learn.Size = new System.Drawing.Size(148, 23);
+            this.CHK_compass_learn.TabIndex = 87;
+            this.CHK_compass_learn.Text = "Automatically learn offsets";
+            this.CHK_compass_learn.UseVisualStyleBackColor = true;
+            // 
             // ConfigHWCompass2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.CHK_compass_learn);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.but_largemagcal);
             this.Controls.Add(this.label3);
@@ -477,7 +493,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.myDataGridView1);
             this.Name = "ConfigHWCompass2";
-            this.Size = new System.Drawing.Size(606, 753);
+            this.Size = new System.Drawing.Size(606, 695);
             ((System.ComponentModel.ISupportInitialize)(this.myDataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.compassInfoBindingSource)).EndInit();
             this.groupBoxonboardcalib.ResumeLayout(false);
@@ -528,5 +544,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private Controls.MyButton but_largemagcal;
         private System.Windows.Forms.Label label4;
+        private Controls.MavlinkCheckBox CHK_compass_learn;
     }
 }
