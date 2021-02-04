@@ -50,6 +50,7 @@ namespace MissionPlanner
             this.down_log = new System.Windows.Forms.ToolStripMenuItem();
             this.review_log = new System.Windows.Forms.ToolStripMenuItem();
             this.close_cam = new System.Windows.Forms.ToolStripMenuItem();
+            this.open_cam = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuFlightData = new System.Windows.Forms.ToolStripButton();
             this.MenuFlightPlanner = new System.Windows.Forms.ToolStripButton();
             this.MenuConnect = new System.Windows.Forms.ToolStripButton();
@@ -113,7 +114,8 @@ namespace MissionPlanner
             this.config_tune,
             this.firmware_install,
             this.toolStrip_pos,
-            this.close_cam});
+            this.close_cam,
+            this.open_cam});
             this.CTX_mainmenu.Name = "CTX_mainmenu";
             resources.ApplyResources(this.CTX_mainmenu, "CTX_mainmenu");
             // 
@@ -193,6 +195,12 @@ namespace MissionPlanner
             this.close_cam.Name = "close_cam";
             resources.ApplyResources(this.close_cam, "close_cam");
             this.close_cam.Click += new System.EventHandler(this.close_cam_Click);
+            // 
+            // open_cam
+            // 
+            this.open_cam.Name = "open_cam";
+            resources.ApplyResources(this.open_cam, "open_cam");
+            this.open_cam.Click += new System.EventHandler(this.open_cam_Click);
             // 
             // MenuFlightData
             // 
@@ -423,5 +431,6 @@ namespace MissionPlanner
         public System.Windows.Forms.ToolStripButton shutter;
         private System.Windows.Forms.ToolStripMenuItem close_cam;
         public System.Windows.Forms.ToolStripButton switch_yt;
+        private System.Windows.Forms.ToolStripMenuItem open_cam;
     }
 }

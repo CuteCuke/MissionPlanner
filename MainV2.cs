@@ -4611,7 +4611,7 @@ namespace MissionPlanner
         {
             try
             {
-                if (CustomMessageBox.Show("点击yes就要起飞了哟！", "AUTO模式", CustomMessageBox.MessageBoxButtons.YesNo) == CustomMessageBox.DialogResult.Yes)
+                if (CustomMessageBox.Show("(￣︶￣)↗:点击yes就要起飞了哟！", "AUTO模式", CustomMessageBox.MessageBoxButtons.YesNo) == CustomMessageBox.DialogResult.Yes)
                 {
                     ((ToolStripButton)sender).Enabled = false;
                     MainV2.comPort.setMode("Auto");
@@ -4634,7 +4634,7 @@ namespace MissionPlanner
             try
             {
                 ((ToolStripButton)sender).Enabled = false;
-                if (CustomMessageBox.Show("你确定你想返航！", "返航",
+                if (CustomMessageBox.Show("(^ω^)=☞:你确定你想返航！", "返航",
                       CustomMessageBox.MessageBoxButtons.YesNo) ==
                   CustomMessageBox.DialogResult.Yes)
                 {
@@ -4704,7 +4704,7 @@ namespace MissionPlanner
                 var action = MainV2.comPort.MAV.cs.armed ? "加锁" : "解锁";
 
                 //if (isitarmed)
-                if (CustomMessageBox.Show("当前模式为\n\r……………………" + GCSViews.FlightData.myhud.mode + "……………………\n\r你确定你想------" + action, action,
+                if (CustomMessageBox.Show("(｡･∀･)ﾉﾞ:当前模式为\t" + GCSViews.FlightData.myhud.mode + "\n( σ'ω')σ:你确定你想\t" + action, action,
                         CustomMessageBox.MessageBoxButtons.YesNo) !=
                     CustomMessageBox.DialogResult.Yes)
                     return;
@@ -4718,9 +4718,9 @@ namespace MissionPlanner
                 MainV2.comPort.UnSubscribeToPacketType(sub);
                 if (ans == false)
                 {
-                    if (CustomMessageBox.Show(
+                    if (CustomMessageBox.Show("(ﾟДﾟ*)ﾉ:" +
                             action + "失败了.\n" + sb.ToString() + "\n强行 " + action +
-                            "可能绕过安全检查,\n从而导致机器撞机\n并造成严重伤害.\n\n你还希望强制执行" +
+                            "可能绕过安全检查,\n从而导致机器撞机\n并造成严重伤害.\n\n(*￣rǒ￣):你还希望强制执行" +
                             action + "?", Strings.ERROR, CustomMessageBox.MessageBoxButtons.YesNo,
                             CustomMessageBox.MessageBoxIcon.Exclamation, "执行" + action, "取消") ==
                         CustomMessageBox.DialogResult.Yes)
@@ -4870,7 +4870,7 @@ namespace MissionPlanner
 
             if (
                Common.MessageShowAgain("恢复任务",
-                   "警告：这将重新编程你的任务航线，解锁并发出起飞命令（多旋翼）") !=
+                   "(/≧▽≦)/：这将重新编程你的任务航线，解锁并发出起飞命令（多旋翼）") !=
                DialogResult.OK || MainV2.comPort.MAV.cs.firmware != Firmwares.ArduCopter2)
                 return;
 
@@ -4880,14 +4880,14 @@ namespace MissionPlanner
                 {
                     if (MainV2.comPort.MAV.cs.firmware != Firmwares.ArduCopter2)
                     {
-                        CustomMessageBox.Show("断点续飞仅支持多旋翼！");
+                        CustomMessageBox.Show("(/≧▽≦)/:断点续飞仅支持多旋翼！");
                         return;
                     }
                     string lastwp = lastwpstr;
                     if (lastwp == "-1")
                         lastwp = "1";
 
-                    if (InputBox.Show("恢复点", "重新开始任务从航点（），默认是点击返航时的断点！", ref lastwp) == DialogResult.OK)
+                    if (InputBox.Show("恢复点", "(/≧▽≦)/:重新开始任务从航点（），默认是点击返航时的断点！", ref lastwp) == DialogResult.OK)
                     {
                         int timeout = 0;
                         int lastwpno = int.Parse(lastwp) - 1;
@@ -4972,7 +4972,7 @@ namespace MissionPlanner
                                 (MAVLink.MAV_FRAME)(loc.frame));
                             if (ans != MAVLink.MAV_MISSION_RESULT.MAV_MISSION_ACCEPTED)
                             {
-                                CustomMessageBox.Show("上传航点失败：" +
+                                CustomMessageBox.Show("(/≧▽≦)/:上传航点失败：" +
                                                       Enum.Parse(typeof(MAVLink.MAV_CMD), loc.id.ToString()) + " " +
                                                       Enum.Parse(typeof(MAVLink.MAV_MISSION_RESULT), ans.ToString()));
                                 return;
@@ -4989,7 +4989,7 @@ namespace MissionPlanner
                         // set index back to 1
                         MainV2.comPort.setWPCurrent(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid, 1);
 
-                        if (CustomMessageBox.Show("点击确定就起飞了哟！", "断点续飞", CustomMessageBox.MessageBoxButtons.YesNo) == CustomMessageBox.DialogResult.Yes)
+                        if (CustomMessageBox.Show("(/≧▽≦)/:点击确定就起飞了哟！", "断点续飞", CustomMessageBox.MessageBoxButtons.YesNo) == CustomMessageBox.DialogResult.Yes)
                         {
                             while (MainV2.comPort.MAV.cs.mode.ToLower() != "Guided".ToLower())
                             {
@@ -5093,7 +5093,7 @@ namespace MissionPlanner
         {
 
             if (
-                CustomMessageBox.Show("你确定要执行空速清0 ?", "Action",
+                CustomMessageBox.Show("(^ω^)=☞:你确定要执行空速清0 ?", "Action",
                     MessageBoxButtons.YesNo) == (int)DialogResult.Yes)
             {
                 try
@@ -5168,7 +5168,7 @@ namespace MissionPlanner
                 bool isopenyuntai = MainV2.comPort.GetParam("MNT_STAB_TILT")==1?true:false;
                 var active = isopenyuntai ? "关闭" : "打开";
                 if (
-                    CustomMessageBox.Show("你确定要" + active + "云台?", active,
+                    CustomMessageBox.Show("(/≧▽≦)/:你确定要" + active + "云台?", active,
                         MessageBoxButtons.YesNo) == (int)DialogResult.Yes)
                 {
                     try
@@ -5195,6 +5195,25 @@ namespace MissionPlanner
                             isopenyuntai = true;
                             switch_yt.ForeColor = Color.Green;
                         }
+                    }
+                    catch
+                    {
+                        CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
+                    }
+                }
+            }
+        }
+
+        private void open_cam_Click(object sender, EventArgs e)
+        {
+            if (MainV2.comPort.BaseStream.IsOpen)
+            {
+                double dist=16;
+                if (InputBox.Show("拍照间距设置", "请设置一个拍照间距值,相机将以此值执行拍照！\n_( ﾟДﾟ)ﾉ:拍照间距最好大于(速度*1.5)哟!", ref dist) == DialogResult.OK)
+                {
+                    try
+                    {
+                        MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent, (byte)MainV2.comPort.compidcurrent, MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, (float)dist, 0, 1, 0, 0, 0, 0);
                     }
                     catch
                     {

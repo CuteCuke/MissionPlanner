@@ -7545,7 +7545,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                     }
                     else
                     {
-                        CustomMessageBox.Show("请规划航线后添加起降！", Strings.Warning);
+                        CustomMessageBox.Show("(/≧▽≦)/:请规划航线后添加起降！", Strings.Warning);
                     }
                 }
                 if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
@@ -7575,14 +7575,14 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                     }
                     else
                     {
-                        CustomMessageBox.Show("请规划航线后添加起降！", Strings.Warning);
+                        CustomMessageBox.Show("(/≧▽≦)/:请规划航线后添加起降！", Strings.Warning);
                     }
                 }
                 writeKML();
             }
             else
             {
-                CustomMessageBox.Show("请连接飞控并点击刷新！！！", Strings.Warning);
+                CustomMessageBox.Show("(/≧▽≦)/:请连接飞控并点击刷新！！！", Strings.Warning);
             }
         }
 
@@ -7620,7 +7620,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             }
             else
             {
-                CustomMessageBox.Show("请连接飞控！", Strings.Warning);
+                CustomMessageBox.Show("(/≧▽≦)/:请连接飞控！", Strings.Warning);
             }
         }
 
@@ -7651,7 +7651,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                 lbl_flytimenum.Text = flytime.ToString("0.##");
                 if (flytime > 200.00)
                 {
-                    CustomMessageBox.Show("飞行时间超过200小时，请返厂保养", Strings.Warning);
+                    CustomMessageBox.Show("(/≧▽≦)/:飞行时间超过200小时，请返厂保养", Strings.Warning);
                     lbl_flytime.ForeColor = Color.Yellow;
                     lbl_flytimenum.ForeColor = Color.Yellow;
                     if (flytime > 300.00)
@@ -7719,7 +7719,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             {
                 gpb_takeoffandland.Visible = false;
                 lbl_flytimenum.Text = "0.00";
-                CustomMessageBox.Show("请连接飞机后，点击刷新！！！");
+                CustomMessageBox.Show("<(*￣▽￣*)/:请连接飞机后，点击刷新！！！");
             }
             writeKML();
 
@@ -7736,7 +7736,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                 ischk_imitation = true;
                 if (!tag_updownwp)
                 {
-                    CustomMessageBox.Show("请添加起降后，勾选仿地飞行！！！");
+                    CustomMessageBox.Show("<(*￣▽￣*)/:请添加起降后，勾选仿地飞行！！！");
                     ischk_imitation = false;
                     chk_imitation.Checked = false;
                     return;

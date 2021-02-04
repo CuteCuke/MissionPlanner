@@ -12,7 +12,7 @@ namespace MissionPlanner.GCSViews.ConfigurationView
 {
     public partial class ConfigHWCompass2 : MyUserControl, IActivate, IDeactivate
     {
-        private List<DeviceInfo> list;
+        private List<CompassDeviceInfo> list;
 
         private bool rebootrequired = false;
 
@@ -22,6 +22,61 @@ namespace MissionPlanner.GCSViews.ConfigurationView
         private KeyValuePair<MAVLink.MAVLINK_MSG_ID, Func<MAVLink.MAVLinkMessage, bool>> packetsub1;
         private KeyValuePair<MAVLink.MAVLINK_MSG_ID, Func<MAVLink.MAVLinkMessage, bool>> packetsub2;
 
+        public class CompassDeviceInfo : DeviceInfo
+        {
+            private string _orient;
+            private bool _external;
+
+            public CompassDeviceInfo(int index, string ParamName, uint id) : base(index, ParamName, id)
+            {
+                //set initial state
+                var id1 = MainV2.comPort.MAV.param["COMPASS_DEV_ID"];
+                var id2 = MainV2.comPort.MAV.param["COMPASS_DEV_ID2"];
+                var id3 = MainV2.comPort.MAV.param["COMPASS_DEV_ID3"];
+
+                var idO1 = MainV2.comPort.MAV.param["COMPASS_ORIENT"];
+                var idO2 = MainV2.comPort.MAV.param["COMPASS_ORIENT2"];
+                var idO3 = MainV2.comPort.MAV.param["COMPASS_ORIENT3"];
+
+                var idE1 = MainV2.comPort.MAV.param["COMPASS_EXTERNAL"];
+                var idE2 = MainV2.comPort.MAV.param["COMPASS_EXTERN2"];
+                var idE3 = MainV2.comPort.MAV.param["COMPASS_EXTERN3"];
+
+                if (id1 != null && id1?.Value == id)
+                {
+                    _orient = idO1?.ToString();
+                    _external = idE1?.Value > 0 ? true : false;
+                }
+                if (id2 != null && id2?.Value == id)
+                {
+                    _orient = idO2?.ToString();
+                    _external = idE2?.Value > 0 ? true : false;
+                }
+                if (id3 != null && id3?.Value == id)
+                {
+                    _orient = idO3?.ToString();
+                    _external = idE3?.Value > 0 ? true : false;
+                }
+            }
+
+            public string Orient
+            {
+                get => _orient;
+                set => _orient = value;
+            }
+
+            public bool External
+            {
+                get => _external;
+                set => _external = value;
+            }
+
+            public bool Missing
+            {
+                get;
+                set;
+            }
+        }
 
         public ConfigHWCompass2()
         {
@@ -30,9 +85,34 @@ namespace MissionPlanner.GCSViews.ConfigurationView
 
         public void Activate()
         {
-            list = MainV2.comPort.MAV.param.Where(a => a.Name.StartsWith("COMPASS_DEV_ID"))
-                .Select((a, b) => new DeviceInfo(b, a.Name, (uint) a.Value))
+            // COMPASS_DEV_ID get a list of all connected devices
+            list = MainV2.comPort.MAV.param.Where(a => a.Name.StartsWith("COMPASS_DEV_ID") && a.Value != 0)
+                .Select((a, b) => new CompassDeviceInfo(b, a.Name, (uint) a.Value))
                 .OrderBy((a) => a.ParamName).ToList();
+
+            // COMPASS_PRIO get a list of all prios
+            var prio = MainV2.comPort.MAV.param.Where(a => a.Name.StartsWith("COMPASS_PRIO") && a.Value != 0)
+                .Select((a, b) => new CompassDeviceInfo(b, a.Name, (uint)a.Value))
+                .OrderBy((a) => a.ParamName).ToList();
+
+            var anymissing = false;
+            // mark missing
+            prio.ForEach(a =>
+            {
+                if (a.DevID == 0 || list.Any(b => b.DevID == a.DevID))
+                    a.Missing = false;
+                else
+                {
+                    a.Missing = true;
+                    anymissing = true;
+                }
+            });
+
+            //filter list removing prio dups from the list
+            list = list.Where(a => !prio.Any(b => b.DevID == a.DevID)).ToList();
+
+            // insert prios at the top
+            list.InsertRange(0, prio);
 
             var bs = new BindingSource();
             bs.DataSource = list;
@@ -41,10 +121,26 @@ namespace MissionPlanner.GCSViews.ConfigurationView
             mavlinkComboBoxfitness.setup(ParameterMetaDataRepository.GetParameterOptionsInt("COMPASS_CAL_FIT",
                 MainV2.comPort.MAV.cs.firmware.ToString()), "COMPASS_CAL_FIT", MainV2.comPort.MAV.param);
 
-            CHK_compass_learn.setup(1, 0, "COMPASS_LEARN", MainV2.comPort.MAV.param);
             mavlinkCheckBoxUseCompass1.setup(1, 0, "COMPASS_USE", MainV2.comPort.MAV.param);
             mavlinkCheckBoxUseCompass2.setup(1, 0, "COMPASS_USE2", MainV2.comPort.MAV.param);
             mavlinkCheckBoxUseCompass3.setup(1, 0, "COMPASS_USE3", MainV2.comPort.MAV.param);
+
+            CHK_compass_learn.setup(1, 0, "COMPASS_LEARN", MainV2.comPort.MAV.param);
+
+            {
+                // set the default items
+                var source = ParameterMetaDataRepository.GetParameterOptionsInt("COMPASS_ORIENT",
+                        MainV2.comPort.MAV.cs.firmware.ToString())
+                    .Select(a => new KeyValuePair<string, string>(a.Key.ToString(), a.Value)).ToList();
+                Orientation.DataSource = source;
+                Orientation.DisplayMember = "Value";
+                Orientation.ValueMember = "Key";
+            }
+
+            if (anymissing)
+            {
+                CustomMessageBox.Show("Your compass configuration has changed, please review the missing compass", Strings.ERROR);
+            }
         }
 
         public void Deactivate()
@@ -86,7 +182,7 @@ namespace MissionPlanner.GCSViews.ConfigurationView
 
         private async void myDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == Up.Index)
+            if (e.ColumnIndex == Up.Index && e.RowIndex != 0)
             {
                 var item = list[e.RowIndex];
                 list.Remove(item);
@@ -95,7 +191,7 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                 await UpdateFirst3();
             }
 
-            if (e.ColumnIndex == Down.Index)
+            if (e.ColumnIndex == Down.Index && e.RowIndex < (myDataGridView1.RowCount-1))
             {
                 var item = list[e.RowIndex];
                 list.Remove(item);
@@ -130,6 +226,14 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                 if (!p2)
                     CustomMessageBox.Show(Strings.ErrorSettingParameter, Strings.ERROR);
             }
+            else
+            {
+                // clear it
+                await MainV2.comPort.setParamAsync((byte)MainV2.comPort.sysidcurrent,
+                    (byte)MainV2.comPort.compidcurrent,
+                    "COMPASS_PRIO2_ID",
+                    0);
+            }
 
             if (myDataGridView1.Rows.Count >= 3)
             {
@@ -141,6 +245,14 @@ namespace MissionPlanner.GCSViews.ConfigurationView
 
                 if (!p3)
                     CustomMessageBox.Show(Strings.ErrorSettingParameter, Strings.ERROR);
+            }
+            else
+            {
+                //clear it
+                await MainV2.comPort.setParamAsync((byte)MainV2.comPort.sysidcurrent,
+                    (byte)MainV2.comPort.compidcurrent,
+                    "COMPASS_PRIO3_ID",
+                    0);
             }
 
             rebootrequired = true;
@@ -277,7 +389,7 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                     message += "id:" + item.Key + " " + obj.completion_pct.ToString() + "% ";
                     compasscount++;
                 }
-                lbl_obmagresult.AppendText(message + "\n");
+                lbl_obmagresult.AppendText(message + "\r\n");
             }
 
             lock (mrep)
@@ -352,6 +464,12 @@ namespace MissionPlanner.GCSViews.ConfigurationView
 
         private void myDataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
+            if (myDataGridView1.Rows[e.RowIndex].Cells[Priority.Index].Value?.ToString() != (e.RowIndex + 1).ToString())
+            {
+                myDataGridView1.Rows[e.RowIndex].Cells[Priority.Index].Value = (e.RowIndex + 1).ToString();
+
+
+            }
         }
 
         private void but_largemagcal_Click(object sender, EventArgs e)
@@ -364,18 +482,52 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                     if (MainV2.comPort.doCommand(MainV2.comPort.MAV.sysid, MainV2.comPort.MAV.compid,
                         MAVLink.MAV_CMD.FIXED_MAG_CAL_YAW, (float) value, 0, 0, 0, 0, 0, 0))
                     {
-
+                        CustomMessageBox.Show(Strings.Completed, Strings.Completed);
                     }
                     else
                     {
                         CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
                     }
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
                     CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
                 }
             }
+        }
+
+        private void but_reboot_Click(object sender, EventArgs e)
+        {
+            if (CustomMessageBox.Show("Reboot?") == CustomMessageBox.DialogResult.OK)
+            {
+                MainV2.comPort.doReboot(false, true);
+                rebootrequired = false;
+            }
+        }
+
+        private void myDataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.Cancel = true;
+        }
+
+        private void compassDeviceInfoBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void but_missing_ClickAsync(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow dataGridViewRow in myDataGridView1.Rows)
+            {
+                if (dataGridViewRow.Cells[Missing.Index].Value.Equals(true))
+                {
+                    myDataGridView1.Rows.Remove(dataGridViewRow);
+                    but_missing_ClickAsync(null, null);
+                    return;
+                }
+            }
+
+            await UpdateFirst3();
         }
     }
 }
