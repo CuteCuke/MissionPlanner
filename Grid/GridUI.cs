@@ -1709,7 +1709,7 @@ namespace MissionPlanner.Grid
 
                                     // to get around the copter leash length issue, add this here instead of ME
                                     if (chk_stopstart.Checked && plla.Tag == "E")
-                                        plugin.Host.AddWPtoList(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0,
+                                        plugin.Host.AddWPtoList(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 0, 0,
                                             0, 0, 0, gridobject);
                                 }
 
@@ -1728,7 +1728,7 @@ namespace MissionPlanner.Grid
 
                                             plugin.Host.AddWPtoList(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST,
                                                 (float)NUM_spacing.Value,
-                                                0, 1, 0, 0, 0, 0, gridobject);
+                                                0, 0, 0, 0, 0, 0, gridobject);
                                         }
                                         else if (plla.Tag == "ME")
                                         {
@@ -1745,7 +1745,7 @@ namespace MissionPlanner.Grid
                                         {
                                             plugin.Host.AddWPtoList(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST,
                                                 (float)NUM_spacing.Value,
-                                                0, 1, 0, 0, 0, 0, gridobject);
+                                                0, 0, 0, 0, 0, 0, gridobject);
                                             startedtrigdist = true;
                                         }
                                         else if (plla.Tag == "ME")
@@ -1816,7 +1816,7 @@ namespace MissionPlanner.Grid
                     // end
                     if (rad_trigdist.Checked)
                     {
-                        plugin.Host.AddWPtoList(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0, gridobject);
+                        plugin.Host.AddWPtoList(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 0, 0, 0, 0, 0, gridobject);
                     }
 
                     if (CHK_usespeed.Checked)

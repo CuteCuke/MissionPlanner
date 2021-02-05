@@ -500,7 +500,7 @@ namespace MissionPlanner.SimpleGrid
                 var targetwp = GaussProjection.GaussProjInvCal(new XYZCoordinate(X, Y, 0), CoordConsts.cgcs2000atum, (int)((firstwp.Lng - 1.5) / 3 + 1)*3);//根据第一个航点计算带号
                 plugin.Host.AddWPtoList(MAVLink.MAV_CMD.WAYPOINT, 0, 0, 0, 0, targetwp.L,targetwp.B, grid[n].Alt);
 
-                plugin.Host.AddWPtoList(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, (double)cam_dist.Value, 0, 1, 0, 0, 0, 0);
+                plugin.Host.AddWPtoList(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, (double)cam_dist.Value, 0, 0, 0, 0, 0, 0);
 
                 grid.ForEach(plla =>
                 {
@@ -517,7 +517,7 @@ namespace MissionPlanner.SimpleGrid
                         lastpnt = plla;
                     }
                 });
-                plugin.Host.AddWPtoList(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 1, 0, 0, 0, 0);
+                plugin.Host.AddWPtoList(MAVLink.MAV_CMD.DO_SET_CAM_TRIGG_DIST, 0, 0, 0, 0, 0, 0, 0);
 
                 MainV2.instance.FlightPlanner.quickadd = false;
 

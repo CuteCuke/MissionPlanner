@@ -7220,6 +7220,8 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
 
             selectedrow = 0;
             quickadd = false;
+            chk_ispart.Enabled = true;
+            chk_imitation.Enabled = false;
             writeKML();
         }
 
@@ -7579,6 +7581,8 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                     }
                 }
                 writeKML();
+                chk_ispart.Enabled = false;
+                chk_imitation.Enabled = true;
             }
             else
             {
@@ -7617,6 +7621,8 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                     else tag_updownwp = false;
                 }
                 writeKML();
+                chk_ispart.Enabled = true;
+                chk_imitation.Enabled = false;
             }
             else
             {
