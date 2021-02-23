@@ -1181,7 +1181,7 @@ namespace MissionPlanner.Utilities
     <div id = 'toolbar'></div>
          
     <script>
-
+    Cesium.Ion.defaultAccessToken='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5OGNmMTNkYi1jNDY0LTQ2YTctODQ5My03NWUzZGQzNTA3ODQiLCJpZCI6MzY3ODYsImlhdCI6MTYxMzc4OTE2Mn0.Lp5LNprdorYQ9nK2kt_RzEfwF6eqg2bpmsVQ_IJ8yvw';
     var viewer = new Cesium.Viewer('cesiumContainer',{
           animation:false,          
           baseLayerPicker:false,          

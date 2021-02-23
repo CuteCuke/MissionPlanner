@@ -4689,7 +4689,7 @@ namespace MissionPlanner
             }
 
             ((ToolStripButton)sender).Enabled = true;
-
+            resume_flight.Enabled = true;
         }
 
 
@@ -4884,7 +4884,7 @@ namespace MissionPlanner
                         return;
                     }
                     string lastwp = lastwpstr;
-                    if (lastwp == "-1")
+                    if (int.Parse(lastwp) <3)
                         lastwp = "1";
 
                     if (InputBox.Show("恢复点", "(/≧▽≦)/:重新开始任务从航点（），默认是点击返航时的断点！", ref lastwp) == DialogResult.OK)
@@ -4950,6 +4950,9 @@ namespace MissionPlanner
                                 {
                                     wpdata.lat = return_now_lat;
                                     wpdata.lng = return_now_lng;
+                                    wpdata.id = (ushort)MAVLink.MAV_CMD.WAYPOINT;
+                                    wpdata.p1 = 0;
+                                    wpdata.p3 = 0;
                                     return_now_lat = 0;
                                     return_now_lng = 0;//用完归0
                                 }
@@ -5061,6 +5064,7 @@ namespace MissionPlanner
             {
                 CustomMessageBox.Show(Strings.CommandFailed + "\n" + ex.ToString(), Strings.ERROR);
             }
+            resume_flight.Enabled = false;
         }
 
         private void lj_taobao_Click(object sender, EventArgs e)
