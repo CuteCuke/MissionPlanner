@@ -1200,13 +1200,22 @@ namespace MissionPlanner
                 try
                 {
                     if (Settings.Instance["TXT_homelat"] != null)
-                        MainV2.comPort.MAV.cs.HomeLocation.Lat = Settings.Instance.GetDouble("TXT_homelat");
+                    { 
+                        MainV2.comPort.MAV.cs.HomeLocation.Lat = Settings.Instance.GetDouble("TXT_homelat"); 
+                       // FlightPlanner.TXT_homelat.Text= Settings.Instance.GetDouble("TXT_homelat").ToString();
+                    }
 
                     if (Settings.Instance["TXT_homelng"] != null)
+                    {
                         MainV2.comPort.MAV.cs.HomeLocation.Lng = Settings.Instance.GetDouble("TXT_homelng");
+                       // FlightPlanner.TXT_homelng.Text = Settings.Instance.GetDouble("TXT_homelng").ToString();
+                    }
 
                     if (Settings.Instance["TXT_homealt"] != null)
+                    { 
                         MainV2.comPort.MAV.cs.HomeLocation.Alt = Settings.Instance.GetDouble("TXT_homealt");
+                       // FlightPlanner.TXT_homealt.Text = Settings.Instance.GetDouble("TXT_homealt").ToString();
+                    }
 
                     // remove invalid entrys
                     if (Math.Abs(MainV2.comPort.MAV.cs.HomeLocation.Lat) > 90 ||
@@ -4681,7 +4690,8 @@ namespace MissionPlanner
                                         (ushort)(wpno - 4));
                         }
                     }
-                }
+                } 
+                resume_flight.Enabled = true;
             }
             catch
             {
@@ -4689,7 +4699,7 @@ namespace MissionPlanner
             }
 
             ((ToolStripButton)sender).Enabled = true;
-            resume_flight.Enabled = true;
+           
         }
 
 

@@ -671,6 +671,394 @@ namespace MissionPlanner.Utilities
 
             return ans;
         }
+        public static List<PointLatLngAlt> CreateGrid1(List<PointLatLngAlt> polygon, double altitude, double distance, double spacing, double angle, double overshoot1, double overshoot2, StartPosition startpos, bool shutter, float minLaneSeparation, float leadin, PointLatLngAlt HomeLocation)
+        {
+            //DoDebug();
+
+            if (spacing < 0.1 && spacing != 0)
+                spacing = 0.1;
+
+            if (distance < 0.1)
+                distance = 0.1;
+
+            if (polygon.Count == 0)
+                return new List<PointLatLngAlt>();
+
+
+            // Make a non round number in case of corner cases
+            if (minLaneSeparation != 0)
+                minLaneSeparation += 0.5F;
+            // Lane Separation in meters
+            double minLaneSeparationINMeters = minLaneSeparation * distance;
+
+            List<PointLatLngAlt> ans = new List<PointLatLngAlt>();
+
+            // utm zone distance calcs will be done in
+            int utmzone = polygon[0].GetUTMZone();
+
+            // utm position list
+            List<utmpos> utmpositions = utmpos.ToList(PointLatLngAlt.ToUTM(utmzone, polygon), utmzone);
+
+            // close the loop if its not already
+            if (utmpositions[0] != utmpositions[utmpositions.Count - 1])
+                utmpositions.Add(utmpositions[0]); // make a full loop
+
+            // get mins/maxs of coverage area
+            Rect area = getPolyMinMax(utmpositions);
+
+            // get initial grid
+
+            // used to determine the size of the outer grid area
+            double diagdist = area.DiagDistance();
+
+            // somewhere to store out generated lines
+            List<linelatlng> grid = new List<linelatlng>();
+            // number of lines we need
+            int lines = 0;
+
+            // get start point middle
+            double x = area.MidWidth;
+            double y = area.MidHeight;
+
+            addtomap(new utmpos(x, y, utmzone), "Base");
+
+            // get left extent
+            double xb1 = x;
+            double yb1 = y;
+            // to the left
+            newpos(ref xb1, ref yb1, angle - 90, diagdist / 2 + distance);
+            // backwards
+            newpos(ref xb1, ref yb1, angle + 180, diagdist / 2 + distance);
+
+            utmpos left = new utmpos(xb1, yb1, utmzone);
+
+            addtomap(left, "left");
+
+            // get right extent
+            double xb2 = x;
+            double yb2 = y;
+            // to the right
+            newpos(ref xb2, ref yb2, angle + 90, diagdist / 2 + distance);
+            // backwards
+            newpos(ref xb2, ref yb2, angle + 180, diagdist / 2 + distance);
+
+            utmpos right = new utmpos(xb2, yb2, utmzone);
+
+            addtomap(right, "right");
+
+            // set start point to left hand side
+            x = xb1;
+            y = yb1;
+
+            // draw the outergrid, this is a grid that cover the entire area of the rectangle plus more.
+            while (lines < ((diagdist + distance * 2) / distance))
+            {
+                // copy the start point to generate the end point
+                double nx = x;
+                double ny = y;
+                newpos(ref nx, ref ny, angle, diagdist + distance * 2);
+
+                linelatlng line = new linelatlng();
+                line.p1 = new utmpos(x, y, utmzone);
+                line.p2 = new utmpos(nx, ny, utmzone);
+                line.basepnt = new utmpos(x, y, utmzone);
+                grid.Add(line);
+
+                // addtomap(line);
+
+                newpos(ref x, ref y, angle + 90, distance);
+                lines++;
+            }
+
+            // find intersections with our polygon
+
+            // store lines that dont have any intersections
+            List<linelatlng> remove = new List<linelatlng>();
+
+            int gridno = grid.Count;
+
+            // cycle through our grid
+            for (int a = 0; a < gridno; a++)
+            {
+                double closestdistance = double.MaxValue;
+                double farestdistance = double.MinValue;
+
+                utmpos closestpoint = utmpos.Zero;
+                utmpos farestpoint = utmpos.Zero;
+
+                // somewhere to store our intersections
+                List<utmpos> matchs = new List<utmpos>();
+
+                int b = -1;
+                int crosses = 0;
+                utmpos newutmpos = utmpos.Zero;
+                foreach (utmpos pnt in utmpositions)
+                {
+                    b++;
+                    if (b == 0)
+                    {
+                        continue;
+                    }
+                    newutmpos = FindLineIntersection(utmpositions[b - 1], utmpositions[b], grid[a].p1, grid[a].p2);
+                    if (!newutmpos.IsZero)
+                    {
+                        crosses++;
+                        matchs.Add(newutmpos);
+                        if (closestdistance > grid[a].p1.GetDistance(newutmpos))
+                        {
+                            closestpoint.y = newutmpos.y;
+                            closestpoint.x = newutmpos.x;
+                            closestpoint.zone = newutmpos.zone;
+                            closestdistance = grid[a].p1.GetDistance(newutmpos);
+                        }
+                        if (farestdistance < grid[a].p1.GetDistance(newutmpos))
+                        {
+                            farestpoint.y = newutmpos.y;
+                            farestpoint.x = newutmpos.x;
+                            farestpoint.zone = newutmpos.zone;
+                            farestdistance = grid[a].p1.GetDistance(newutmpos);
+                        }
+                    }
+                }
+                if (crosses == 0) // outside our polygon
+                {
+                    if (!PointInPolygon(grid[a].p1, utmpositions) && !PointInPolygon(grid[a].p2, utmpositions))
+                        remove.Add(grid[a]);
+                }
+                else if (crosses == 1) // bad - shouldnt happen
+                {
+
+                }
+                else if (crosses == 2) // simple start and finish
+                {
+                    linelatlng line = grid[a];
+                    line.p1 = closestpoint;
+                    line.p2 = farestpoint;
+                    grid[a] = line;
+                }
+                else // multiple intersections
+                {
+                    linelatlng line = grid[a];
+                    remove.Add(line);
+
+                    while (matchs.Count > 1)
+                    {
+                        linelatlng newline = new linelatlng();
+
+                        closestpoint = findClosestPoint(closestpoint, matchs);
+                        newline.p1 = closestpoint;
+                        matchs.Remove(closestpoint);
+
+                        closestpoint = findClosestPoint(closestpoint, matchs);
+                        newline.p2 = closestpoint;
+                        matchs.Remove(closestpoint);
+
+                        newline.basepnt = line.basepnt;
+
+                        grid.Add(newline);
+                    }
+                }
+            }
+
+            // cleanup and keep only lines that pass though our polygon
+            foreach (linelatlng line in remove)
+            {
+                grid.Remove(line);
+            }
+
+            // debug
+            foreach (linelatlng line in grid)
+            {
+                addtomap(line);
+            }
+
+            if (grid.Count == 0)
+                return ans;
+
+            // pick start positon based on initial point rectangle
+            utmpos startposutm;
+
+            switch (startpos)
+            {
+                default:
+                case StartPosition.Home:
+                    startposutm = new utmpos(HomeLocation);
+                    break;
+                case StartPosition.BottomLeft:
+                    startposutm = new utmpos(area.Left, area.Bottom, utmzone);
+                    break;
+                case StartPosition.BottomRight:
+                    startposutm = new utmpos(area.Right, area.Bottom, utmzone);
+                    break;
+                case StartPosition.TopLeft:
+                    startposutm = new utmpos(area.Left, area.Top, utmzone);
+                    break;
+                case StartPosition.TopRight:
+                    startposutm = new utmpos(area.Right, area.Top, utmzone);
+                    break;
+                case StartPosition.Point:
+                    startposutm = new utmpos(StartPointLatLngAlt);
+                    break;
+            }
+
+            // find the closes polygon point based from our startpos selection
+            startposutm = findClosestPoint(startposutm, utmpositions);
+
+            // find closest line point to startpos
+            linelatlng closest = findClosestLine(startposutm, grid, 0 /*Lane separation does not apply to starting point*/, angle);
+
+            utmpos lastpnt;
+
+            // get the closes point from the line we picked
+            if (closest.p1.GetDistance(startposutm) < closest.p2.GetDistance(startposutm))
+            {
+                lastpnt = closest.p1;
+            }
+            else
+            {
+                lastpnt = closest.p2;
+            }
+
+            // S =  start
+            // E = end
+            // ME = middle end
+            // SM = start middle
+
+            while (grid.Count > 0)
+            {
+                // for each line, check which end of the line is the next closest
+                if (closest.p1.GetDistance(lastpnt) < closest.p2.GetDistance(lastpnt))
+                {
+                    utmpos newstart = newpos(closest.p1, angle, -leadin);
+                    newstart.Tag = "S";
+                    addtomap(newstart, "S");
+                    ans.Add(newstart);
+
+                    if (leadin < 0)
+                    {
+                        var p2 = new utmpos(newstart) { Tag = "SM" };
+                        addtomap(p2, "SM");
+                        ans.Add(p2);
+                    }
+                    else
+                    {
+                        closest.p1.Tag = "SM";
+                        addtomap(closest.p1, "SM");
+                        ans.Add(closest.p1);
+                    }
+
+                    if (spacing > 0)
+                    {
+                        for (double d = (spacing - ((closest.basepnt.GetDistance(closest.p1)) % spacing));
+                            d < (closest.p1.GetDistance(closest.p2));
+                            d += spacing)
+                        {
+                            double ax = closest.p1.x;
+                            double ay = closest.p1.y;
+
+                            newpos(ref ax, ref ay, angle, d);
+                            var utmpos1 = new utmpos(ax, ay, utmzone) { Tag = "M" };
+                            addtomap(utmpos1, "M");
+                            ans.Add(utmpos1);
+                        }
+                    }
+
+                    utmpos newend = newpos(closest.p2, angle, overshoot1);
+
+                    if (overshoot1 < 0)
+                    {
+                        var p2 = new utmpos(newend) { Tag = "ME" };
+                        addtomap(p2, "ME");
+                        ans.Add(p2);
+                    }
+                    else
+                    {
+                        closest.p2.Tag = "ME";
+                        addtomap(closest.p2, "ME");
+                        ans.Add(closest.p2);
+                    }
+
+                    newend.Tag = "E";
+                    addtomap(newend, "E");
+                    ans.Add(newend);
+
+                    lastpnt = closest.p2;
+
+                    grid.Remove(closest);
+                    if (grid.Count == 0)
+                        break;
+
+                    closest = findClosestLine(newend, grid, minLaneSeparationINMeters, angle);
+                }
+                else
+                {
+                    utmpos newstart = newpos(closest.p2, angle, leadin);
+                    newstart.Tag = "S";
+                    addtomap(newstart, "S");
+                    ans.Add(newstart);
+
+                    if (leadin < 0)
+                    {
+                        var p2 = new utmpos(newstart) { Tag = "SM" };
+                        addtomap(p2, "SM");
+                        ans.Add(p2);
+                    }
+                    else
+                    {
+                        closest.p2.Tag = "SM";
+                        addtomap(closest.p2, "SM");
+                        ans.Add(closest.p2);
+                    }
+
+                    if (spacing > 0)
+                    {
+                        for (double d = ((closest.basepnt.GetDistance(closest.p2)) % spacing);
+                            d < (closest.p1.GetDistance(closest.p2));
+                            d += spacing)
+                        {
+                            double ax = closest.p2.x;
+                            double ay = closest.p2.y;
+
+                            newpos(ref ax, ref ay, angle, -d);
+                            var utmpos2 = new utmpos(ax, ay, utmzone) { Tag = "M" };
+                            addtomap(utmpos2, "M");
+                            ans.Add(utmpos2);
+                        }
+                    }
+
+                    utmpos newend = newpos(closest.p1, angle, -overshoot2);
+
+                    if (overshoot2 < 0)
+                    {
+                        var p2 = new utmpos(newend) { Tag = "ME" };
+                        addtomap(p2, "ME");
+                        ans.Add(p2);
+                    }
+                    else
+                    {
+                        closest.p1.Tag = "ME";
+                        addtomap(closest.p1, "ME");
+                        ans.Add(closest.p1);
+                    }
+
+                    newend.Tag = "E";
+                    addtomap(newend, "E");
+                    ans.Add(newend);
+
+                    lastpnt = closest.p1;
+
+                    grid.Remove(closest);
+                    if (grid.Count == 0)
+                        break;
+                    closest = findClosestLine(newend, grid, minLaneSeparationINMeters, angle);
+                }
+            }
+
+            // set the altitude on all points
+            ans.ForEach(plla => { plla.Alt = altitude; });
+
+            return ans;
+        }
 
         static Rect getPolyMinMax(List<utmpos> utmpos)
         {

@@ -7717,8 +7717,16 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                                 break;
                             }
                         }
+                        for (int i = 0; i < Commands.Rows.Count; i++)
+                        {
+                            if (GetCommandList()[i].id == (ushort)MAVLink.MAV_CMD.LOITER_TURNS)
+                            {
+                                TXT_loiterrad.Text = GetCommandList()[i].p3.ToString();
+                                break;
+                            }
+                        }
                     }
-                    TXT_loiterrad.Text = vtol_takeoff_alt.Value.ToString();
+
                 }
             }
             else
@@ -8173,9 +8181,6 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
 
         }
 
-        private void CHK_verifyheight_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
+    
     }
 }

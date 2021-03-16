@@ -233,10 +233,10 @@
     <value>改变模式为手动/自稳</value>
   </data>
   <data name="BUT_quickrtl.Text" xml:space="preserve">
-    <value>返航</value>
+    <value>紧急返航</value>
   </data>
   <data name="BUT_quickrtl.ToolTip" xml:space="preserve">
-    <value>改变模式为返航</value>
+    <value>改变模式为RTL模式</value>
   </data>
   <data name="BUT_quickauto.Text" xml:space="preserve">
     <value>自动</value>

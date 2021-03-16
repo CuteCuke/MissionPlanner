@@ -292,7 +292,7 @@ namespace MissionPlanner.GCSViews
             resources.ApplyResources(this.CHK_verifyheight, "CHK_verifyheight");
             this.CHK_verifyheight.Name = "CHK_verifyheight";
             this.CHK_verifyheight.UseVisualStyleBackColor = true;
-            this.CHK_verifyheight.CheckedChanged += new System.EventHandler(this.CHK_verifyheight_CheckedChanged);
+            
             // 
             // TXT_WPRad
             // 
@@ -924,6 +924,7 @@ namespace MissionPlanner.GCSViews
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
+            
             // 
             // lbl_flytimenum
             // 

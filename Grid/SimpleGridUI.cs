@@ -562,7 +562,7 @@ namespace MissionPlanner.SimpleGrid
                 gb_set.Visible = false;
             }
         }
-        private double cam35mmxy_circlecenterdist_120m = 1.231896;//以35mm a7r 镜头在120m高度 照片区域直径与圆心距离比值做参考
+        //private double cam35mmxy_circlecenterdist_120m = 1.231896;//以35mm a7r 镜头在120m高度 照片区域直径与圆心距离比值做参考
         private void num_alt_ValueChanged(object sender, EventArgs e)
         {
             ((NumericUpDown)sender).Enabled = false;
@@ -577,20 +577,28 @@ namespace MissionPlanner.SimpleGrid
             }
             else
             {
-                NUM_Distance.Value = (decimal)circledist(double.Parse(TXT_fovH.Text)/2,double.Parse (TXT_fovV.Text)/2);
-                NUM_spacing.Value = (decimal)circledist(double.Parse(TXT_fovH.Text)/2, double.Parse(TXT_fovV.Text) / 2);
+                NUM_Distance.Value = (decimal)circledist(double.Parse(TXT_fovH.Text)/2);
+                NUM_spacing.Value = (decimal)circledist(double.Parse(TXT_fovH.Text)/2);
             }
             domainUpDown1_ValueChanged(null, null);
             map.ZoomAndCenterMarkers("polygons");
             ((NumericUpDown)sender).Enabled = true;
         }
-        double circledist (double x,double y)
+        double circledist (double x)
         {
-            x = x * x;
-            y = y * y;
-            double d=Math.Sqrt(x + y);
-            d = d * 2 / cam35mmxy_circlecenterdist_120m;
-            return Math.Round(d);
+            double xdegree;
+            xdegree = Math.Atan(x / (double)num_alt.Value);//求height成像∠的一半
+            if (xdegree > Math.PI / 4)
+            {
+                return (double)num_alt.Value;
+            }
+            double d = 2 * ((double)num_alt.Value - Math.Tan(Math.PI / 4 - xdegree) * (double)num_alt.Value);
+            //x = x * x;
+            //y = y * y;
+            //double d=Math.Sqrt(x + y);
+            //d = d * 2 / cam35mmxy_circlecenterdist_120m;
+            //return Math.Round(d);
+            return d;
         }
         private void CMB_camera_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -616,8 +624,8 @@ namespace MissionPlanner.SimpleGrid
             }
             else
             {
-                NUM_Distance.Value = (decimal)circledist(double.Parse(TXT_fovH.Text) / 2, double.Parse(TXT_fovV.Text) / 2);
-                NUM_spacing.Value = (decimal)circledist(double.Parse(TXT_fovH.Text) / 2, double.Parse(TXT_fovV.Text) / 2);
+                NUM_Distance.Value = (decimal)circledist(double.Parse(TXT_fovH.Text) / 2);
+                NUM_spacing.Value = (decimal)circledist(double.Parse(TXT_fovH.Text) / 2);
             }
             domainUpDown1_ValueChanged(null, null);
             map.ZoomAndCenterMarkers("polygons");
