@@ -104,6 +104,7 @@ namespace MissionPlanner.SimpleGrid
                 loadsetting("simplegrid_camera", CMB_camera);
                 loadsetting("simplegrid_cam_dist", cam_dist);
                 loadsetting("simplegrid_startfrom", CMB_startfrom);
+                loadsetting("simplegrid_cam_angle", num_cam_angle);
 
             }
         }
@@ -142,6 +143,7 @@ namespace MissionPlanner.SimpleGrid
 
             plugin.Host.config["simplegrid_cam_dist"] = cam_dist.Value.ToString();
             plugin.Host.config["simplegrid_startfrom"] = CMB_startfrom.Text;
+            plugin.Host.config["simplegrid_cam_angle"] = num_cam_angle.Value.ToString();
 
         }
 
@@ -326,10 +328,15 @@ namespace MissionPlanner.SimpleGrid
 
             Host2 = plugin.Host;
 
-            grid = Utilities.Grid.CreateGrid(list, (double) NUM_altitude.Value, (double) NUM_Distance.Value,
-                (double) NUM_spacing.Value, (double) NUM_angle.Value, (double) NUM_overshoot.Value,
-                (double) NUM_overshoot2.Value,
-                (Utilities.Grid.StartPosition) Enum.Parse(typeof(Utilities.Grid.StartPosition), CMB_startfrom.Text),
+            //grid = Utilities.Grid.CreateGrid(list, (double) NUM_altitude.Value, (double) NUM_Distance.Value,
+            //    (double) NUM_spacing.Value, (double) NUM_angle.Value, (double) NUM_overshoot.Value,
+            //    (double) NUM_overshoot2.Value,
+            //    (Utilities.Grid.StartPosition) Enum.Parse(typeof(Utilities.Grid.StartPosition), CMB_startfrom.Text),
+            //    false, 0, 0, plugin.Host.cs.HomeLocation);
+            grid = Utilities.Grid.CreateGrid1(list, (double)NUM_altitude.Value, (double)NUM_Distance.Value,
+                (double)NUM_spacing.Value,(double)num_offset.Value, (double)NUM_angle.Value, (double)NUM_overshoot.Value,
+                (double)NUM_overshoot2.Value,
+                (Utilities.Grid.StartPosition)Enum.Parse(typeof(Utilities.Grid.StartPosition), CMB_startfrom.Text),
                 false, 0, 0, plugin.Host.cs.HomeLocation);
 
             List<PointLatLng> list2 = new List<PointLatLng>();
@@ -565,7 +572,7 @@ namespace MissionPlanner.SimpleGrid
         //private double cam35mmxy_circlecenterdist_120m = 1.231896;//以35mm a7r 镜头在120m高度 照片区域直径与圆心距离比值做参考
         private void num_alt_ValueChanged(object sender, EventArgs e)
         {
-            ((NumericUpDown)sender).Enabled = false;
+            //((NumericUpDown)sender).Enabled = false;
             NUM_altitude.Value = num_alt.Value;
             //NUM_Distance.Value = num_alt.Value;
             //NUM_spacing.Value = num_alt.Value;
@@ -574,31 +581,55 @@ namespace MissionPlanner.SimpleGrid
             {
                 NUM_Distance.Value = num_alt.Value;
                 NUM_spacing.Value = num_alt.Value;
+                num_offset.Value = 0;
             }
             else
             {
-                NUM_Distance.Value = (decimal)circledist(double.Parse(TXT_fovH.Text)/2);
-                NUM_spacing.Value = (decimal)circledist(double.Parse(TXT_fovH.Text)/2);
+                NUM_Distance.Value = (decimal)(distoflines(distforcenterofcirclr( circledist(double.Parse(TXT_fovH.Text)/2))));
+                NUM_spacing.Value = (decimal)(distforcenterofcirclr(circledist(double.Parse(TXT_fovH.Text)/2)));
+                num_offset.Value = (decimal)((distforcenterofcirclr(circledist(double.Parse(TXT_fovH.Text) / 2)) / 2));
             }
             domainUpDown1_ValueChanged(null, null);
             map.ZoomAndCenterMarkers("polygons");
-            ((NumericUpDown)sender).Enabled = true;
+           // ((NumericUpDown)sender).Enabled = true;
         }
-        double circledist (double x)
+        public  double  distforcenterofcirclr(double radius)
+        {
+            double x;//定义三个圆相交,两两互交,重叠率最小时,相交部分与圆心所在的直线重合的线段的一半
+            x = radius * Math.Sqrt(3)/2;
+            double dist;//圆心距
+            dist = 2 * x;
+            return dist;
+        }
+        public double distoflines(double distforcenterofcircle)
+        {
+            return Math.Sqrt(3) * (distforcenterofcircle / 2);
+        }
+        double circledist (double x)//成像半径
         {
             double xdegree;
-            xdegree = Math.Atan(x / (double)num_alt.Value);//求height成像∠的一半
-            if (xdegree > Math.PI / 4)
+            xdegree = Math.Atan(x / (double)num_alt.Value);//求height成像∠的一半           
+            double cam_angle=(double)num_cam_angle.Value*Math.PI/180;//定义相机倾斜角度并转换为弧度
+            if (xdegree > cam_angle)
             {
                 return (double)num_alt.Value;
             }
-            double d = 2 * ((double)num_alt.Value - Math.Tan(Math.PI / 4 - xdegree) * (double)num_alt.Value);
+            //double dx = Math.Tan(cam_angle + xdegree) * (double)num_alt.Value- (double)num_alt.Value;//获取短边
+            double dx = (double)num_alt.Value - Math.Tan(Math.PI / 4 - (xdegree - (cam_angle - Math.PI / 4))) * (double)num_alt.Value;
+             
+            
+            double viewwidth = 0;
+            double viewheight = 0;
+            double alt = (double)num_alt.Value/Math.Cos(cam_angle-xdegree);
+            getFOV(alt, ref viewwidth, ref viewheight);//获取长边
+
+            double dy = viewheight / 2;
             //x = x * x;
             //y = y * y;
             //double d=Math.Sqrt(x + y);
             //d = d * 2 / cam35mmxy_circlecenterdist_120m;
             //return Math.Round(d);
-            return d;
+            return Math.Sqrt(dx*dx+dy*dy);//斜边
         }
         private void CMB_camera_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -616,16 +647,29 @@ namespace MissionPlanner.SimpleGrid
             }
             // GMapMarkerOverlap.Clear();
             //num_alt_ValueChanged(null, null);
-           
+
             if (CMB_camera.Text == "")
             {
                 NUM_Distance.Value = num_alt.Value;
                 NUM_spacing.Value = num_alt.Value;
+                num_offset.Value = 0;
             }
             else
             {
-                NUM_Distance.Value = (decimal)circledist(double.Parse(TXT_fovH.Text) / 2);
-                NUM_spacing.Value = (decimal)circledist(double.Parse(TXT_fovH.Text) / 2);
+                NUM_Distance.Value = (decimal)(distoflines(distforcenterofcirclr(circledist(double.Parse(TXT_fovH.Text) / 2))));
+                NUM_spacing.Value = (decimal)(distforcenterofcirclr(circledist(double.Parse(TXT_fovH.Text) / 2)));
+                num_offset.Value = (decimal)(distforcenterofcirclr(circledist(double.Parse(TXT_fovH.Text) / 2)) / 2);
+                if ((Math.Atan((double.Parse(TXT_fovH.Text) / 2) / (double)num_alt.Value) + Math.PI / 4) > Math.PI / 2)
+                {
+                    num_cam_angle.Maximum = 90;
+                }
+                else
+                    num_cam_angle.Maximum = (decimal)Math.Floor((Math.Atan((double.Parse(TXT_fovH.Text) / 2) / (double)num_alt.Value) + Math.PI / 4)*180/Math.PI);
+                //if((Math.PI / 4 - Math.Atan((double.Parse(TXT_fovH.Text) / 2) / (double)num_alt.Value))<0)
+                //{
+                //    num_cam_angle.Minimum = 0;
+                //}else
+                //num_cam_angle.Minimum = (decimal)(Math.PI / 4 - Math.Atan((double.Parse(TXT_fovH.Text) / 2) / (double)num_alt.Value));
             }
             domainUpDown1_ValueChanged(null, null);
             map.ZoomAndCenterMarkers("polygons");
@@ -848,6 +892,31 @@ namespace MissionPlanner.SimpleGrid
         {
             domainUpDown1_ValueChanged(null,null);
             map.ZoomAndCenterMarkers("polygons");
+        }
+
+        private void num_cam_angle_ValueChanged(object sender, EventArgs e)
+        {
+            num_alt_ValueChanged(null, null);
+            domainUpDown1_ValueChanged(null, null);
+            map.ZoomAndCenterMarkers("polygons");
+        }
+
+        private void num_offset_ValueChanged(object sender, EventArgs e)
+        {
+            domainUpDown1_ValueChanged(null, null);
+            map.ZoomAndCenterMarkers("polygons");
+        }
+
+        private void NUM_Distance_ValueChanged(object sender, EventArgs e)
+        {
+            domainUpDown1_ValueChanged(null, null);
+           // map.ZoomAndCenterMarkers("polygons");
+        }
+
+        private void NUM_spacing_ValueChanged(object sender, EventArgs e)
+        {
+            domainUpDown1_ValueChanged(null, null);
+           // map.ZoomAndCenterMarkers("polygons");
         }
     }
 }

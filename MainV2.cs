@@ -4691,7 +4691,7 @@ namespace MissionPlanner
                         }
                     }
                 } 
-                resume_flight.Enabled = true;
+                //resume_flight.Enabled = true;
             }
             catch
             {
@@ -5074,7 +5074,7 @@ namespace MissionPlanner
             {
                 CustomMessageBox.Show(Strings.CommandFailed + "\n" + ex.ToString(), Strings.ERROR);
             }
-            resume_flight.Enabled = false;
+            //resume_flight.Enabled = false;
         }
 
         private void lj_taobao_Click(object sender, EventArgs e)

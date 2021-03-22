@@ -273,9 +273,9 @@ namespace MissionPlanner
             // 
             this.resume_flight.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.resume_flight.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.resume_flight, "resume_flight");
             this.resume_flight.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.resume_flight.Image = global::MissionPlanner.Properties.Resources.light_resume;
+            resources.ApplyResources(this.resume_flight, "resume_flight");
             this.resume_flight.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.resume_flight.Name = "resume_flight";
             this.resume_flight.Click += new System.EventHandler(this.resume_flight_Click);

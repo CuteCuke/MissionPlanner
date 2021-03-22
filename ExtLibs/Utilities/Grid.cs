@@ -671,7 +671,7 @@ namespace MissionPlanner.Utilities
 
             return ans;
         }
-        public static List<PointLatLngAlt> CreateGrid1(List<PointLatLngAlt> polygon, double altitude, double distance, double spacing, double angle, double overshoot1, double overshoot2, StartPosition startpos, bool shutter, float minLaneSeparation, float leadin, PointLatLngAlt HomeLocation)
+        public static List<PointLatLngAlt> CreateGrid1(List<PointLatLngAlt> polygon, double altitude, double distance, double spacing,double offset, double angle, double overshoot1, double overshoot2, StartPosition startpos, bool shutter, float minLaneSeparation, float leadin, PointLatLngAlt HomeLocation)
         {
             //DoDebug();
 
@@ -925,8 +925,7 @@ namespace MissionPlanner.Utilities
             // SM = start middle
 
             while (grid.Count > 0)
-            {
-                // for each line, check which end of the line is the next closest
+            {             
                 if (closest.p1.GetDistance(lastpnt) < closest.p2.GetDistance(lastpnt))
                 {
                     utmpos newstart = newpos(closest.p1, angle, -leadin);
@@ -1012,7 +1011,7 @@ namespace MissionPlanner.Utilities
 
                     if (spacing > 0)
                     {
-                        for (double d = ((closest.basepnt.GetDistance(closest.p2)) % spacing);
+                        for (double d = ((closest.basepnt.GetDistance(closest.p2)+offset) % spacing);
                             d < (closest.p1.GetDistance(closest.p2));
                             d += spacing)
                         {
@@ -1052,6 +1051,7 @@ namespace MissionPlanner.Utilities
                         break;
                     closest = findClosestLine(newend, grid, minLaneSeparationINMeters, angle);
                 }
+
             }
 
             // set the altitude on all points

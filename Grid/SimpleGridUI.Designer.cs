@@ -57,6 +57,10 @@
             this.CMB_camera = new System.Windows.Forms.ComboBox();
             this.num_alt = new System.Windows.Forms.NumericUpDown();
             this.gb_set = new System.Windows.Forms.GroupBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.num_cam_angle = new System.Windows.Forms.NumericUpDown();
+            this.num_offset = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.NUM_Distance = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
@@ -107,6 +111,8 @@
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_alt)).BeginInit();
             this.gb_set.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.num_cam_angle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_offset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_Distance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loiter_r)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_spacing)).BeginInit();
@@ -393,6 +399,10 @@
             // 
             // gb_set
             // 
+            this.gb_set.Controls.Add(this.label27);
+            this.gb_set.Controls.Add(this.label26);
+            this.gb_set.Controls.Add(this.num_cam_angle);
+            this.gb_set.Controls.Add(this.num_offset);
             this.gb_set.Controls.Add(this.label2);
             this.gb_set.Controls.Add(this.NUM_Distance);
             this.gb_set.Controls.Add(this.label3);
@@ -404,6 +414,53 @@
             resources.ApplyResources(this.gb_set, "gb_set");
             this.gb_set.Name = "gb_set";
             this.gb_set.TabStop = false;
+            // 
+            // label27
+            // 
+            resources.ApplyResources(this.label27, "label27");
+            this.label27.Name = "label27";
+            // 
+            // label26
+            // 
+            resources.ApplyResources(this.label26, "label26");
+            this.label26.Name = "label26";
+            // 
+            // num_cam_angle
+            // 
+            resources.ApplyResources(this.num_cam_angle, "num_cam_angle");
+            this.num_cam_angle.Maximum = new decimal(new int[] {
+            58,
+            0,
+            0,
+            0});
+            this.num_cam_angle.Minimum = new decimal(new int[] {
+            45,
+            0,
+            0,
+            0});
+            this.num_cam_angle.Name = "num_cam_angle";
+            this.num_cam_angle.Value = new decimal(new int[] {
+            45,
+            0,
+            0,
+            0});
+            this.num_cam_angle.ValueChanged += new System.EventHandler(this.num_cam_angle_ValueChanged);
+            // 
+            // num_offset
+            // 
+            this.num_offset.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            resources.ApplyResources(this.num_offset, "num_offset");
+            this.num_offset.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.num_offset.Name = "num_offset";
+            this.num_offset.ValueChanged += new System.EventHandler(this.num_offset_ValueChanged);
             // 
             // label2
             // 
@@ -429,7 +486,7 @@
             0,
             0,
             0});
-            this.NUM_Distance.ValueChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
+            this.NUM_Distance.ValueChanged += new System.EventHandler(this.NUM_Distance_ValueChanged);
             // 
             // label3
             // 
@@ -485,7 +542,7 @@
             0,
             0,
             0});
-            this.NUM_spacing.ValueChanged += new System.EventHandler(this.domainUpDown1_ValueChanged);
+            this.NUM_spacing.ValueChanged += new System.EventHandler(this.NUM_spacing_ValueChanged);
             // 
             // label8
             // 
@@ -774,6 +831,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.num_alt)).EndInit();
             this.gb_set.ResumeLayout(false);
             this.gb_set.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.num_cam_angle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_offset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_Distance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loiter_r)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_spacing)).EndInit();
@@ -862,5 +921,9 @@
         private Controls.MyButton BUT_save;
         private System.Windows.Forms.Label lbl_homeres;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.NumericUpDown num_offset;
+        private System.Windows.Forms.NumericUpDown num_cam_angle;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
     }
 }
