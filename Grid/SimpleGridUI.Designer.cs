@@ -440,7 +440,7 @@
             0});
             this.num_cam_angle.Name = "num_cam_angle";
             this.num_cam_angle.Value = new decimal(new int[] {
-            45,
+            48,
             0,
             0,
             0});

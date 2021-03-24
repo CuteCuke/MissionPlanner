@@ -140,8 +140,8 @@ namespace MissionPlanner
                 IconFile = MissionPlanner.Properties.Resources.mpdesktop.ToBitmap();
             }
 
-            if (File.Exists(Settings.GetRunningDirectory() + "splashbg.png")) // 600*375
-                SplashBG = new Bitmap(Settings.GetRunningDirectory() + "splashbg.png");
+            //if (File.Exists(Settings.GetRunningDirectory() + "splashbg.png")) // 600*375
+            //    SplashBG = new Bitmap(Settings.GetRunningDirectory() + "splashbg.png");
 
             try
             {
@@ -157,24 +157,24 @@ namespace MissionPlanner
                 log.Error(ex);
             }
 
-            Splash = new MissionPlanner.Splash();
-            if (SplashBG != null)
-            {
-                Splash.BackgroundImage = SplashBG;
-                Splash.pictureBox1.Visible = false;
-            }
+            //Splash = new MissionPlanner.Splash();
+            //if (SplashBG != null)
+            //{
+            //    Splash.BackgroundImage = SplashBG;
+            //    Splash.pictureBox1.Visible = false;
+            //}
 
-            if (IconFile != null)
-                Splash.Icon = Icon.FromHandle(((Bitmap)IconFile).GetHicon());
+            //if (IconFile != null)
+            //    Splash.Icon = Icon.FromHandle(((Bitmap)IconFile).GetHicon());
 
-            string strVersion = File.Exists("version.txt")
-                ? File.ReadAllText("version.txt")
-                : System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            //string strVersion = File.Exists("version.txt")
+            //    ? File.ReadAllText("version.txt")
+            //    : System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             //Splash.Text = name + " " + Application.ProductVersion + " build " + strVersion;
             //Splash.Show();
 
-            if (Debugger.IsAttached)
-                Splash.TopMost = false;
+            //if (Debugger.IsAttached)
+            //    Splash.TopMost = false;
 
             Application.DoEvents();
             Application.DoEvents();
@@ -275,25 +275,25 @@ namespace MissionPlanner
             }
 
             Type type = Type.GetType("Mono.Runtime");
-            if (type != null)
-            {
-                MethodInfo displayName = type.GetMethod("GetDisplayName", BindingFlags.NonPublic | BindingFlags.Static);
-                if (displayName != null)
-                {
-                    log.Info(displayName.Invoke(null, null));
-                    //6.6.0.161 (tarball Tue Dec 10 10:36:32 UTC 2019)
+            //if (type != null)
+            //{
+            //    MethodInfo displayName = type.GetMethod("GetDisplayName", BindingFlags.NonPublic | BindingFlags.Static);
+            //    if (displayName != null)
+            //    {
+            //        log.Info(displayName.Invoke(null, null));
+            //        //6.6.0.161 (tarball Tue Dec 10 10:36:32 UTC 2019)
 
-                    var match = Regex.Match(displayName.Invoke(null, null).ToString(), @"([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)");
-                    if(match.Success)
-                    {
-                        if (int.Parse(match.Groups[1].Value) < 6)
-                        {
-                            CustomMessageBox.Show(
-                                "Please upgrade your mono version to 6+ https://www.mono-project.com/download/stable/");
-                        }
-                    }
-                }
-            }
+            //        var match = Regex.Match(displayName.Invoke(null, null).ToString(), @"([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)");
+            //        if (match.Success)
+            //        {
+            //            if (int.Parse(match.Groups[1].Value) < 6)
+            //            {
+            //                CustomMessageBox.Show(
+            //                    "Please upgrade your mono version to 6+ https://www.mono-project.com/download/stable/");
+            //            }
+            //        }
+            //    }
+            //}
 
             try
             {

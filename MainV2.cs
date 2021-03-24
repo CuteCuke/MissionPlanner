@@ -2194,7 +2194,7 @@ namespace MissionPlanner
             Settings.Instance["MainLocY"] = this.Location.Y.ToString();
 
             log.Info("close logs");
-            AltitudeAngel.Dispose();
+            //AltitudeAngel.Dispose();
 
             // close bases connection
             try
@@ -3499,8 +3499,8 @@ namespace MissionPlanner
                 if (!MONO)
                 {
                     log.Info("Load AltitudeAngel");
-                    AltitudeAngel.Configure();
-                    AltitudeAngel.Initialize();
+                    //AltitudeAngel.Configure();
+                    //AltitudeAngel.Initialize();
                     log.Info("Load AltitudeAngel... Done");
                 }
             }
