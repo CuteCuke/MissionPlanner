@@ -362,12 +362,22 @@ namespace MissionPlanner.SimpleGrid
             int a = 1;
             int m_n = 0;//tag = M  航点数量
             PointLatLngAlt prevpoint = grid[0];
+
+            double maxgroundelevation = double.MinValue;
+            double mingroundelevation = double.MaxValue;
+            double startalt = plugin.Host.cs.HomeAlt;
+
             foreach (var item in grid)
             {
+                double currentalt = srtm.getAltitude(item.Lat, item.Lng).alt;
+                mingroundelevation = Math.Min(mingroundelevation, currentalt);
+                maxgroundelevation = Math.Max(maxgroundelevation, currentalt);
+
                 if (item.Tag == "M")
                 {
                     if (CHK_internals.Checked)
                     {
+                        strips++;
                         layerpolygons.Markers.Add(new GMarkerGoogle(item, GMarkerGoogleType.green) { ToolTipText = a.ToString(), ToolTipMode = MarkerTooltipMode.OnMouseOver });
                         a++;
                         m_n++;
@@ -377,18 +387,22 @@ namespace MissionPlanner.SimpleGrid
                 {
                     if (item.Tag == "S" || item.Tag == "E")
                     {
-                        strips++;
+
                         if (chk_markers.Checked)
+                        {
                             layerpolygons.Markers.Add(new GMarkerGoogle(item, GMarkerGoogleType.green)
                             {
                                 ToolTipText = a.ToString(),
                                 ToolTipMode = MarkerTooltipMode.OnMouseOver
                             });
+                            strips++;
+                        }
 
                         a++;
                     }
                 }
                 prevpoint = item;
+                
             }
 
             // add wp polygon
@@ -409,14 +423,36 @@ namespace MissionPlanner.SimpleGrid
                 lbl_distance.Text = (wppoly.Distance+((double)loiter_r.Value*Math.PI*2*m_n)/1000).ToString("0.##") + " km";
 
 
-            lbl_strips.Text = ((int)(strips / 2)).ToString();
+            lbl_strips.Text = ((int)(strips)).ToString();
             lbl_distbetweenlines.Text = NUM_Distance.Value.ToString("0.##") + " m";
             lbl_homeres.Text = TXT_cmpixel.Text + " cm/pixel";
-
-                map.HoldInvalidation = false;
+            lbl_altrange.Text = mingroundelevation.ToString("0") + "--" + maxgroundelevation.ToString("0") + " m";
+            getlowandhighres((double)NUM_altitude.Value + (plugin.Host.cs.HomeLocation.Alt - mingroundelevation),
+                     (double)NUM_altitude.Value - (maxgroundelevation - plugin.Host.cs.HomeLocation.Alt));
+          
+            map.HoldInvalidation = false;
 
             //map.ZoomAndCenterMarkers("polygons");
 
+        }
+        void getlowandhighres(double lowalt, double highalt)
+        {
+            double focallen = (double)NUM_focallength.Value;
+            //  double sensorwidth = double.Parse(TXT_senswidth.Text);
+            double sensorheight = double.Parse(TXT_sensheight.Text);
+
+            // scale      mm / mm
+            double flscalelow = (1000 * lowalt) / focallen;
+            double flscalehigh = (1000 * highalt) / focallen;
+            //   mm * mm / 1000
+            // double lowviewwidth = (sensorwidth * flscalelow / 1000);
+            double lowviewheight = (sensorheight * flscalelow / 1000);
+
+            // double highviewwidth = (sensorwidth * flscalehigh / 1000);
+            double highviewheight = (sensorheight * flscalehigh / 1000);
+
+            lbl_lowres.Text = (((lowviewheight*Math.Sqrt(2) / int.Parse(TXT_imgheight.Text)) * 100)).ToString("0.00 cm");
+            lbl_highres.Text = (((highviewheight*Math.Sqrt(2) / int.Parse(TXT_imgheight.Text)) * 100)).ToString("0.00 cm");
         }
 
         double calcpolygonarea(List<PointLatLngAlt> polygon)
@@ -511,6 +547,7 @@ namespace MissionPlanner.SimpleGrid
 
                 grid.ForEach(plla =>
                 {
+                
                     if (plla.Tag == "M")
                     {
                         if (CHK_internals.Checked)

@@ -8181,6 +8181,11 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
 
         }
 
-    
+        private void control_point_Click(object sender, EventArgs e)
+        {
+            controlpoint.GridPlugin grid = new controlpoint.GridPlugin();
+            grid.Host = new PluginHost();
+            grid.but_Click(sender, e);
+        }
     }
 }

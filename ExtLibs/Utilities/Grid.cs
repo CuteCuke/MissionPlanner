@@ -80,13 +80,19 @@ namespace MissionPlanner.Utilities
             // utm position list
             List<utmpos> utmpositions = utmpos.ToList(PointLatLngAlt.ToUTM(utmzone, polygon), utmzone);
 
+            //List<utmpos> utmpos2 = new List<utmpos>();
+            //GenerateOffsetPath(utmpositions, -distance/2, spacing, utmzone)
+            //       .ForEach(pnt => { utmpos2.Add(pnt); });
+
             var lanes = (width / distance);
             var start = (int)((lanes / 2) * -1);
             var end = start * -1;
 
-            for (int lane = start; lane <= end; lane++)
+            for (int lane = start; lane <= end-1; lane++)//减少一条航线
             {
                 // correct side of the line we are on because of list reversal
+                //if (lane == 0)
+                //    continue;
                 int multi = 1;
                 if ((lane - start) % 2 == 1)
                     multi = -1;
@@ -94,8 +100,8 @@ namespace MissionPlanner.Utilities
                 if (startpos != StartPosition.Home)
                     utmpositions.Reverse();
 
-                GenerateOffsetPath(utmpositions, distance * multi * lane, spacing, utmzone)
-                    .ForEach(pnt => { ans.Add(pnt); });
+                GenerateOffsetPath(utmpositions, distance * multi * lane+multi*distance/2, spacing, utmzone)
+                    .ForEach(pnt => { ans.Add(pnt); });//然后平移distance/2
 
                 if (startpos == StartPosition.Home)
                     utmpositions.Reverse();
@@ -110,7 +116,7 @@ namespace MissionPlanner.Utilities
         private static List<utmpos> GenerateOffsetPath(List<utmpos> utmpositions, double distance, double spacing, int utmzone)
         {
             List<utmpos> ans = new List<utmpos>();
-
+            
             utmpos oldpos = utmpos.Zero;
 
             for (int a = 0; a < utmpositions.Count - 2; a++)
@@ -147,7 +153,7 @@ namespace MissionPlanner.Utilities
                 //spacing
                 if (spacing > 0)
                 {
-                    for (int d = (int)((oldpos.GetDistance(l1l2center)) % spacing);
+                    for (int d = (int)((oldpos.GetDistance(l1l2center) ) % spacing);
                         d < (oldpos.GetDistance(l1l2center));
                         d += (int)spacing)
                     {
