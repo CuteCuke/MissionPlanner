@@ -1348,7 +1348,7 @@ namespace MissionPlanner.Grid
 
         private void NUM_ValueChanged(object sender, EventArgs e)
         {
-            domainUpDown1_ValueChanged(null, null);
+           // domainUpDown1_ValueChanged(null, null);
         }
 
         private void CMB_camera_SelectedIndexChanged(object sender, EventArgs e)
@@ -1366,14 +1366,14 @@ namespace MissionPlanner.Grid
                 //NUM_Distance.Enabled = false;
             }
 
-            GMapMarkerOverlap.Clear();
+           // GMapMarkerOverlap.Clear();
 
             domainUpDown1_ValueChanged(null, null);
         }
 
         private void TXT_TextChanged(object sender, EventArgs e)
         {
-            domainUpDown1_ValueChanged(null, null);
+           // domainUpDown1_ValueChanged(null, null);
         }
 
         private void CHK_camdirection_CheckedChanged(object sender, EventArgs e)

@@ -186,6 +186,7 @@ namespace MissionPlanner.Controls
             this.Invoke((MethodInvoker)delegate
             {
                 this.progressBar1.Visible = false;
+                this.label1.Visible = false;
                 this.lblProgressMessage.Text = "Cancelled";
                 this.btnClose.Visible = true;
             });
@@ -238,6 +239,7 @@ namespace MissionPlanner.Controls
                                                         this.lblProgressMessage.Text = errMessage;
                                                         this.imgWarning.Visible = true;
                                                         this.progressBar1.Visible = false;
+                                                        this.label1.Visible = false;
                                                         this.btnCancel.Visible = false;
                                                         this.btnClose.Visible = true;
                                                         this.linkLabel1.Visible = exception != null;
@@ -329,6 +331,7 @@ namespace MissionPlanner.Controls
                 try
                 {
                     this.progressBar1.Value = pgv;
+                    this.label1.Text = pgv + "%";
                 } // Exception System.ArgumentOutOfRangeException: Value of '-12959800' is not valid for 'Value'. 'Value' should be between 'minimum' and 'maximum'.
                 catch { } // clean fail. and ignore, chances are we will hit this again in the next 100 ms
             }

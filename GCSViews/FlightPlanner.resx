@@ -1049,7 +1049,7 @@
     <value>Commands</value>
   </data>
   <data name="&gt;&gt;Commands.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.MyDataGridView, MissionPlanner, Version=1.3.7761.26500, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.MyDataGridView, MissionPlanner, Version=1.3.7770.29078, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Commands.Parent" xml:space="preserve">
     <value>panelWaypoints</value>
@@ -3376,8 +3376,14 @@
   <data name="control_point.Text" xml:space="preserve">
     <value>控制点生成</value>
   </data>
+  <data name="wpskmlToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 22</value>
+  </data>
+  <data name="wpskmlToolStripMenuItem.Text" xml:space="preserve">
+    <value>航点kml导出</value>
+  </data>
   <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 538</value>
+    <value>156, 560</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip1.Name" xml:space="preserve">
     <value>contextMenuStrip1</value>
@@ -4168,6 +4174,12 @@
   <data name="&gt;&gt;setHomeHereToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;control_point.Name" xml:space="preserve">
+    <value>control_point</value>
+  </data>
+  <data name="&gt;&gt;control_point.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;addPolygonPointToolStripMenuItem.Name" xml:space="preserve">
     <value>addPolygonPointToolStripMenuItem</value>
   </data>
@@ -4264,10 +4276,10 @@
   <data name="&gt;&gt;zoomToHomeToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;control_point.Name" xml:space="preserve">
-    <value>control_point</value>
+  <data name="&gt;&gt;wpskmlToolStripMenuItem.Name" xml:space="preserve">
+    <value>wpskmlToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;control_point.Type" xml:space="preserve">
+  <data name="&gt;&gt;wpskmlToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

@@ -237,6 +237,7 @@ namespace MissionPlanner.GCSViews
             this.enterUTMCoordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.switchDockingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setHomeHereToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.control_point = new System.Windows.Forms.ToolStripMenuItem();
             this.addPolygonPointToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearPolygonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.savePolygonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -257,7 +258,7 @@ namespace MissionPlanner.GCSViews
             this.zoomToVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zoomToMissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zoomToHomeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.control_point = new System.Windows.Forms.ToolStripMenuItem();
+            this.wpskmlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panelWaypoints.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_per)).BeginInit();
@@ -1368,7 +1369,8 @@ namespace MissionPlanner.GCSViews
             this.enterUTMCoordToolStripMenuItem,
             this.switchDockingToolStripMenuItem,
             this.setHomeHereToolStripMenuItem,
-            this.control_point});
+            this.control_point,
+            this.wpskmlToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.ShowImageMargin = false;
             resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
@@ -1842,6 +1844,12 @@ namespace MissionPlanner.GCSViews
             resources.ApplyResources(this.setHomeHereToolStripMenuItem, "setHomeHereToolStripMenuItem");
             this.setHomeHereToolStripMenuItem.Click += new System.EventHandler(this.setHomeHereToolStripMenuItem_Click);
             // 
+            // control_point
+            // 
+            this.control_point.Name = "control_point";
+            resources.ApplyResources(this.control_point, "control_point");
+            this.control_point.Click += new System.EventHandler(this.control_point_Click);
+            // 
             // addPolygonPointToolStripMenuItem
             // 
             this.addPolygonPointToolStripMenuItem.Name = "addPolygonPointToolStripMenuItem";
@@ -1971,11 +1979,11 @@ namespace MissionPlanner.GCSViews
             resources.ApplyResources(this.zoomToHomeToolStripMenuItem, "zoomToHomeToolStripMenuItem");
             this.zoomToHomeToolStripMenuItem.Click += new System.EventHandler(this.zoomToHomeToolStripMenuItem_Click);
             // 
-            // control_point
+            // wpskmlToolStripMenuItem
             // 
-            this.control_point.Name = "control_point";
-            resources.ApplyResources(this.control_point, "control_point");
-            this.control_point.Click += new System.EventHandler(this.control_point_Click);
+            this.wpskmlToolStripMenuItem.Name = "wpskmlToolStripMenuItem";
+            resources.ApplyResources(this.wpskmlToolStripMenuItem, "wpskmlToolStripMenuItem");
+            this.wpskmlToolStripMenuItem.Click += new System.EventHandler(this.wpskmlToolStripMenuItem_Click);
             // 
             // FlightPlanner
             // 
@@ -2234,5 +2242,6 @@ namespace MissionPlanner.GCSViews
         private ToolStripMenuItem delMarkPointToolStripMenuItem;
         private Label label22;
         private ToolStripMenuItem control_point;
+        private ToolStripMenuItem wpskmlToolStripMenuItem;
     }
 }

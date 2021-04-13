@@ -42,6 +42,7 @@ namespace MissionPlanner.Controls
             this.btnClose = new MissionPlanner.Controls.MyButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.imgWarning = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgWarning)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,16 +91,21 @@ namespace MissionPlanner.Controls
             // 
             // imgWarning
             // 
-            resources.ApplyResources(this.imgWarning, "imgWarning");
             this.imgWarning.Image = global::MissionPlanner.Controls.Properties.Resources.iconWarning48;
+            resources.ApplyResources(this.imgWarning, "imgWarning");
             this.imgWarning.Name = "imgWarning";
             this.imgWarning.TabStop = false;
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
             // ProgressReporterDialogue
             // 
             resources.ApplyResources(this, "$this");
-            
             this.ControlBox = false;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.imgWarning);
             this.Controls.Add(this.lblProgressMessage);
@@ -127,5 +133,6 @@ namespace MissionPlanner.Controls
         private LinkLabel linkLabel1;
         private MyButton btnClose;
         private Timer timer1;
+        private Label label1;
     }
 }

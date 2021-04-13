@@ -8187,5 +8187,10 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
             grid.Host = new PluginHost();
             grid.but_Click(sender, e);
         }
+
+        private void wpskmlToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("http://127.0.0.1:56781/wps.kml");
+        }
     }
 }

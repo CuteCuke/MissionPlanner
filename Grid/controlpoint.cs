@@ -536,7 +536,7 @@ namespace MissionPlanner.controlpoint
 
                 this.Close();
 
-                Process.Start ("http://127.0.0.1:56781/wps.kml");
+                Process.Start ("http://127.0.0.1:56781/controlpoint.kml");
             }
             else
             {

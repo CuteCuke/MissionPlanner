@@ -629,6 +629,69 @@ namespace MissionPlanner.Utilities
 
                         //stream.Close();
                     }
+                    else if (url.Contains(" /controlpoint.kml"))
+                    {
+                        SharpKml.Dom.Document kml = new SharpKml.Dom.Document();
+
+                        SharpKml.Dom.CoordinateCollection coords = new SharpKml.Dom.CoordinateCollection();
+
+                        PointLatLngAlt home = null;
+                        // draw track
+                        try
+                        {
+                            foreach (var point in FlightPlanner.instance.pointlist)
+                            {
+                                if (point == null|| point.Tag.ToLower().Contains("h"))
+                                    continue;
+                                coords.Add(new SharpKml.Base.Vector(point.Lat, point.Lng, point.Alt));
+                            }
+                        }
+                        catch
+                        {
+                        }
+
+                        var altmode = SharpKml.Dom.AltitudeMode.Absolute;
+
+                        foreach (var point in FlightPlanner.instance.pointlist)
+                        {
+                            if (point == null|| point.Tag.ToLower().Contains("h"))
+                                continue;
+
+                            SharpKml.Dom.Placemark wp = new SharpKml.Dom.Placemark();
+                            wp.Name = "CP " + point.Tag + " Alt: " + point.Alt;
+                            SharpKml.Dom.Point wppoint = new SharpKml.Dom.Point();
+                            wppoint.AltitudeMode = altmode;
+                            wppoint.Coordinate = new Vector()
+                            {
+                                Latitude = point.Lat,
+                                Longitude = point.Lng,
+                                Altitude = point.Alt
+                            };
+                            wp.Geometry = wppoint;
+                            kml.AddFeature(wp);
+                        }
+
+                        
+
+                        SharpKml.Base.Serializer serializer = new SharpKml.Base.Serializer();
+                        serializer.Serialize(kml);
+
+                        byte[] buffer = Encoding.ASCII.GetBytes(serializer.Xml);
+
+                        string header =
+                            "HTTP/1.1 200 OK\r\nContent-Type: application/vnd.google-earth.kml+xml\r\nContent-Length: " +
+                            buffer.Length + "\r\n\r\n";
+                        byte[] temp = asciiEncoding.GetBytes(header);
+                        stream.Write(temp, 0, temp.Length);
+
+                        stream.Write(buffer, 0, buffer.Length);
+
+                        stream.Flush();
+
+                        goto again;
+
+                        //stream.Close();
+                    }
                     /////////////////////////////////////////////////////////////////
                     else if (url.Contains(" /block_plane_0.dae"))
                     {
