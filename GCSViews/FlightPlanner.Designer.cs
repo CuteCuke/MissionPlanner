@@ -238,6 +238,7 @@ namespace MissionPlanner.GCSViews
             this.switchDockingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setHomeHereToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.control_point = new System.Windows.Forms.ToolStripMenuItem();
+            this.wpskmlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addPolygonPointToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearPolygonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.savePolygonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -258,7 +259,7 @@ namespace MissionPlanner.GCSViews
             this.zoomToVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zoomToMissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zoomToHomeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.wpskmlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.facemapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panelWaypoints.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_per)).BeginInit();
@@ -1637,7 +1638,8 @@ namespace MissionPlanner.GCSViews
             this.areaToolStripMenuItem1,
             this.textToolStripMenuItem,
             this.createCircleSurveyToolStripMenuItem,
-            this.surveyGridToolStripMenuItem});
+            this.surveyGridToolStripMenuItem,
+            this.facemapToolStripMenuItem});
             this.autoWPToolStripMenuItem.Name = "autoWPToolStripMenuItem";
             resources.ApplyResources(this.autoWPToolStripMenuItem, "autoWPToolStripMenuItem");
             // 
@@ -1850,6 +1852,12 @@ namespace MissionPlanner.GCSViews
             resources.ApplyResources(this.control_point, "control_point");
             this.control_point.Click += new System.EventHandler(this.control_point_Click);
             // 
+            // wpskmlToolStripMenuItem
+            // 
+            this.wpskmlToolStripMenuItem.Name = "wpskmlToolStripMenuItem";
+            resources.ApplyResources(this.wpskmlToolStripMenuItem, "wpskmlToolStripMenuItem");
+            this.wpskmlToolStripMenuItem.Click += new System.EventHandler(this.wpskmlToolStripMenuItem_Click);
+            // 
             // addPolygonPointToolStripMenuItem
             // 
             this.addPolygonPointToolStripMenuItem.Name = "addPolygonPointToolStripMenuItem";
@@ -1979,11 +1987,11 @@ namespace MissionPlanner.GCSViews
             resources.ApplyResources(this.zoomToHomeToolStripMenuItem, "zoomToHomeToolStripMenuItem");
             this.zoomToHomeToolStripMenuItem.Click += new System.EventHandler(this.zoomToHomeToolStripMenuItem_Click);
             // 
-            // wpskmlToolStripMenuItem
+            // facemapToolStripMenuItem
             // 
-            this.wpskmlToolStripMenuItem.Name = "wpskmlToolStripMenuItem";
-            resources.ApplyResources(this.wpskmlToolStripMenuItem, "wpskmlToolStripMenuItem");
-            this.wpskmlToolStripMenuItem.Click += new System.EventHandler(this.wpskmlToolStripMenuItem_Click);
+            this.facemapToolStripMenuItem.Name = "facemapToolStripMenuItem";
+            resources.ApplyResources(this.facemapToolStripMenuItem, "facemapToolStripMenuItem");
+            this.facemapToolStripMenuItem.Click += new System.EventHandler(this.facemapToolStripMenuItem_Click);
             // 
             // FlightPlanner
             // 
@@ -2243,5 +2251,6 @@ namespace MissionPlanner.GCSViews
         private Label label22;
         private ToolStripMenuItem control_point;
         private ToolStripMenuItem wpskmlToolStripMenuItem;
+        private ToolStripMenuItem facemapToolStripMenuItem;
     }
 }

@@ -7430,14 +7430,16 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
         {
             int rowindex = 0;
             // var nextwp=MainV2.comPort.MAV.cs.HomeLocation;
-            double lng = double.Parse(TXT_homelat.Text);//insertcommad经纬度参数反了
-            double lat = double.Parse(TXT_homelng.Text);
+            
             //{ double.Parse(TXT_homelat.Text),double.Parse(TXT_homelng.Text),double.Parse(TXT_homelat.Text),"H"}
             //var _list = GetCommandList();
             // updown_angle.Value=MainV2.comPort.
             int numno;
             if (MainV2.comPort.BaseStream.IsOpen && gpb_takeoffandland.Visible == true)
             {
+                refreshhome();
+                double lng = double.Parse(TXT_homelat.Text);//insertcommad经纬度参数反了
+                double lat = double.Parse(TXT_homelng.Text);
                 if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduPlane)
                 {
                     if (Commands.Rows.Count != 0)
@@ -8191,6 +8193,13 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
         private void wpskmlToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start("http://127.0.0.1:56781/wps.kml");
+        }
+
+        private void facemapToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FaceMapPlugin grid = new FaceMapPlugin();
+            grid.Host = new PluginHost();
+            grid.but_Click(sender, e);
         }
     }
 }

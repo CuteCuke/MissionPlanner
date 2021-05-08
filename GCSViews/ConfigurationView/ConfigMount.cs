@@ -215,7 +215,7 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                     ensureDisabled(CMB_shuttertype, 10);
                     MainV2.comPort.setParam(CMB_shuttertype.Text + "_FUNCTION", 10);
                     // servo
-                    MainV2.comPort.setParam((byte)MainV2.comPort.sysidcurrent, (byte)MainV2.comPort.compidcurrent, "CAM_TRIGG_TYPE", 0);
+                    MainV2.comPort.setParam((byte)MainV2.comPort.sysidcurrent, (byte)MainV2.comPort.compidcurrent, "CAM_TRIGG_TYPE", 1);
                 }
             }
             else
