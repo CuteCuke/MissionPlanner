@@ -827,8 +827,13 @@ namespace MissionPlanner.Grid
                 lbl_footprint.Text = TXT_fovH.Text + " x " + TXT_fovV.Text + " m";
                 lbl_turnrad.Text = (turnrad * 2).ToString("0") + " m";
                 lbl_gndelev.Text = mingroundelevation.ToString("0") + "-" + maxgroundelevation.ToString("0") + " m";
-                lab_highoverlap.Text = (Math.Round(((double)num_overlap.Value - ((maxgroundelevation - plugin.Host.cs.HomeLocation.Alt) / (double)NUM_altitude.Value) * 100),1)).ToString() + '%';
-                lab_highsidelap.Text = (Math.Round(((double)num_sidelap.Value - ((maxgroundelevation - plugin.Host.cs.HomeLocation.Alt) / (double)NUM_altitude.Value) * 100),1)).ToString() + '%';
+                if(CMB_camera.SelectedIndex!=-1)
+                {
+                    lab_highoverlap.Text = (overlaprate(double.Parse(TXT_fovH.Text), (double)NUM_altitude.Value, (maxgroundelevation - plugin.Host.cs.HomeLocation.Alt), (double)num_overlap.Value)*100).ToString("0")+"%";
+                    lab_highsidelap.Text = (overlaprate(double.Parse(TXT_fovV.Text), (double)NUM_altitude.Value, (maxgroundelevation - plugin.Host.cs.HomeLocation.Alt), (double)num_sidelap.Value)*100).ToString("0") + "%";
+                }
+                //lab_highoverlap.Text = (Math.Round(((double)num_overlap.Value - ((maxgroundelevation - plugin.Host.cs.HomeLocation.Alt) / (double)NUM_altitude.Value) * 100),1)).ToString() + '%';
+              
                 if (chk_minmaxalt.Checked)
                 {
                     getlowandhighres((double)NUM_altitude.Value + (plugin.Host.cs.HomeLocation.Alt - (double)min_alt.Value),
@@ -880,7 +885,12 @@ namespace MissionPlanner.Grid
 
             map.Invalidate();
         }
-
+        private double overlaprate(double homewidth,double takeoffalt,double hometohigh,double homeoverlaprate)
+        {
+            double m = (hometohigh * homewidth )/ (takeoffalt*2);
+            double rate = (homewidth * homeoverlaprate*0.01 - 2*m) / (homewidth - 2*m);
+            return rate;
+        }
         private void AddWP(double Lng, double Lat, double Alt, string tag, object gridobject = null)
         {
             if (CHK_copter_headinghold.Checked)

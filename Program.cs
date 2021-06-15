@@ -112,7 +112,7 @@ namespace MissionPlanner
                 return;
             }
 
-            name = "Mission Planner";
+            name = "VVVVZ";
 
             try
             {
@@ -250,7 +250,7 @@ namespace MissionPlanner
             if (name == "VVVVZ")
             {
                 // set pw
-                Settings.Instance["password"] = "viDQSk/lmA2qEE8GA7SIHqu0RG2hpkH973MPpYO87CI=";
+                Settings.Instance["password"] = "9KDabQt+ElBVlfVtyizrNxXNDMQgVD/KsS6J3CjC7Yk=";
                 Settings.Instance["password_protect"] = "True";
                 // prevent wizard
                 Settings.Instance["newuser"] = "11/02/2014";

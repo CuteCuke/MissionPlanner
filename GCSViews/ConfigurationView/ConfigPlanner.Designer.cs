@@ -594,6 +594,8 @@
             // CHK_Password
             // 
             resources.ApplyResources(this.CHK_Password, "CHK_Password");
+            this.CHK_Password.Checked = true;
+            this.CHK_Password.CheckState = System.Windows.Forms.CheckState.Checked;
             this.CHK_Password.Name = "CHK_Password";
             this.CHK_Password.UseVisualStyleBackColor = true;
             this.CHK_Password.CheckedChanged += new System.EventHandler(this.CHK_Password_CheckedChanged);

@@ -7695,7 +7695,7 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                             }
                         }
                     }
-                    TXT_loiterrad.Text = loiter_upalt.Value.ToString();
+                    //TXT_loiterrad.Text = loiter_upalt.Value.ToString();
                 }
                 else if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduCopter2)
                 {

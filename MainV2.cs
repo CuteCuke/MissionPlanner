@@ -1066,7 +1066,22 @@ namespace MissionPlanner
                 Simulation = new GCSViews.SITL();
                 //Firmware = new GCSViews.InitialSetup();
                 //Terminal = new GCSViews.();
-
+                //log.Info("Create iis");
+                //myIIS myIIS = new myIIS();
+                
+                //myIIS.creatNewWeb(new newWebSiteInfo()
+                //{
+                //    hostIp = "127.0.0.1",
+                //    hostName = "localhost",
+                //    porNum = "6667",
+                //    webName = "ces",
+                //    appName = "ces",
+                //    webPath = System.AppDomain.CurrentDomain.BaseDirectory+"dist",
+                //    visualPath = "cesium",
+                //    newMimeType = new Dictionary<string, string>(),
+                //    autherRight = autherRight.匿名身份验证,
+                //    defoultPage = "index.html"
+                //}, modelType.经典, netVersion.v4_0) ;                 
                 FlightData.Width = MyView.Width;
                 FlightPlanner.Width = MyView.Width;
                 Simulation.Width = MyView.Width;
@@ -4714,6 +4729,12 @@ namespace MissionPlanner
                 var action = MainV2.comPort.MAV.cs.armed ? "加锁" : "解锁";
 
                 //if (isitarmed)
+
+                if (!isitarmed && MainV2.comPort.getWP(1).id != (ushort)MAVLink.MAV_CMD.TAKEOFF && MainV2.comPort.getWP(1).id != (ushort)MAVLink.MAV_CMD.VTOL_TAKEOFF)
+                {
+                    CustomMessageBox.Show("(｡･∀･)ﾉﾞ:请添加起降航点!!!");
+                    return;
+                }
                 if (CustomMessageBox.Show("\n(｡･∀･)ﾉﾞ:当前模式为\t   " + GCSViews.FlightData.myhud.mode + "\n\n\n( σ'ω')σ:你确定你想\t   " + action, action,
                         CustomMessageBox.MessageBoxButtons.YesNo) !=
                     CustomMessageBox.DialogResult.Yes)
