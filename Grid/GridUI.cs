@@ -827,10 +827,22 @@ namespace MissionPlanner.Grid
                 lbl_footprint.Text = TXT_fovH.Text + " x " + TXT_fovV.Text + " m";
                 lbl_turnrad.Text = (turnrad * 2).ToString("0") + " m";
                 lbl_gndelev.Text = mingroundelevation.ToString("0") + "-" + maxgroundelevation.ToString("0") + " m";
+                if((double)NUM_altitude.Value + plugin.Host.cs.HomeLocation.Alt<=maxgroundelevation)
+                {
+                    NUM_altitude.BackColor = Color.Red;
+                }
+                else
+                {
+                    ThemeManager.ApplyThemeTo(NUM_altitude);
+                }
                 if(CMB_camera.SelectedIndex!=-1)
                 {
+                    ThemeManager.ApplyThemeTo(CMB_camera);
                     lab_highoverlap.Text = (overlaprate(double.Parse(TXT_fovH.Text), (double)NUM_altitude.Value, (maxgroundelevation - plugin.Host.cs.HomeLocation.Alt), (double)num_overlap.Value)*100).ToString("0")+"%";
                     lab_highsidelap.Text = (overlaprate(double.Parse(TXT_fovV.Text), (double)NUM_altitude.Value, (maxgroundelevation - plugin.Host.cs.HomeLocation.Alt), (double)num_sidelap.Value)*100).ToString("0") + "%";
+                }else
+                {
+                    CMB_camera.BackColor = Color.Red;
                 }
                 //lab_highoverlap.Text = (Math.Round(((double)num_overlap.Value - ((maxgroundelevation - plugin.Host.cs.HomeLocation.Alt) / (double)NUM_altitude.Value) * 100),1)).ToString() + '%';
               

@@ -62,6 +62,8 @@ namespace MissionPlanner.GCSViews
                 {
                     if (MainV2.comPort.BaseStream.IsOpen)
                     {
+                        AddBackstageViewPage(typeof(Parametermodification), "舵机/PID快捷");
+
                         if (MainV2.DisplayConfiguration.displayFlightModes)
                         {
                             start = AddBackstageViewPage(typeof(ConfigFlightModes), Strings.FlightModes);

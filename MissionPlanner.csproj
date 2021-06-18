@@ -557,6 +557,12 @@
       <DependentUpon>ConfigUserDefined.cs</DependentUpon>
     </Compile>
     <Compile Include="GCSViews\ConfigurationView\DeviceInfo.cs" />
+    <Compile Include="GCSViews\ConfigurationView\Parametermodification.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GCSViews\ConfigurationView\Parametermodification.Designer.cs">
+      <DependentUpon>Parametermodification.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Grid\controlpointplugin.cs" />
     <Compile Include="Grid\FaceMap.cs" />
@@ -860,6 +866,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GCSViews\ConfigurationView\ConfigUserDefined.resx">
       <DependentUpon>ConfigUserDefined.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GCSViews\ConfigurationView\Parametermodification.resx">
+      <DependentUpon>Parametermodification.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Grid\controlpoint.resx">
       <DependentUpon>controlpoint.cs</DependentUpon>
